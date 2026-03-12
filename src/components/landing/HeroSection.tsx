@@ -95,15 +95,6 @@ const HeroSection = () => (
             </motion.div>
           ))}
         </motion.div>
-
-        <motion.p
-          className="text-gradient-gold font-heading text-lg md:text-xl italic mt-8"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.0 }}
-        >
-          « Le meilleur moment pour préparer sa retraite était hier. Le second, aujourd'hui. »
-        </motion.p>
       </div>
     </div>
 
