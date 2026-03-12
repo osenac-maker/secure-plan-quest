@@ -22,6 +22,7 @@ const Navbar = () => {
           <Link to="/per-independants" className="text-sm text-muted-foreground hover:text-foreground transition-colors">PER</Link>
           <Link to="/retraite-dirigeants" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Retraite</Link>
           <Link to="/prevoyance" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Prévoyance</Link>
+          <Link to="/mutuelle" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Mutuelle</Link>
         </div>
 
         <div className="hidden md:flex items-center gap-3">
