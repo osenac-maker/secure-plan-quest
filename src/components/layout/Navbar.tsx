@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logoRetiro from "@/assets/logo-retiro-v2.png";
-import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
   { to: "/", label: "Accueil" },
