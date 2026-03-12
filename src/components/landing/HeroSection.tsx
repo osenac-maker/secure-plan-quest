@@ -102,7 +102,7 @@ const HeroSection = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0 }}
         >
-          « Transformez vos revenus d'aujourd'hui en liberté de demain. »
+          « Le meilleur moment pour préparer sa retraite était hier. Le second, aujourd'hui. »
         </motion.p>
       </div>
     </div>
