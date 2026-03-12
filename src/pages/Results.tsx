@@ -108,11 +108,11 @@ const Results = () => {
 
             {/* CTA */}
             <div className="bg-hero rounded-2xl p-8 text-center">
-              <Calendar className="w-10 h-10 text-primary-foreground/60 mx-auto mb-4" />
-              <h3 className="font-heading text-xl font-bold text-primary-foreground mb-2">
+              <Calendar className="w-10 h-10 text-copper mx-auto mb-4" />
+              <h3 className="font-heading text-xl font-bold text-foreground mb-2">
                 Prenez rendez-vous avec un conseiller
               </h3>
-              <p className="text-primary-foreground/70 text-sm mb-6 max-w-md mx-auto">
+              <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">
                 Un expert patrimonial dédié analysera votre situation en détail et vous proposera un plan d'action personnalisé. Gratuit et sans engagement.
               </p>
               <Button size="lg" variant="secondary" className="gap-2 font-semibold">
