@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Shield } from "lucide-react";
+import logoRetiro from "@/assets/logo-retiro-v2.png";
 
 const Footer = () => (
   <footer className="bg-card border-t border-border py-12">
