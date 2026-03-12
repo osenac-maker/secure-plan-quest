@@ -26,22 +26,19 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-card/90 backdrop-blur-xl shadow-card border-b border-border" : "bg-transparent backdrop-blur-sm"
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-border"
+          : "bg-transparent"
       }`}
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <Link to="/" className="flex items-center gap-2 group">
-          <motion.img
+      <div className="container mx-auto flex items-center justify-between h-20 px-4">
+        <Link to="/" className="flex items-center gap-2">
+          <img
             src={logoRetiro}
             alt="RETIRO Patrimoine"
-            className="h-14 w-auto -my-2"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            className={`h-12 w-auto transition-all duration-300 ${scrolled ? "" : "brightness-0 invert"}`}
           />
         </Link>
 
@@ -50,16 +47,20 @@ const Navbar = () => {
             <Link
               key={l.to}
               to={l.to}
-              className={`relative text-sm px-3 py-2 rounded-lg transition-colors ${
-                location.pathname === l.to
-                  ? "text-primary font-medium"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+              className={`relative text-sm px-4 py-2 transition-colors font-medium tracking-wide ${
+                scrolled
+                  ? location.pathname === l.to
+                    ? "text-copper"
+                    : "text-foreground/70 hover:text-foreground"
+                  : location.pathname === l.to
+                    ? "text-copper"
+                    : "text-white/70 hover:text-white"
               }`}
             >
               {l.label}
               {location.pathname === l.to && (
                 <motion.div
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-primary"
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-copper"
                   layoutId="nav-indicator"
                   transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 />
@@ -70,16 +71,21 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-3">
           <Link to="/conseiller">
-            <Button variant="ghost" size="sm">Espace conseiller</Button>
+            <Button variant="ghost" size="sm" className={scrolled ? "text-foreground" : "text-white hover:bg-white/10"}>
+              Espace conseiller
+            </Button>
           </Link>
           <Link to="/simulateur">
-            <Button size="sm" className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground border-0">
+            <Button size="sm" className="bg-copper hover:bg-copper-light text-white border-0 font-medium">
               Bilan gratuit
             </Button>
           </Link>
         </div>
 
-        <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
+        <button
+          className={`md:hidden ${scrolled ? "text-foreground" : "text-white"}`}
+          onClick={() => setOpen(!open)}
+        >
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
@@ -87,7 +93,7 @@ const Navbar = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="md:hidden bg-card/95 backdrop-blur-xl border-b border-border px-4 pb-4 space-y-1"
+            className="md:hidden bg-white border-b border-border px-4 pb-4 space-y-1"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -97,8 +103,8 @@ const Navbar = () => {
               <Link
                 key={l.to}
                 to={l.to}
-                className={`block py-2 px-3 text-sm rounded-lg transition-colors ${
-                  location.pathname === l.to ? "text-primary bg-primary/5 font-medium" : "text-muted-foreground"
+                className={`block py-2 px-3 text-sm transition-colors ${
+                  location.pathname === l.to ? "text-copper font-medium" : "text-muted-foreground"
                 }`}
                 onClick={() => setOpen(false)}
               >
@@ -109,14 +115,14 @@ const Navbar = () => {
               Espace conseiller
             </Link>
             <Link to="/simulateur" onClick={() => setOpen(false)}>
-              <Button size="sm" className="w-full bg-gradient-to-r from-primary to-accent text-primary-foreground border-0">
+              <Button size="sm" className="w-full bg-copper hover:bg-copper-light text-white border-0">
                 Bilan gratuit
               </Button>
             </Link>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </nav>
   );
 };
 
