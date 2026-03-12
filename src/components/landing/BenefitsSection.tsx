@@ -1,32 +1,32 @@
-import { Shield, TrendingUp, Heart, Calculator } from "lucide-react";
+import { Compass, TrendingUp, Heart, Shield } from "lucide-react";
 import { motion } from "framer-motion";
 import sectionMeeting from "@/assets/section-meeting.jpg";
 
 const benefits = [
   {
-    icon: Calculator,
-    title: "Optimisation fiscale",
+    icon: Compass,
+    title: "Cap fiscal optimisé",
     desc: "Réduisez votre impôt sur le revenu grâce au PER et aux dispositifs patrimoniaux adaptés aux indépendants.",
   },
   {
     icon: TrendingUp,
-    title: "Préparation retraite",
+    title: "Plan de vol retraite",
     desc: "Anticipez votre retraite avec un plan sur mesure qui comble le manque à gagner des régimes obligatoires.",
   },
   {
     icon: Heart,
-    title: "Protection famille",
+    title: "Protection équipage",
     desc: "Sécurisez vos revenus et votre famille avec des solutions de prévoyance et mutuelle adaptées.",
   },
   {
     icon: Shield,
-    title: "Conseil expert",
+    title: "Copilote expert",
     desc: "Un conseiller patrimonial dédié vous accompagne dans chaque étape de votre stratégie financière.",
   },
 ];
 
 const BenefitsSection = () => (
-  <section className="py-24 bg-white">
+  <section className="py-24 bg-card">
     <div className="container mx-auto px-4">
       {/* Mission section with image */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
@@ -41,10 +41,10 @@ const BenefitsSection = () => (
           </h2>
           <div className="divider-gold mb-6" />
           <p className="text-muted-foreground leading-relaxed mb-4">
-            Nos experts en gestion de patrimoine ont pour mission de vous accompagner tout au long de votre vie. Grâce à notre expertise sociale, fiscale et patrimoniale, nous vous proposons les solutions les plus adaptées à vos projets.
+            Comme un commandant de bord, nous vous aidons à garder le cap sur vos objectifs patrimoniaux. Notre expertise fiscale et sociale vous assure un vol sans turbulences vers la sérénité financière.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            À vos côtés à chaque étape, vos conseillers dédiés vous guident dans la réalisation de tous vos objectifs financiers.
+            À chaque étape de votre parcours, votre copilote dédié vous guide avec précision et bienveillance vers la réalisation de tous vos projets.
           </p>
         </motion.div>
         <motion.div
@@ -56,11 +56,11 @@ const BenefitsSection = () => (
         >
           <img
             src={sectionMeeting}
-            alt="Conseil patrimonial personnalisé"
+            alt="Conseil patrimonial premium"
             className="rounded-lg shadow-xl w-full object-cover h-80"
           />
-          <div className="absolute -bottom-4 -left-4 w-24 h-24 border-2 border-copper/30 rounded-lg" />
-          <div className="absolute -top-4 -right-4 w-16 h-16 bg-copper/10 rounded-lg" />
+          <div className="absolute -bottom-3 -left-3 w-20 h-20 border-2 border-copper/40 rounded-lg" />
+          <div className="absolute -top-3 -right-3 w-14 h-14 bg-copper/15 rounded-lg" />
         </motion.div>
       </div>
 
@@ -93,7 +93,7 @@ const BenefitsSection = () => (
             transition={{ delay: i * 0.1, duration: 0.5 }}
             whileHover={{ y: -4 }}
           >
-            <div className="w-14 h-14 rounded-full bg-copper/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-copper/20 transition-colors duration-300">
+            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-copper/15 to-mahogany/10 flex items-center justify-center mx-auto mb-5 group-hover:from-copper/25 group-hover:to-mahogany/15 transition-all duration-300">
               <b.icon className="w-6 h-6 text-copper" />
             </div>
             <h3 className="font-heading text-lg font-semibold text-foreground mb-3">{b.title}</h3>
