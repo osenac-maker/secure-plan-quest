@@ -70,7 +70,7 @@ const HeroSection = () => (
             </Button>
           </Link>
           <Link to="/simulateur">
-            <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 text-base px-8">
+            <Button size="lg" variant="outline" className="border-copper/50 text-copper bg-white/90 hover:bg-white hover:text-copper-light text-base px-8 font-medium">
               Prendre rendez-vous
             </Button>
           </Link>
