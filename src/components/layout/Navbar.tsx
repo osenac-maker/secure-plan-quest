@@ -39,7 +39,7 @@ const Navbar = () => {
           <motion.img
             src={logoRetiro}
             alt="RETIRO Patrimoine"
-            className="h-10 w-auto"
+            className="h-14 w-auto -my-2"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           />
