@@ -61,8 +61,8 @@ const Prevoyance = () => (
         </div>
 
         <div className="bg-hero rounded-lg p-10 text-center">
-          <h3 className="font-heading text-xl font-bold text-white mb-2">Faites le point sur votre protection</h3>
-          <p className="text-white/60 text-sm mb-6">Notre audit inclut un bilan complet de votre couverture prévoyance.</p>
+          <h3 className="font-heading text-xl font-bold text-foreground mb-2">Faites le point sur votre protection</h3>
+          <p className="text-muted-foreground text-sm mb-6">Notre audit inclut un bilan complet de votre couverture prévoyance.</p>
           <Link to="/simulateur">
             <Button size="lg" className="bg-copper hover:bg-copper-light text-white gap-2 font-medium border-0 group">
               Bilan gratuit <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

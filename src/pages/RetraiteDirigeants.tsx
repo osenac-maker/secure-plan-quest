@@ -61,8 +61,8 @@ const RetraiteDirigeants = () => (
         </div>
 
         <div className="bg-hero rounded-lg p-10 text-center">
-          <h3 className="font-heading text-xl font-bold text-white mb-2">Évaluez votre situation retraite</h3>
-          <p className="text-white/60 text-sm mb-6">Obtenez votre score retraite et un plan d'action personnalisé.</p>
+          <h3 className="font-heading text-xl font-bold text-foreground mb-2">Évaluez votre situation retraite</h3>
+          <p className="text-muted-foreground text-sm mb-6">Obtenez votre score retraite et un plan d'action personnalisé.</p>
           <Link to="/simulateur">
             <Button size="lg" className="bg-copper hover:bg-copper-light text-white gap-2 font-medium border-0 group">
               Commencer l'audit gratuit <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
