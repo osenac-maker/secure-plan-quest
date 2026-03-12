@@ -42,8 +42,8 @@ const HeroSection = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
         >
-          Transformez vos revenus d'aujourd'hui
-          <span className="block text-gradient-gold mt-2">en liberté de demain.</span>
+          Le meilleur moment pour préparer sa retraite était hier.
+          <span className="block text-gradient-gold mt-2">Le second, aujourd'hui.</span>
         </motion.h1>
 
         <motion.div
