@@ -21,15 +21,20 @@ const HeroSection = () => (
 
     <div className="container mx-auto px-4 relative z-10 py-32">
       <div className="max-w-2xl">
-        {/* Logo prominently displayed */}
-        <motion.img
-          src={logoRetiro}
-          alt="RETIRO Patrimoine"
-          className="h-28 md:h-32 w-auto mb-10 drop-shadow-2xl"
-          initial={{ opacity: 0, scale: 0.85 }}
+        {/* Logo with glowing backdrop */}
+        <motion.div
+          className="relative inline-block mb-12"
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, type: "spring" }}
-        />
+          transition={{ duration: 0.8, type: "spring" }}
+        >
+          <div className="absolute -inset-6 bg-gradient-to-br from-copper/20 via-white/10 to-gold/15 rounded-2xl blur-2xl" />
+          <img
+            src={logoRetiro}
+            alt="RETIRO Patrimoine"
+            className="relative h-36 md:h-44 w-auto drop-shadow-2xl"
+          />
+        </motion.div>
 
         <motion.h1
           className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
