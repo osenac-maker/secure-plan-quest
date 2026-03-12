@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import logoRetiro from "@/assets/logo-retiro-v2.png";
 
 const Footer = () => (
-  <footer className="bg-navy-deep border-t border-white/10 py-16">
+  <footer className="bg-navy border-t border-navy-light py-16">
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
-          <img src={logoRetiro} alt="RETIRO Patrimoine" className="h-14 w-auto brightness-0 invert mb-4" />
+          <img src={logoRetiro} alt="RETIRO Patrimoine" className="h-16 w-auto brightness-0 invert mb-4" />
           <p className="text-sm text-white/50 leading-relaxed">
             Cabinet de conseil en gestion de patrimoine. Optimisez votre retraite et votre fiscalité.
           </p>

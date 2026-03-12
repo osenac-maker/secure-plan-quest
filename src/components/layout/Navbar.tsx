@@ -30,15 +30,15 @@ const Navbar = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-border"
-          : "bg-transparent"
+          : "bg-white/80 backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between h-20 px-4">
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center">
           <img
             src={logoRetiro}
             alt="RETIRO Patrimoine"
-            className={`h-12 w-auto transition-all duration-300 ${scrolled ? "" : "brightness-0 invert"}`}
+            className="h-16 w-auto"
           />
         </Link>
 
@@ -48,13 +48,9 @@ const Navbar = () => {
               key={l.to}
               to={l.to}
               className={`relative text-sm px-4 py-2 transition-colors font-medium tracking-wide ${
-                scrolled
-                  ? location.pathname === l.to
-                    ? "text-copper"
-                    : "text-foreground/70 hover:text-foreground"
-                  : location.pathname === l.to
-                    ? "text-copper"
-                    : "text-white/70 hover:text-white"
+                location.pathname === l.to
+                  ? "text-copper"
+                  : "text-foreground/60 hover:text-foreground"
               }`}
             >
               {l.label}
@@ -71,7 +67,7 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-3">
           <Link to="/conseiller">
-            <Button variant="ghost" size="sm" className={scrolled ? "text-foreground" : "text-white hover:bg-white/10"}>
+            <Button variant="ghost" size="sm" className="text-foreground/70 hover:text-foreground">
               Espace conseiller
             </Button>
           </Link>
@@ -83,7 +79,7 @@ const Navbar = () => {
         </div>
 
         <button
-          className={`md:hidden ${scrolled ? "text-foreground" : "text-white"}`}
+          className="md:hidden text-foreground"
           onClick={() => setOpen(!open)}
         >
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
