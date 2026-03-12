@@ -10,6 +10,7 @@ import AdvisorDashboard from "./pages/AdvisorDashboard";
 import PERIndependants from "./pages/PERIndependants";
 import RetraiteDirigeants from "./pages/RetraiteDirigeants";
 import Prevoyance from "./pages/Prevoyance";
+import Mutuelle from "./pages/Mutuelle";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
