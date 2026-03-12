@@ -22,6 +22,7 @@ const Navbar = () => {
           <Link to="/per-independants" className="text-sm text-muted-foreground hover:text-foreground transition-colors">PER</Link>
           <Link to="/retraite-dirigeants" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Retraite</Link>
           <Link to="/prevoyance" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Prévoyance</Link>
+          <Link to="/mutuelle" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Mutuelle</Link>
         </div>
 
         <div className="hidden md:flex items-center gap-3">
@@ -43,6 +44,7 @@ const Navbar = () => {
           <Link to="/" className="block py-2 text-sm text-muted-foreground" onClick={() => setOpen(false)}>Accueil</Link>
           <Link to="/simulateur" className="block py-2 text-sm text-muted-foreground" onClick={() => setOpen(false)}>Simulateur</Link>
           <Link to="/per-independants" className="block py-2 text-sm text-muted-foreground" onClick={() => setOpen(false)}>PER</Link>
+          <Link to="/mutuelle" className="block py-2 text-sm text-muted-foreground" onClick={() => setOpen(false)}>Mutuelle</Link>
           <Link to="/conseiller" className="block py-2 text-sm text-muted-foreground" onClick={() => setOpen(false)}>Espace conseiller</Link>
           <Link to="/simulateur" onClick={() => setOpen(false)}>
             <Button size="sm" className="w-full">Bilan gratuit</Button>
