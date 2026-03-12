@@ -7,7 +7,7 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <img src={logoRetiro} alt="RETIRO Patrimoine" className="h-10 w-auto" />
+            <img src={logoRetiro} alt="RETIRO Patrimoine" className="h-16 w-auto" />
           </div>
           <p className="text-sm text-muted-foreground">
             Cabinet de conseil en gestion de patrimoine digital. Optimisez votre retraite et votre fiscalité.
