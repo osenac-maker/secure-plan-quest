@@ -50,64 +50,68 @@ const AnimatedNumber = ({ value, suffix }: { value: number; suffix: string }) =>
 };
 
 const SocialProofSection = () => (
-  <section className="py-24 bg-navy-deep relative overflow-hidden">
-    <div className="container mx-auto px-4 relative z-10">
+  <section className="py-24 bg-background">
+    <div className="container mx-auto px-4">
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
         {stats.map((s, i) => (
           <motion.div
             key={s.label}
-            className="text-center"
+            className="text-center p-6 rounded-lg bg-white shadow-card"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
           >
             <AnimatedNumber value={s.value} suffix={s.suffix} />
-            <div className="text-sm text-white/50 mt-2">{s.label}</div>
+            <div className="text-sm text-muted-foreground mt-2">{s.label}</div>
           </motion.div>
         ))}
       </div>
 
-      {/* Divider */}
-      <div className="divider-gold mx-auto mb-12" />
-
       {/* Testimonials */}
       <div className="text-center mb-12">
         <motion.h2
-          className="font-heading text-3xl md:text-4xl font-bold text-white mb-4"
+          className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Ils nous font confiance
+          Ils nous font <span className="text-gradient-gold">confiance</span>
         </motion.h2>
+        <motion.div
+          className="divider-gold mx-auto"
+          initial={{ width: 0 }}
+          whileInView={{ width: 60 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {testimonials.map((t, i) => (
           <motion.div
             key={t.name}
-            className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-copper/30 transition-all duration-500"
+            className="bg-white rounded-lg p-6 shadow-card hover:shadow-card-hover border border-border hover:border-copper/20 transition-all duration-500"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.15, duration: 0.5 }}
             whileHover={{ y: -4 }}
           >
-            <Quote className="w-8 h-8 text-copper/30 mb-4" />
+            <Quote className="w-8 h-8 text-copper/20 mb-4" />
             <div className="flex gap-1 mb-3">
               {[...Array(5)].map((_, j) => (
-                <Star key={j} className="w-4 h-4 fill-copper text-copper" />
+                <Star key={j} className="w-4 h-4 fill-gold text-gold" />
               ))}
             </div>
-            <p className="text-sm text-white/70 mb-5 leading-relaxed italic">"{t.text}"</p>
-            <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-              <div className="w-10 h-10 rounded-full bg-copper/20 flex items-center justify-center text-copper font-semibold text-sm">
+            <p className="text-sm text-foreground/80 mb-5 leading-relaxed italic">"{t.text}"</p>
+            <div className="flex items-center gap-3 pt-4 border-t border-border">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-copper/20 to-teal/20 flex items-center justify-center text-copper font-semibold text-sm">
                 {t.avatar}
               </div>
               <div>
-                <div className="font-semibold text-white text-sm">{t.name}</div>
-                <div className="text-xs text-white/50">{t.role}</div>
+                <div className="font-semibold text-foreground text-sm">{t.name}</div>
+                <div className="text-xs text-muted-foreground">{t.role}</div>
               </div>
             </div>
           </motion.div>
