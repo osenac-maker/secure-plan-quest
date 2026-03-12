@@ -18,7 +18,7 @@ const PERIndependants = () => (
           PER pour les indépendants
         </motion.h1>
         <motion.div className="divider-gold mb-6" initial={{ width: 0 }} animate={{ width: 60 }} transition={{ delay: 0.2, duration: 0.6 }} />
-        <motion.p className="text-white/60 text-lg" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
+        <motion.p className="text-muted-foreground text-lg" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
           Le guide complet pour réduire vos impôts tout en préparant votre retraite.
         </motion.p>
       </div>
