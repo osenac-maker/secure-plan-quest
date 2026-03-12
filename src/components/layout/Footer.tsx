@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Shield } from "lucide-react";
+import logoRetiro from "@/assets/logo-retiro-v2.png";
 
 const Footer = () => (
   <footer className="bg-card border-t border-border py-12">
@@ -7,10 +7,7 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <Shield className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <span className="font-heading font-bold text-foreground">RETIRO <span className="font-normal">Patrimoine</span></span>
+            <img src={logoRetiro} alt="RETIRO Patrimoine" className="h-10 w-auto" />
           </div>
           <p className="text-sm text-muted-foreground">
             Cabinet de conseil en gestion de patrimoine digital. Optimisez votre retraite et votre fiscalité.

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Shield } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logoRetiro from "@/assets/logo-retiro-v2.png";
 
 const links = [
   { to: "/", label: "Accueil" },
@@ -35,14 +36,13 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <Link to="/" className="flex items-center gap-2 group">
-          <motion.div
-            className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center"
-            whileHover={{ rotate: 12, scale: 1.1 }}
+          <motion.img
+            src={logoRetiro}
+            alt="RETIRO Patrimoine"
+            className="h-9 w-auto"
+            whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
-          >
-            <Shield className="w-5 h-5 text-primary-foreground" />
-          </motion.div>
-          <span className="font-heading font-bold text-lg text-foreground">RETIRO <span className="font-normal">Patrimoine</span></span>
+          />
         </Link>
 
         <div className="hidden md:flex items-center gap-1">
