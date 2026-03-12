@@ -6,33 +6,33 @@
 
 @layer base {
   :root {
-    --background: 220 20% 96%;
-    --foreground: 215 35% 10%;
+    --background: 30 20% 96%;
+    --foreground: 20 25% 12%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 215 35% 10%;
+    --card: 30 15% 99%;
+    --card-foreground: 20 25% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 35% 10%;
+    --popover: 30 15% 99%;
+    --popover-foreground: 20 25% 12%;
 
-    --primary: 210 45% 15%;
-    --primary-foreground: 40 45% 90%;
+    --primary: 15 35% 22%;
+    --primary-foreground: 35 40% 92%;
 
-    --secondary: 215 15% 92%;
-    --secondary-foreground: 215 35% 15%;
+    --secondary: 30 15% 93%;
+    --secondary-foreground: 20 25% 15%;
 
-    --muted: 215 15% 92%;
-    --muted-foreground: 215 10% 45%;
+    --muted: 30 12% 92%;
+    --muted-foreground: 20 10% 45%;
 
-    --accent: 25 60% 52%;
+    --accent: 22 65% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 215 15% 88%;
-    --input: 215 15% 88%;
-    --ring: 25 60% 52%;
+    --border: 25 15% 88%;
+    --input: 25 15% 88%;
+    --ring: 22 65% 50%;
 
     --radius: 0.5rem;
 
@@ -43,53 +43,55 @@
     --warning: 38 90% 50%;
     --warning-foreground: 38 90% 14%;
 
-    --navy: 210 45% 15%;
-    --navy-light: 210 35% 22%;
-    --copper: 25 60% 52%;
-    --copper-light: 30 55% 65%;
+    --navy: 15 35% 22%;
+    --navy-light: 15 25% 30%;
+    --copper: 22 65% 50%;
+    --copper-light: 25 55% 60%;
     --teal: 185 40% 30%;
+    --mahogany: 10 45% 25%;
+    --mahogany-light: 12 35% 35%;
 
-    --card-shadow: 0 1px 3px 0 hsl(215 35% 10% / 0.04), 0 4px 16px -2px hsl(215 35% 10% / 0.06);
-    --card-shadow-hover: 0 8px 30px 0 hsl(25 60% 52% / 0.08), 0 12px 40px -4px hsl(215 35% 10% / 0.08);
+    --card-shadow: 0 1px 3px 0 hsl(20 25% 12% / 0.04), 0 4px 16px -2px hsl(20 25% 12% / 0.06);
+    --card-shadow-hover: 0 8px 30px 0 hsl(22 65% 50% / 0.1), 0 12px 40px -4px hsl(20 25% 12% / 0.08);
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 215 35% 10%;
-    --sidebar-primary: 210 45% 15%;
-    --sidebar-primary-foreground: 40 45% 90%;
-    --sidebar-accent: 215 15% 92%;
-    --sidebar-accent-foreground: 215 35% 15%;
-    --sidebar-border: 215 15% 88%;
-    --sidebar-ring: 25 60% 52%;
+    --sidebar-background: 30 15% 99%;
+    --sidebar-foreground: 20 25% 12%;
+    --sidebar-primary: 15 35% 22%;
+    --sidebar-primary-foreground: 35 40% 92%;
+    --sidebar-accent: 30 15% 93%;
+    --sidebar-accent-foreground: 20 25% 15%;
+    --sidebar-border: 25 15% 88%;
+    --sidebar-ring: 22 65% 50%;
   }
 
   .dark {
-    --background: 215 35% 7%;
-    --foreground: 215 15% 90%;
-    --card: 215 30% 11%;
-    --card-foreground: 215 15% 90%;
-    --popover: 215 30% 11%;
-    --popover-foreground: 215 15% 90%;
-    --primary: 210 35% 20%;
-    --primary-foreground: 40 45% 90%;
-    --secondary: 215 25% 14%;
-    --secondary-foreground: 215 15% 90%;
-    --muted: 215 25% 14%;
-    --muted-foreground: 215 10% 50%;
-    --accent: 25 60% 55%;
+    --background: 15 25% 7%;
+    --foreground: 30 15% 90%;
+    --card: 15 22% 11%;
+    --card-foreground: 30 15% 90%;
+    --popover: 15 22% 11%;
+    --popover-foreground: 30 15% 90%;
+    --primary: 15 30% 25%;
+    --primary-foreground: 35 40% 92%;
+    --secondary: 15 20% 14%;
+    --secondary-foreground: 30 15% 90%;
+    --muted: 15 20% 14%;
+    --muted-foreground: 20 10% 50%;
+    --accent: 22 65% 55%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 100%;
-    --border: 215 25% 16%;
-    --input: 215 25% 16%;
-    --ring: 25 60% 55%;
-    --sidebar-background: 215 30% 9%;
-    --sidebar-foreground: 215 15% 90%;
-    --sidebar-primary: 210 35% 20%;
-    --sidebar-primary-foreground: 40 45% 90%;
-    --sidebar-accent: 215 25% 14%;
-    --sidebar-accent-foreground: 215 15% 90%;
-    --sidebar-border: 215 25% 16%;
-    --sidebar-ring: 25 60% 55%;
+    --border: 15 20% 16%;
+    --input: 15 20% 16%;
+    --ring: 22 65% 55%;
+    --sidebar-background: 15 22% 9%;
+    --sidebar-foreground: 30 15% 90%;
+    --sidebar-primary: 15 30% 25%;
+    --sidebar-primary-foreground: 35 40% 92%;
+    --sidebar-accent: 15 20% 14%;
+    --sidebar-accent-foreground: 30 15% 90%;
+    --sidebar-border: 15 20% 16%;
+    --sidebar-ring: 22 65% 55%;
   }
 }
 
@@ -114,25 +116,25 @@
     font-family: 'Inter', system-ui, sans-serif;
   }
   .text-gradient-gold {
-    background: linear-gradient(135deg, hsl(35 75% 55%), hsl(25 60% 52%), hsl(35 75% 65%));
+    background: linear-gradient(135deg, hsl(22 65% 50%), hsl(35 75% 55%), hsl(22 65% 60%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .bg-navy {
-    background-color: hsl(210 45% 15%);
+    background-color: hsl(15 35% 22%);
   }
   .bg-navy-deep {
-    background-color: hsl(215 40% 10%);
+    background-color: hsl(15 30% 15%);
   }
   .bg-hero {
-    background: linear-gradient(135deg, hsl(210 45% 18%) 0%, hsl(215 40% 14%) 50%, hsl(210 35% 20%) 100%);
+    background: linear-gradient(135deg, hsl(10 45% 25%) 0%, hsl(15 35% 20%) 50%, hsl(15 30% 22%) 100%);
   }
   .bg-mesh {
     background: 
-      radial-gradient(ellipse at 20% 50%, hsl(25 60% 52% / 0.06) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, hsl(185 40% 30% / 0.05) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 80%, hsl(25 60% 52% / 0.04) 0%, transparent 50%);
+      radial-gradient(ellipse at 20% 50%, hsl(22 65% 50% / 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, hsl(10 45% 25% / 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, hsl(35 75% 55% / 0.04) 0%, transparent 50%);
   }
   .shadow-card {
     box-shadow: var(--card-shadow);
@@ -151,16 +153,12 @@
   .divider-gold {
     width: 60px;
     height: 3px;
-    background: linear-gradient(90deg, hsl(25 60% 52%), hsl(35 75% 55%));
+    background: linear-gradient(90deg, hsl(22 65% 50%), hsl(35 75% 55%));
   }
 
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
-  }
-  @keyframes fade-in {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
   }
   
   .animate-float {

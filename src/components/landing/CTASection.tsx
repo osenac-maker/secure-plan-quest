@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 import sectionRetirement from "@/assets/section-retirement.jpg";
 
 const CTASection = () => (
-  <section className="relative py-24 overflow-hidden">
+  <section className="relative py-28 overflow-hidden">
     {/* Background image with warm overlay */}
     <div className="absolute inset-0">
       <img src={sectionRetirement} alt="" className="w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-r from-navy/80 via-navy/70 to-navy/50" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(10,40%,10%)]/85 via-[hsl(15,30%,15%)]/60 to-[hsl(20,20%,15%)]/50" />
     </div>
 
     <div className="container mx-auto px-4 text-center relative z-10">
@@ -19,7 +19,7 @@ const CTASection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        Prêt à optimiser votre situation ?
+        Prêt à prendre votre envol ?
       </motion.h2>
       <motion.div
         className="divider-gold mx-auto mb-6"
@@ -44,7 +44,7 @@ const CTASection = () => (
         transition={{ delay: 0.3 }}
       >
         <Link to="/simulateur">
-          <Button size="lg" className="bg-copper hover:bg-copper-light text-white text-base gap-2 font-medium px-10 border-0 group shadow-lg">
+          <Button size="lg" className="bg-copper hover:bg-copper-light text-white text-base gap-2 font-medium px-10 border-0 group shadow-lg shadow-copper/30">
             Commencer mon bilan gratuit
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Button>

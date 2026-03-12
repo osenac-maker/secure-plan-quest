@@ -66,6 +66,10 @@ export default {
         teal: {
           DEFAULT: "hsl(var(--teal))",
         },
+        mahogany: {
+          DEFAULT: "hsl(var(--mahogany))",
+          light: "hsl(var(--mahogany-light))",
+        },
         success: {
           DEFAULT: "hsl(var(--success))",
           foreground: "hsl(var(--success-foreground))",
