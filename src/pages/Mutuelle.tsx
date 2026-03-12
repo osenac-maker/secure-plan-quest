@@ -25,7 +25,7 @@ const Mutuelle = () => (
           transition={{ delay: 0.2, duration: 0.6 }}
         />
         <motion.p
-          className="text-white/60 text-lg"
+          className="text-muted-foreground text-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
