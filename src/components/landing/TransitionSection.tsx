@@ -14,21 +14,12 @@ const TransitionSection = () => (
         <span className="block text-gradient-gold mt-2">Le second, aujourd'hui.</span>
       </motion.h2>
       <motion.div
-        className="divider-gold mx-auto mb-6"
+        className="divider-gold mx-auto"
         initial={{ width: 0 }}
         whileInView={{ width: 60 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2, duration: 0.6 }}
       />
-      <motion.p
-        className="text-lg text-muted-foreground leading-relaxed"
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-      >
-        Réduisez vos impôts, préparez votre retraite et protégez votre famille grâce à une stratégie patrimoniale adaptée aux dirigeants et indépendants.
-      </motion.p>
     </div>
   </section>
 );
