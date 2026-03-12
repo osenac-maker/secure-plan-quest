@@ -42,7 +42,7 @@ const Navbar = () => {
           >
             <Shield className="w-5 h-5 text-primary-foreground" />
           </motion.div>
-          <span className="font-heading font-bold text-lg text-foreground">PatrimoineDigital</span>
+          <span className="font-heading font-bold text-lg text-foreground">RETIRO <span className="font-normal">Patrimoine</span></span>
         </Link>
 
         <div className="hidden md:flex items-center gap-1">

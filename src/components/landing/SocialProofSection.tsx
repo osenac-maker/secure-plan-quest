@@ -13,7 +13,7 @@ const testimonials = [
   {
     name: "Sophie M.",
     role: "Freelance développeuse",
-    text: "Grâce à PatrimoineDigital, j'ai économisé 7 200 € d'impôts dès la première année avec un PER adapté à ma situation.",
+    text: "Grâce à RETIRO Patrimoine, j'ai économisé 7 200 € d'impôts dès la première année avec un PER adapté à ma situation.",
     avatar: "S",
   },
   {

@@ -10,7 +10,7 @@ const Footer = () => (
             <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
               <Shield className="w-5 h-5 text-primary-foreground" />
             </div>
-            <span className="font-heading font-bold text-foreground">PatrimoineDigital</span>
+            <span className="font-heading font-bold text-foreground">RETIRO <span className="font-normal">Patrimoine</span></span>
           </div>
           <p className="text-sm text-muted-foreground">
             Cabinet de conseil en gestion de patrimoine digital. Optimisez votre retraite et votre fiscalité.
@@ -42,7 +42,7 @@ const Footer = () => (
         </div>
       </div>
       <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} PatrimoineDigital. Tous droits réservés.
+        © {new Date().getFullYear()} RETIRO Patrimoine. Tous droits réservés.
       </div>
     </div>
   </footer>
