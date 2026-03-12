@@ -44,6 +44,7 @@ const Navbar = () => {
           <Link to="/" className="block py-2 text-sm text-muted-foreground" onClick={() => setOpen(false)}>Accueil</Link>
           <Link to="/simulateur" className="block py-2 text-sm text-muted-foreground" onClick={() => setOpen(false)}>Simulateur</Link>
           <Link to="/per-independants" className="block py-2 text-sm text-muted-foreground" onClick={() => setOpen(false)}>PER</Link>
+          <Link to="/mutuelle" className="block py-2 text-sm text-muted-foreground" onClick={() => setOpen(false)}>Mutuelle</Link>
           <Link to="/conseiller" className="block py-2 text-sm text-muted-foreground" onClick={() => setOpen(false)}>Espace conseiller</Link>
           <Link to="/simulateur" onClick={() => setOpen(false)}>
             <Button size="sm" className="w-full">Bilan gratuit</Button>

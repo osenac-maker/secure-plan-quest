@@ -29,6 +29,7 @@ const App = () => (
           <Route path="/per-independants" element={<PERIndependants />} />
           <Route path="/retraite-dirigeants" element={<RetraiteDirigeants />} />
           <Route path="/prevoyance" element={<Prevoyance />} />
+          <Route path="/mutuelle" element={<Mutuelle />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
