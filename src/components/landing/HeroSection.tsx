@@ -42,8 +42,8 @@ const HeroSection = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
         >
-          Prenez de la hauteur
-          <span className="block text-gradient-gold mt-2">sur votre patrimoine</span>
+          Le meilleur moment pour préparer sa retraite était hier.
+          <span className="block text-gradient-gold mt-2">Le second, aujourd'hui.</span>
         </motion.h1>
 
         <motion.div
@@ -53,7 +53,7 @@ const HeroSection = () => (
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <p className="text-lg md:text-xl text-white/75 italic font-heading">
-            Comme un pilote, gardez le cap sur vos objectifs financiers. Nous traçons la route de votre optimisation patrimoniale et fiscale.
+            Réduisez vos impôts, préparez votre retraite et protégez votre famille grâce à une stratégie patrimoniale adaptée aux dirigeants et indépendants.
           </p>
         </motion.div>
 
