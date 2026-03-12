@@ -42,7 +42,7 @@ const Footer = () => (
         </div>
       </div>
       <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} PatrimoineDigital. Tous droits réservés.
+        © {new Date().getFullYear()} RETIRO Patrimoine. Tous droits réservés.
       </div>
     </div>
   </footer>
