@@ -2,43 +2,41 @@ import { Link } from "react-router-dom";
 import logoRetiro from "@/assets/logo-retiro-v2.png";
 
 const Footer = () => (
-  <footer className="bg-card border-t border-border py-12">
+  <footer className="bg-navy-deep border-t border-white/10 py-16">
     <div className="container mx-auto px-4">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
-          <div className="flex items-center gap-2 mb-4">
-            <img src={logoRetiro} alt="RETIRO Patrimoine" className="h-16 w-auto" />
-          </div>
-          <p className="text-sm text-muted-foreground">
-            Cabinet de conseil en gestion de patrimoine digital. Optimisez votre retraite et votre fiscalité.
+          <img src={logoRetiro} alt="RETIRO Patrimoine" className="h-14 w-auto brightness-0 invert mb-4" />
+          <p className="text-sm text-white/50 leading-relaxed">
+            Cabinet de conseil en gestion de patrimoine. Optimisez votre retraite et votre fiscalité.
           </p>
         </div>
         <div>
-          <h4 className="font-heading font-semibold text-foreground mb-3">Solutions</h4>
-          <div className="space-y-2">
-            <Link to="/per-independants" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">PER Indépendants</Link>
-            <Link to="/retraite-dirigeants" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">Retraite Dirigeants</Link>
-            <Link to="/prevoyance" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">Prévoyance</Link>
-            <Link to="/mutuelle" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">Mutuelle TNS</Link>
+          <h4 className="font-heading font-semibold text-white mb-4 text-lg">Solutions</h4>
+          <div className="space-y-3">
+            <Link to="/per-independants" className="block text-sm text-white/50 hover:text-copper transition-colors">PER Indépendants</Link>
+            <Link to="/retraite-dirigeants" className="block text-sm text-white/50 hover:text-copper transition-colors">Retraite Dirigeants</Link>
+            <Link to="/prevoyance" className="block text-sm text-white/50 hover:text-copper transition-colors">Prévoyance</Link>
+            <Link to="/mutuelle" className="block text-sm text-white/50 hover:text-copper transition-colors">Mutuelle TNS</Link>
           </div>
         </div>
         <div>
-          <h4 className="font-heading font-semibold text-foreground mb-3">Outils</h4>
-          <div className="space-y-2">
-            <Link to="/simulateur" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">Simulateur retraite</Link>
-            <Link to="/simulateur" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">Audit fiscal</Link>
+          <h4 className="font-heading font-semibold text-white mb-4 text-lg">Outils</h4>
+          <div className="space-y-3">
+            <Link to="/simulateur" className="block text-sm text-white/50 hover:text-copper transition-colors">Simulateur retraite</Link>
+            <Link to="/simulateur" className="block text-sm text-white/50 hover:text-copper transition-colors">Audit fiscal</Link>
           </div>
         </div>
         <div>
-          <h4 className="font-heading font-semibold text-foreground mb-3">Légal</h4>
-          <div className="space-y-2">
-            <span className="block text-sm text-muted-foreground">Mentions légales</span>
-            <span className="block text-sm text-muted-foreground">Politique de confidentialité</span>
-            <span className="block text-sm text-muted-foreground">CGU</span>
+          <h4 className="font-heading font-semibold text-white mb-4 text-lg">Légal</h4>
+          <div className="space-y-3">
+            <span className="block text-sm text-white/50">Mentions légales</span>
+            <span className="block text-sm text-white/50">Politique de confidentialité</span>
+            <span className="block text-sm text-white/50">CGU</span>
           </div>
         </div>
       </div>
-      <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
+      <div className="mt-12 pt-8 border-t border-white/10 text-center text-sm text-white/40">
         © {new Date().getFullYear()} RETIRO Patrimoine. Tous droits réservés.
       </div>
     </div>
