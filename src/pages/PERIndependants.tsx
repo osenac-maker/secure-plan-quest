@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Award, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
 const PERIndependants = () => (
