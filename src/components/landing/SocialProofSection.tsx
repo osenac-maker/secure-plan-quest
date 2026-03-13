@@ -13,7 +13,7 @@ const testimonials = [
   {
     name: "Sophie M.",
     role: "Freelance développeuse",
-    text: "Grâce à RETIRO Patrimoine, j'ai économisé 7 200 € d'impôts dès la première année avec un PER adapté à ma situation.",
+    text: "Grâce à RETIRO, j'ai réduit mes impôts de 7 200 € dès la première année tout en me constituant un capital retraite. Je regrette de ne pas avoir commencé plus tôt.",
     avatar: "S",
   },
   {
