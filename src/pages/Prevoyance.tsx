@@ -27,13 +27,13 @@ const Prevoyance = () => (
     <div className="py-16">
       <div className="container mx-auto px-4 max-w-3xl">
         <div className="bg-card rounded-lg p-8 shadow-card border border-border mb-8">
-          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Ce que couvre la prévoyance</h2>
+          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Ce que la prévoyance vous garantit concrètement</h2>
           <div className="space-y-4">
             {[
-              "Indemnités journalières en cas d'arrêt de travail ou maladie",
-              "Capital décès pour protéger vos proches",
-              "Rente d'invalidité pour maintenir vos revenus",
-              "Garantie maintien de salaire complémentaire",
+              "Indemnités journalières : maintien de vos revenus pendant un arrêt maladie ou accident",
+              "Capital décès : une somme versée à votre conjoint et vos enfants pour assurer leur sécurité financière",
+              "Rente d'invalidité : un revenu garanti si vous ne pouvez plus exercer votre activité",
+              "Maintien de salaire complémentaire : couverture des franchises du régime obligatoire",
             ].map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <Shield className="w-5 h-5 text-copper flex-shrink-0 mt-0.5" />
