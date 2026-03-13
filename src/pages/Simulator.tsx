@@ -5,15 +5,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { ArrowRight, ArrowLeft, CheckCircle } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle, Shield, Clock, Lock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SimulatorData, calculateResults } from "@/lib/scoring";
 
 const steps = [
-  { title: "Votre profil", subtitle: "Quelques informations de base" },
-  { title: "Votre situation", subtitle: "Situation familiale et patrimoine" },
-  { title: "Votre épargne", subtitle: "Capacité et intérêts" },
-  { title: "Vos coordonnées", subtitle: "Pour recevoir votre bilan" },
+  { title: "Votre profil", subtitle: "Quelques informations de base pour estimer votre retraite" },
+  { title: "Votre situation", subtitle: "Ces données nous aident à affiner votre projection" },
+  { title: "Votre épargne", subtitle: "Pour calculer vos économies fiscales potentielles" },
+  { title: "Vos coordonnées", subtitle: "Pour recevoir votre bilan personnalisé par email" },
 ];
 
 const statusOptions = [
@@ -52,7 +52,6 @@ const Simulator = () => {
 
   const submit = () => {
     const results = calculateResults(data as SimulatorData);
-    // Store in sessionStorage for results page
     sessionStorage.setItem("simulatorData", JSON.stringify(data));
     sessionStorage.setItem("simulatorResults", JSON.stringify(results));
     navigate("/resultats");
@@ -64,27 +63,81 @@ const Simulator = () => {
     return true;
   };
 
+  const progressPercent = ((step + 1) / steps.length) * 100;
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <div className="pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-2xl">
-          {/* Progress */}
-          <div className="flex items-center gap-2 mb-10">
-            {steps.map((s, i) => (
-              <div key={i} className="flex-1 flex items-center gap-2">
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
-                  i < step ? "bg-accent text-accent-foreground" :
-                  i === step ? "bg-primary text-primary-foreground" :
-                  "bg-muted text-muted-foreground"
-                }`}>
-                  {i < step ? <CheckCircle className="w-4 h-4" /> : i + 1}
+
+          {/* Introduction — visible only on step 0 */}
+          <AnimatePresence>
+            {step === 0 && (
+              <motion.div
+                className="text-center mb-10"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.4 }}
+              >
+                <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-3">
+                  Votre bilan retraite <span className="text-gradient-gold">gratuit</span>
+                </h1>
+                <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-6">
+                  En 2 minutes, découvrez combien vous toucherez à la retraite, combien vous pouvez économiser en impôts et si votre famille est bien protégée.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm text-muted-foreground">
+                  <span className="flex items-center gap-1.5">
+                    <Clock className="w-4 h-4 text-copper" />
+                    2 minutes chrono
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Shield className="w-4 h-4 text-copper" />
+                    Sans engagement
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Lock className="w-4 h-4 text-copper" />
+                    Données confidentielles
+                  </span>
                 </div>
-                {i < steps.length - 1 && (
-                  <div className={`flex-1 h-1 rounded-full ${i < step ? "bg-accent" : "bg-muted"}`} />
-                )}
-              </div>
-            ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Progress bar */}
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-3">
+              {steps.map((s, i) => (
+                <div key={i} className="flex items-center gap-1.5">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
+                    i < step
+                      ? "bg-accent text-accent-foreground"
+                      : i === step
+                      ? "bg-copper text-white shadow-md shadow-copper/30"
+                      : "bg-muted text-muted-foreground"
+                  }`}>
+                    {i < step ? <CheckCircle className="w-4 h-4" /> : i + 1}
+                  </div>
+                  <span className={`hidden sm:inline text-xs font-medium transition-colors ${
+                    i === step ? "text-foreground" : "text-muted-foreground"
+                  }`}>
+                    {s.title}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
+              <motion.div
+                className="h-full bg-gradient-to-r from-copper to-gold rounded-full"
+                initial={{ width: 0 }}
+                animate={{ width: `${progressPercent}%` }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              />
+            </div>
+            <p className="text-xs text-muted-foreground mt-2 text-right">
+              Étape {step + 1} sur {steps.length}
+            </p>
           </div>
 
           <AnimatePresence mode="wait">
@@ -94,7 +147,7 @@ const Simulator = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.3 }}
-              className="bg-card rounded-2xl p-8 shadow-card"
+              className="bg-card rounded-2xl p-8 shadow-card border border-border"
             >
               <h2 className="font-heading text-2xl font-bold text-foreground mb-1">{steps[step].title}</h2>
               <p className="text-muted-foreground text-sm mb-8">{steps[step].subtitle}</p>
@@ -110,8 +163,8 @@ const Simulator = () => {
                           onClick={() => update("status", opt.value)}
                           className={`p-4 rounded-xl border text-left text-sm font-medium transition-all ${
                             data.status === opt.value
-                              ? "border-primary bg-primary/5 text-foreground"
-                              : "border-border text-muted-foreground hover:border-primary/50"
+                              ? "border-copper bg-copper/5 text-foreground ring-1 ring-copper/30"
+                              : "border-border text-muted-foreground hover:border-copper/50"
                           }`}
                         >
                           {opt.label}
@@ -155,8 +208,8 @@ const Simulator = () => {
                           onClick={() => update("situationFamiliale", s)}
                           className={`p-3 rounded-xl border text-sm font-medium capitalize transition-all ${
                             data.situationFamiliale === s
-                              ? "border-primary bg-primary/5 text-foreground"
-                              : "border-border text-muted-foreground hover:border-primary/50"
+                              ? "border-copper bg-copper/5 text-foreground ring-1 ring-copper/30"
+                              : "border-border text-muted-foreground hover:border-copper/50"
                           }`}
                         >
                           {s === "celibataire" ? "Célibataire" : s === "marie" ? "Marié(e)" : s === "pacse" ? "Pacsé(e)" : "Divorcé(e)"}
@@ -226,8 +279,8 @@ const Simulator = () => {
                           onClick={() => update("interetFiscal", opt.value)}
                           className={`p-3 rounded-xl border text-sm font-medium transition-all ${
                             data.interetFiscal === opt.value
-                              ? "border-primary bg-primary/5 text-foreground"
-                              : "border-border text-muted-foreground hover:border-primary/50"
+                              ? "border-copper bg-copper/5 text-foreground ring-1 ring-copper/30"
+                              : "border-border text-muted-foreground hover:border-copper/50"
                           }`}
                         >
                           {opt.label}
@@ -240,6 +293,10 @@ const Simulator = () => {
 
               {step === 3 && (
                 <div className="space-y-6">
+                  <div className="bg-hero rounded-lg p-4 mb-2">
+                    <p className="text-sm text-foreground font-medium mb-1">🎯 Vous y êtes presque !</p>
+                    <p className="text-xs text-muted-foreground">Renseignez vos coordonnées pour recevoir votre bilan détaillé avec vos économies fiscales, votre projection retraite et nos recommandations personnalisées.</p>
+                  </div>
                   <div>
                     <Label className="text-foreground">Nom complet</Label>
                     <Input
@@ -269,28 +326,45 @@ const Simulator = () => {
                       placeholder="06 12 34 56 78"
                     />
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    En soumettant ce formulaire, vous acceptez d'être contacté par un conseiller. Vos données sont protégées conformément au RGPD.
-                  </p>
+                  <div className="flex items-start gap-2 text-xs text-muted-foreground">
+                    <Lock className="w-3.5 h-3.5 mt-0.5 shrink-0" />
+                    <span>Vos données sont protégées et ne seront jamais partagées. Un conseiller dédié vous contactera uniquement si vous le souhaitez. Conforme RGPD.</span>
+                  </div>
                 </div>
               )}
 
-              <div className="flex justify-between mt-8">
+              <div className="flex justify-between items-center mt-8 pt-6 border-t border-border">
                 {step > 0 ? (
-                  <Button variant="ghost" onClick={() => setStep(step - 1)} className="gap-2">
+                  <Button variant="ghost" onClick={() => setStep(step - 1)} className="gap-2 text-muted-foreground hover:text-foreground">
                     <ArrowLeft className="w-4 h-4" />
                     Retour
                   </Button>
                 ) : (
                   <div />
                 )}
-                <Button onClick={next} disabled={!canNext()} className="gap-2">
+                <Button
+                  onClick={next}
+                  disabled={!canNext()}
+                  className="gap-2 bg-copper hover:bg-copper-light text-white border-0 font-medium px-8 shadow-md shadow-copper/20"
+                >
                   {step === steps.length - 1 ? "Voir mes résultats" : "Continuer"}
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </div>
             </motion.div>
           </AnimatePresence>
+
+          {/* Reassurance below form */}
+          <motion.div
+            className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-xs text-muted-foreground"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            <span>✓ 100 % gratuit</span>
+            <span>✓ Résultats immédiats</span>
+            <span>✓ Sans engagement</span>
+          </motion.div>
         </div>
       </div>
       <Footer />
