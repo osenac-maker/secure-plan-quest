@@ -27,7 +27,7 @@ const RetraiteDirigeants = () => (
     <div className="py-16">
       <div className="container mx-auto px-4 max-w-3xl">
         <div className="bg-card rounded-lg p-8 shadow-card border border-border mb-8">
-          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Le problème des dirigeants</h2>
+          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Pourquoi votre retraite sera bien inférieure à vos attentes</h2>
           <div className="space-y-4">
             {[
               "Taux de remplacement de seulement 30 à 45% du dernier revenu",
