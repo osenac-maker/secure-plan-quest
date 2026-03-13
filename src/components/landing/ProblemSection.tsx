@@ -34,7 +34,7 @@ const ProblemSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Le constat
+          Ce que personne ne vous dit
         </motion.p>
         <motion.h2
           className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4"
