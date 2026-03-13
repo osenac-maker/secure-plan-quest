@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, Shield } from "lucide-react";
+import { ArrowRight, CheckCircle, Shield, Award, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Prevoyance = () => (
@@ -57,6 +57,19 @@ const Prevoyance = () => (
                 <span className="text-sm text-foreground">{item}</span>
               </div>
             ))}
+          </div>
+        </div>
+
+        <div className="bg-card rounded-lg p-6 shadow-card border border-border mb-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
+            <div className="flex items-center gap-2.5">
+              <Award className="w-5 h-5 text-copper" />
+              <span className="text-sm text-foreground font-medium">Spécialiste prévoyance TNS depuis 15 ans</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <ShieldCheck className="w-5 h-5 text-copper" />
+              <span className="text-sm text-foreground font-medium">Partenaires : AXA, Generali, SwissLife, AG2R La Mondiale</span>
+            </div>
           </div>
         </div>
 

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Award, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
 const PERIndependants = () => (
@@ -57,6 +57,19 @@ const PERIndependants = () => (
             <div className="bg-secondary rounded-lg p-5 text-center">
               <div className="font-heading text-2xl font-bold text-teal">2 700 €</div>
               <div className="text-xs text-muted-foreground mt-1">Économie d'impôt</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-card rounded-lg p-6 shadow-card border border-border mb-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
+            <div className="flex items-center gap-2.5">
+              <Award className="w-5 h-5 text-copper" />
+              <span className="text-sm text-foreground font-medium">15 ans d'expertise en gestion de patrimoine TNS</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <ShieldCheck className="w-5 h-5 text-copper" />
+              <span className="text-sm text-foreground font-medium">Courtier indépendant — contrats AXA, Generali, SwissLife</span>
             </div>
           </div>
         </div>

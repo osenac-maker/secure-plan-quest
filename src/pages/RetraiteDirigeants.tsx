@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Award, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
 const RetraiteDirigeants = () => (
@@ -57,6 +57,19 @@ const RetraiteDirigeants = () => (
                 <span className="text-sm text-foreground">{item}</span>
               </div>
             ))}
+          </div>
+        </div>
+
+        <div className="bg-card rounded-lg p-6 shadow-card border border-border mb-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
+            <div className="flex items-center gap-2.5">
+              <Award className="w-5 h-5 text-copper" />
+              <span className="text-sm text-foreground font-medium">2 500+ dirigeants accompagnés dans leur stratégie retraite</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <ShieldCheck className="w-5 h-5 text-copper" />
+              <span className="text-sm text-foreground font-medium">Conseil personnalisé — un interlocuteur dédié à votre dossier</span>
+            </div>
           </div>
         </div>
 
