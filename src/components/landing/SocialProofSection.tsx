@@ -19,7 +19,7 @@ const testimonials = [
   {
     name: "Thomas R.",
     role: "Dirigeant PME",
-    text: "Le simulateur m'a ouvert les yeux sur le manque à gagner de ma retraite. Mon conseiller m'a proposé un plan clair et efficace.",
+    text: "Le simulateur m'a montré que ma retraite serait 60 % inférieure à mes revenus actuels. Mon conseiller a mis en place un plan clair en 3 semaines.",
     avatar: "T",
   },
   {
