@@ -30,7 +30,7 @@ const Mutuelle = () => (
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          Le guide pour bien choisir votre complémentaire santé en tant que TNS.
+          En tant que TNS, vos cotisations de mutuelle sont déductibles de votre revenu imposable grâce à la loi Madelin. Vous vous soignez mieux et vous payez moins d'impôts. Voici comment bien choisir.
         </motion.p>
       </div>
     </div>
