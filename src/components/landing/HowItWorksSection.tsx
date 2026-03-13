@@ -34,7 +34,7 @@ const HowItWorksSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Simple et rapide
+          3 étapes, zéro paperasse
         </motion.p>
         <motion.h2
           className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4"
