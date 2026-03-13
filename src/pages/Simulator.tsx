@@ -381,9 +381,10 @@ const Simulator = () => {
 
               {step === 3 && (
                 <div className="space-y-6">
-                  <div className="bg-accent/5 border border-accent/20 rounded-lg p-4 mb-2">
-                    <p className="text-sm text-foreground font-semibold mb-1">🎯 Dernière étape — vos résultats sont prêts</p>
-                    <p className="text-xs text-muted-foreground">Renseignez vos coordonnées pour recevoir votre bilan détaillé : <strong>projection retraite</strong>, <strong>économies d'impôts</strong> et <strong>recommandations personnalisées</strong>.</p>
+                  <div className="bg-accent/5 border border-accent/20 rounded-lg p-5 mb-2 text-center">
+                    <CheckCircle className="w-8 h-8 text-accent mx-auto mb-2" />
+                    <p className="text-base text-foreground font-bold mb-1">Votre analyse personnalisée est prête.</p>
+                    <p className="text-sm text-muted-foreground">Indiquez vos coordonnées pour la recevoir.</p>
                   </div>
                   <div>
                     <Label className="text-foreground">Nom complet</Label>
