@@ -25,7 +25,7 @@ const testimonials = [
   {
     name: "Marie L.",
     role: "Consultante indépendante",
-    text: "Un accompagnement professionnel et humain. Je recommande à tous les indépendants qui veulent optimiser leur situation.",
+    text: "Enfin un accompagnement sérieux et humain. Pas de jargon, pas de pression. Mon conseiller m'a expliqué chaque option clairement. Je recommande les yeux fermés.",
     avatar: "M",
   },
 ];
