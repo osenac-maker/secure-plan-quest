@@ -52,7 +52,7 @@ const SolutionsSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Des solutions <span className="text-gradient-gold">sur mesure</span> pour votre patrimoine
+          Quatre piliers pour <span className="text-gradient-gold">sécuriser votre avenir</span>
         </motion.h2>
         <motion.div
           className="divider-gold mx-auto mb-6"
