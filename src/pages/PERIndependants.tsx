@@ -61,6 +61,19 @@ const PERIndependants = () => (
           </div>
         </div>
 
+        <div className="bg-card rounded-lg p-6 shadow-card border border-border mb-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
+            <div className="flex items-center gap-2.5">
+              <Award className="w-5 h-5 text-copper" />
+              <span className="text-sm text-foreground font-medium">15 ans d'expertise en gestion de patrimoine TNS</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <ShieldCheck className="w-5 h-5 text-copper" />
+              <span className="text-sm text-foreground font-medium">Courtier indépendant — contrats AXA, Generali, SwissLife</span>
+            </div>
+          </div>
+        </div>
+
         <div className="bg-hero rounded-lg p-10 text-center">
           <h3 className="font-heading text-xl font-bold text-foreground mb-2">Simulez votre économie fiscale</h3>
           <p className="text-muted-foreground text-sm mb-6">Découvrez en 2 minutes combien vous pouvez économiser avec un PER.</p>

@@ -60,6 +60,19 @@ const RetraiteDirigeants = () => (
           </div>
         </div>
 
+        <div className="bg-card rounded-lg p-6 shadow-card border border-border mb-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
+            <div className="flex items-center gap-2.5">
+              <Award className="w-5 h-5 text-copper" />
+              <span className="text-sm text-foreground font-medium">2 500+ dirigeants accompagnés dans leur stratégie retraite</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <ShieldCheck className="w-5 h-5 text-copper" />
+              <span className="text-sm text-foreground font-medium">Conseil personnalisé — un interlocuteur dédié à votre dossier</span>
+            </div>
+          </div>
+        </div>
+
         <div className="bg-hero rounded-lg p-10 text-center">
           <h3 className="font-heading text-xl font-bold text-foreground mb-2">Évaluez votre situation retraite</h3>
           <p className="text-muted-foreground text-sm mb-6">Obtenez votre score retraite et un plan d'action personnalisé.</p>

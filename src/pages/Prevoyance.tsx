@@ -60,6 +60,19 @@ const Prevoyance = () => (
           </div>
         </div>
 
+        <div className="bg-card rounded-lg p-6 shadow-card border border-border mb-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
+            <div className="flex items-center gap-2.5">
+              <Award className="w-5 h-5 text-copper" />
+              <span className="text-sm text-foreground font-medium">Spécialiste prévoyance TNS depuis 15 ans</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <ShieldCheck className="w-5 h-5 text-copper" />
+              <span className="text-sm text-foreground font-medium">Partenaires : AXA, Generali, SwissLife, AG2R La Mondiale</span>
+            </div>
+          </div>
+        </div>
+
         <div className="bg-hero rounded-lg p-10 text-center">
           <h3 className="font-heading text-xl font-bold text-foreground mb-2">Faites le point sur votre protection</h3>
           <p className="text-muted-foreground text-sm mb-6">Notre audit inclut un bilan complet de votre couverture prévoyance.</p>
