@@ -41,7 +41,7 @@ const BenefitsSection = () => (
           </h2>
           <div className="divider-gold mb-6" />
           <p className="text-muted-foreground leading-relaxed mb-4">
-            Comme un commandant de bord, nous vous aidons à garder le cap sur vos objectifs patrimoniaux. Notre expertise fiscale et sociale vous assure un vol sans turbulences vers la sérénité financière.
+            Comme un commandant de bord, nous vous aidons à garder le cap sur vos objectifs patrimoniaux. Notre expertise fiscale et sociale vous assure un vol sans turbulence vers la sérénité financière.
           </p>
           <p className="text-muted-foreground leading-relaxed">
             À chaque étape de votre parcours, votre copilote dédié vous guide avec précision et bienveillance vers la réalisation de tous vos projets.
