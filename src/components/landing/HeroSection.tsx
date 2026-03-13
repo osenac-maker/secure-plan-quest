@@ -6,9 +6,9 @@ import heroBg from "@/assets/hero-bg.jpg";
 import logoRetiro from "@/assets/logo-retiro-v2.png";
 
 const benefits = [
-  "Jusqu'à 10 000 € d'économies fiscales dès la 1ʳᵉ année",
-  "Bilan retraite 100 % gratuit, sans engagement",
-  "Un conseiller patrimonial dédié à votre situation",
+  "Réduisez vos impôts de 3 000 à 10 000 € par an grâce au PER",
+  "Anticipez votre retraite : découvrez ce que vous toucherez vraiment",
+  "Protégez votre famille et vos revenus en cas d'imprévu",
 ];
 
 const HeroSection = () => (
@@ -53,7 +53,7 @@ const HeroSection = () => (
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <p className="text-lg md:text-xl text-white/75 italic font-heading">
-            Réduisez vos impôts, préparez votre retraite et protégez vos proches — avec une stratégie patrimoniale conçue pour les dirigeants et indépendants.
+            Chaque année, des milliers de dirigeants et indépendants paient trop d'impôts, sous-estiment leur baisse de revenus à la retraite et laissent leur famille sans protection. Nous vous aidons à inverser la tendance.
           </p>
         </motion.div>
 

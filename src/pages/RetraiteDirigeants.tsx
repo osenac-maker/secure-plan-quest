@@ -15,11 +15,11 @@ const RetraiteDirigeants = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          Retraite des dirigeants
+          Retraite des dirigeants : ne laissez pas votre niveau de vie chuter
         </motion.h1>
         <motion.div className="divider-gold mb-6" initial={{ width: 0 }} animate={{ width: 60 }} transition={{ delay: 0.2, duration: 0.6 }} />
         <motion.p className="text-muted-foreground text-lg" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
-          Anticiper pour mieux vivre : les stratégies pour combler l'écart de retraite.
+          Sans action, votre retraite sera 2 à 3 fois inférieure à vos revenus actuels. Découvrez les dispositifs qui permettent de combler cet écart — tout en réduisant vos impôts.
         </motion.p>
       </div>
     </div>
@@ -27,13 +27,13 @@ const RetraiteDirigeants = () => (
     <div className="py-16">
       <div className="container mx-auto px-4 max-w-3xl">
         <div className="bg-card rounded-lg p-8 shadow-card border border-border mb-8">
-          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Le problème des dirigeants</h2>
+          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Pourquoi votre retraite sera bien inférieure à vos attentes</h2>
           <div className="space-y-4">
             {[
-              "Taux de remplacement de seulement 30 à 45% du dernier revenu",
-              "Cotisations TNS souvent insuffisantes pour une retraite confortable",
-              "Décote importante si départ anticipé avant 67 ans",
-              "Absence de dispositifs d'entreprise (intéressement, PEE) pour les TNS",
+              "Taux de remplacement de 30 à 45 % seulement — contre 60 à 75 % pour un salarié cadre",
+              "Les cotisations TNS sont plus faibles, donc vos droits à la retraite aussi",
+              "Départ avant 67 ans ? Attention à la décote qui réduit encore votre pension",
+              "Pas d'épargne salariale (PEE, intéressement) pour compenser comme les salariés",
             ].map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
@@ -44,13 +44,13 @@ const RetraiteDirigeants = () => (
         </div>
 
         <div className="bg-card rounded-lg p-8 shadow-card border border-border mb-8">
-          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Les solutions</h2>
+          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Les dispositifs pour rattraper l'écart et réduire vos impôts</h2>
           <div className="space-y-4">
             {[
-              "PER individuel avec déduction fiscale à l'entrée",
-              "Contrat Madelin pour la prévoyance et la retraite complémentaire",
-              "Assurance vie pour la constitution d'un capital retraite flexible",
-              "Stratégie de rémunération mixte (salaire + dividendes) optimisée",
+              "PER individuel : déduisez vos versements de votre revenu imposable et constituez un capital retraite",
+              "Contrat Madelin : une retraite complémentaire avec des cotisations 100 % déductibles",
+              "Assurance vie : un complément de revenus flexible, avec une fiscalité avantageuse après 8 ans",
+              "Stratégie de rémunération optimisée : le bon équilibre entre salaire, dividendes et épargne retraite",
             ].map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-copper flex-shrink-0 mt-0.5" />
@@ -74,8 +74,8 @@ const RetraiteDirigeants = () => (
         </div>
 
         <div className="bg-hero rounded-lg p-10 text-center">
-          <h3 className="font-heading text-xl font-bold text-foreground mb-2">Évaluez votre situation retraite</h3>
-          <p className="text-muted-foreground text-sm mb-6">Obtenez votre score retraite et un plan d'action personnalisé.</p>
+          <h3 className="font-heading text-xl font-bold text-foreground mb-2">Quel sera vraiment le montant de votre retraite ?</h3>
+          <p className="text-muted-foreground text-sm mb-6">Notre simulateur calcule votre pension prévisionnelle et vous montre combien vous pouvez gagner en activant les bons dispositifs.</p>
           <Link to="/simulateur">
             <Button size="lg" className="bg-copper hover:bg-copper-light text-white gap-2 font-medium border-0 group">
               Découvrir ma stratégie retraite <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

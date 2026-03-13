@@ -5,23 +5,23 @@ import sectionMeeting from "@/assets/section-meeting.jpg";
 const benefits = [
   {
     icon: Compass,
-    title: "Optimisation fiscale ciblée",
-    desc: "Nous identifions chaque levier fiscal adapté à votre statut pour réduire votre imposition — légalement et durablement.",
+    title: "Moins d'impôts, plus de patrimoine",
+    desc: "PER, Madelin, article 83 : nous activons tous les dispositifs légaux pour réduire votre imposition de plusieurs milliers d'euros par an — et rediriger cet argent vers votre patrimoine.",
   },
   {
     icon: TrendingUp,
-    title: "Retraite anticipée et chiffrée",
-    desc: "Vous savez exactement combien vous toucherez à la retraite et quels dispositifs activer pour combler l'écart.",
+    title: "Une retraite à la hauteur de vos efforts",
+    desc: "Nous calculons précisément votre future pension, identifions l'écart avec votre niveau de vie actuel et mettons en place les dispositifs pour le combler — année après année.",
   },
   {
     icon: Heart,
-    title: "Protection complète",
-    desc: "Vos revenus, votre famille et votre entreprise sont protégés — même en cas d'imprévu. Zéro zone d'ombre.",
+    title: "Votre famille protégée quoi qu'il arrive",
+    desc: "Arrêt de travail, invalidité, décès : nous vérifions que vos revenus et vos proches sont couverts, et nous comblons les lacunes de votre régime obligatoire avec des garanties sur mesure.",
   },
   {
     icon: Shield,
-    title: "Un interlocuteur unique",
-    desc: "Un conseiller patrimonial dédié coordonne l'ensemble de votre stratégie. Pas de call center, pas de turnover.",
+    title: "Un conseiller dédié, pas un call center",
+    desc: "Votre conseiller patrimonial connaît votre dossier, votre statut, vos objectifs. Il coordonne votre stratégie fiscale, retraite et protection — et vous tient informé à chaque étape.",
   },
 ];
 

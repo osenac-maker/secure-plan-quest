@@ -16,7 +16,7 @@ const Mutuelle = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          Mutuelle freelance & indépendant
+          Mutuelle TNS : de meilleurs soins, moins d'impôts
         </motion.h1>
         <motion.div
           className="divider-gold mb-6"
@@ -30,7 +30,7 @@ const Mutuelle = () => (
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          Le guide pour bien choisir votre complémentaire santé en tant que TNS.
+          En tant que TNS, vos cotisations de mutuelle sont déductibles de votre revenu imposable grâce à la loi Madelin. Vous vous soignez mieux et vous payez moins d'impôts. Voici comment bien choisir.
         </motion.p>
       </div>
     </div>
@@ -38,14 +38,14 @@ const Mutuelle = () => (
     <div className="py-16">
       <div className="container mx-auto px-4 max-w-3xl">
         <div className="bg-card rounded-lg p-8 shadow-card border border-border mb-8">
-          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Pourquoi souscrire une mutuelle TNS ?</h2>
+          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Pourquoi une mutuelle est indispensable pour un indépendant</h2>
           <div className="space-y-4">
             {[
-              "Remboursements limités du régime obligatoire (SSI / CPAM)",
-              "Restes à charge élevés en dentaire, optique et hospitalisation",
-              "Cotisations déductibles du revenu imposable (loi Madelin)",
-              "Couverture personnalisable selon votre profil et vos besoins",
-              "Protection étendue à votre conjoint et vos enfants",
+              "Le régime obligatoire (SSI/CPAM) ne rembourse en moyenne que 65 à 70 % de vos frais de santé",
+              "Sans mutuelle, vos restes à charge en dentaire, optique et hospitalisation peuvent atteindre plusieurs milliers d'euros",
+              "Avec la loi Madelin, vos cotisations sont déductibles : moins d'impôts pour une meilleure couverture",
+              "Couverture personnalisable : choisissez les garanties adaptées à votre âge, votre santé et votre famille",
+              "Protégez aussi votre conjoint et vos enfants sous le même contrat",
             ].map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <Heart className="w-5 h-5 text-copper flex-shrink-0 mt-0.5" />
@@ -56,13 +56,13 @@ const Mutuelle = () => (
         </div>
 
         <div className="bg-card rounded-lg p-8 shadow-card border border-border mb-8">
-          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Les postes clés à vérifier</h2>
+          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Les postes de santé à surveiller en priorité</h2>
           <div className="space-y-4">
             {[
-              "Hospitalisation : chambre particulière, dépassements d'honoraires",
-              "Optique : montures + verres progressifs, lentilles",
-              "Dentaire : couronnes, implants, orthodontie adulte",
-              "Médecine douce : ostéopathie, acupuncture, psychologue",
+              "Hospitalisation : vérifiez la prise en charge de la chambre particulière et des dépassements d'honoraires",
+              "Optique : couverture des verres progressifs, lentilles et montures de qualité",
+              "Dentaire : couronnes, implants et orthodontie adulte — les postes les plus coûteux",
+              "Médecine douce : ostéopathie, acupuncture, psychologue — de plus en plus essentiels au quotidien",
             ].map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
@@ -73,9 +73,9 @@ const Mutuelle = () => (
         </div>
 
         <div className="bg-card rounded-lg p-8 shadow-card border border-border mb-8">
-          <h2 className="font-heading text-xl font-semibold text-foreground mb-3">Avantage fiscal Madelin</h2>
+          <h2 className="font-heading text-xl font-semibold text-foreground mb-3">L'avantage fiscal Madelin : payez moins d'impôts en vous soignant mieux</h2>
           <p className="text-sm text-muted-foreground mb-6">
-            Les cotisations de mutuelle Madelin sont déductibles de votre bénéfice imposable, dans la limite de 3,75 % du revenu + 7 % du PASS.
+            Vos cotisations de mutuelle Madelin sont déductibles de votre bénéfice imposable, dans la limite de 3,75 % du revenu + 7 % du PASS. Concrètement, l'État finance une partie de votre couverture santé via la réduction d'impôt.
           </p>
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-secondary rounded-lg p-5 text-center">
@@ -103,8 +103,8 @@ const Mutuelle = () => (
         </div>
 
         <div className="bg-hero rounded-lg p-10 text-center">
-          <h3 className="font-heading text-xl font-bold text-foreground mb-2">Comparez les mutuelles TNS</h3>
-          <p className="text-muted-foreground text-sm mb-6">Notre audit inclut une analyse de votre couverture santé et des recommandations personnalisées.</p>
+          <h3 className="font-heading text-xl font-bold text-foreground mb-2">Trouvez la mutuelle qui vous fait payer moins d'impôts</h3>
+          <p className="text-muted-foreground text-sm mb-6">Notre bilan gratuit compare les offres de nos 6 partenaires assureurs et calcule votre économie fiscale Madelin. Sans engagement.</p>
           <Link to="/simulateur">
             <Button size="lg" className="bg-copper hover:bg-copper-light text-white gap-2 font-medium border-0 group">
               Faire mon bilan retraite gratuit <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

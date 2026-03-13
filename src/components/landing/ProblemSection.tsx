@@ -4,23 +4,23 @@ import { motion } from "framer-motion";
 const problems = [
   {
     icon: TrendingDown,
-    title: "Votre retraite pourrait chuter de 50 à 70 %",
-    desc: "Les régimes obligatoires des TNS et dirigeants sont parmi les moins généreux. Sans anticipation, c'est votre niveau de vie qui est en jeu.",
+    title: "Votre retraite sera 2 à 3 fois plus faible que prévu",
+    desc: "En tant que TNS ou dirigeant, vos cotisations obligatoires ne financent qu'une fraction de votre retraite. Concrètement, si vous gagnez 80 000 € aujourd'hui, vous pourriez toucher moins de 30 000 € par an à la retraite — soit une baisse de 60 % de votre niveau de vie.",
   },
   {
     icon: AlertTriangle,
-    title: "Vous payez trop d'impôts — inutilement",
-    desc: "PER, Madelin, article 83 : des dispositifs légaux permettent de réduire votre imposition de plusieurs milliers d'euros par an. Encore faut-il les activer.",
+    title: "Vous laissez des milliers d'euros au fisc chaque année",
+    desc: "Le PER permet de déduire jusqu'à 10 % de vos revenus de votre impôt. Sur un revenu de 90 000 €, cela représente jusqu'à 2 700 € d'économies annuelles — tout en constituant votre capital retraite. Et ce n'est qu'un des dispositifs disponibles.",
   },
   {
     icon: Clock,
-    title: "Pas le temps de s'en occuper seul",
-    desc: "Entre votre activité et la complexité des dispositifs, il est normal de repousser. C'est exactement pour cela que nous existons.",
+    title: "Plus vous attendez, plus ça vous coûte cher",
+    desc: "Chaque année sans stratégie patrimoniale, ce sont des économies fiscales perdues et un capital retraite qui ne se constitue pas. Commencer à 40 ans plutôt qu'à 50 peut doubler le montant de votre complément de retraite.",
   },
   {
     icon: HelpCircle,
-    title: "Zéro filet de sécurité en cas d'imprévu",
-    desc: "Arrêt de travail, invalidité, décès : sans prévoyance adaptée, vos revenus s'arrêtent mais vos charges continuent.",
+    title: "Votre famille n'est pas protégée en cas d'accident de vie",
+    desc: "Arrêt de travail, invalidité, décès : les indemnités du régime obligatoire couvrent rarement plus de 50 % de vos revenus. Sans prévoyance complémentaire, vos charges continuent alors que vos revenus s'arrêtent.",
   },
 ];
 
@@ -59,7 +59,7 @@ const ProblemSection = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          Ces réalités concernent 80 % des dirigeants et indépendants. La bonne nouvelle : il existe des solutions concrètes.
+          Moins d'impôts, une retraite à la hauteur de vos efforts, une famille protégée : ces trois objectifs sont atteignables avec la bonne stratégie.
         </motion.p>
       </div>
 
