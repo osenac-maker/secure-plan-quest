@@ -138,10 +138,6 @@ const Simulator = () => {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4 }}
               >
-                <div className="inline-flex items-center gap-2 bg-copper/10 text-copper text-xs font-semibold px-4 py-1.5 rounded-full mb-4">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  Déjà 2 400+ bilans réalisés
-                </div>
                 <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-3">
                   Découvrez combien vous perdez <br className="hidden md:block" />
                   <span className="text-gradient-gold">chaque année en impôts</span>
