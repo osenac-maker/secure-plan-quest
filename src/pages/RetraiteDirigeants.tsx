@@ -30,10 +30,10 @@ const RetraiteDirigeants = () => (
           <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Pourquoi votre retraite sera bien inférieure à vos attentes</h2>
           <div className="space-y-4">
             {[
-              "Taux de remplacement de seulement 30 à 45% du dernier revenu",
-              "Cotisations TNS souvent insuffisantes pour une retraite confortable",
-              "Décote importante si départ anticipé avant 67 ans",
-              "Absence de dispositifs d'entreprise (intéressement, PEE) pour les TNS",
+              "Taux de remplacement de 30 à 45 % seulement — contre 60 à 75 % pour un salarié cadre",
+              "Les cotisations TNS sont plus faibles, donc vos droits à la retraite aussi",
+              "Départ avant 67 ans ? Attention à la décote qui réduit encore votre pension",
+              "Pas d'épargne salariale (PEE, intéressement) pour compenser comme les salariés",
             ].map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
