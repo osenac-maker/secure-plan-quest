@@ -6,31 +6,31 @@ import { motion } from "framer-motion";
 const solutions = [
   {
     icon: PiggyBank,
-    title: "PER — Plan d'Épargne Retraite",
-    desc: "Déduisez jusqu'à 10 % de vos revenus professionnels de votre assiette fiscale. Le PER est le levier n°1 d'optimisation pour les indépendants et dirigeants.",
+    title: "PER — Épargne Retraite",
+    desc: "Déduisez jusqu'à 10 % de vos revenus imposables. Le PER est le levier fiscal n°1 pour les TNS et dirigeants : vous payez moins d'impôts aujourd'hui et vous constituez un capital pour demain.",
     link: "/per-independants",
-    cta: "Découvrir le PER",
+    cta: "En savoir plus sur le PER",
   },
   {
     icon: BarChart3,
-    title: "Stratégie Retraite Dirigeants",
-    desc: "Article 83, contrat Madelin, PER Obligatoire : maximisez les dispositifs dédiés aux dirigeants pour vous constituer un capital retraite solide.",
+    title: "Retraite Dirigeants",
+    desc: "Article 83, Madelin, PER Obligatoire : des dispositifs réservés aux dirigeants qui permettent de se constituer une retraite complémentaire significative, en partie financée par l'entreprise.",
     link: "/retraite-dirigeants",
-    cta: "Voir les solutions",
+    cta: "Explorer les dispositifs",
   },
   {
     icon: Shield,
-    title: "Prévoyance TNS",
-    desc: "Protégez vos revenus et votre famille en cas d'arrêt de travail, d'invalidité ou de décès. Des garanties sur mesure déductibles de votre BNC/BIC.",
+    title: "Prévoyance",
+    desc: "Maintenez vos revenus en cas d'arrêt de travail, d'invalidité ou de décès. Des garanties sur mesure, déductibles fiscalement, pour protéger votre famille et votre activité.",
     link: "/prevoyance",
-    cta: "Se protéger",
+    cta: "Protéger mes revenus",
   },
   {
     icon: HeartPulse,
-    title: "Mutuelle Santé TNS",
-    desc: "Une complémentaire santé performante avec les avantages fiscaux de la Loi Madelin. Vos cotisations sont déductibles de vos revenus imposables.",
+    title: "Mutuelle TNS",
+    desc: "Une complémentaire santé performante avec déduction fiscale Loi Madelin. Moins de charges, de meilleurs remboursements — adaptés à votre profil.",
     link: "/mutuelle",
-    cta: "Comparer les mutuelles",
+    cta: "Voir les offres santé",
   },
 ];
 
