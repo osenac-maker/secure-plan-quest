@@ -7,20 +7,20 @@ const steps = [
   {
     icon: ClipboardCheck,
     step: "01",
-    title: "Faites votre bilan gratuit",
-    desc: "Répondez à quelques questions sur votre situation en 2 minutes. Notre simulateur évalue votre retraite prévisionnelle et vos leviers d'optimisation fiscale.",
+    title: "Complétez votre bilan en 2 min",
+    desc: "5 questions simples sur votre situation. Pas besoin de documents : notre simulateur calcule instantanément votre retraite prévisionnelle et vos leviers fiscaux.",
   },
   {
     icon: UserCheck,
     step: "02",
-    title: "Échangez avec votre conseiller dédié",
-    desc: "Un expert patrimonial analyse vos résultats et vous propose une stratégie sur mesure : PER, prévoyance, mutuelle, placements.",
+    title: "Recevez votre stratégie personnalisée",
+    desc: "Un conseiller patrimonial analyse vos résultats et vous présente un plan d'action clair : combien économiser, comment, et avec quels dispositifs.",
   },
   {
     icon: Rocket,
     step: "03",
-    title: "Mettez en place et suivez vos résultats",
-    desc: "Votre copilote vous accompagne dans la mise en œuvre et le suivi. Vous gardez le cap sur vos objectifs patrimoniaux en toute sérénité.",
+    title: "Passez à l'action, on s'occupe du reste",
+    desc: "Mise en place, suivi, ajustements : votre conseiller dédié pilote votre stratégie et vous tient informé à chaque étape.",
   },
 ];
 
@@ -34,7 +34,7 @@ const HowItWorksSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Simple et rapide
+          3 étapes, zéro paperasse
         </motion.p>
         <motion.h2
           className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4"
@@ -90,8 +90,7 @@ const HowItWorksSection = () => (
       >
         <Link to="/simulateur">
           <Button size="lg" className="bg-copper hover:bg-copper-light text-white text-base gap-2 font-medium px-10 border-0 group shadow-lg shadow-copper/30">
-            Faire mon bilan retraite gratuit
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            Commencer mon bilan gratuit →
           </Button>
         </Link>
       </motion.div>

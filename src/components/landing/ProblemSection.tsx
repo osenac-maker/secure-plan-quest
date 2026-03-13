@@ -4,23 +4,23 @@ import { motion } from "framer-motion";
 const problems = [
   {
     icon: TrendingDown,
-    title: "Une retraite divisée par 2",
-    desc: "En tant qu'indépendant ou dirigeant, votre pension de retraite peut chuter de 50 à 70 % par rapport à vos revenus actuels.",
+    title: "Votre retraite pourrait chuter de 50 à 70 %",
+    desc: "Les régimes obligatoires des TNS et dirigeants sont parmi les moins généreux. Sans anticipation, c'est votre niveau de vie qui est en jeu.",
   },
   {
     icon: AlertTriangle,
-    title: "Une fiscalité mal optimisée",
-    desc: "Sans stratégie adaptée, vous payez chaque année des milliers d'euros d'impôts qui pourraient être redirigés vers votre patrimoine.",
+    title: "Vous payez trop d'impôts — inutilement",
+    desc: "PER, Madelin, article 83 : des dispositifs légaux permettent de réduire votre imposition de plusieurs milliers d'euros par an. Encore faut-il les activer.",
   },
   {
     icon: Clock,
-    title: "Un manque de temps et de visibilité",
-    desc: "Entre votre activité et les complexités réglementaires, difficile de savoir par où commencer ni à qui faire confiance.",
+    title: "Pas le temps de s'en occuper seul",
+    desc: "Entre votre activité et la complexité des dispositifs, il est normal de repousser. C'est exactement pour cela que nous existons.",
   },
   {
     icon: HelpCircle,
-    title: "Aucune protection en cas d'imprévu",
-    desc: "Arrêt de travail, invalidité, décès : sans prévoyance adaptée, votre famille et votre entreprise sont exposées.",
+    title: "Zéro filet de sécurité en cas d'imprévu",
+    desc: "Arrêt de travail, invalidité, décès : sans prévoyance adaptée, vos revenus s'arrêtent mais vos charges continuent.",
   },
 ];
 
@@ -34,7 +34,7 @@ const ProblemSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Le constat
+          Ce que personne ne vous dit
         </motion.p>
         <motion.h2
           className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4"
@@ -42,8 +42,8 @@ const ProblemSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Dirigeants, indépendants :{" "}
-          <span className="text-gradient-gold">votre patrimoine mérite mieux</span>
+          Vous avez tout construit.{" "}
+          <span className="text-gradient-gold">Mais qu'avez-vous prévu pour après ?</span>
         </motion.h2>
         <motion.div
           className="divider-gold mx-auto mb-6"
@@ -59,7 +59,7 @@ const ProblemSection = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          Vous avez construit votre réussite. Mais avez-vous sécurisé votre avenir ?
+          Ces réalités concernent 80 % des dirigeants et indépendants. La bonne nouvelle : il existe des solutions concrètes.
         </motion.p>
       </div>
 

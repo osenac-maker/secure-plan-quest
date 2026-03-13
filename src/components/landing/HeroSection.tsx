@@ -6,9 +6,9 @@ import heroBg from "@/assets/hero-bg.jpg";
 import logoRetiro from "@/assets/logo-retiro-v2.png";
 
 const benefits = [
-  "Jusqu'à 10 000 € d'économies fiscales par an",
-  "Audit 100% gratuit et sans engagement",
-  "Votre copilote patrimonial dédié",
+  "Jusqu'à 10 000 € d'économies fiscales dès la 1ʳᵉ année",
+  "Bilan retraite 100 % gratuit, sans engagement",
+  "Un conseiller patrimonial dédié à votre situation",
 ];
 
 const HeroSection = () => (
@@ -53,7 +53,7 @@ const HeroSection = () => (
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <p className="text-lg md:text-xl text-white/75 italic font-heading">
-            Réduisez vos impôts, préparez votre retraite et protégez votre famille grâce à une stratégie patrimoniale adaptée aux dirigeants et indépendants.
+            Réduisez vos impôts, préparez votre retraite et protégez vos proches — avec une stratégie patrimoniale conçue pour les dirigeants et indépendants.
           </p>
         </motion.div>
 
@@ -71,7 +71,7 @@ const HeroSection = () => (
           </Link>
           <Link to="/simulateur">
             <Button size="lg" variant="outline" className="border-copper/50 text-copper bg-white/90 hover:bg-white hover:text-copper-light text-base px-8 font-medium">
-              Prendre rendez-vous
+              Parler à un conseiller
             </Button>
           </Link>
         </motion.div>

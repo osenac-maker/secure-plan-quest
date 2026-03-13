@@ -3,29 +3,29 @@ import { Star, Quote } from "lucide-react";
 import { useEffect } from "react";
 
 const stats = [
-  { value: 2500, suffix: "+", label: "Clients accompagnés" },
-  { value: 8400, suffix: " €", label: "Économie fiscale moyenne" },
-  { value: 98, suffix: "%", label: "Taux de satisfaction" },
-  { value: 48, suffix: "h", label: "Délai de prise en charge" },
+  { value: 2500, suffix: "+", label: "Dirigeants et TNS accompagnés" },
+  { value: 8400, suffix: " €", label: "D'économies fiscales en moyenne / an" },
+  { value: 98, suffix: "%", label: "De clients satisfaits" },
+  { value: 15, suffix: " min", label: "Pour obtenir votre bilan" },
 ];
 
 const testimonials = [
   {
     name: "Sophie M.",
     role: "Freelance développeuse",
-    text: "Grâce à RETIRO Patrimoine, j'ai économisé 7 200 € d'impôts dès la première année avec un PER adapté à ma situation.",
+    text: "Grâce à RETIRO, j'ai réduit mes impôts de 7 200 € dès la première année tout en me constituant un capital retraite. Je regrette de ne pas avoir commencé plus tôt.",
     avatar: "S",
   },
   {
     name: "Thomas R.",
     role: "Dirigeant PME",
-    text: "Le simulateur m'a ouvert les yeux sur le manque à gagner de ma retraite. Mon conseiller m'a proposé un plan clair et efficace.",
+    text: "Le simulateur m'a montré que ma retraite serait 60 % inférieure à mes revenus actuels. Mon conseiller a mis en place un plan clair en 3 semaines.",
     avatar: "T",
   },
   {
     name: "Marie L.",
     role: "Consultante indépendante",
-    text: "Un accompagnement professionnel et humain. Je recommande à tous les indépendants qui veulent optimiser leur situation.",
+    text: "Enfin un accompagnement sérieux et humain. Pas de jargon, pas de pression. Mon conseiller m'a expliqué chaque option clairement. Je recommande les yeux fermés.",
     avatar: "M",
   },
 ];
@@ -77,7 +77,7 @@ const SocialProofSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Ils nous font <span className="text-gradient-gold">confiance</span>
+          Ils ont repris le contrôle de <span className="text-gradient-gold">leur avenir</span>
         </motion.h2>
         <motion.div
           className="divider-gold mx-auto"

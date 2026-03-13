@@ -5,23 +5,23 @@ import sectionMeeting from "@/assets/section-meeting.jpg";
 const benefits = [
   {
     icon: Compass,
-    title: "Cap fiscal optimisé",
-    desc: "Réduisez votre impôt sur le revenu grâce au PER et aux dispositifs patrimoniaux adaptés aux indépendants.",
+    title: "Optimisation fiscale ciblée",
+    desc: "Nous identifions chaque levier fiscal adapté à votre statut pour réduire votre imposition — légalement et durablement.",
   },
   {
     icon: TrendingUp,
-    title: "Plan de vol retraite",
-    desc: "Anticipez votre retraite avec un plan sur mesure qui comble le manque à gagner des régimes obligatoires.",
+    title: "Retraite anticipée et chiffrée",
+    desc: "Vous savez exactement combien vous toucherez à la retraite et quels dispositifs activer pour combler l'écart.",
   },
   {
     icon: Heart,
-    title: "Protection équipage",
-    desc: "Sécurisez vos revenus et votre famille avec des solutions de prévoyance et mutuelle adaptées.",
+    title: "Protection complète",
+    desc: "Vos revenus, votre famille et votre entreprise sont protégés — même en cas d'imprévu. Zéro zone d'ombre.",
   },
   {
     icon: Shield,
-    title: "Copilote expert",
-    desc: "Un conseiller patrimonial dédié vous accompagne dans chaque étape de votre stratégie financière.",
+    title: "Un interlocuteur unique",
+    desc: "Un conseiller patrimonial dédié coordonne l'ensemble de votre stratégie. Pas de call center, pas de turnover.",
   },
 ];
 
@@ -37,14 +37,14 @@ const BenefitsSection = () => (
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Notre <span className="text-gradient-gold">mission</span>
+            Notre <span className="text-gradient-gold">engagement</span>
           </h2>
           <div className="divider-gold mb-6" />
           <p className="text-muted-foreground leading-relaxed mb-4">
-            Comme un commandant de bord, nous vous aidons à garder le cap sur vos objectifs patrimoniaux. Notre expertise fiscale et sociale vous assure un vol sans turbulence vers la sérénité financière.
+            Nous accompagnons les dirigeants et indépendants qui veulent reprendre le contrôle de leur fiscalité, leur retraite et la protection de leurs proches — sans jargon, sans pression commerciale.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            À chaque étape de votre parcours, votre copilote dédié vous guide avec précision et bienveillance vers la réalisation de tous vos projets.
+            Chaque recommandation est fondée sur une analyse objective de votre situation. Votre intérêt passe toujours en premier.
           </p>
         </motion.div>
         <motion.div
@@ -72,7 +72,7 @@ const BenefitsSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Pourquoi choisir <span className="text-gradient-gold">RETIRO</span> ?
+          Pourquoi nos clients nous <span className="text-gradient-gold">recommandent</span>
         </motion.h2>
         <motion.div
           className="divider-gold mx-auto mb-6"
