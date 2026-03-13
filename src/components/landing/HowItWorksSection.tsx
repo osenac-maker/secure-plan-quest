@@ -92,7 +92,6 @@ const HowItWorksSection = () => (
           <Button size="lg" className="bg-copper hover:bg-copper-light text-white text-base gap-2 font-medium px-10 border-0 group shadow-lg shadow-copper/30">
             Commencer mon bilan gratuit →
           </Button>
-          </Button>
         </Link>
       </motion.div>
     </div>
