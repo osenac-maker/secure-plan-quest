@@ -27,7 +27,7 @@ const PERIndependants = () => (
     <div className="py-16">
       <div className="container mx-auto px-4 max-w-3xl">
         <div className="bg-card rounded-lg p-8 shadow-card border border-border mb-8">
-          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Pourquoi le PER est idéal pour les indépendants ?</h2>
+          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Comment le PER réduit vos impôts tout en préparant votre retraite</h2>
           <div className="space-y-4">
             {[
               "Déduction fiscale des versements de votre revenu imposable",
