@@ -59,7 +59,7 @@ const ProblemSection = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          Vous avez construit votre réussite. Mais avez-vous sécurisé votre avenir ?
+          Ces réalités concernent 80 % des dirigeants et indépendants. La bonne nouvelle : il existe des solutions concrètes.
         </motion.p>
       </div>
 

@@ -72,7 +72,7 @@ const BenefitsSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Pourquoi choisir <span className="text-gradient-gold">RETIRO</span> ?
+          Pourquoi nos clients nous <span className="text-gradient-gold">recommandent</span>
         </motion.h2>
         <motion.div
           className="divider-gold mx-auto mb-6"

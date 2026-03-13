@@ -35,7 +35,7 @@ const CTASection = () => (
         viewport={{ once: true }}
         transition={{ delay: 0.15 }}
       >
-        Faites votre audit retraite et fiscal gratuit en 2 minutes. Sans engagement, 100% confidentiel.
+        Faites votre bilan retraite et fiscal en 2 minutes. C'est gratuit, confidentiel et sans engagement.
       </motion.p>
       <motion.div
         initial={{ opacity: 0, y: 20 }}

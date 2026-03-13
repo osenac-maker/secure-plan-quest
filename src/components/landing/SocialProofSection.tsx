@@ -77,7 +77,7 @@ const SocialProofSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Ils nous font <span className="text-gradient-gold">confiance</span>
+          Ils ont repris le contrôle de <span className="text-gradient-gold">leur avenir</span>
         </motion.h2>
         <motion.div
           className="divider-gold mx-auto"

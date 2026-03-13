@@ -68,7 +68,7 @@ const SolutionsSection = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          Chaque situation est unique. Nous assemblons les meilleurs dispositifs pour construire votre stratégie patrimoniale globale.
+          Nous combinons ces dispositifs en une stratégie cohérente, calibrée sur vos revenus, votre statut et vos objectifs.
         </motion.p>
       </div>
 

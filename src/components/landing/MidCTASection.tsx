@@ -21,7 +21,7 @@ const MidCTASection = () => (
         viewport={{ once: true }}
         transition={{ delay: 0.15 }}
       >
-        En 2 minutes, découvrez votre retraite prévisionnelle et vos leviers d'optimisation fiscale.
+        Répondez à 5 questions en 2 minutes. Recevez une estimation personnalisée de votre retraite et de vos économies fiscales possibles.
       </motion.p>
       <motion.div
         initial={{ opacity: 0, y: 10 }}
