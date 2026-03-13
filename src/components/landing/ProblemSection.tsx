@@ -42,8 +42,8 @@ const ProblemSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Dirigeants, indépendants :{" "}
-          <span className="text-gradient-gold">votre patrimoine mérite mieux</span>
+          Vous avez tout construit.{" "}
+          <span className="text-gradient-gold">Mais qu'avez-vous prévu pour après ?</span>
         </motion.h2>
         <motion.div
           className="divider-gold mx-auto mb-6"
