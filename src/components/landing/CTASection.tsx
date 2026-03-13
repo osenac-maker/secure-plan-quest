@@ -19,7 +19,7 @@ const CTASection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        Prêt à prendre votre envol ?
+        Prêt à sécuriser votre avenir ?
       </motion.h2>
       <motion.div
         className="divider-gold mx-auto mb-6"
