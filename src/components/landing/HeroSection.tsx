@@ -8,7 +8,7 @@ import logoRetiro from "@/assets/logo-retiro-v2.png";
 const benefits = [
   "Jusqu'à 10 000 € d'économies fiscales par an",
   "Audit 100% gratuit et sans engagement",
-  "Votre copilote patrimonial dédié en 48h",
+  "Votre copilote patrimonial dédié",
 ];
 
 const HeroSection = () => (
