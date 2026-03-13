@@ -16,7 +16,7 @@ const Mutuelle = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          Mutuelle freelance & indépendant
+          Mutuelle TNS : de meilleurs soins, moins d'impôts
         </motion.h1>
         <motion.div
           className="divider-gold mb-6"
