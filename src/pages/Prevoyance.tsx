@@ -19,7 +19,7 @@ const Prevoyance = () => (
         </motion.h1>
         <motion.div className="divider-gold mb-6" initial={{ width: 0 }} animate={{ width: 60 }} transition={{ delay: 0.2, duration: 0.6 }} />
         <motion.p className="text-muted-foreground text-lg" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
-          Protégez votre activité et votre famille en cas d'imprévu.
+          En cas d'arrêt de travail, d'invalidité ou de décès, le régime obligatoire couvre rarement plus de 50 % de vos revenus. La prévoyance complémentaire comble cette lacune — avec des cotisations déductibles de votre revenu imposable.
         </motion.p>
       </div>
     </div>
