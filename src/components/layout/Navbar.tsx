@@ -33,12 +33,12 @@ const Navbar = () => {
           : "bg-white/80 backdrop-blur-sm"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between h-24 px-4">
+      <div className="container mx-auto flex items-center justify-between h-28 px-4">
         <Link to="/" className="flex items-center">
           <img
             src={logoRetiro}
             alt="RETIRO Patrimoine"
-            className="h-20 w-auto"
+            className="h-32 w-auto"
           />
         </Link>
 
