@@ -115,10 +115,12 @@ const Results = () => {
               <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">
                 Un expert patrimonial dédié analysera votre situation en détail et vous proposera un plan d'action personnalisé. Gratuit et sans engagement.
               </p>
-              <Button size="lg" variant="secondary" className="gap-2 font-semibold">
-                Réserver mon créneau
-                <ArrowRight className="w-4 h-4" />
-              </Button>
+              <a href="https://calendly.com/" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="secondary" className="gap-2 font-semibold">
+                  Réserver mon créneau
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </a>
             </div>
           </motion.div>
         </div>
