@@ -3,10 +3,10 @@ import { Star, Quote } from "lucide-react";
 import { useEffect } from "react";
 
 const stats = [
-  { value: 2500, suffix: "+", label: "Clients accompagnés" },
-  { value: 8400, suffix: " €", label: "Économie fiscale moyenne" },
-  { value: 98, suffix: "%", label: "Taux de satisfaction" },
-  { value: 48, suffix: "h", label: "Délai de prise en charge" },
+  { value: 2500, suffix: "+", label: "Dirigeants et TNS accompagnés" },
+  { value: 8400, suffix: " €", label: "D'économies fiscales en moyenne / an" },
+  { value: 98, suffix: "%", label: "De clients satisfaits" },
+  { value: 15, suffix: " min", label: "Pour obtenir votre bilan" },
 ];
 
 const testimonials = [
