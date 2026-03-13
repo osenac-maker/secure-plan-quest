@@ -44,13 +44,13 @@ const Prevoyance = () => (
         </div>
 
         <div className="bg-card rounded-lg p-8 shadow-card border border-border mb-8">
-          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Pourquoi c'est essentiel</h2>
+          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Pourquoi le régime obligatoire ne suffit pas</h2>
           <div className="space-y-4">
             {[
-              "Les indemnités RSI/SSI sont très limitées (souvent < 50% du revenu)",
-              "Franchise de 3 à 90 jours selon le régime obligatoire",
-              "Aucune protection en cas d'invalidité partielle pour les TNS",
-              "Cotisations déductibles fiscalement via le dispositif Madelin",
+              "Indemnités RSI/SSI très limitées : souvent moins de 50 % de vos revenus réels",
+              "Franchise de 3 à 90 jours sans aucun revenu — un gouffre financier pour un indépendant",
+              "Aucune couverture en cas d'invalidité partielle dans la plupart des régimes TNS",
+              "Bonne nouvelle : les cotisations prévoyance Madelin sont 100 % déductibles de votre revenu imposable",
             ].map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
