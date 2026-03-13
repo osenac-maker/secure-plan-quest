@@ -52,7 +52,7 @@ const SolutionsSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Quatre piliers pour <span className="text-gradient-gold">sécuriser votre avenir</span>
+          Moins d'impôts, plus de retraite, <span className="text-gradient-gold">une famille protégée</span>
         </motion.h2>
         <motion.div
           className="divider-gold mx-auto mb-6"
