@@ -12,7 +12,7 @@ const MidCTASection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        Découvrez combien vous pourriez <span className="text-gradient-gold">économiser chaque année</span>
+        Impôts, retraite, protection : <span className="text-gradient-gold">où en êtes-vous ?</span>
       </motion.h3>
       <motion.p
         className="text-muted-foreground mb-8 max-w-lg mx-auto"
