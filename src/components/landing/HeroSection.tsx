@@ -6,9 +6,9 @@ import heroBg from "@/assets/hero-bg.jpg";
 import logoRetiro from "@/assets/logo-retiro-v2.png";
 
 const benefits = [
-  "Jusqu'à 10 000 € d'économies fiscales dès la 1ʳᵉ année",
-  "Bilan retraite 100 % gratuit, sans engagement",
-  "Un conseiller patrimonial dédié à votre situation",
+  "Réduisez vos impôts de 3 000 à 10 000 € par an grâce au PER",
+  "Anticipez votre retraite : découvrez ce que vous toucherez vraiment",
+  "Protégez votre famille et vos revenus en cas d'imprévu",
 ];
 
 const HeroSection = () => (
