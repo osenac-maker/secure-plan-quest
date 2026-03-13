@@ -6,31 +6,31 @@ import { motion } from "framer-motion";
 const solutions = [
   {
     icon: PiggyBank,
-    title: "PER — Épargne Retraite",
-    desc: "Déduisez jusqu'à 10 % de vos revenus imposables. Le PER est le levier fiscal n°1 pour les TNS et dirigeants : vous payez moins d'impôts aujourd'hui et vous constituez un capital pour demain.",
+    title: "PER — Réduire ses impôts en épargnant",
+    desc: "Le Plan d'Épargne Retraite vous permet de déduire vos versements de votre revenu imposable — jusqu'à 10 % de vos revenus professionnels. Concrètement, vous payez moins d'impôts chaque année tout en vous constituant un capital disponible à la retraite, en rente ou en capital.",
     link: "/per-independants",
-    cta: "En savoir plus sur le PER",
+    cta: "Comprendre le PER en détail",
   },
   {
     icon: BarChart3,
-    title: "Retraite Dirigeants",
-    desc: "Article 83, Madelin, PER Obligatoire : des dispositifs réservés aux dirigeants qui permettent de se constituer une retraite complémentaire significative, en partie financée par l'entreprise.",
+    title: "Retraite — Combler l'écart avec les salariés",
+    desc: "Les dirigeants et TNS cotisent moins que les salariés. Résultat : une retraite souvent 2 à 3 fois inférieure. Les dispositifs Article 83, Madelin et PER Obligatoire permettent de rattraper cet écart, avec des cotisations déductibles en partie financées par votre entreprise.",
     link: "/retraite-dirigeants",
-    cta: "Explorer les dispositifs",
+    cta: "Voir les solutions retraite",
   },
   {
     icon: Shield,
-    title: "Prévoyance",
-    desc: "Maintenez vos revenus en cas d'arrêt de travail, d'invalidité ou de décès. Des garanties sur mesure, déductibles fiscalement, pour protéger votre famille et votre activité.",
+    title: "Prévoyance — Protéger sa famille et ses revenus",
+    desc: "En cas d'arrêt de travail, d'invalidité ou de décès, le régime obligatoire ne couvre qu'une fraction de vos revenus. La prévoyance complémentaire maintient vos revenus, protège votre conjoint et vos enfants — avec des cotisations déductibles de votre BNC ou BIC.",
     link: "/prevoyance",
-    cta: "Protéger mes revenus",
+    cta: "Évaluer ma couverture",
   },
   {
     icon: HeartPulse,
-    title: "Mutuelle TNS",
-    desc: "Une complémentaire santé performante avec déduction fiscale Loi Madelin. Moins de charges, de meilleurs remboursements — adaptés à votre profil.",
+    title: "Mutuelle — Se soigner sans se ruiner",
+    desc: "Les remboursements du régime obligatoire laissent des restes à charge importants en dentaire, optique et hospitalisation. La mutuelle Madelin vous offre de meilleurs remboursements avec un avantage fiscal : vos cotisations sont déductibles de votre revenu imposable.",
     link: "/mutuelle",
-    cta: "Voir les offres santé",
+    cta: "Comparer les mutuelles TNS",
   },
 ];
 
