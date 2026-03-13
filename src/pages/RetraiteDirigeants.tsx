@@ -44,7 +44,7 @@ const RetraiteDirigeants = () => (
         </div>
 
         <div className="bg-card rounded-lg p-8 shadow-card border border-border mb-8">
-          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Les solutions</h2>
+          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Les dispositifs pour rattraper l'écart et réduire vos impôts</h2>
           <div className="space-y-4">
             {[
               "PER individuel avec déduction fiscale à l'entrée",
