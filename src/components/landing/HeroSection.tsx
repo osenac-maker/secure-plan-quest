@@ -6,9 +6,9 @@ import heroBg from "@/assets/hero-bg.jpg";
 import logoRetiro from "@/assets/logo-retiro-v2.png";
 
 const benefits = [
-  "Jusqu'à 10 000 € d'économies fiscales par an",
-  "Audit 100% gratuit et sans engagement",
-  "Votre copilote patrimonial dédié",
+  "Jusqu'à 10 000 € d'économies fiscales dès la 1ʳᵉ année",
+  "Bilan retraite 100 % gratuit, sans engagement",
+  "Un conseiller patrimonial dédié à votre situation",
 ];
 
 const HeroSection = () => (
