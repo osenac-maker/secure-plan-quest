@@ -19,7 +19,7 @@ const RetraiteDirigeants = () => (
         </motion.h1>
         <motion.div className="divider-gold mb-6" initial={{ width: 0 }} animate={{ width: 60 }} transition={{ delay: 0.2, duration: 0.6 }} />
         <motion.p className="text-muted-foreground text-lg" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
-          Anticiper pour mieux vivre : les stratégies pour combler l'écart de retraite.
+          Sans action, votre retraite sera 2 à 3 fois inférieure à vos revenus actuels. Découvrez les dispositifs qui permettent de combler cet écart — tout en réduisant vos impôts.
         </motion.p>
       </div>
     </div>
