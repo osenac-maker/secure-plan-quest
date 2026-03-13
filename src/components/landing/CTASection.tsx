@@ -19,7 +19,7 @@ const CTASection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        Prêt à sécuriser votre avenir ?
+        Moins d'impôts, plus de retraite, une famille protégée
       </motion.h2>
       <motion.div
         className="divider-gold mx-auto mb-6"
