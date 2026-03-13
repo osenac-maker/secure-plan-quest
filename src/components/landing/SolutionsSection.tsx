@@ -68,7 +68,7 @@ const SolutionsSection = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          Nous combinons ces dispositifs en une stratégie cohérente, calibrée sur vos revenus, votre statut et vos objectifs.
+          Chaque dispositif répond à l'un de vos trois enjeux clés : réduire vos impôts, préparer votre retraite, protéger vos proches. Nous les combinons en une stratégie globale, adaptée à votre statut et vos revenus.
         </motion.p>
       </div>
 

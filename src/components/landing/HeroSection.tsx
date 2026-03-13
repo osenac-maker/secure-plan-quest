@@ -53,7 +53,7 @@ const HeroSection = () => (
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <p className="text-lg md:text-xl text-white/75 italic font-heading">
-            Réduisez vos impôts, préparez votre retraite et protégez vos proches — avec une stratégie patrimoniale conçue pour les dirigeants et indépendants.
+            Chaque année, des milliers de dirigeants et indépendants paient trop d'impôts, sous-estiment leur baisse de revenus à la retraite et laissent leur famille sans protection. Nous vous aidons à inverser la tendance.
           </p>
         </motion.div>
 

@@ -21,7 +21,7 @@ const MidCTASection = () => (
         viewport={{ once: true }}
         transition={{ delay: 0.15 }}
       >
-        Répondez à 5 questions en 2 minutes. Recevez une estimation personnalisée de votre retraite et de vos économies fiscales possibles.
+        Notre simulateur gratuit estime votre retraite, calcule vos économies d'impôts possibles et évalue votre niveau de protection. Résultats immédiats, sans engagement.
       </motion.p>
       <motion.div
         initial={{ opacity: 0, y: 10 }}

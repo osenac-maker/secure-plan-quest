@@ -59,7 +59,7 @@ const ProblemSection = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          Ces réalités concernent 80 % des dirigeants et indépendants. La bonne nouvelle : il existe des solutions concrètes.
+          Moins d'impôts, une retraite à la hauteur de vos efforts, une famille protégée : ces trois objectifs sont atteignables avec la bonne stratégie.
         </motion.p>
       </div>
 

@@ -103,8 +103,8 @@ const Mutuelle = () => (
         </div>
 
         <div className="bg-hero rounded-lg p-10 text-center">
-          <h3 className="font-heading text-xl font-bold text-foreground mb-2">Comparez les mutuelles TNS</h3>
-          <p className="text-muted-foreground text-sm mb-6">Notre audit inclut une analyse de votre couverture santé et des recommandations personnalisées.</p>
+          <h3 className="font-heading text-xl font-bold text-foreground mb-2">Trouvez la mutuelle qui vous fait payer moins d'impôts</h3>
+          <p className="text-muted-foreground text-sm mb-6">Notre bilan gratuit compare les offres de nos 6 partenaires assureurs et calcule votre économie fiscale Madelin. Sans engagement.</p>
           <Link to="/simulateur">
             <Button size="lg" className="bg-copper hover:bg-copper-light text-white gap-2 font-medium border-0 group">
               Faire mon bilan retraite gratuit <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
