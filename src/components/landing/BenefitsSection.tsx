@@ -5,23 +5,23 @@ import sectionMeeting from "@/assets/section-meeting.jpg";
 const benefits = [
   {
     icon: Compass,
-    title: "Cap fiscal optimisé",
-    desc: "Réduisez votre impôt sur le revenu grâce au PER et aux dispositifs patrimoniaux adaptés aux indépendants.",
+    title: "Optimisation fiscale ciblée",
+    desc: "Nous identifions chaque levier fiscal adapté à votre statut pour réduire votre imposition — légalement et durablement.",
   },
   {
     icon: TrendingUp,
-    title: "Plan de vol retraite",
-    desc: "Anticipez votre retraite avec un plan sur mesure qui comble le manque à gagner des régimes obligatoires.",
+    title: "Retraite anticipée et chiffrée",
+    desc: "Vous savez exactement combien vous toucherez à la retraite et quels dispositifs activer pour combler l'écart.",
   },
   {
     icon: Heart,
-    title: "Protection équipage",
-    desc: "Sécurisez vos revenus et votre famille avec des solutions de prévoyance et mutuelle adaptées.",
+    title: "Protection complète",
+    desc: "Vos revenus, votre famille et votre entreprise sont protégés — même en cas d'imprévu. Zéro zone d'ombre.",
   },
   {
     icon: Shield,
-    title: "Copilote expert",
-    desc: "Un conseiller patrimonial dédié vous accompagne dans chaque étape de votre stratégie financière.",
+    title: "Un interlocuteur unique",
+    desc: "Un conseiller patrimonial dédié coordonne l'ensemble de votre stratégie. Pas de call center, pas de turnover.",
   },
 ];
 
