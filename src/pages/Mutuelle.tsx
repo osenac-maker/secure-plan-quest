@@ -56,13 +56,13 @@ const Mutuelle = () => (
         </div>
 
         <div className="bg-card rounded-lg p-8 shadow-card border border-border mb-8">
-          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Les postes clés à vérifier</h2>
+          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Les postes de santé à surveiller en priorité</h2>
           <div className="space-y-4">
             {[
-              "Hospitalisation : chambre particulière, dépassements d'honoraires",
-              "Optique : montures + verres progressifs, lentilles",
-              "Dentaire : couronnes, implants, orthodontie adulte",
-              "Médecine douce : ostéopathie, acupuncture, psychologue",
+              "Hospitalisation : vérifiez la prise en charge de la chambre particulière et des dépassements d'honoraires",
+              "Optique : couverture des verres progressifs, lentilles et montures de qualité",
+              "Dentaire : couronnes, implants et orthodontie adulte — les postes les plus coûteux",
+              "Médecine douce : ostéopathie, acupuncture, psychologue — de plus en plus essentiels au quotidien",
             ].map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
