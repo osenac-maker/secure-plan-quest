@@ -19,7 +19,7 @@ const PERIndependants = () => (
         </motion.h1>
         <motion.div className="divider-gold mb-6" initial={{ width: 0 }} animate={{ width: 60 }} transition={{ delay: 0.2, duration: 0.6 }} />
         <motion.p className="text-muted-foreground text-lg" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
-          Le guide complet pour réduire vos impôts tout en préparant votre retraite.
+          Le PER est le dispositif le plus avantageux pour les TNS : chaque euro versé réduit votre impôt et constitue votre capital retraite. Voici comment en profiter.
         </motion.p>
       </div>
     </div>
