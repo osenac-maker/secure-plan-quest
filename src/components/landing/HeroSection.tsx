@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg.jpg";
-import logoRetiro from "@/assets/logo-retiro-v2.png";
+import heroBg from "@/assets/hero-bg-with-logo.jpg";
 
 const benefits = [
   "Réduisez vos impôts de 3 000 à 10 000 € par an grâce au PER",
@@ -16,25 +15,13 @@ const HeroSection = () => (
     {/* Background image */}
     <div className="absolute inset-0">
       <img src={heroBg} alt="" className="w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(10,40%,8%)]/90 via-[hsl(15,30%,12%)]/75 to-transparent/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(10,40%,8%)]/85 via-[hsl(15,30%,12%)]/50 to-transparent/10" />
     </div>
 
     <div className="container mx-auto px-4 relative z-10 py-32">
       <div className="max-w-2xl">
-        {/* Logo with glowing backdrop */}
-        <motion.div
-          className="relative inline-block mb-12"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, type: "spring" }}
-        >
-          <div className="absolute -inset-6 bg-gradient-to-br from-copper/20 via-white/10 to-gold/15 rounded-2xl blur-2xl" />
-          <img
-            src={logoRetiro}
-            alt="RETIRO Patrimoine"
-            className="relative h-36 md:h-44 w-auto drop-shadow-2xl"
-          />
-        </motion.div>
+        {/* Spacer for layout */}
+        <div className="mb-8" />
 
         <motion.h1
           className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
