@@ -30,11 +30,11 @@ const PERIndependants = () => (
           <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Comment le PER réduit vos impôts tout en préparant votre retraite</h2>
           <div className="space-y-4">
             {[
-              "Déduction fiscale des versements de votre revenu imposable",
-              "Jusqu'à 10% de vos revenus déductibles (plafond ~35 000 €)",
-              "Cumul possible avec les plafonds non utilisés des 3 années précédentes",
-              "Sortie en capital ou en rente au moment de la retraite",
-              "Déblocage anticipé pour l'achat de la résidence principale",
+              "Chaque versement est déduit de votre revenu imposable — vous payez immédiatement moins d'impôts",
+              "Plafond généreux : jusqu'à 10 % de vos revenus professionnels (soit ~35 000 € pour un BNC de 350 000 €)",
+              "Rattrapage possible : cumulez les plafonds non utilisés des 3 dernières années pour un versement exceptionnel",
+              "Sortie flexible à la retraite : récupérez votre argent en capital, en rente, ou un mix des deux",
+              "Cas de déblocage anticipé : achat de résidence principale, invalidité, fin de droits au chômage",
             ].map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-copper flex-shrink-0 mt-0.5" />
