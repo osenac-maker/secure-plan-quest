@@ -37,14 +37,14 @@ const BenefitsSection = () => (
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Notre <span className="text-gradient-gold">mission</span>
+            Notre <span className="text-gradient-gold">engagement</span>
           </h2>
           <div className="divider-gold mb-6" />
           <p className="text-muted-foreground leading-relaxed mb-4">
-            Comme un commandant de bord, nous vous aidons à garder le cap sur vos objectifs patrimoniaux. Notre expertise fiscale et sociale vous assure un vol sans turbulence vers la sérénité financière.
+            Nous accompagnons les dirigeants et indépendants qui veulent reprendre le contrôle de leur fiscalité, leur retraite et la protection de leurs proches — sans jargon, sans pression commerciale.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            À chaque étape de votre parcours, votre copilote dédié vous guide avec précision et bienveillance vers la réalisation de tous vos projets.
+            Chaque recommandation est fondée sur une analyse objective de votre situation. Votre intérêt passe toujours en premier.
           </p>
         </motion.div>
         <motion.div
