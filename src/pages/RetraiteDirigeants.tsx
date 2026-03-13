@@ -47,10 +47,10 @@ const RetraiteDirigeants = () => (
           <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Les dispositifs pour rattraper l'écart et réduire vos impôts</h2>
           <div className="space-y-4">
             {[
-              "PER individuel avec déduction fiscale à l'entrée",
-              "Contrat Madelin pour la prévoyance et la retraite complémentaire",
-              "Assurance vie pour la constitution d'un capital retraite flexible",
-              "Stratégie de rémunération mixte (salaire + dividendes) optimisée",
+              "PER individuel : déduisez vos versements de votre revenu imposable et constituez un capital retraite",
+              "Contrat Madelin : une retraite complémentaire avec des cotisations 100 % déductibles",
+              "Assurance vie : un complément de revenus flexible, avec une fiscalité avantageuse après 8 ans",
+              "Stratégie de rémunération optimisée : le bon équilibre entre salaire, dividendes et épargne retraite",
             ].map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-copper flex-shrink-0 mt-0.5" />
