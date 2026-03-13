@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg.jpg";
-import logoRetiro from "@/assets/logo-retiro-v2.png";
+import heroBg from "@/assets/hero-bg-with-logo.jpg";
 
 const benefits = [
   "Réduisez vos impôts de 3 000 à 10 000 € par an grâce au PER",
