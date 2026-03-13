@@ -38,14 +38,14 @@ const Mutuelle = () => (
     <div className="py-16">
       <div className="container mx-auto px-4 max-w-3xl">
         <div className="bg-card rounded-lg p-8 shadow-card border border-border mb-8">
-          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Pourquoi souscrire une mutuelle TNS ?</h2>
+          <h2 className="font-heading text-xl font-semibold text-foreground mb-5">Pourquoi une mutuelle est indispensable pour un indépendant</h2>
           <div className="space-y-4">
             {[
-              "Remboursements limités du régime obligatoire (SSI / CPAM)",
-              "Restes à charge élevés en dentaire, optique et hospitalisation",
-              "Cotisations déductibles du revenu imposable (loi Madelin)",
-              "Couverture personnalisable selon votre profil et vos besoins",
-              "Protection étendue à votre conjoint et vos enfants",
+              "Le régime obligatoire (SSI/CPAM) ne rembourse en moyenne que 65 à 70 % de vos frais de santé",
+              "Sans mutuelle, vos restes à charge en dentaire, optique et hospitalisation peuvent atteindre plusieurs milliers d'euros",
+              "Avec la loi Madelin, vos cotisations sont déductibles : moins d'impôts pour une meilleure couverture",
+              "Couverture personnalisable : choisissez les garanties adaptées à votre âge, votre santé et votre famille",
+              "Protégez aussi votre conjoint et vos enfants sous le même contrat",
             ].map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <Heart className="w-5 h-5 text-copper flex-shrink-0 mt-0.5" />
