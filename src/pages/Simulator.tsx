@@ -5,27 +5,28 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { ArrowRight, ArrowLeft, CheckCircle, Shield, Clock, Lock } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle, Shield, Clock, Lock, Users, TrendingUp, Award, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SimulatorData, calculateResults } from "@/lib/scoring";
 
 const steps = [
-  { title: "Votre profil", subtitle: "Quelques informations de base pour estimer votre retraite" },
-  { title: "Votre situation", subtitle: "Ces données nous aident à affiner votre projection" },
-  { title: "Votre épargne", subtitle: "Pour calculer vos économies fiscales potentielles" },
-  { title: "Vos coordonnées", subtitle: "Pour recevoir votre bilan personnalisé par email" },
+  { title: "Votre profil", subtitle: "Quelques informations de base pour estimer votre retraite", benefit: "Nous adaptons nos calculs à votre statut et votre tranche d'imposition" },
+  { title: "Votre situation", subtitle: "Ces données nous aident à affiner votre projection", benefit: "Votre situation familiale impacte directement vos droits et avantages fiscaux" },
+  { title: "Votre épargne", subtitle: "Pour calculer vos économies fiscales potentielles", benefit: "Nous identifions les leviers pour optimiser votre effort d'épargne" },
+  { title: "Vos coordonnées", subtitle: "Recevez votre bilan personnalisé complet", benefit: "" },
 ];
 
 const statusOptions = [
-  { value: "freelance", label: "Freelance / Micro-entrepreneur" },
-  { value: "dirigeant", label: "Dirigeant de société" },
-  { value: "liberal", label: "Profession libérale" },
-  { value: "salarie", label: "Salarié cadre" },
+  { value: "freelance", label: "Freelance / Micro-entrepreneur", icon: "💻" },
+  { value: "dirigeant", label: "Dirigeant de société", icon: "🏢" },
+  { value: "liberal", label: "Profession libérale", icon: "⚕️" },
+  { value: "salarie", label: "Salarié cadre", icon: "👔" },
 ];
 
 const Simulator = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [data, setData] = useState<Partial<SimulatorData>>({
     age: 42,
     status: "",
@@ -51,10 +52,14 @@ const Simulator = () => {
   };
 
   const submit = () => {
+    setIsSubmitting(true);
     const results = calculateResults(data as SimulatorData);
     sessionStorage.setItem("simulatorData", JSON.stringify(data));
     sessionStorage.setItem("simulatorResults", JSON.stringify(results));
-    navigate("/resultats");
+    // Anticipation delay before showing results
+    setTimeout(() => {
+      navigate("/resultats");
+    }, 2200);
   };
 
   const canNext = () => {
@@ -64,6 +69,58 @@ const Simulator = () => {
   };
 
   const progressPercent = ((step + 1) / steps.length) * 100;
+
+  // Submitting / anticipation screen
+  if (isSubmitting) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <div className="pt-24 pb-16">
+          <div className="container mx-auto px-4 max-w-2xl">
+            <motion.div
+              className="bg-card rounded-2xl p-12 shadow-card border border-border text-center"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4 }}
+            >
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                className="w-16 h-16 mx-auto mb-6 rounded-full border-4 border-muted border-t-copper"
+              />
+              <h2 className="font-heading text-2xl font-bold text-foreground mb-3">
+                Analyse en cours…
+              </h2>
+              <div className="space-y-3 max-w-sm mx-auto">
+                {[
+                  { text: "Calcul de votre pension estimée", delay: 0 },
+                  { text: "Évaluation de vos économies fiscales", delay: 0.6 },
+                  { text: "Génération de vos recommandations", delay: 1.2 },
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    className="flex items-center gap-3 text-sm"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: item.delay, duration: 0.4 }}
+                  >
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: item.delay + 0.3, duration: 0.3 }}
+                    >
+                      <CheckCircle className="w-4 h-4 text-accent" />
+                    </motion.div>
+                    <span className="text-muted-foreground">{item.text}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -81,12 +138,34 @@ const Simulator = () => {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4 }}
               >
+                <div className="inline-flex items-center gap-2 bg-copper/10 text-copper text-xs font-semibold px-4 py-1.5 rounded-full mb-4">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  Déjà 2 400+ bilans réalisés
+                </div>
                 <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-3">
-                  Votre bilan retraite <span className="text-gradient-gold">gratuit</span>
+                  Découvrez combien vous perdez <br className="hidden md:block" />
+                  <span className="text-gradient-gold">chaque année en impôts</span>
                 </h1>
-                <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-6">
-                  En 2 minutes, découvrez combien vous toucherez à la retraite, combien vous pouvez économiser en impôts et si votre famille est bien protégée.
+                <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-4">
+                  En 2 minutes, obtenez votre projection retraite personnalisée, vos économies fiscales potentielles et un plan d'action concret pour protéger votre famille.
                 </p>
+                <div className="bg-card border border-border rounded-xl p-4 max-w-lg mx-auto mb-6">
+                  <p className="text-sm font-medium text-foreground mb-2">Votre bilan gratuit comprend :</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-muted-foreground">
+                    <span className="flex items-center gap-1.5">
+                      <TrendingUp className="w-3.5 h-3.5 text-accent" />
+                      Économies fiscales
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Award className="w-3.5 h-3.5 text-copper" />
+                      Projection retraite
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Shield className="w-3.5 h-3.5 text-copper" />
+                      Protection famille
+                    </span>
+                  </div>
+                </div>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm text-muted-foreground">
                   <span className="flex items-center gap-1.5">
                     <Clock className="w-4 h-4 text-copper" />
@@ -150,7 +229,15 @@ const Simulator = () => {
               className="bg-card rounded-2xl p-8 shadow-card border border-border"
             >
               <h2 className="font-heading text-2xl font-bold text-foreground mb-1">{steps[step].title}</h2>
-              <p className="text-muted-foreground text-sm mb-8">{steps[step].subtitle}</p>
+              <p className="text-muted-foreground text-sm mb-6">{steps[step].subtitle}</p>
+
+              {/* Contextual benefit hint */}
+              {steps[step].benefit && (
+                <div className="flex items-start gap-2 bg-copper/5 border border-copper/15 rounded-lg p-3 mb-6">
+                  <Sparkles className="w-4 h-4 text-copper mt-0.5 shrink-0" />
+                  <p className="text-xs text-muted-foreground">{steps[step].benefit}</p>
+                </div>
+              )}
 
               {step === 0 && (
                 <div className="space-y-6">
@@ -161,12 +248,13 @@ const Simulator = () => {
                         <button
                           key={opt.value}
                           onClick={() => update("status", opt.value)}
-                          className={`p-4 rounded-xl border text-left text-sm font-medium transition-all ${
+                          className={`p-4 rounded-xl border text-left text-sm font-medium transition-all flex items-center gap-3 ${
                             data.status === opt.value
                               ? "border-copper bg-copper/5 text-foreground ring-1 ring-copper/30"
                               : "border-border text-muted-foreground hover:border-copper/50"
                           }`}
                         >
+                          <span className="text-lg">{opt.icon}</span>
                           {opt.label}
                         </button>
                       ))}
@@ -293,9 +381,9 @@ const Simulator = () => {
 
               {step === 3 && (
                 <div className="space-y-6">
-                  <div className="bg-hero rounded-lg p-4 mb-2">
-                    <p className="text-sm text-foreground font-medium mb-1">🎯 Vous y êtes presque !</p>
-                    <p className="text-xs text-muted-foreground">Renseignez vos coordonnées pour recevoir votre bilan détaillé avec vos économies fiscales, votre projection retraite et nos recommandations personnalisées.</p>
+                  <div className="bg-accent/5 border border-accent/20 rounded-lg p-4 mb-2">
+                    <p className="text-sm text-foreground font-semibold mb-1">🎯 Dernière étape — vos résultats sont prêts</p>
+                    <p className="text-xs text-muted-foreground">Renseignez vos coordonnées pour recevoir votre bilan détaillé : <strong>projection retraite</strong>, <strong>économies d'impôts</strong> et <strong>recommandations personnalisées</strong>.</p>
                   </div>
                   <div>
                     <Label className="text-foreground">Nom complet</Label>
@@ -328,7 +416,7 @@ const Simulator = () => {
                   </div>
                   <div className="flex items-start gap-2 text-xs text-muted-foreground">
                     <Lock className="w-3.5 h-3.5 mt-0.5 shrink-0" />
-                    <span>Vos données sont protégées et ne seront jamais partagées. Un conseiller dédié vous contactera uniquement si vous le souhaitez. Conforme RGPD.</span>
+                    <span>Vos données sont protégées et ne seront jamais partagées. Aucun démarchage commercial. Conforme RGPD.</span>
                   </div>
                 </div>
               )}
@@ -347,8 +435,17 @@ const Simulator = () => {
                   disabled={!canNext()}
                   className="gap-2 bg-copper hover:bg-copper-light text-white border-0 font-medium px-8 shadow-md shadow-copper/20"
                 >
-                  {step === steps.length - 1 ? "Voir mes résultats" : "Continuer"}
-                  <ArrowRight className="w-4 h-4" />
+                  {step === steps.length - 1 ? (
+                    <>
+                      <Sparkles className="w-4 h-4" />
+                      Découvrir mes résultats
+                    </>
+                  ) : (
+                    <>
+                      Continuer
+                      <ArrowRight className="w-4 h-4" />
+                    </>
+                  )}
                 </Button>
               </div>
             </motion.div>
@@ -364,6 +461,31 @@ const Simulator = () => {
             <span>✓ 100 % gratuit</span>
             <span>✓ Résultats immédiats</span>
             <span>✓ Sans engagement</span>
+          </motion.div>
+
+          {/* Social proof — always visible */}
+          <motion.div
+            className="mt-8 bg-card border border-border rounded-xl p-4 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+          >
+            <div className="flex items-center gap-2">
+              <Users className="w-4 h-4 text-copper" />
+              <span className="text-xs text-muted-foreground"><strong className="text-foreground">2 400+</strong> bilans réalisés</span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-border" />
+            <div className="flex items-center gap-2">
+              <Award className="w-4 h-4 text-copper" />
+              <span className="text-xs text-muted-foreground"><strong className="text-foreground">15 ans</strong> d'expertise retraite</span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-border" />
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className="text-copper text-xs">★</span>
+              ))}
+              <span className="text-xs text-muted-foreground ml-1">4.9/5</span>
+            </div>
           </motion.div>
         </div>
       </div>
