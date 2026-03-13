@@ -73,9 +73,9 @@ const Mutuelle = () => (
         </div>
 
         <div className="bg-card rounded-lg p-8 shadow-card border border-border mb-8">
-          <h2 className="font-heading text-xl font-semibold text-foreground mb-3">Avantage fiscal Madelin</h2>
+          <h2 className="font-heading text-xl font-semibold text-foreground mb-3">L'avantage fiscal Madelin : payez moins d'impôts en vous soignant mieux</h2>
           <p className="text-sm text-muted-foreground mb-6">
-            Les cotisations de mutuelle Madelin sont déductibles de votre bénéfice imposable, dans la limite de 3,75 % du revenu + 7 % du PASS.
+            Vos cotisations de mutuelle Madelin sont déductibles de votre bénéfice imposable, dans la limite de 3,75 % du revenu + 7 % du PASS. Concrètement, l'État finance une partie de votre couverture santé via la réduction d'impôt.
           </p>
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-secondary rounded-lg p-5 text-center">
