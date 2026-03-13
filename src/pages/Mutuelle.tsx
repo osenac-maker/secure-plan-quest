@@ -94,7 +94,7 @@ const Mutuelle = () => (
           <p className="text-muted-foreground text-sm mb-6">Notre audit inclut une analyse de votre couverture santé et des recommandations personnalisées.</p>
           <Link to="/simulateur">
             <Button size="lg" className="bg-copper hover:bg-copper-light text-white gap-2 font-medium border-0 group">
-              Bilan gratuit <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              Faire mon bilan retraite gratuit <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
         </div>

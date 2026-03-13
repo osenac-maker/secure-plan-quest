@@ -73,7 +73,7 @@ const Navbar = () => {
           </Link>
           <Link to="/simulateur">
             <Button size="sm" className="bg-copper hover:bg-copper-light text-white border-0 font-medium">
-              Bilan gratuit
+              Faire mon bilan retraite gratuit
             </Button>
           </Link>
         </div>
@@ -112,7 +112,7 @@ const Navbar = () => {
             </Link>
             <Link to="/simulateur" onClick={() => setOpen(false)}>
               <Button size="sm" className="w-full bg-copper hover:bg-copper-light text-white border-0">
-                Bilan gratuit
+                Faire mon bilan retraite gratuit
               </Button>
             </Link>
           </motion.div>

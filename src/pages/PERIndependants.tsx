@@ -66,7 +66,7 @@ const PERIndependants = () => (
           <p className="text-muted-foreground text-sm mb-6">Découvrez en 2 minutes combien vous pouvez économiser avec un PER.</p>
           <Link to="/simulateur">
             <Button size="lg" className="bg-copper hover:bg-copper-light text-white gap-2 font-medium border-0 group">
-              Faire mon bilan gratuit <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              Estimer mes économies d'impôts <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
         </div>
