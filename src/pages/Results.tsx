@@ -117,7 +117,7 @@ const Results = () => {
               </p>
               <a href="https://calendly.com/" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" variant="secondary" className="gap-2 font-semibold">
-                  Réserver mon créneau
+                  Découvrir ma stratégie retraite
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </a>

@@ -90,7 +90,7 @@ const HowItWorksSection = () => (
       >
         <Link to="/simulateur">
           <Button size="lg" className="bg-copper hover:bg-copper-light text-white text-base gap-2 font-medium px-10 border-0 group shadow-lg shadow-copper/30">
-            Commencer mon bilan gratuit →
+            Découvrir ma stratégie retraite →
           </Button>
         </Link>
       </motion.div>

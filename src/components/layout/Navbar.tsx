@@ -112,7 +112,7 @@ const Navbar = () => {
             </Link>
             <Link to="/simulateur" onClick={() => setOpen(false)}>
               <Button size="sm" className="w-full bg-copper hover:bg-copper-light text-white border-0">
-                Bilan gratuit
+                Faire mon bilan retraite gratuit
               </Button>
             </Link>
           </motion.div>
