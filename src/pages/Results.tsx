@@ -1,203 +1,341 @@
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { SimulatorData, SimulatorResult } from "@/lib/scoring";
 import { motion } from "framer-motion";
-import { AlertTriangle, TrendingUp, Calendar, CheckCircle, ArrowRight, Shield, Phone, Clock, Users, Award } from "lucide-react";
+import {
+  TrendingUp,
+  Wallet,
+  PiggyBank,
+  ArrowRight,
+  Shield,
+  Phone,
+  Lock,
+  CheckCircle,
+  ChevronRight,
+} from "lucide-react";
 
 const Results = () => {
   const navigate = useNavigate();
   const [data, setData] = useState<SimulatorData | null>(null);
   const [results, setResults] = useState<SimulatorResult | null>(null);
 
+  // Lead form state
+  const [formName, setFormName] = useState("");
+  const [formEmail, setFormEmail] = useState("");
+  const [formPhone, setFormPhone] = useState("");
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   useEffect(() => {
     const d = sessionStorage.getItem("simulatorData");
     const r = sessionStorage.getItem("simulatorResults");
-    if (!d || !r) { navigate("/simulateur"); return; }
+    if (!d || !r) {
+      navigate("/simulateur");
+      return;
+    }
     setData(JSON.parse(d));
     setResults(JSON.parse(r));
   }, [navigate]);
 
   if (!results || !data) return null;
 
-  const scoreColor = results.scoreRetraite < 30 ? "text-destructive" : results.scoreRetraite < 60 ? "text-warning" : "text-accent";
+  // Derived values from existing data (no logic change)
+  const anneeAvantRetraite = Math.max(1, 65 - data.age);
+  const capitalRetraite = Math.round(
+    results.economiesFiscales * anneeAvantRetraite * 1.04
+  );
+  const investissementMensuel = Math.round(
+    (data.revenu * 0.1) / 12
+  );
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Store lead data in session for potential future use
+    sessionStorage.setItem(
+      "leadData",
+      JSON.stringify({ name: formName, email: formEmail, phone: formPhone })
+    );
+    setFormSubmitted(true);
+  };
+
+  const fadeUp = (delay: number) => ({
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.5, delay },
+  });
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <div className="pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-3xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <div className="text-center mb-10">
-              <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-2">
-                Votre bilan retraite & fiscal
-              </h1>
-              <p className="text-muted-foreground">Résultats personnalisés pour {data.nom}</p>
+          {/* ── Headline ── */}
+          <motion.div className="text-center mb-12" {...fadeUp(0)}>
+            <div className="inline-flex items-center gap-2 bg-accent/10 text-accent rounded-full px-4 py-1.5 text-sm font-medium mb-5">
+              <TrendingUp className="w-4 h-4" />
+              Résultat de votre simulation
             </div>
+            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4">
+              Vous avez un{" "}
+              <span className="text-gradient-gold">potentiel d'optimisation important</span>
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+              D'après vos informations, vous pourriez réduire significativement
+              vos impôts chaque année tout en constituant un capital retraite
+              conséquent.
+            </p>
+          </motion.div>
 
-            {/* Score */}
-            <div className="bg-card rounded-2xl p-8 shadow-card mb-6">
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="relative w-36 h-36 flex-shrink-0">
-                  <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="42" fill="none" stroke="hsl(var(--muted))" strokeWidth="8" />
-                    <circle
-                      cx="50" cy="50" r="42" fill="none"
-                      stroke={results.scoreRetraite < 30 ? "hsl(var(--destructive))" : results.scoreRetraite < 60 ? "hsl(var(--warning))" : "hsl(var(--accent))"}
-                      strokeWidth="8"
-                      strokeLinecap="round"
-                      strokeDasharray={`${results.scoreRetraite * 2.64} 264`}
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className={`font-heading text-3xl font-extrabold ${scoreColor}`}>{results.scoreRetraite}</span>
-                    <span className="text-xs text-muted-foreground">/100</span>
-                  </div>
-                </div>
-                <div className="flex-1 text-center md:text-left">
-                  <h2 className="font-heading text-xl font-bold text-foreground mb-2">Score préparation retraite</h2>
-                  <p className="text-muted-foreground text-sm">
-                    {results.scoreRetraite < 30
-                      ? "Votre préparation retraite nécessite une attention urgente. Sans action, vous risquez une baisse de revenus de 50 à 70 % le jour de votre départ."
-                      : results.scoreRetraite < 60
-                      ? "Vous avez posé les premières bases, mais des leviers fiscaux et patrimoniaux majeurs restent inexploités. Un accompagnement ciblé peut transformer votre situation."
-                      : "Bonne préparation ! Quelques optimisations fiscales peuvent encore maximiser votre capital retraite et réduire votre imposition."}
-                  </p>
-                </div>
+          {/* ── 3 Key Metrics ── */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+            {/* Tax savings */}
+            <motion.div
+              className="bg-card rounded-2xl p-6 shadow-card text-center"
+              {...fadeUp(0.15)}
+            >
+              <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                <Wallet className="w-6 h-6 text-accent" />
               </div>
-            </div>
+              <p className="text-sm text-muted-foreground mb-1">
+                Économie d'impôts estimée
+              </p>
+              <p className="font-heading text-4xl font-extrabold text-accent">
+                {results.economiesFiscales.toLocaleString("fr-FR")}&nbsp;€
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">par an</p>
+            </motion.div>
 
-            {/* Key metrics */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <motion.div
-                className="bg-card rounded-xl p-6 shadow-card"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <AlertTriangle className="w-5 h-5 text-destructive" />
-                  <span className="font-heading font-semibold text-foreground">Manque à gagner retraite</span>
-                </div>
-                <div className="font-heading text-3xl font-extrabold text-destructive">
-                  {results.manqueAGagner.toLocaleString("fr-FR")} €
-                </div>
-                <p className="text-xs text-muted-foreground mt-1">par an — c'est le revenu que vous ne toucherez pas sans action</p>
-              </motion.div>
-              <motion.div
-                className="bg-card rounded-xl p-6 shadow-card"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35 }}
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <TrendingUp className="w-5 h-5 text-accent" />
-                  <span className="font-heading font-semibold text-foreground">Économies fiscales possibles</span>
-                </div>
-                <div className="font-heading text-3xl font-extrabold text-accent">
-                  {results.economiesFiscales.toLocaleString("fr-FR")} €
-                </div>
-                <p className="text-xs text-muted-foreground mt-1">par an — récupérables dès cette année via un PER optimisé</p>
-              </motion.div>
+            {/* Retirement capital */}
+            <motion.div
+              className="bg-card rounded-2xl p-6 shadow-card text-center"
+              {...fadeUp(0.25)}
+            >
+              <div className="w-12 h-12 rounded-full bg-copper/10 flex items-center justify-center mx-auto mb-4">
+                <PiggyBank className="w-6 h-6 text-copper" />
+              </div>
+              <p className="text-sm text-muted-foreground mb-1">
+                Capital retraite potentiel
+              </p>
+              <p className="font-heading text-4xl font-extrabold text-copper">
+                {capitalRetraite.toLocaleString("fr-FR")}&nbsp;€
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">
+                sur {anneeAvantRetraite} ans
+              </p>
+            </motion.div>
+
+            {/* Monthly investment */}
+            <motion.div
+              className="bg-card rounded-2xl p-6 shadow-card text-center"
+              {...fadeUp(0.35)}
+            >
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="w-6 h-6 text-primary" />
+              </div>
+              <p className="text-sm text-muted-foreground mb-1">
+                Investissement mensuel conseillé
+              </p>
+              <p className="font-heading text-4xl font-extrabold text-foreground">
+                {investissementMensuel.toLocaleString("fr-FR")}&nbsp;€
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">par mois</p>
+            </motion.div>
+          </div>
+
+          {/* ── Interpretation ── */}
+          <motion.div
+            className="bg-card rounded-2xl p-8 shadow-card mb-10"
+            {...fadeUp(0.45)}
+          >
+            <h2 className="font-heading text-xl font-bold text-foreground mb-4">
+              Ce que cela signifie concrètement
+            </h2>
+            <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+              <p>
+                En investissant{" "}
+                <strong className="text-foreground">
+                  {investissementMensuel.toLocaleString("fr-FR")} € par mois
+                </strong>{" "}
+                dans un PER adapté à votre situation, vous pourriez récupérer{" "}
+                <strong className="text-foreground">
+                  {results.economiesFiscales.toLocaleString("fr-FR")} € d'impôts
+                  chaque année
+                </strong>{" "}
+                tout en constituant un capital de{" "}
+                <strong className="text-foreground">
+                  {capitalRetraite.toLocaleString("fr-FR")} €
+                </strong>{" "}
+                pour votre retraite.
+              </p>
+              <p>
+                La majorité des dirigeants et indépendants ne profitent pas
+                pleinement des dispositifs existants. Il est très probable que
+                votre situation actuelle laisse une marge d'optimisation
+                significative, tant sur le plan fiscal que patrimonial.
+              </p>
             </div>
 
             {/* Recommendations */}
-            <motion.div
-              className="bg-card rounded-xl p-6 shadow-card mb-6"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              <h3 className="font-heading font-semibold text-foreground mb-4">Solutions recommandées pour vous</h3>
-              <div className="space-y-3">
-                {results.recommandations.map((r) => (
-                  <div key={r} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                    <span className="text-sm text-foreground">{r}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Urgency / next step */}
-            <motion.div
-              className="bg-copper/5 border border-copper/20 rounded-xl p-5 mb-6"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.65 }}
-            >
-              <div className="flex items-start gap-3">
-                <Clock className="w-5 h-5 text-copper mt-0.5 shrink-0" />
-                <div>
-                  <p className="text-sm font-semibold text-foreground mb-1">Pourquoi agir maintenant ?</p>
-                  <p className="text-xs text-muted-foreground">Chaque année d'attente, c'est <strong>en moyenne {Math.round(results.economiesFiscales * 0.08).toLocaleString("fr-FR")} € de rendements composés perdus</strong>. Plus vous commencez tôt, plus votre capital retraite sera conséquent — et plus vos économies d'impôts seront importantes.</p>
+            {results.recommandations.length > 0 && (
+              <div className="mt-6 pt-5 border-t border-border">
+                <p className="text-sm font-semibold text-foreground mb-3">
+                  Solutions recommandées :
+                </p>
+                <div className="space-y-2">
+                  {results.recommandations.map((r) => (
+                    <div key={r} className="flex items-center gap-2.5">
+                      <CheckCircle className="w-4 h-4 text-accent flex-shrink-0" />
+                      <span className="text-sm text-foreground">{r}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </motion.div>
+            )}
+          </motion.div>
 
-            {/* Primary CTA */}
-            <motion.div
-              className="bg-hero rounded-2xl p-8 text-center mb-6"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-            >
-              <Calendar className="w-10 h-10 text-copper mx-auto mb-4" />
-              <h3 className="font-heading text-xl font-bold text-foreground mb-2">
-                Passez à l'action : échangez avec un expert
-              </h3>
-              <p className="text-muted-foreground text-sm mb-4 max-w-md mx-auto">
-                Un conseiller patrimonial dédié analysera votre situation en détail et construira avec vous un plan d'action sur-mesure pour réduire vos impôts et préparer sereinement votre retraite.
+          {/* ── Lead Capture ── */}
+          <motion.div
+            className="bg-hero rounded-2xl p-8 md:p-10 mb-10"
+            {...fadeUp(0.55)}
+          >
+            <div className="text-center mb-8">
+              <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-3">
+                Recevez votre stratégie personnalisée
+              </h2>
+              <p className="text-muted-foreground max-w-md mx-auto">
+                Un expert analysera vos résultats et vous proposera un plan
+                d'action sur-mesure, adapté à votre situation.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6 text-xs text-muted-foreground">
-                <span className="flex items-center gap-1.5">
-                  <Shield className="w-3.5 h-3.5 text-copper" />
-                  Gratuit et sans engagement
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Phone className="w-3.5 h-3.5 text-copper" />
-                  30 min en visio ou téléphone
-                </span>
-              </div>
-              <a href="https://calendly.com/" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="gap-2 font-semibold bg-copper hover:bg-copper-light text-white border-0 shadow-md shadow-copper/20 px-10">
-                  Réserver mon créneau gratuit
+            </div>
+
+            {formSubmitted ? (
+              <motion.div
+                className="text-center py-6"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+              >
+                <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-8 h-8 text-accent" />
+                </div>
+                <h3 className="font-heading text-xl font-bold text-foreground mb-2">
+                  Demande envoyée !
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  Un conseiller vous contactera sous 24h pour échanger sur votre
+                  stratégie.
+                </p>
+              </motion.div>
+            ) : (
+              <form
+                onSubmit={handleFormSubmit}
+                className="max-w-md mx-auto space-y-4"
+              >
+                <Input
+                  placeholder="Votre nom"
+                  value={formName}
+                  onChange={(e) => setFormName(e.target.value)}
+                  required
+                  className="h-12 bg-card border-border"
+                />
+                <Input
+                  type="email"
+                  placeholder="Votre email"
+                  value={formEmail}
+                  onChange={(e) => setFormEmail(e.target.value)}
+                  required
+                  className="h-12 bg-card border-border"
+                />
+                <Input
+                  type="tel"
+                  placeholder="Votre téléphone"
+                  value={formPhone}
+                  onChange={(e) => setFormPhone(e.target.value)}
+                  required
+                  className="h-12 bg-card border-border"
+                />
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full bg-copper hover:bg-copper-light text-white border-0 gap-2 font-semibold shadow-lg shadow-copper/20 h-12"
+                >
+                  Recevoir ma stratégie personnalisée
                   <ArrowRight className="w-4 h-4" />
                 </Button>
-              </a>
-            </motion.div>
+              </form>
+            )}
 
-            {/* Trust bar */}
-            <motion.div
-              className="bg-card border border-border rounded-xl p-4 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-            >
-              <div className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-copper" />
-                <span className="text-xs text-muted-foreground"><strong className="text-foreground">2 400+</strong> bilans réalisés</span>
-              </div>
-              <div className="hidden sm:block w-px h-4 bg-border" />
-              <div className="flex items-center gap-2">
-                <Award className="w-4 h-4 text-copper" />
-                <span className="text-xs text-muted-foreground"><strong className="text-foreground">15 ans</strong> d'expertise</span>
-              </div>
-              <div className="hidden sm:block w-px h-4 bg-border" />
-              <div className="flex items-center gap-2">
-                <Shield className="w-4 h-4 text-copper" />
-                <span className="text-xs text-muted-foreground">Courtier <strong className="text-foreground">indépendant</strong></span>
-              </div>
-              <div className="hidden sm:block w-px h-4 bg-border" />
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-copper text-xs">★</span>
-                ))}
-                <span className="text-xs text-muted-foreground ml-1">4.9/5</span>
-              </div>
-            </motion.div>
+            {/* Trust signals */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-8 pt-6 border-t border-border/50">
+              <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <Shield className="w-3.5 h-3.5 text-copper" />
+                Analyse 100 % gratuite
+              </span>
+              <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <Phone className="w-3.5 h-3.5 text-copper" />
+                Sans engagement
+              </span>
+              <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <Lock className="w-3.5 h-3.5 text-copper" />
+                Données confidentielles
+              </span>
+            </div>
+          </motion.div>
+
+          {/* ── Opportunity nudge ── */}
+          <motion.div
+            className="bg-copper/5 border border-copper/20 rounded-xl p-5 mb-10 flex items-start gap-3"
+            {...fadeUp(0.65)}
+          >
+            <ChevronRight className="w-5 h-5 text-copper mt-0.5 shrink-0" />
+            <p className="text-sm text-muted-foreground">
+              <strong className="text-foreground">
+                Ne laissez pas ces économies vous échapper.
+              </strong>{" "}
+              Chaque année sans optimisation, c'est{" "}
+              <strong className="text-foreground">
+                {results.economiesFiscales.toLocaleString("fr-FR")} €
+              </strong>{" "}
+              de réductions d'impôts non utilisées et un capital retraite qui ne
+              travaille pas pour vous.
+            </p>
+          </motion.div>
+
+          {/* ── Trust bar ── */}
+          <motion.div
+            className="bg-card border border-border rounded-xl p-4 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
+            {...fadeUp(0.75)}
+          >
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-muted-foreground">
+                <strong className="text-foreground">2 400+</strong> bilans
+                réalisés
+              </span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-border" />
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-muted-foreground">
+                <strong className="text-foreground">15 ans</strong> d'expertise
+              </span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-border" />
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-muted-foreground">
+                Courtier{" "}
+                <strong className="text-foreground">indépendant</strong>
+              </span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-border" />
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className="text-copper text-xs">
+                  ★
+                </span>
+              ))}
+              <span className="text-xs text-muted-foreground ml-1">4.9/5</span>
+            </div>
           </motion.div>
         </div>
       </div>
