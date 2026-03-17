@@ -6,7 +6,7 @@ import heroBg from "@/assets/hero-bg-with-logo.jpg";
 
 const benefits = [
   "Anticipez votre retraite : découvrez ce que vous toucherez vraiment",
-  "Réduisez vos impôts de 3 000 à 10 000 € par an grâce au PER",
+  "Réduisez vos impôts dès cette année grâce au PER",
   "Protégez votre famille et vos revenus en cas d'imprévu",
 ];
 
