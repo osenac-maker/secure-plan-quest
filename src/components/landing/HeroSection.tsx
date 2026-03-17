@@ -22,8 +22,8 @@ const HeroSection = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
         >
-          Chaque année, des milliers d'euros vous échappent.
-          <span className="block text-gradient-gold mt-2">La question est : combien dans votre cas ?</span>
+          Transformez vos revenus d'aujourd'hui
+          <span className="block text-gradient-gold mt-2">en liberté de demain.</span>
         </motion.h1>
 
         <motion.div
@@ -33,12 +33,12 @@ const HeroSection = () => (
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <p className="text-lg md:text-xl text-white/75 italic font-heading">
-            En 2 minutes, identifiez vos marges d'optimisation et préparez votre retraite efficacement.
+            Chaque année, des milliers de dirigeants et indépendants paient trop d'impôts, sous-estiment leur baisse de revenus à la retraite et laissent leur famille sans protection. Nous vous aidons à inverser la tendance.
           </p>
         </motion.div>
 
         <motion.div
-          className="flex flex-col sm:flex-row gap-4 mb-6"
+          className="flex flex-col sm:flex-row gap-4 mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
@@ -49,16 +49,30 @@ const HeroSection = () => (
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
+          <Link to="/simulateur">
+            <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 text-base gap-2 font-medium px-8">
+              Estimer mes économies d'impôts
+            </Button>
+          </Link>
         </motion.div>
 
-        <motion.p
-          className="text-sm text-white/50"
+        <motion.ul
+          className="space-y-3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
         >
-          100 % gratuit • sans engagement • résultat immédiat
-        </motion.p>
+          {[
+            "Anticipez votre retraite : découvrez ce que vous toucherez vraiment",
+            "Réduisez vos impôts dès cette année grâce au PER",
+            "Protégez votre famille et vos revenus en cas d'imprévu",
+          ].map((item) => (
+            <li key={item} className="flex items-start gap-3 text-white/80 text-sm md:text-base">
+              <CheckCircle className="w-5 h-5 text-copper shrink-0 mt-0.5" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </motion.ul>
       </div>
     </div>
 
