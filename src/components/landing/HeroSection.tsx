@@ -56,6 +56,15 @@ const HeroSection = () => (
           </Link>
         </motion.div>
 
+        <motion.p
+          className="text-sm text-white/50 mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          100 % gratuit • sans engagement • résultat immédiat
+        </motion.p>
+
         <motion.ul
           className="space-y-3"
           initial={{ opacity: 0 }}
