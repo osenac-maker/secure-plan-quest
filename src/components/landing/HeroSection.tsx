@@ -52,7 +52,7 @@ const HeroSection = () => (
               </Button>
             </Link>
             <Link to="/simulateur">
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 text-base gap-2 font-medium px-8">
+              <Button size="lg" variant="outline" className="border-copper/50 !text-white hover:bg-copper/10 text-base gap-2 font-medium px-8 bg-white/5 backdrop-blur-sm">
                 Estimer mes économies d'impôts
               </Button>
             </Link>
