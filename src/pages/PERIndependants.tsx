@@ -47,15 +47,15 @@ const PERIndependants = () => (
         <div className="bg-card rounded-lg p-8 shadow-card border border-border mb-8">
           <h2 className="font-heading text-xl font-semibold text-foreground mb-3">Exemple : combien économisez-vous concrètement ?</h2>
           <p className="text-sm text-muted-foreground mb-6">
-            Prenons un consultant freelance avec 90 000 € de BNC annuel, imposé dans la tranche à 30 %. En versant 10 % de ses revenus sur un PER :
+            Prenons un consultant freelance avec 80 000 € de BNC annuel, imposé dans la tranche à 30 %. En versant 10 % de ses revenus sur un PER :
           </p>
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-secondary rounded-lg p-5 text-center">
-              <div className="font-heading text-2xl font-bold text-copper">9 000 €</div>
+              <div className="font-heading text-2xl font-bold text-copper">8 000 €</div>
               <div className="text-xs text-muted-foreground mt-1">Versement PER annuel</div>
             </div>
             <div className="bg-secondary rounded-lg p-5 text-center">
-              <div className="font-heading text-2xl font-bold text-teal">2 700 €</div>
+              <div className="font-heading text-2xl font-bold text-teal">2 400 €</div>
               <div className="text-xs text-muted-foreground mt-1">Économie d'impôt</div>
             </div>
           </div>
