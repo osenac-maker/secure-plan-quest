@@ -12,6 +12,7 @@ import RetraiteDirigeants from "./pages/RetraiteDirigeants";
 import Prevoyance from "./pages/Prevoyance";
 import Mutuelle from "./pages/Mutuelle";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/simulateur" element={<Simulator />} />
