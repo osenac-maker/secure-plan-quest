@@ -56,14 +56,23 @@ const HeroSection = () => (
           </Link>
         </motion.div>
 
-        <motion.p
-          className="text-sm text-white/50 mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+        <motion.div
+          className="mb-8 flex items-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
         >
-          100 % gratuit • sans engagement • résultat immédiat
-        </motion.p>
+          <div className="relative">
+            {/* Spinning border ring */}
+            <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-copper border-r-gold/60 animate-spin [animation-duration:4s]" />
+            {/* Badge */}
+            <div className="relative rounded-full bg-gradient-to-r from-copper/20 to-gold/10 backdrop-blur-sm border border-copper/40 px-6 py-2.5 shadow-lg shadow-copper/20">
+              <span className="text-sm font-medium text-white tracking-wide">
+                100 % gratuit • sans engagement • résultat immédiat
+              </span>
+            </div>
+          </div>
+        </motion.div>
 
         <motion.ul
           className="space-y-3"
