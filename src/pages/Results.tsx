@@ -52,9 +52,16 @@ const Results = () => {
     (data.revenu * 0.1) / 12
   );
 
+  const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+  const validatePhone = (phone: string) => /^(?:(?:\+33|0)\s?[1-9])(?:[\s.-]?\d{2}){4}$/.test(phone.replace(/\s/g, ''));
+
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Store lead data in session for potential future use
+    const errs: Record<string, string> = {};
+    if (!formName.trim()) errs.name = "Le nom est requis";
+    if (!validateEmail(formEmail)) errs.email = "Veuillez saisir un email valide";
+    if (!validatePhone(formPhone)) errs.phone = "Format invalide (ex: 06 12 34 56 78)";
+    if (Object.keys(errs).length > 0) { setFormErrors(errs); return; }
     sessionStorage.setItem(
       "leadData",
       JSON.stringify({ name: formName, email: formEmail, phone: formPhone })
