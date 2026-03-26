@@ -49,7 +49,17 @@ const Simulator = () => {
     if (errors[field]) setErrors((prev) => { const n = { ...prev }; delete n[field]; return n; });
   };
 
+  const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+  const validatePhone = (phone: string) => !phone || /^(?:(?:\+33|0)\s?[1-9])(?:[\s.-]?\d{2}){4}$/.test(phone.replace(/\s/g, ''));
+
   const next = () => {
+    if (step === 3) {
+      const newErrors: Record<string, string> = {};
+      if (!data.nom?.trim()) newErrors.nom = "Le nom est requis";
+      if (!data.email || !validateEmail(data.email)) newErrors.email = "Veuillez saisir un email valide";
+      if (data.telephone && !validatePhone(data.telephone)) newErrors.telephone = "Format invalide (ex: 06 12 34 56 78)";
+      if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
+    }
     if (step < steps.length - 1) setStep(step + 1);
     else submit();
   };
