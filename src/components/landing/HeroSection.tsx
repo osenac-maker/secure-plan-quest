@@ -34,7 +34,7 @@ const HeroSection = () => (
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <p className="text-lg md:text-xl text-white/90 font-heading">
+            <p className="text-base md:text-xl text-white/90 font-heading">
               Chaque année, des milliers de dirigeants et indépendants paient trop d'impôts, sous-estiment leur baisse de revenus à la retraite et laissent leur famille sans protection. Nous vous aidons à inverser la tendance.
             </p>
           </motion.div>
