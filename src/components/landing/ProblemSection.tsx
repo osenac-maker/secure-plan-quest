@@ -10,7 +10,7 @@ const problems = [
   {
     icon: AlertTriangle,
     title: "Vous laissez des milliers d'euros au fisc chaque année",
-    desc: "Le PER permet de déduire jusqu'à 10 % de vos revenus de votre impôt. Sur un revenu de 80 000 €, cela représente jusqu'à 2 400 € d'économies annuelles — tout en constituant votre capital retraite. Et ce n'est qu'un des dispositifs disponibles.",
+    desc: "Le PER permet de déduire jusqu'à 10 % de vos revenus de votre revenu imposable. Sur 80 000 € de revenus, cela représente jusqu'à 8 000 € de déduction, soit jusqu'à 3 200 € d'impôts en moins selon votre tranche — tout en constituant votre capital retraite.",
   },
   {
     icon: Clock,
