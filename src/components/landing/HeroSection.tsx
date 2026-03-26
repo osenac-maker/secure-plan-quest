@@ -101,13 +101,12 @@ const HeroSection = () => (
                 <Shield className="w-7 h-7 text-copper" />
               </div>
               <span className="text-xl font-bold text-white font-heading">Bilan offert</span>
-              <span className="text-xs text-copper font-semibold uppercase tracking-widest">Sans engagement</span>
             </div>
           </div>
 
           {/* Labels below */}
           <div className="mt-4 flex flex-col items-center gap-1.5 text-center">
-            {["Confidentiel", "Résultat immédiat"].map((label) => (
+            {["Sans engagement", "Confidentiel", "Résultat immédiat"].map((label) => (
               <span key={label} className="text-sm text-white/60 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-copper" />
                 {label}
