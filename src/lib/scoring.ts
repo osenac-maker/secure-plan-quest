@@ -40,8 +40,8 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
   const scoreRetraite = Math.min(100, Math.max(5, Math.round(epargneRatio * 300)));
 
   // Tax savings estimate via PER
-  const trancheMarginal = data.revenu > 160336 ? 0.45 :
-    data.revenu > 78570 ? 0.41 :
+  const trancheMarginal = data.revenu > 177106 ? 0.45 :
+    data.revenu > 82341 ? 0.41 :
     data.revenu > 28797 ? 0.30 :
     data.revenu > 11294 ? 0.11 : 0;
 
