@@ -78,6 +78,41 @@ const Results = () => {
             </p>
           </motion.div>
 
+          {/* ── Score Retraite Gauge ── */}
+          <motion.div
+            className="bg-card rounded-2xl p-8 shadow-card mb-10 flex flex-col items-center"
+            {...fadeUp(0.1)}
+          >
+            <p className="text-sm text-muted-foreground mb-4 font-medium">Votre score de préparation retraite</p>
+            <div className="relative w-40 h-40 mb-4">
+              <svg className="w-full h-full -rotate-90" viewBox="0 0 160 160">
+                <circle cx="80" cy="80" r="70" fill="none" stroke="hsl(var(--muted))" strokeWidth="10" />
+                <motion.circle
+                  cx="80" cy="80" r="70"
+                  fill="none"
+                  stroke={results.scoreRetraite < 30 ? "hsl(var(--destructive))" : results.scoreRetraite < 60 ? "hsl(var(--copper))" : "hsl(var(--accent))"}
+                  strokeWidth="10"
+                  strokeLinecap="round"
+                  strokeDasharray={2 * Math.PI * 70}
+                  initial={{ strokeDashoffset: 2 * Math.PI * 70 }}
+                  animate={{ strokeDashoffset: 2 * Math.PI * 70 * (1 - results.scoreRetraite / 100) }}
+                  transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+                />
+              </svg>
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <span className="font-heading text-4xl font-extrabold text-foreground">{results.scoreRetraite}</span>
+                <span className="text-xs text-muted-foreground font-medium">/100</span>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground text-center max-w-sm">
+              {results.scoreRetraite < 30
+                ? "Votre préparation retraite nécessite une action rapide. Un accompagnement adapté peut faire toute la différence."
+                : results.scoreRetraite < 60
+                ? "Vous avez posé quelques bases, mais il reste un potentiel d'optimisation significatif."
+                : "Vous êtes sur la bonne voie. Quelques ajustements pourraient encore améliorer votre situation."}
+            </p>
+          </motion.div>
+
           {/* ── 3 Key Metrics ── */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
             {/* Tax savings */}
