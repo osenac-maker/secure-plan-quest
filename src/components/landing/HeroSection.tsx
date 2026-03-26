@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, Phone } from "lucide-react";
+import { ArrowRight, CheckCircle, Phone, Shield } from "lucide-react";
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg-with-logo.jpg";
 
@@ -85,39 +85,29 @@ const HeroSection = () => (
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, type: "spring", stiffness: 120, damping: 14 }}
         >
-          <div className="relative w-52 h-52">
-            {/* Outer track */}
-            <svg className="w-full h-full -rotate-90" viewBox="0 0 200 200">
-              <circle cx="100" cy="100" r="90" fill="none" stroke="hsl(var(--copper) / 0.15)" strokeWidth="8" />
-              <motion.circle
-                cx="100" cy="100" r="90"
-                fill="none"
-                stroke="url(#gaugeGradient)"
-                strokeWidth="8"
-                strokeLinecap="round"
-                strokeDasharray={2 * Math.PI * 90}
-                initial={{ strokeDashoffset: 2 * Math.PI * 90 }}
-                animate={{ strokeDashoffset: 2 * Math.PI * 90 * 0.25 }}
-                transition={{ duration: 1.5, delay: 0.7, ease: "easeOut" }}
-              />
-              <defs>
-                <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="hsl(var(--copper))" />
-                  <stop offset="100%" stopColor="hsl(var(--gold))" />
-                </linearGradient>
-              </defs>
-            </svg>
+          <div className="relative w-52 h-52 flex items-center justify-center">
+            {/* Outer ring */}
+            <div className="absolute inset-0 rounded-full border-2 border-copper/20" />
+            <motion.div
+              className="absolute inset-0 rounded-full border-2 border-copper/60"
+              initial={{ clipPath: "inset(0 100% 0 0)" }}
+              animate={{ clipPath: "inset(0 0% 0 0)" }}
+              transition={{ duration: 1.2, delay: 0.7, ease: "easeOut" }}
+            />
 
-            {/* Center text */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-              <span className="text-3xl font-bold text-white font-heading">100%</span>
-              <span className="text-xs text-copper font-semibold uppercase tracking-widest mt-1">Gratuit</span>
+            {/* Inner content */}
+            <div className="flex flex-col items-center justify-center text-center gap-2">
+              <div className="w-14 h-14 rounded-full bg-copper/15 flex items-center justify-center">
+                <Shield className="w-7 h-7 text-copper" />
+              </div>
+              <span className="text-xl font-bold text-white font-heading">Bilan offert</span>
+              <span className="text-xs text-copper font-semibold uppercase tracking-widest">Sans engagement</span>
             </div>
           </div>
 
-          {/* Labels below gauge */}
+          {/* Labels below */}
           <div className="mt-4 flex flex-col items-center gap-1.5 text-center">
-            {["Sans engagement", "Résultat immédiat"].map((label) => (
+            {["Confidentiel", "Résultat immédiat"].map((label) => (
               <span key={label} className="text-sm text-white/60 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-copper" />
                 {label}
