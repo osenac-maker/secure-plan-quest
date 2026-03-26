@@ -241,29 +241,38 @@ const Results = () => {
                 onSubmit={handleFormSubmit}
                 className="max-w-md mx-auto space-y-4"
               >
-                <Input
-                  placeholder="Votre nom"
-                  value={formName}
-                  onChange={(e) => setFormName(e.target.value)}
-                  required
-                  className="h-12 bg-card border-border"
-                />
-                <Input
-                  type="email"
-                  placeholder="Votre email"
-                  value={formEmail}
-                  onChange={(e) => setFormEmail(e.target.value)}
-                  required
-                  className="h-12 bg-card border-border"
-                />
-                <Input
-                  type="tel"
-                  placeholder="Votre téléphone"
-                  value={formPhone}
-                  onChange={(e) => setFormPhone(e.target.value)}
-                  required
-                  className="h-12 bg-card border-border"
-                />
+                <div>
+                  <Input
+                    placeholder="Votre nom"
+                    value={formName}
+                    onChange={(e) => { setFormName(e.target.value); setFormErrors(p => { const n = {...p}; delete n.name; return n; }); }}
+                    required
+                    className={`h-12 bg-card border-border ${formErrors.name ? 'border-destructive' : ''}`}
+                  />
+                  {formErrors.name && <p className="text-xs text-destructive mt-1">{formErrors.name}</p>}
+                </div>
+                <div>
+                  <Input
+                    type="email"
+                    placeholder="Votre email"
+                    value={formEmail}
+                    onChange={(e) => { setFormEmail(e.target.value); setFormErrors(p => { const n = {...p}; delete n.email; return n; }); }}
+                    required
+                    className={`h-12 bg-card border-border ${formErrors.email ? 'border-destructive' : ''}`}
+                  />
+                  {formErrors.email && <p className="text-xs text-destructive mt-1">{formErrors.email}</p>}
+                </div>
+                <div>
+                  <Input
+                    type="tel"
+                    placeholder="Votre téléphone"
+                    value={formPhone}
+                    onChange={(e) => { setFormPhone(e.target.value); setFormErrors(p => { const n = {...p}; delete n.phone; return n; }); }}
+                    required
+                    className={`h-12 bg-card border-border ${formErrors.phone ? 'border-destructive' : ''}`}
+                  />
+                  {formErrors.phone && <p className="text-xs text-destructive mt-1">{formErrors.phone}</p>}
+                </div>
                 <Button
                   type="submit"
                   size="lg"
