@@ -46,7 +46,7 @@ const HeroSection = () => (
             transition={{ duration: 0.6, delay: 0.45 }}
           >
             <Link to="/simulateur">
-              <Button size="lg" className="bg-copper hover:bg-copper-light text-white text-base gap-2 font-medium px-8 border-0 group shadow-lg shadow-copper/30">
+              <Button size="lg" className="bg-copper hover:bg-copper-light text-white text-sm sm:text-base gap-2 font-medium px-4 sm:px-8 border-0 group shadow-lg shadow-copper/30 whitespace-normal h-auto py-3 text-left w-full">
                 Découvrir ce que je toucherai vraiment à la retraite
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Button>
