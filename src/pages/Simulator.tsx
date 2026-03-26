@@ -39,6 +39,8 @@ const Simulator = () => {
     epargneRetraite: 0,
     capaciteEpargne: 500,
     interetFiscal: "moyen",
+    dejaPER: "",
+    objectifPrioritaire: "",
     email: "",
     nom: "",
     telephone: "",
