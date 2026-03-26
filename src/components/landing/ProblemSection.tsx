@@ -83,6 +83,19 @@ const ProblemSection = () => (
           </motion.div>
         ))}
       </div>
+
+      <motion.div
+        className="mt-12 flex items-center justify-center gap-3 text-center"
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.5 }}
+      >
+        <Sparkles className="w-5 h-5 text-copper shrink-0" />
+        <p className="text-lg font-heading font-semibold text-foreground">
+          La bonne nouvelle : <span className="text-gradient-gold">tout cela est évitable avec la bonne stratégie.</span>
+        </p>
+      </motion.div>
     </div>
   </section>
 );
