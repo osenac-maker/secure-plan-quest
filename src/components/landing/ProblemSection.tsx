@@ -1,4 +1,4 @@
-import { AlertTriangle, TrendingDown, Clock, HelpCircle } from "lucide-react";
+import { AlertTriangle, TrendingDown, Clock, HelpCircle, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 const problems = [
