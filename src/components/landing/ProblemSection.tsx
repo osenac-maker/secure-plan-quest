@@ -15,7 +15,7 @@ const problems = [
   {
     icon: Clock,
     title: "Plus vous attendez, plus ça vous coûte cher",
-    desc: "Chaque année sans stratégie patrimoniale, ce sont des économies fiscales perdues et un capital retraite qui ne se constitue pas. Commencer à 40 ans plutôt qu'à 50 peut doubler le montant de votre complément de retraite.",
+    desc: "Un versement de 500 €/mois démarré à 40 ans génère en moyenne 2 fois plus de capital qu'un versement identique démarré à 50 ans. Chaque année sans stratégie, ce sont des milliers d'euros de capital retraite en moins.",
   },
   {
     icon: HelpCircle,
