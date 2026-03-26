@@ -205,7 +205,7 @@ const Results = () => {
             )}
           </motion.div>
 
-          {/* ── Lead Capture ── */}
+          {/* ── Lead Confirmation ── */}
           <motion.div
             className="bg-hero rounded-2xl p-8 md:p-10 mb-10"
             {...fadeUp(0.55)}
@@ -238,51 +238,29 @@ const Results = () => {
                 </p>
               </motion.div>
             ) : (
-              <form
-                onSubmit={handleFormSubmit}
-                className="max-w-md mx-auto space-y-4"
-              >
-                <div>
-                  <Input
-                    placeholder="Votre nom"
-                    value={formName}
-                    onChange={(e) => { setFormName(e.target.value); setFormErrors(p => { const n = {...p}; delete n.name; return n; }); }}
-                    required
-                    className={`h-12 bg-card border-border ${formErrors.name ? 'border-destructive' : ''}`}
-                  />
-                  {formErrors.name && <p className="text-xs text-destructive mt-1">{formErrors.name}</p>}
-                </div>
-                <div>
-                  <Input
-                    type="email"
-                    placeholder="Votre email"
-                    value={formEmail}
-                    onChange={(e) => { setFormEmail(e.target.value); setFormErrors(p => { const n = {...p}; delete n.email; return n; }); }}
-                    required
-                    className={`h-12 bg-card border-border ${formErrors.email ? 'border-destructive' : ''}`}
-                  />
-                  {formErrors.email && <p className="text-xs text-destructive mt-1">{formErrors.email}</p>}
-                </div>
-                <div>
-                  <Input
-                    type="tel"
-                    placeholder="Votre téléphone"
-                    value={formPhone}
-                    onChange={(e) => { setFormPhone(e.target.value); setFormErrors(p => { const n = {...p}; delete n.phone; return n; }); }}
-                    required
-                    className={`h-12 bg-card border-border ${formErrors.phone ? 'border-destructive' : ''}`}
-                  />
-                  {formErrors.phone && <p className="text-xs text-destructive mt-1">{formErrors.phone}</p>}
+              <div className="max-w-md mx-auto text-center space-y-5">
+                <div className="bg-card rounded-lg p-4 border border-border text-sm text-muted-foreground space-y-1">
+                  <p><span className="text-foreground font-medium">{data.nom}</span></p>
+                  <p>{data.email}{data.telephone ? ` · ${data.telephone}` : ''}</p>
                 </div>
                 <Button
-                  type="submit"
                   size="lg"
+                  onClick={() => {
+                    sessionStorage.setItem(
+                      "leadData",
+                      JSON.stringify({ name: data.nom, email: data.email, phone: data.telephone })
+                    );
+                    setFormSubmitted(true);
+                  }}
                   className="w-full bg-copper hover:bg-copper-light text-white border-0 gap-2 font-semibold shadow-lg shadow-copper/20 h-12"
                 >
-                  Recevoir ma stratégie personnalisée
+                  Être rappelé par un conseiller
                   <ArrowRight className="w-4 h-4" />
                 </Button>
-              </form>
+                <p className="text-xs text-muted-foreground">
+                  Coordonnées incorrectes ? <button onClick={() => navigate("/simulateur")} className="text-copper underline underline-offset-2 hover:text-copper-light">Modifier</button>
+                </p>
+              </div>
             )}
 
             {/* Trust signals */}
