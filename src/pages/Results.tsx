@@ -114,6 +114,7 @@ const Results = () => {
                 {results.economiesFiscales.toLocaleString("fr-FR")}&nbsp;€
               </p>
               <p className="text-xs text-muted-foreground mt-1">par an</p>
+              <p className="text-[10px] text-muted-foreground/60 mt-0.5">Estimation basée sur le barème en vigueur</p>
             </motion.div>
 
             {/* Retirement capital */}
