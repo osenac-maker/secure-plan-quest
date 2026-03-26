@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
+import { ShieldCheck, Building2, Globe, TrendingUp, Award, Landmark } from "lucide-react";
 
-const partners = [
-  "AXA",
-  "Generali",
-  "SwissLife",
-  "Allianz",
-  "AG2R La Mondiale",
-  "Cardif",
+const strengths = [
+  { icon: Building2, label: "Assureurs de 1er plan" },
+  { icon: Globe, label: "Groupes européens" },
+  { icon: ShieldCheck, label: "Contrats sélectionnés" },
+  { icon: TrendingUp, label: "Performance prouvée" },
+  { icon: Award, label: "Notations AAA / AA" },
+  { icon: Landmark, label: "Solidité financière" },
 ];
 
 const PartnersSection = () => (
@@ -27,7 +28,7 @@ const PartnersSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Nous travaillons avec les <span className="text-gradient-gold">leaders du marché</span>
+          Nous travaillons avec les <span className="text-gradient-gold">plus grandes compagnies européennes</span>
         </motion.h2>
         <motion.div
           className="divider-gold mx-auto mb-6"
@@ -43,21 +44,22 @@ const PartnersSection = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          Courtier indépendant, nous sélectionnons les meilleurs contrats parmi nos partenaires pour vous proposer des solutions objectivement adaptées à votre situation — sans conflit d'intérêt.
+          Courtier indépendant, nous sélectionnons les meilleurs contrats parmi les leaders de l'assurance en Europe pour vous proposer des solutions objectivement adaptées à votre situation — sans conflit d'intérêt.
         </motion.p>
       </div>
 
       <div className="grid grid-cols-3 md:grid-cols-6 gap-6 max-w-4xl mx-auto">
-        {partners.map((name, i) => (
+        {strengths.map((item, i) => (
           <motion.div
-            key={name}
-            className="flex items-center justify-center p-4 rounded-lg bg-card border border-border h-16"
+            key={item.label}
+            className="flex flex-col items-center justify-center p-4 rounded-lg bg-card border border-border gap-2"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.08, duration: 0.4 }}
           >
-            <span className="text-sm font-semibold text-muted-foreground tracking-wide">{name}</span>
+            <item.icon className="w-6 h-6 text-copper" />
+            <span className="text-xs font-semibold text-muted-foreground tracking-wide text-center">{item.label}</span>
           </motion.div>
         ))}
       </div>
