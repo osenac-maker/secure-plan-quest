@@ -24,11 +24,7 @@ const Results = () => {
   const [results, setResults] = useState<SimulatorResult | null>(null);
 
   // Lead form state
-  const [formName, setFormName] = useState("");
-  const [formEmail, setFormEmail] = useState("");
-  const [formPhone, setFormPhone] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
     const d = sessionStorage.getItem("simulatorData");
