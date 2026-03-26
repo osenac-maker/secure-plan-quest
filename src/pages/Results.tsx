@@ -39,14 +39,8 @@ const Results = () => {
 
   if (!results || !data) return null;
 
-  // Capitalisation composée : versement mensuel à 4%/an sur N années
   const anneeAvantRetraite = Math.max(1, 65 - data.age);
-  const investissementMensuel = Math.round((data.revenu * 0.1) / 12);
-  const tauxMensuel = 0.04 / 12;
-  const nMois = anneeAvantRetraite * 12;
-  const capitalRetraite = Math.round(
-    investissementMensuel * ((Math.pow(1 + tauxMensuel, nMois) - 1) / tauxMensuel)
-  );
+  const investissementMensuel = Math.round(results.versementPEROptimal / 12);
 
 
 

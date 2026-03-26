@@ -38,9 +38,7 @@ const Simulator = () => {
     patrimoineExistant: 0,
     epargneRetraite: 0,
     capaciteEpargne: 500,
-    interetFiscal: "moyen",
-    dejaPER: "",
-    objectifPrioritaire: "",
+    priorite: undefined as any,
     email: "",
     nom: "",
     telephone: "",
@@ -373,28 +371,6 @@ const Simulator = () => {
                     />
                   </div>
                   <div>
-                    <Label className="text-foreground">Avez-vous déjà un PER ou une assurance vie ?</Label>
-                    <div className="grid grid-cols-3 gap-3 mt-2">
-                      {[
-                        { value: "oui", label: "Oui" },
-                        { value: "non", label: "Non" },
-                        { value: "ne_sais_pas", label: "Je ne sais pas" },
-                      ].map((opt) => (
-                        <button
-                          key={opt.value}
-                          onClick={() => update("dejaPER", opt.value)}
-                          className={`p-3 rounded-xl border text-sm font-medium transition-all ${
-                            data.dejaPER === opt.value
-                              ? "border-copper bg-copper/5 text-foreground ring-1 ring-copper/30"
-                              : "border-border text-muted-foreground hover:border-copper/50"
-                          }`}
-                        >
-                          {opt.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
                     <Label className="text-foreground">Quel est votre objectif prioritaire ?</Label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
                       {[
@@ -405,9 +381,9 @@ const Simulator = () => {
                       ].map((opt) => (
                         <button
                           key={opt.value}
-                          onClick={() => update("objectifPrioritaire", opt.value)}
+                          onClick={() => update("priorite", opt.value)}
                           className={`p-3 rounded-xl border text-sm font-medium transition-all ${
-                            data.objectifPrioritaire === opt.value
+                            data.priorite === opt.value
                               ? "border-copper bg-copper/5 text-foreground ring-1 ring-copper/30"
                               : "border-border text-muted-foreground hover:border-copper/50"
                           }`}
