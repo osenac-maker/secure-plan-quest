@@ -8,6 +8,8 @@ export interface SimulatorData {
   epargneRetraite: number;
   capaciteEpargne: number;
   interetFiscal: string;
+  dejaPER: string;
+  objectifPrioritaire: string;
   email: string;
   nom: string;
   telephone: string;
@@ -63,8 +65,9 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
   else if (data.capaciteEpargne >= 500) points += 10;
   else points += 5;
 
-  if (data.interetFiscal === "fort") points += 10;
-  else if (data.interetFiscal === "moyen") points += 5;
+  if (data.dejaPER === "non") points += 10;
+  else if (data.dejaPER === "ne_sais_pas") points += 7;
+  else points += 3;
 
   const leadScore: "A" | "B" | "C" = points >= 75 ? "A" : points >= 50 ? "B" : "C";
 
