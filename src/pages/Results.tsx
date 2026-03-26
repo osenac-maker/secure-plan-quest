@@ -68,8 +68,8 @@ const Results = () => {
               Résultat de votre simulation
             </div>
             <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4">
-              Vous avez un{" "}
-              <span className="text-gradient-gold">potentiel d'optimisation important</span>
+              {data.nom.split(' ')[0]}, voici{" "}
+              <span className="text-gradient-gold">votre bilan {data.status === "dirigeant" ? "de dirigeant" : data.status === "liberal" ? "de profession libérale" : data.status === "freelance" ? "d'indépendant" : "personnalisé"}</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
               D'après vos informations, vous pourriez réduire significativement
