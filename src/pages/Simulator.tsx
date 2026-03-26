@@ -396,11 +396,12 @@ const Simulator = () => {
                   </div>
                   <div>
                     <Label className="text-foreground">Quel est votre objectif prioritaire ?</Label>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
                       {[
                         { value: "impots", label: "Réduire mes impôts" },
                         { value: "retraite", label: "Préparer ma retraite" },
-                        { value: "famille", label: "Protéger ma famille" },
+                        { value: "protection", label: "Protéger ma famille" },
+                        { value: "transmission", label: "Transmettre mon patrimoine" },
                       ].map((opt) => (
                         <button
                           key={opt.value}
