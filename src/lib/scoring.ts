@@ -35,9 +35,14 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
   const besoinRetraite = revenuMensuel * 0.75;
   const manqueAGagner = Math.max(0, Math.round((besoinRetraite - retraiteEstimee) * 12));
 
-  // Score retraite (how prepared they are)
-  const epargneRatio = data.epargneRetraite / (data.revenu * (65 - data.age));
-  const scoreRetraite = Math.min(100, Math.max(5, Math.round(epargneRatio * 300)));
+  // Score retraite (how prepared they are, 0-100)
+  // Multi-factor: épargne existante, capacité d'épargne, patrimoine, âge
+  const annees = Math.max(1, 65 - data.age);
+  const capitalNecessaire = manqueAGagner * 20; // ~20 ans de retraite
+  const capitalProjeteFutur = (data.capaciteEpargne * 12 * annees) * 1.03; // épargne future +3%/an simplifié
+  const capitalTotal = data.epargneRetraite + data.patrimoineExistant + capitalProjeteFutur;
+  const couverture = capitalNecessaire > 0 ? capitalTotal / capitalNecessaire : 0.5;
+  const scoreRetraite = Math.min(85, Math.max(10, Math.round(couverture * 100)));
 
   // Tax savings estimate via PER
   const trancheMarginal = data.revenu > 177106 ? 0.45 :
