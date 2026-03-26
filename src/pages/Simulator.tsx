@@ -28,6 +28,7 @@ const Simulator = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [data, setData] = useState<Partial<SimulatorData>>({
     age: 42,
     status: "",
