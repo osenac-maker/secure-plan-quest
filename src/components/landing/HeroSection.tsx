@@ -52,7 +52,7 @@ const HeroSection = () => (
               </Button>
             </Link>
             <a href="tel:+33XXXXXXXXX">
-              <Button size="lg" variant="outline" className="border-copper/50 !text-white hover:bg-copper/10 text-base gap-2 font-medium px-8 bg-white/5 backdrop-blur-sm">
+              <Button size="lg" variant="outline" className="border-copper/50 !text-white hover:bg-copper/10 text-sm sm:text-base gap-2 font-medium px-4 sm:px-8 bg-white/5 backdrop-blur-sm w-full">
                 <Phone className="w-4 h-4" />
                 Être rappelé gratuitement
               </Button>
