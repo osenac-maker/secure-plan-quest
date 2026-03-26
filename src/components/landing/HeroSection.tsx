@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg-with-logo.jpg";
 
 const HeroSection = () => (
-  <section className="relative min-h-[92vh] flex items-center overflow-hidden">
+  <section className="relative min-h-[92vh] flex items-center overflow-hidden overflow-x-hidden">
     {/* Background image */}
     <div className="absolute inset-0">
       <img src={heroBg} alt="" className="w-full h-full object-cover" />
