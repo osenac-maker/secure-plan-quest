@@ -8,7 +8,7 @@ const Footer = () => (
         <div>
           <img src={logoRetiro} alt="RETIRO Patrimoine" className="h-16 w-auto brightness-0 invert mb-4" />
           <p className="text-sm text-white/50 leading-relaxed">
-            Votre copilote patrimonial. Prenez de la hauteur sur votre fiscalité et votre retraite.
+            Vous tenez le cap. Nous optimisons la trajectoire.
           </p>
         </div>
         <div>
