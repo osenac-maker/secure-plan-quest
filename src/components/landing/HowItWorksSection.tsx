@@ -14,7 +14,7 @@ const steps = [
     icon: UserCheck,
     step: "02",
     title: "Recevez votre stratégie personnalisée",
-    desc: "Un conseiller patrimonial analyse vos résultats et vous présente un plan d'action clair : combien économiser, comment, et avec quels dispositifs.",
+    desc: "Un conseiller dédié vous rappelle sous 24h, analyse vos résultats et vous présente un plan d'action concret, sans jargon et sans engagement.",
   },
   {
     icon: Rocket,
