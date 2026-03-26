@@ -407,9 +407,10 @@ const Simulator = () => {
                     <Input
                       value={data.nom}
                       onChange={(e) => update("nom", e.target.value)}
-                      className="mt-2"
+                      className={`mt-2 ${errors.nom ? 'border-destructive' : ''}`}
                       placeholder="Jean Dupont"
                     />
+                    {errors.nom && <p className="text-xs text-destructive mt-1">{errors.nom}</p>}
                   </div>
                   <div>
                     <Label className="text-foreground">Email professionnel</Label>
@@ -417,9 +418,10 @@ const Simulator = () => {
                       type="email"
                       value={data.email}
                       onChange={(e) => update("email", e.target.value)}
-                      className="mt-2"
+                      className={`mt-2 ${errors.email ? 'border-destructive' : ''}`}
                       placeholder="jean@example.com"
                     />
+                    {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
                   </div>
                   <div>
                     <Label className="text-foreground">Téléphone (optionnel)</Label>
@@ -427,9 +429,10 @@ const Simulator = () => {
                       type="tel"
                       value={data.telephone}
                       onChange={(e) => update("telephone", e.target.value)}
-                      className="mt-2"
+                      className={`mt-2 ${errors.telephone ? 'border-destructive' : ''}`}
                       placeholder="06 12 34 56 78"
                     />
+                    {errors.telephone && <p className="text-xs text-destructive mt-1">{errors.telephone}</p>}
                   </div>
                   <div className="flex items-start gap-2 text-xs text-muted-foreground">
                     <Lock className="w-3.5 h-3.5 mt-0.5 shrink-0" />
