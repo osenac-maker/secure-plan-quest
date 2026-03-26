@@ -51,11 +51,12 @@ const HeroSection = () => (
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-            <Link to="/simulateur">
+            <a href="tel:+33XXXXXXXXX">
               <Button size="lg" variant="outline" className="border-copper/50 !text-white hover:bg-copper/10 text-base gap-2 font-medium px-8 bg-white/5 backdrop-blur-sm">
-                Estimer mes économies d'impôts
+                <Phone className="w-4 h-4" />
+                Être rappelé gratuitement
               </Button>
-            </Link>
+            </a>
           </motion.div>
 
           <motion.ul
