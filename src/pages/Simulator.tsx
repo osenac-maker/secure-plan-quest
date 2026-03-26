@@ -46,6 +46,7 @@ const Simulator = () => {
 
   const update = (field: keyof SimulatorData, value: string | number) => {
     setData((prev) => ({ ...prev, [field]: value }));
+    if (errors[field]) setErrors((prev) => { const n = { ...prev }; delete n[field]; return n; });
   };
 
   const next = () => {
