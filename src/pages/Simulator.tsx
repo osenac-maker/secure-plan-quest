@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { ArrowRight, ArrowLeft, CheckCircle, Shield, Clock, Lock, Users, TrendingUp, Award, Sparkles } from "lucide-react";
@@ -313,15 +314,22 @@ const Simulator = () => {
                     />
                   </div>
                   <div>
-                    <Label className="text-foreground">Patrimoine existant estimé (€)</Label>
-                    <Input
-                      type="number"
-                      value={data.patrimoineExistant}
-                      onChange={(e) => update("patrimoineExistant", parseInt(e.target.value) || 0)}
-                      className="mt-2"
-                      min={0}
-                      step={10000}
-                    />
+                    <Label className="text-foreground">Patrimoine existant estimé</Label>
+                    <Select
+                      value={String(data.patrimoineExistant)}
+                      onValueChange={(v) => update("patrimoineExistant", parseInt(v))}
+                    >
+                      <SelectTrigger className="mt-2">
+                        <SelectValue placeholder="Sélectionnez une fourchette" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="25000">0 à 50 000 €</SelectItem>
+                        <SelectItem value="75000">50 000 à 100 000 €</SelectItem>
+                        <SelectItem value="150000">100 000 à 200 000 €</SelectItem>
+                        <SelectItem value="350000">200 000 à 500 000 €</SelectItem>
+                        <SelectItem value="500000">Plus de 500 000 €</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
               )}
