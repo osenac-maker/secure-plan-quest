@@ -128,7 +128,7 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
   if (data.revenu > 80000 && data.status === "dirigeant")
     recommandations.push("Optimisation de la rémunération dirigeant");
   if (manqueAGagner > 15000)
-    recommandations.push("Prévoyance complémentaire TNS");
+    recommandations.push("Prévoyance complémentaire");
   if (recommandations.length === 0)
     recommandations.push("Bilan patrimonial complet");
 

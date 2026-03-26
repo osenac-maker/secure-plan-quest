@@ -16,7 +16,7 @@ const Mutuelle = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          Mutuelle TNS : de meilleurs soins, moins d'impôts
+          Mutuelle indépendants : de meilleurs soins, moins d'impôts
         </motion.h1>
         <motion.div
           className="divider-gold mb-6"
@@ -30,7 +30,7 @@ const Mutuelle = () => (
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          En tant que TNS, vos cotisations de mutuelle sont déductibles de votre revenu imposable grâce à la loi Madelin. Vous vous soignez mieux et vous payez moins d'impôts. Voici comment bien choisir.
+          En tant qu'indépendant, vos cotisations de mutuelle sont déductibles de votre revenu imposable grâce à la loi Madelin. Vous vous soignez mieux et vous payez moins d'impôts. Voici comment bien choisir.
         </motion.p>
       </div>
     </div>
