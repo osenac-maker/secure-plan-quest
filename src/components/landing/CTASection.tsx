@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import sectionRetirement from "@/assets/section-retirement.jpg";
 
@@ -45,10 +45,20 @@ const CTASection = () => (
       >
         <Link to="/simulateur">
           <Button size="lg" className="bg-copper hover:bg-copper-light text-white text-base gap-2 font-medium px-10 border-0 group shadow-lg shadow-copper/30">
-            Faire mon bilan retraite gratuit
+            Découvrir ce que je toucherai vraiment à la retraite
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Button>
         </Link>
+        <motion.p
+          className="mt-6 flex items-center justify-center gap-2 text-copper/90 text-sm font-medium"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+        >
+          <Clock className="w-4 h-4" />
+          Vos versements PER sont déductibles jusqu'au 31 décembre — chaque mois compte.
+        </motion.p>
       </motion.div>
     </div>
   </section>
