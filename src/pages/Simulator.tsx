@@ -39,6 +39,8 @@ const Simulator = () => {
     epargneRetraite: 0,
     capaciteEpargne: 500,
     interetFiscal: "moyen",
+    dejaPER: "",
+    objectifPrioritaire: "",
     email: "",
     nom: "",
     telephone: "",
@@ -371,18 +373,40 @@ const Simulator = () => {
                     />
                   </div>
                   <div>
-                    <Label className="text-foreground">Intérêt pour l'optimisation fiscale</Label>
+                    <Label className="text-foreground">Avez-vous déjà un PER ou une assurance vie ?</Label>
                     <div className="grid grid-cols-3 gap-3 mt-2">
                       {[
-                        { value: "faible", label: "Faible" },
-                        { value: "moyen", label: "Moyen" },
-                        { value: "fort", label: "Fort" },
+                        { value: "oui", label: "Oui" },
+                        { value: "non", label: "Non" },
+                        { value: "ne_sais_pas", label: "Je ne sais pas" },
                       ].map((opt) => (
                         <button
                           key={opt.value}
-                          onClick={() => update("interetFiscal", opt.value)}
+                          onClick={() => update("dejaPER", opt.value)}
                           className={`p-3 rounded-xl border text-sm font-medium transition-all ${
-                            data.interetFiscal === opt.value
+                            data.dejaPER === opt.value
+                              ? "border-copper bg-copper/5 text-foreground ring-1 ring-copper/30"
+                              : "border-border text-muted-foreground hover:border-copper/50"
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <Label className="text-foreground">Quel est votre objectif prioritaire ?</Label>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
+                      {[
+                        { value: "impots", label: "Réduire mes impôts" },
+                        { value: "retraite", label: "Préparer ma retraite" },
+                        { value: "famille", label: "Protéger ma famille" },
+                      ].map((opt) => (
+                        <button
+                          key={opt.value}
+                          onClick={() => update("objectifPrioritaire", opt.value)}
+                          className={`p-3 rounded-xl border text-sm font-medium transition-all ${
+                            data.objectifPrioritaire === opt.value
                               ? "border-copper bg-copper/5 text-foreground ring-1 ring-copper/30"
                               : "border-border text-muted-foreground hover:border-copper/50"
                           }`}
