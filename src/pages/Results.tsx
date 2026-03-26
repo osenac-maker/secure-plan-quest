@@ -28,6 +28,7 @@ const Results = () => {
   const [formEmail, setFormEmail] = useState("");
   const [formPhone, setFormPhone] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
     const d = sessionStorage.getItem("simulatorData");
@@ -51,9 +52,16 @@ const Results = () => {
     (data.revenu * 0.1) / 12
   );
 
+  const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+  const validatePhone = (phone: string) => /^(?:(?:\+33|0)\s?[1-9])(?:[\s.-]?\d{2}){4}$/.test(phone.replace(/\s/g, ''));
+
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Store lead data in session for potential future use
+    const errs: Record<string, string> = {};
+    if (!formName.trim()) errs.name = "Le nom est requis";
+    if (!validateEmail(formEmail)) errs.email = "Veuillez saisir un email valide";
+    if (!validatePhone(formPhone)) errs.phone = "Format invalide (ex: 06 12 34 56 78)";
+    if (Object.keys(errs).length > 0) { setFormErrors(errs); return; }
     sessionStorage.setItem(
       "leadData",
       JSON.stringify({ name: formName, email: formEmail, phone: formPhone })
@@ -233,29 +241,38 @@ const Results = () => {
                 onSubmit={handleFormSubmit}
                 className="max-w-md mx-auto space-y-4"
               >
-                <Input
-                  placeholder="Votre nom"
-                  value={formName}
-                  onChange={(e) => setFormName(e.target.value)}
-                  required
-                  className="h-12 bg-card border-border"
-                />
-                <Input
-                  type="email"
-                  placeholder="Votre email"
-                  value={formEmail}
-                  onChange={(e) => setFormEmail(e.target.value)}
-                  required
-                  className="h-12 bg-card border-border"
-                />
-                <Input
-                  type="tel"
-                  placeholder="Votre téléphone"
-                  value={formPhone}
-                  onChange={(e) => setFormPhone(e.target.value)}
-                  required
-                  className="h-12 bg-card border-border"
-                />
+                <div>
+                  <Input
+                    placeholder="Votre nom"
+                    value={formName}
+                    onChange={(e) => { setFormName(e.target.value); setFormErrors(p => { const n = {...p}; delete n.name; return n; }); }}
+                    required
+                    className={`h-12 bg-card border-border ${formErrors.name ? 'border-destructive' : ''}`}
+                  />
+                  {formErrors.name && <p className="text-xs text-destructive mt-1">{formErrors.name}</p>}
+                </div>
+                <div>
+                  <Input
+                    type="email"
+                    placeholder="Votre email"
+                    value={formEmail}
+                    onChange={(e) => { setFormEmail(e.target.value); setFormErrors(p => { const n = {...p}; delete n.email; return n; }); }}
+                    required
+                    className={`h-12 bg-card border-border ${formErrors.email ? 'border-destructive' : ''}`}
+                  />
+                  {formErrors.email && <p className="text-xs text-destructive mt-1">{formErrors.email}</p>}
+                </div>
+                <div>
+                  <Input
+                    type="tel"
+                    placeholder="Votre téléphone"
+                    value={formPhone}
+                    onChange={(e) => { setFormPhone(e.target.value); setFormErrors(p => { const n = {...p}; delete n.phone; return n; }); }}
+                    required
+                    className={`h-12 bg-card border-border ${formErrors.phone ? 'border-destructive' : ''}`}
+                  />
+                  {formErrors.phone && <p className="text-xs text-destructive mt-1">{formErrors.phone}</p>}
+                </div>
                 <Button
                   type="submit"
                   size="lg"

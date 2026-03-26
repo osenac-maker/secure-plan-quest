@@ -28,6 +28,7 @@ const Simulator = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [data, setData] = useState<Partial<SimulatorData>>({
     age: 42,
     status: "",
@@ -45,9 +46,20 @@ const Simulator = () => {
 
   const update = (field: keyof SimulatorData, value: string | number) => {
     setData((prev) => ({ ...prev, [field]: value }));
+    if (errors[field]) setErrors((prev) => { const n = { ...prev }; delete n[field]; return n; });
   };
 
+  const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+  const validatePhone = (phone: string) => !phone || /^(?:(?:\+33|0)\s?[1-9])(?:[\s.-]?\d{2}){4}$/.test(phone.replace(/\s/g, ''));
+
   const next = () => {
+    if (step === 3) {
+      const newErrors: Record<string, string> = {};
+      if (!data.nom?.trim()) newErrors.nom = "Le nom est requis";
+      if (!data.email || !validateEmail(data.email)) newErrors.email = "Veuillez saisir un email valide";
+      if (data.telephone && !validatePhone(data.telephone)) newErrors.telephone = "Format invalide (ex: 06 12 34 56 78)";
+      if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
+    }
     if (step < steps.length - 1) setStep(step + 1);
     else submit();
   };
@@ -395,9 +407,10 @@ const Simulator = () => {
                     <Input
                       value={data.nom}
                       onChange={(e) => update("nom", e.target.value)}
-                      className="mt-2"
+                      className={`mt-2 ${errors.nom ? 'border-destructive' : ''}`}
                       placeholder="Jean Dupont"
                     />
+                    {errors.nom && <p className="text-xs text-destructive mt-1">{errors.nom}</p>}
                   </div>
                   <div>
                     <Label className="text-foreground">Email professionnel</Label>
@@ -405,9 +418,10 @@ const Simulator = () => {
                       type="email"
                       value={data.email}
                       onChange={(e) => update("email", e.target.value)}
-                      className="mt-2"
+                      className={`mt-2 ${errors.email ? 'border-destructive' : ''}`}
                       placeholder="jean@example.com"
                     />
+                    {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
                   </div>
                   <div>
                     <Label className="text-foreground">Téléphone (optionnel)</Label>
@@ -415,9 +429,10 @@ const Simulator = () => {
                       type="tel"
                       value={data.telephone}
                       onChange={(e) => update("telephone", e.target.value)}
-                      className="mt-2"
+                      className={`mt-2 ${errors.telephone ? 'border-destructive' : ''}`}
                       placeholder="06 12 34 56 78"
                     />
+                    {errors.telephone && <p className="text-xs text-destructive mt-1">{errors.telephone}</p>}
                   </div>
                   <div className="flex items-start gap-2 text-xs text-muted-foreground">
                     <Lock className="w-3.5 h-3.5 mt-0.5 shrink-0" />
