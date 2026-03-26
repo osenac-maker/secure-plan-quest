@@ -5,7 +5,7 @@ const problems = [
   {
     icon: TrendingDown,
     title: "Votre retraite sera 2 à 3 fois plus faible que prévu",
-    desc: "En tant que TNS ou dirigeant, vos cotisations obligatoires ne financent qu'une fraction de votre retraite. Concrètement, si vous gagnez 80 000 € aujourd'hui, vous pourriez toucher moins de 30 000 € par an à la retraite — soit une baisse de 60 % de votre niveau de vie.",
+    desc: "En tant que dirigeant ou indépendant, vos cotisations obligatoires ne financent qu'une fraction de votre retraite. Concrètement, si vous gagnez 80 000 € aujourd'hui, vous pourriez toucher moins de 30 000 € par an à la retraite — soit une baisse de 60 % de votre niveau de vie.",
   },
   {
     icon: AlertTriangle,

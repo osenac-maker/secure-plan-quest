@@ -15,7 +15,7 @@ const Prevoyance = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          Prévoyance TNS : protégez vos revenus et votre famille
+          Prévoyance indépendants : protégez vos revenus et votre famille
         </motion.h1>
         <motion.div className="divider-gold mb-6" initial={{ width: 0 }} animate={{ width: 60 }} transition={{ delay: 0.2, duration: 0.6 }} />
         <motion.p className="text-muted-foreground text-lg" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
@@ -49,7 +49,7 @@ const Prevoyance = () => (
             {[
               "Indemnités RSI/SSI très limitées : souvent moins de 50 % de vos revenus réels",
               "Franchise de 3 à 90 jours sans aucun revenu — un gouffre financier pour un indépendant",
-              "Aucune couverture en cas d'invalidité partielle dans la plupart des régimes TNS",
+              "Aucune couverture en cas d'invalidité partielle dans la plupart des régimes obligatoires",
               "Bonne nouvelle : les cotisations prévoyance Madelin sont 100 % déductibles de votre revenu imposable",
             ].map((item) => (
               <div key={item} className="flex items-start gap-3">
@@ -64,7 +64,7 @@ const Prevoyance = () => (
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
             <div className="flex items-center gap-2.5">
               <Award className="w-5 h-5 text-copper" />
-              <span className="text-sm text-foreground font-medium">Spécialiste prévoyance TNS depuis 15 ans</span>
+              <span className="text-sm text-foreground font-medium">Spécialiste prévoyance depuis 15 ans</span>
             </div>
             <div className="flex items-center gap-2.5">
               <ShieldCheck className="w-5 h-5 text-copper" />

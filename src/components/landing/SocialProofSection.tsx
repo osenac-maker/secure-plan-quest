@@ -3,7 +3,7 @@ import { Star, Quote } from "lucide-react";
 import { useEffect } from "react";
 
 const stats = [
-  { value: 2500, suffix: "+", label: "Dirigeants et TNS accompagnés" },
+  { value: 2500, suffix: "+", label: "Dirigeants et indépendants accompagnés" },
   { value: 8400, suffix: " €", label: "D'économies fiscales en moyenne / an" },
   { value: 98, suffix: "%", label: "De clients satisfaits" },
   { value: 15, suffix: " min", label: "Pour obtenir votre bilan" },

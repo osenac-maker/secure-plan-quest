@@ -31,7 +31,7 @@ const RetraiteDirigeants = () => (
           <div className="space-y-4">
             {[
               "Taux de remplacement de 30 à 45 % seulement — contre 60 à 75 % pour un salarié cadre",
-              "Les cotisations TNS sont plus faibles, donc vos droits à la retraite aussi",
+              "Les cotisations des indépendants sont plus faibles, donc vos droits à la retraite aussi",
               "Départ avant 67 ans ? Attention à la décote qui réduit encore votre pension",
               "Pas d'épargne salariale (PEE, intéressement) pour compenser comme les salariés",
             ].map((item) => (

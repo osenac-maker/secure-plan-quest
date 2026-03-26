@@ -9,7 +9,7 @@ const trustItems = [
   },
   {
     icon: Users,
-    label: "Spécialiste TNS",
+    label: "Spécialiste indépendants",
     detail: "dirigeants & indépendants",
   },
   {

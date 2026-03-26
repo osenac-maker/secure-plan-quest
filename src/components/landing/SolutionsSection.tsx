@@ -14,7 +14,7 @@ const solutions = [
   {
     icon: BarChart3,
     title: "Retraite — Combler l'écart avec les salariés",
-    desc: "Les dirigeants et TNS cotisent moins que les salariés. Résultat : une retraite souvent 2 à 3 fois inférieure. Les dispositifs Article 83, Madelin et PER Obligatoire permettent de rattraper cet écart, avec des cotisations déductibles en partie financées par votre entreprise.",
+    desc: "Les dirigeants et indépendants cotisent moins que les salariés. Résultat : une retraite souvent 2 à 3 fois inférieure. Les dispositifs Article 83, Madelin et PER Obligatoire permettent de rattraper cet écart, avec des cotisations déductibles en partie financées par votre entreprise.",
     link: "/retraite-dirigeants",
     cta: "Voir les solutions retraite",
   },
@@ -30,7 +30,7 @@ const solutions = [
     title: "Mutuelle — Se soigner sans se ruiner",
     desc: "Les remboursements du régime obligatoire laissent des restes à charge importants en dentaire, optique et hospitalisation. La mutuelle Madelin vous offre de meilleurs remboursements avec un avantage fiscal : vos cotisations sont déductibles de votre revenu imposable.",
     link: "/mutuelle",
-    cta: "Comparer les mutuelles TNS",
+    cta: "Comparer les mutuelles",
   },
 ];
 
