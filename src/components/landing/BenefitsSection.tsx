@@ -44,7 +44,7 @@ const BenefitsSection = () => (
             Depuis plus de 15 ans, nous accompagnons exclusivement les dirigeants, indépendants et professions libérales. Cette spécialisation nous permet de maîtriser chaque dispositif fiscal et social adapté à votre statut.
           </p>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            Courtier indépendant, nous travaillons avec les meilleurs assureurs du marché (AXA, Generali, SwissLife, Allianz, AG2R La Mondiale) pour vous proposer des solutions objectivement sélectionnées — sans conflit d'intérêt.
+            Courtier indépendant, nous travaillons avec les plus grandes compagnies d'assurance européennes pour vous proposer des solutions objectivement sélectionnées — sans conflit d'intérêt.
           </p>
           <p className="text-muted-foreground leading-relaxed">
             Chaque recommandation est fondée sur une analyse rigoureuse de votre situation. Votre intérêt passe toujours en premier.
