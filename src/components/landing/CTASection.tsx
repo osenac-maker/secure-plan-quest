@@ -59,6 +59,7 @@ const CTASection = () => (
           <Clock className="w-4 h-4" />
           Vos versements PER sont déductibles jusqu'au 31 décembre — chaque mois compte.
         </motion.p>
+      </motion.div>
     </div>
   </section>
 );
