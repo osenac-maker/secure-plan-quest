@@ -69,7 +69,7 @@ const PERIndependants = () => (
             </div>
             <div className="flex items-center gap-2.5">
               <ShieldCheck className="w-5 h-5 text-copper" />
-              <span className="text-sm text-foreground font-medium">Courtier indépendant — contrats AXA, Generali, SwissLife</span>
+              <span className="text-sm text-foreground font-medium">Courtier indépendant — contrats sélectionnés parmi les meilleurs assureurs</span>
             </div>
           </div>
         </div>

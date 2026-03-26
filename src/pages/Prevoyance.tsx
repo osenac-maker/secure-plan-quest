@@ -68,7 +68,7 @@ const Prevoyance = () => (
             </div>
             <div className="flex items-center gap-2.5">
               <ShieldCheck className="w-5 h-5 text-copper" />
-              <span className="text-sm text-foreground font-medium">Partenaires : AXA, Generali, SwissLife, AG2R La Mondiale</span>
+              <span className="text-sm text-foreground font-medium">Partenaires assureurs de premier plan</span>
             </div>
           </div>
         </div>
