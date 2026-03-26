@@ -5,21 +5,21 @@ import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg-with-logo.jpg";
 
 const HeroSection = () => (
-  <section className="relative min-h-[92vh] flex items-center overflow-hidden">
+  <section className="relative min-h-[92vh] flex items-center overflow-hidden overflow-x-hidden">
     {/* Background image */}
     <div className="absolute inset-0">
       <img src={heroBg} alt="" className="w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-[hsl(10,40%,8%)]/85 via-[hsl(15,30%,12%)]/50 to-transparent/10" />
     </div>
 
-    <div className="container mx-auto px-4 relative z-10 py-32">
+    <div className="container mx-auto px-4 sm:px-6 relative z-10 py-20 md:py-32">
       <div className="flex items-center gap-12">
         {/* Left: text content */}
-        <div className="max-w-2xl flex-1">
+        <div className="max-w-2xl flex-1 min-w-0">
           <div className="mb-8" />
 
           <motion.h1
-            className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
+            className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
@@ -34,7 +34,7 @@ const HeroSection = () => (
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <p className="text-lg md:text-xl text-white/90 font-heading">
+            <p className="text-base md:text-xl text-white/90 font-heading">
               Chaque année, des milliers de dirigeants et indépendants paient trop d'impôts, sous-estiment leur baisse de revenus à la retraite et laissent leur famille sans protection. Nous vous aidons à inverser la tendance.
             </p>
           </motion.div>
@@ -46,13 +46,13 @@ const HeroSection = () => (
             transition={{ duration: 0.6, delay: 0.45 }}
           >
             <Link to="/simulateur">
-              <Button size="lg" className="bg-copper hover:bg-copper-light text-white text-base gap-2 font-medium px-8 border-0 group shadow-lg shadow-copper/30">
+              <Button size="lg" className="bg-copper hover:bg-copper-light text-white text-sm sm:text-base gap-2 font-medium px-4 sm:px-8 border-0 group shadow-lg shadow-copper/30 whitespace-normal h-auto py-3 text-left w-full">
                 Découvrir ce que je toucherai vraiment à la retraite
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
             <a href="tel:+33XXXXXXXXX">
-              <Button size="lg" variant="outline" className="border-copper/50 !text-white hover:bg-copper/10 text-base gap-2 font-medium px-8 bg-white/5 backdrop-blur-sm">
+              <Button size="lg" variant="outline" className="border-copper/50 !text-white hover:bg-copper/10 text-sm sm:text-base gap-2 font-medium px-4 sm:px-8 bg-white/5 backdrop-blur-sm w-full">
                 <Phone className="w-4 h-4" />
                 Être rappelé gratuitement
               </Button>
