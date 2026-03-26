@@ -139,7 +139,7 @@ const Results = () => {
                 Capital retraite potentiel
               </p>
               <p className="font-heading text-4xl font-extrabold text-copper">
-                {capitalRetraite.toLocaleString("fr-FR")}&nbsp;€
+                {results.capitalRetraite.toLocaleString("fr-FR")}&nbsp;€
               </p>
               <p className="text-xs text-muted-foreground mt-1">
                 sur {anneeAvantRetraite} ans
@@ -185,7 +185,7 @@ const Results = () => {
                 </strong>{" "}
                 tout en constituant un capital de{" "}
                 <strong className="text-foreground">
-                  {capitalRetraite.toLocaleString("fr-FR")} €
+                  {results.capitalRetraite.toLocaleString("fr-FR")} €
                 </strong>{" "}
                 pour votre retraite.
               </p>
