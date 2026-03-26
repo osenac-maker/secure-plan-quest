@@ -65,7 +65,7 @@ const PERIndependants = () => (
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
             <div className="flex items-center gap-2.5">
               <Award className="w-5 h-5 text-copper" />
-              <span className="text-sm text-foreground font-medium">15 ans d'expertise en gestion de patrimoine TNS</span>
+              <span className="text-sm text-foreground font-medium">15 ans d'expertise en gestion de patrimoine</span>
             </div>
             <div className="flex items-center gap-2.5">
               <ShieldCheck className="w-5 h-5 text-copper" />
