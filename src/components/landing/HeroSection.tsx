@@ -12,10 +12,10 @@ const HeroSection = () => (
       <div className="absolute inset-0 bg-gradient-to-r from-[hsl(10,40%,8%)]/85 via-[hsl(15,30%,12%)]/50 to-transparent/10" />
     </div>
 
-    <div className="container mx-auto px-4 relative z-10 py-32">
+    <div className="container mx-auto px-4 sm:px-6 relative z-10 py-20 md:py-32">
       <div className="flex items-center gap-12">
         {/* Left: text content */}
-        <div className="max-w-2xl flex-1">
+        <div className="max-w-2xl flex-1 min-w-0">
           <div className="mb-8" />
 
           <motion.h1
