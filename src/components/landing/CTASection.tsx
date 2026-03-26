@@ -49,6 +49,9 @@ const CTASection = () => (
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Button>
         </Link>
+        <a href="tel:+33XXXXXXXXX" className="block mt-3 text-sm text-white/50 hover:text-copper transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-copper">
+          Préférez-vous être rappelé ?
+        </a>
         <motion.p
           className="mt-6 flex items-center justify-center gap-2 text-copper/90 text-sm font-medium"
           initial={{ opacity: 0 }}
