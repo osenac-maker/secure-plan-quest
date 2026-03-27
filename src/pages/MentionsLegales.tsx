@@ -23,7 +23,7 @@ const MentionsLegales = () => (
 
         <section>
           <h2 className="font-heading text-xl font-semibold text-foreground mb-3">Directeur de la publication</h2>
-          <p>[À COMPLÉTER — Nom du dirigeant]</p>
+          <p>Olivier Senac</p>
         </section>
 
         <section>
