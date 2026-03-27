@@ -11,6 +11,9 @@ import PERIndependants from "./pages/PERIndependants";
 import RetraiteDirigeants from "./pages/RetraiteDirigeants";
 import Prevoyance from "./pages/Prevoyance";
 import Mutuelle from "./pages/Mutuelle";
+import MentionsLegales from "./pages/MentionsLegales";
+import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
+import CGU from "./pages/CGU";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -32,6 +35,9 @@ const App = () => (
           <Route path="/retraite-dirigeants" element={<RetraiteDirigeants />} />
           <Route path="/prevoyance" element={<Prevoyance />} />
           <Route path="/mutuelle" element={<Mutuelle />} />
+          <Route path="/mentions-legales" element={<MentionsLegales />} />
+          <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
+          <Route path="/cgu" element={<CGU />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
