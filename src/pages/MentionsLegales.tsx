@@ -15,8 +15,8 @@ const MentionsLegales = () => (
             <strong>MOPA</strong><br />
             Siège social : 15 rue Trèbois, 92300 Levallois-Perret<br />
             Forme juridique : [À COMPLÉTER]<br />
-            SIRET : [À COMPLÉTER]<br />
-            RCS : [À COMPLÉTER]<br />
+            SIREN : 808 322 580<br />
+            RCS Nanterre : 808 322 580<br />
             Capital social : [À COMPLÉTER]
           </p>
         </section>
