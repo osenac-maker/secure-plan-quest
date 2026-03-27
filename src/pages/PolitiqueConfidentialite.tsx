@@ -13,7 +13,7 @@ const PolitiqueConfidentialite = () => (
           <p>
             <strong>MOPA</strong><br />
             15 rue Trèbois, 92300 Levallois-Perret<br />
-            Email : [À COMPLÉTER]
+            Email : <a href="mailto:retiropatrimoine@gmail.com" className="text-copper hover:underline">retiropatrimoine@gmail.com</a>
           </p>
         </section>
 
@@ -70,7 +70,7 @@ const PolitiqueConfidentialite = () => (
             <li>Droit de retirer votre consentement à tout moment</li>
           </ul>
           <p className="mt-3">
-            Pour exercer vos droits, contactez-nous à : <strong>[À COMPLÉTER — email]</strong>
+            Pour exercer vos droits, contactez-nous à : <strong><a href="mailto:retiropatrimoine@gmail.com" className="text-copper hover:underline">retiropatrimoine@gmail.com</a></strong>
           </p>
         </section>
 
