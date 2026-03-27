@@ -30,7 +30,7 @@ const MentionsLegales = () => (
           <h2 className="font-heading text-xl font-semibold text-foreground mb-3">Contact</h2>
           <p>
             Email : <a href="mailto:retiropatrimoine@gmail.com" className="text-copper hover:underline">retiropatrimoine@gmail.com</a><br />
-            Téléphone : [À COMPLÉTER]
+            Téléphone : 06 22 82 88 44
           </p>
         </section>
 
