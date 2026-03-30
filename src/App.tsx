@@ -16,6 +16,7 @@ import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
 import CGU from "./pages/CGU";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import WhatsAppWidget from "./components/WhatsAppWidget";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/cgu" element={<CGU />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <WhatsAppWidget />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
