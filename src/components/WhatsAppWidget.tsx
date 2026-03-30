@@ -66,7 +66,7 @@ const WhatsAppWidget = () => {
               Discuter sur WhatsApp
             </a>
             <button
-              onClick={() => setOpen(false)}
+              onClick={() => { setOpen(false); setDismissed(true); }}
               className="block w-full text-center text-xs text-muted-foreground mt-2 hover:text-foreground transition-colors"
             >
               Non merci
