@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MessageCircle, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -7,6 +7,22 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent
 
 const WhatsAppWidget = () => {
   const [open, setOpen] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+  const hasAutoOpened = useRef(false);
+
+  // Auto-open popup after scrolling 40% of the page
+  useEffect(() => {
+    const handleScroll = () => {
+      if (hasAutoOpened.current || dismissed) return;
+      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      if (scrollPercent > 0.4) {
+        setOpen(true);
+        hasAutoOpened.current = true;
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [dismissed]);
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
