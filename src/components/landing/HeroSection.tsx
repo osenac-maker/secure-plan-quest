@@ -8,7 +8,7 @@ const HeroSection = () => (
   <section className="relative min-h-[92vh] flex items-center overflow-hidden overflow-x-hidden">
     {/* Background image */}
     <div className="absolute inset-0">
-      <img src={heroBg} alt="" className="w-full h-full object-cover" />
+      <img src={heroBg} alt="Dirigeant indépendant préparant sa retraite" className="w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-[hsl(10,40%,8%)]/85 via-[hsl(15,30%,12%)]/50 to-transparent/10" />
     </div>
 
@@ -24,8 +24,8 @@ const HeroSection = () => (
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
-            Transformez vos revenus d'aujourd'hui
-            <span className="block text-gradient-gold mt-2">en liberté de demain.</span>
+            Dirigeants et indépendants,
+            <span className="block text-gradient-gold mt-2">sécurisez votre retraite dès aujourd'hui.</span>
           </motion.h1>
 
           <motion.div
@@ -51,7 +51,7 @@ const HeroSection = () => (
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-            <a href="tel:+33XXXXXXXXX">
+            <a href="tel:+33600000000">
               <Button size="lg" variant="outline" className="border-copper/50 !text-white hover:bg-copper/10 text-sm sm:text-base gap-2 font-medium px-4 sm:px-8 bg-white/5 backdrop-blur-sm w-full">
                 <Phone className="w-4 h-4" />
                 Être rappelé gratuitement
