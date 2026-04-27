@@ -8,7 +8,7 @@ const CTASection = () => (
   <section className="relative py-28 overflow-hidden">
     {/* Background image with warm overlay */}
     <div className="absolute inset-0">
-      <img src={sectionRetirement} alt="" className="w-full h-full object-cover" />
+      <img src={sectionRetirement} alt="Retraite sereine grâce à une bonne stratégie patrimoniale" className="w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-t from-[hsl(10,40%,10%)]/85 via-[hsl(15,30%,15%)]/60 to-[hsl(20,20%,15%)]/50" />
     </div>
 
@@ -19,7 +19,7 @@ const CTASection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        Moins d'impôts, plus de retraite, une famille protégée
+        Passez à l'action avant le 31 décembre
       </motion.h2>
       <motion.div
         className="divider-gold mx-auto mb-6"
@@ -49,7 +49,7 @@ const CTASection = () => (
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Button>
         </Link>
-        <a href="tel:+33XXXXXXXXX" className="block mt-3 text-sm text-white/50 hover:text-copper transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-copper">
+        <a href="tel:+33600000000" className="block mt-3 text-sm text-white/50 hover:text-copper transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-copper">
           Préférez-vous être rappelé ?
         </a>
         <motion.p
