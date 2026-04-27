@@ -8,7 +8,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { ArrowRight, ArrowLeft, CheckCircle, Shield, Clock, Lock, Users, TrendingUp, Award, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { SimulatorData, calculateResults } from "@/lib/scoring";
+import { SimulatorData, calculateResults, sendLeadToAirtable } from "@/lib/scoring";
 
 const steps = [
   { title: "Votre profil", subtitle: "Quelques informations de base pour estimer votre retraite", benefit: "Nous adaptons nos calculs à votre statut et votre tranche d'imposition" },
@@ -67,6 +67,7 @@ const Simulator = () => {
   const submit = () => {
     setIsSubmitting(true);
     const results = calculateResults(data as SimulatorData);
+    sendLeadToAirtable(data as SimulatorData, results);
     sessionStorage.setItem("simulatorData", JSON.stringify(data));
     sessionStorage.setItem("simulatorResults", JSON.stringify(results));
     // Anticipation delay before showing results

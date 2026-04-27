@@ -144,3 +144,31 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
     recommandations,
   };
 }
+
+// ─── Capture lead vers Airtable ───────────────────────────────────────────────
+
+export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult): void {
+  const webhookUrl = import.meta.env.VITE_AIRTABLE_WEBHOOK_URL;
+  if (!webhookUrl) return;
+
+  fetch(webhookUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      nom: data.nom,
+      email: data.email,
+      telephone: data.telephone,
+      status: data.status,
+      age: data.age,
+      revenu: data.revenu,
+      situationFamiliale: data.situationFamiliale,
+      enfants: data.enfants,
+      capaciteEpargne: data.capaciteEpargne,
+      priorite: data.priorite,
+      retraiteEstimee: results.retraiteEstimee,
+      economiesFiscales: results.economiesFiscales,
+      score: results.leadScore,
+      timestamp: new Date().toISOString(),
+    }),
+  }).catch(() => {});
+}
