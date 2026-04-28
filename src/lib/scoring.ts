@@ -179,5 +179,5 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
         "Date de soumission": new Date().toISOString(),
       },
     }),
-  }).catch(() => {});
+ .catch((err) => console.error("Airtable error:", err));
 }
