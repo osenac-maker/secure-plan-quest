@@ -177,7 +177,5 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
         "Économie fiscale": results.economiesFiscales,
         "Score": results.leadScore,
         "Date de soumission": new Date().toISOString(),
-      },
-    }),
- .catch((err) => console.error("Airtable error:", err));
+      }).catch((err) => console.error("Airtable error:", err));
 }
