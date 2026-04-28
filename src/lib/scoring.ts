@@ -145,9 +145,16 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
   };
 }
 
-// ─── Capture lead vers Airtable ─── v2
+// ─── Capture lead vers Airtable ─── v3 ───────────────────────────────────────
 
 export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult): void {
+  const STATUS_LABELS: Record<string, string> = {
+    freelance: "Freelance",
+    dirigeant: "Dirigeant",
+    liberal: "Profession libérale",
+    salarie: "Salarié",
+  };
+
   fetch("https://api.airtable.com/v0/applfZMfulVhjtyay/Leads", {
     method: "POST",
     headers: {
@@ -159,6 +166,16 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
         "Nom": data.nom,
         "Email": data.email,
         "Téléphone": data.telephone,
+        "Statut professionnel": STATUS_LABELS[data.status] ?? data.status,
+        "Âge": data.age,
+        "Revenus annuels": data.revenu,
+        "Situation familiale": data.situationFamiliale,
+        "Enfants": data.enfants,
+        "Capacité épargne mensuelle": data.capaciteEpargne,
+        "Objectif prioritaire": data.priorite,
+        "Retraite estimée": results.retraiteEstimee,
+        "Économie fiscale": results.economiesFiscales,
+        "Score": results.leadScore,
       },
     }),
   }).catch(() => {});
