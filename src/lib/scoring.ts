@@ -82,7 +82,7 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
   const versementPEROptimal = Math.round(plafondPER);
   const economiesFiscales = Math.round(versementPEROptimal * tmi);
 
-  // 4. Capital retraite : capitalisation réelle des versements PER + épargne libre
+  // 4. Capital retraite
   const mensuelPER = Math.round(versementPEROptimal / 12);
   const capitalRetraite = Math.round(
     futureValue(mensuelPER + data.capaciteEpargne, anneesRestantes) +
@@ -148,13 +148,6 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
 // ─── Capture lead vers Airtable ───────────────────────────────────────────────
 
 export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult): void {
-  const STATUS_LABELS: Record<string, string> = {
-    freelance: "Freelance",
-    dirigeant: "Dirigeant",
-    liberal: "Profession libérale",
-    salarie: "Salarié",
-  };
-
   fetch("https://api.airtable.com/v0/applfZMfulVhjtyay/Leads", {
     method: "POST",
     headers: {
@@ -162,12 +155,12 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
       "Authorization": "Bearer patXBzdasi4RW9ELm.e6b8696c6cafc96209e1724860e8ff18fd2ce8fee438cc7d6b4edcfdd736ef55",
     },
     body: JSON.stringify({
-fields: {
+      fields: {
         "Nom": data.nom,
         "Email": data.email,
         "Téléphone": data.telephone,
         "Date de soumission": new Date().toISOString(),
       },
     }),
-  }).catch((err) => console.error("Airtable error:", err));
+  }).catch(() => {});
 }
