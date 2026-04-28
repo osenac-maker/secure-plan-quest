@@ -162,12 +162,12 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
       "Authorization": "Bearer patXBzdasi4RW9ELm.e6b8696c6cafc96209e1724860e8ff18fd2ce8fee438cc7d6b4edcfdd736ef55",
     },
     body: JSON.stringify({
-      165    fields: {
-166      "Nom": data.nom,
-167      "Email": data.email,
-168      "Téléphone": data.telephone,
-169      "Date de soumission": new Date().toISOString(),
-170    },
-171  }),
-172  }).catch((err) => console.error("Airtable error:", err));
-173  }
+fields: {
+        "Nom": data.nom,
+        "Email": data.email,
+        "Téléphone": data.telephone,
+        "Date de soumission": new Date().toISOString(),
+      },
+    }),
+  }).catch((err) => console.error("Airtable error:", err));
+}
