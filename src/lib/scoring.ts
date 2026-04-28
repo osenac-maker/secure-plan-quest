@@ -145,7 +145,7 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
   };
 }
 
-// ─── Capture lead vers Airtable ───────────────────────────────────────────────
+// ─── Capture lead vers Airtable ─── v2
 
 export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult): void {
   fetch("https://api.airtable.com/v0/applfZMfulVhjtyay/Leads", {
@@ -159,7 +159,6 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
         "Nom": data.nom,
         "Email": data.email,
         "Téléphone": data.telephone,
-        "Date de soumission": new Date().toISOString(),
       },
     }),
   }).catch(() => {});
