@@ -176,6 +176,8 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
         "Retraite estimée": results.retraiteEstimee,
         "Économie fiscale": results.economiesFiscales,
         "Score": results.leadScore,
-        "Date de soumission": new Date().toISOString(),
-      }).catch((err) => console.error("Airtable error:", err));
+      "Date de soumission": new Date().toISOString(),
+      },
+    }),
+  }).catch((err) => console.error("Airtable error:", err));
 }
