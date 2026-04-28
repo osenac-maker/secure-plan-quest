@@ -148,27 +148,36 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
 // ─── Capture lead vers Airtable ───────────────────────────────────────────────
 
 export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult): void {
-  const webhookUrl = import.meta.env.VITE_AIRTABLE_WEBHOOK_URL;
-  if (!webhookUrl) return;
+  const STATUS_LABELS: Record<string, string> = {
+    freelance: "Freelance",
+    dirigeant: "Dirigeant",
+    liberal: "Profession libérale",
+    salarie: "Salarié",
+  };
 
-  fetch(webhookUrl, {
+  fetch("https://api.airtable.com/v0/applfZMfulVhjtyay/Leads", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer patXBzdasi4RW9ELm.e6b8696c6cafc96209e1724860e8ff18fd2ce8fee438cc7d6b4edcfdd736ef55",
+    },
     body: JSON.stringify({
-      nom: data.nom,
-      email: data.email,
-      telephone: data.telephone,
-      status: data.status,
-      age: data.age,
-      revenu: data.revenu,
-      situationFamiliale: data.situationFamiliale,
-      enfants: data.enfants,
-      capaciteEpargne: data.capaciteEpargne,
-      priorite: data.priorite,
-      retraiteEstimee: results.retraiteEstimee,
-      economiesFiscales: results.economiesFiscales,
-      score: results.leadScore,
-      timestamp: new Date().toISOString(),
+      fields: {
+        "Nom": data.nom,
+        "Email": data.email,
+        "Téléphone": data.telephone,
+        "Statut professionnel": STATUS_LABELS[data.status] ?? data.status,
+        "Âge": data.age,
+        "Revenus annuels": data.revenu,
+        "Situation familiale": data.situationFamiliale,
+        "Enfants": data.enfants,
+        "Capacité épargne mensuelle": data.capaciteEpargne,
+        "Objectif prioritaire": data.priorite,
+        "Retraite estimée": results.retraiteEstimee,
+        "Économie fiscale": results.economiesFiscales,
+        "Score": results.leadScore,
+        "Date de soumission": new Date().toISOString(),
+      },
     }),
   }).catch(() => {});
 }
