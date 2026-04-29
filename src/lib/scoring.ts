@@ -156,20 +156,32 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
   };
 
   fetch("https://api.airtable.com/v0/applfZMfulVhjtyay/Leads", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer patXBzdasi4RW9ELm.e6b8696c6cafc96209e1724860e8ff18fd2ce8fee438cc7d6b4edcfdd736ef55",
-    },
-    body: JSON.stringify({
-      fields: {
+    fields: {
         "Nom": data.nom,
         "Email": data.email,
         "Téléphone": data.telephone,
         "Statut professionnel": STATUS_LABELS[data.status] ?? data.status,
         "Âge": data.age,
         "Revenus annuels": data.revenu,
-        "Situation familiale": data.situationFamiliale,
+        "Situation familiale": ({
+          celibataire: "Célibataire",
+          "en-couple": "En couple",
+          marie: "Marié(e)",
+          divorce: "Divorcé(e)",
+          veuf: "Veuf(ve)",
+        } as Record<string, string>)[data.situationFamiliale] ?? data.situationFamiliale,
+        "Enfants": data.enfants,
+        "Capacité épargne mensuelle": data.capaciteEpargne,
+        "Objectif prioritaire": ({
+          impots: "Optimiser fiscalité",
+          retraite: "Préparer la retraite",
+          protection: "Protection famille",
+          transmission: "Transmettre patrimoine",
+        } as Record<string, string>)[data.priorite] ?? data.priorite,
+        "Retraite estimée": results.retraiteEstimee,
+        "Économie fiscale": results.economiesFiscales,
+        "Score": results.leadScore,
+      },
         "Enfants": data.enfants,
         "Capacité épargne mensuelle": data.capaciteEpargne,
         "Objectif prioritaire": data.priorite,
