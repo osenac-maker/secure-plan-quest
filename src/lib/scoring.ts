@@ -180,7 +180,7 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
       fields: {
         "Nom": data.nom,
         "Email": data.email,
-        "Téléphone": data.telephone,
+      "Téléphone": normalizePhone(data.telephone),
         "Statut professionnel": STATUS_LABELS[data.status] ?? data.status,
         "Âge": data.age,
         "Revenus annuels": data.revenu,
@@ -194,4 +194,12 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
       },
     }),
   }).catch(() => {});
+}
+function normalizePhone(phone: string): string {
+  if (!phone) return "";
+  const cleaned = phone.replace(/[\s.\-()]/g, "");
+  if (cleaned.startsWith("0") && cleaned.length === 10) {
+    return "+33 " + cleaned.slice(1).replace(/(\d{1})(\d{2})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4 $5");
+  }
+  return phone;
 }
