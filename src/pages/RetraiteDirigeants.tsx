@@ -320,4 +320,38 @@ const RetraiteDirigeants = () => {
             <div className="hidden sm:block w-px h-8 bg-border" />
             <div className="flex items-center gap-1">
               {[...Array(5)].map((_, i) => (
-                <Star key={
+                <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+              ))}
+              <span className="text-xs text-muted-foreground ml-1.5">4.9/5</span>
+            </div>
+          </motion.div>
+
+          {/* ── CTA ── */}
+          <motion.div
+            className="bg-hero rounded-2xl p-10 text-center border border-border"
+            {...fadeUp(0.35)}
+          >
+            <h3 className="font-heading text-2xl font-bold text-foreground mb-2">
+              Quel sera vraiment le montant de votre retraite ?
+            </h3>
+            <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">
+              Notre simulateur calcule votre pension prévisionnelle en 2 minutes et vous montre
+              combien vous pouvez gagner en activant les bons dispositifs.
+            </p>
+            <Link to="/simulateur">
+              <Button size="lg" className="bg-copper hover:bg-copper-light text-white gap-2 font-medium border-0 group">
+                Découvrir ma stratégie retraite
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+            <p className="text-xs text-muted-foreground mt-4">Gratuit · Sans engagement · Résultat en 2 minutes</p>
+          </motion.div>
+
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+export default RetraiteDirigeants;
