@@ -65,7 +65,7 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
   const besoinRetraite = Math.round(revenuMensuel * 0.75);
   const manqueAGagner = Math.max(0, (besoinRetraite - retraiteEstimee) * 12);
 
-  // 2. Score retraite (préparation actuelle)
+  // 2. Score retraite
   const anneesRestantes = Math.max(1, 65 - data.age);
   const ciblePatrimoine = data.revenu * 10;
   const capitalProjecte =
@@ -156,7 +156,7 @@ function normalizePhone(phone: string): string {
   return phone;
 }
 
-// ─── Capture lead vers Airtable ─── v4 ───────────────────────────────────────
+// ─── Capture lead vers Airtable ─── v5 ───────────────────────────────────────
 
 export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult): void {
   const STATUS_LABELS: Record<string, string> = {
@@ -202,7 +202,6 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
         "Retraite estimée": results.retraiteEstimee,
         "Économie fiscale": results.economiesFiscales,
         "Score": results.leadScore,
-        "Date de soumission": new Date().toISOString().split("T")[0],
         "Étape": "nouveau",
       },
     }),
