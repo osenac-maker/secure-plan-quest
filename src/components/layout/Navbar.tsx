@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoRetiro from "@/assets/logo-retiro-v2.png";
 
 const links = [
   { to: "/", label: "Accueil" },
@@ -34,14 +33,23 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between h-20 px-4">
-        <Link to="/" className="flex items-center">
-          <img
-            src={logoRetiro}
-            alt="RETIRO Patrimoine"
-            className="h-12 w-auto"
-          />
+
+        {/* Logo texte */}
+        <Link to="/" className="flex items-center gap-2.5 group">
+          <div className="w-9 h-9 rounded-full bg-copper flex items-center justify-center flex-shrink-0 shadow-sm group-hover:bg-copper-light transition-colors duration-300">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="font-heading font-bold text-lg text-foreground tracking-wide">RETIRO</span>
+            <span className="text-xs text-muted-foreground font-normal tracking-widest uppercase" style={{ fontSize: "9px" }}>Patrimoine</span>
+          </div>
         </Link>
 
+        {/* Nav links */}
         <div className="hidden md:flex items-center gap-1">
           {links.map((l) => (
             <Link
@@ -65,6 +73,7 @@ const Navbar = () => {
           ))}
         </div>
 
+        {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
           <Link to="/conseiller">
             <Button variant="ghost" size="sm" className="text-foreground/70 hover:text-foreground">
@@ -78,6 +87,7 @@ const Navbar = () => {
           </Link>
         </div>
 
+        {/* Mobile burger */}
         <button
           className="md:hidden text-foreground"
           onClick={() => setOpen(!open)}
@@ -86,6 +96,7 @@ const Navbar = () => {
         </button>
       </div>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
