@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { SimulatorData, SimulatorResult } from "@/lib/scoring";
@@ -15,34 +14,45 @@ import {
   Phone,
   Lock,
   CheckCircle,
-  ChevronRight,
+  AlertTriangle,
+  Star,
+  Calendar,
 } from "lucide-react";
 
 const Results = () => {
   const navigate = useNavigate();
   const [data, setData] = useState<SimulatorData | null>(null);
   const [results, setResults] = useState<SimulatorResult | null>(null);
-
-  // Lead form state
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   useEffect(() => {
     const d = sessionStorage.getItem("simulatorData");
     const r = sessionStorage.getItem("simulatorResults");
-    if (!d || !r) {
-      navigate("/simulateur");
-      return;
-    }
+    if (!d || !r) { navigate("/simulateur"); return; }
     setData(JSON.parse(d));
     setResults(JSON.parse(r));
   }, [navigate]);
 
   if (!results || !data) return null;
 
-  const anneeAvantRetraite = Math.max(1, 65 - data.age);
+  const anneesAvantRetraite = Math.max(1, 65 - data.age);
   const investissementMensuel = Math.round(results.versementPEROptimal / 12);
 
+  // Prénom propre — prend le premier token qui n'est pas tout en majuscules
+  const tokens = data.nom.trim().split(/\s+/);
+  const prenom = tokens.find(t => t !== t.toUpperCase()) ?? tokens[0];
+  const prenomCapitalized = prenom.charAt(0).toUpperCase() + prenom.slice(1).toLowerCase();
 
+  const scoreColor =
+    results.scoreRetraite < 30
+      ? { stroke: "hsl(var(--destructive))", text: "text-destructive", bg: "bg-destructive/10" }
+      : results.scoreRetraite < 60
+      ? { stroke: "hsl(var(--copper))", text: "text-copper", bg: "bg-copper/10" }
+      : { stroke: "hsl(var(--accent))", text: "text-accent", bg: "bg-accent/10" };
+
+  const scoreLabel =
+    results.scoreRetraite < 30 ? "Critique" :
+    results.scoreRetraite < 60 ? "À améliorer" : "Satisfaisant";
 
   const fadeUp = (delay: number) => ({
     initial: { opacity: 0, y: 20 },
@@ -55,158 +65,161 @@ const Results = () => {
       <Navbar />
       <div className="pt-36 pb-16">
         <div className="container mx-auto px-4 max-w-3xl">
+
           {/* ── Headline ── */}
-          <motion.div className="text-center mb-12" {...fadeUp(0)}>
-            <div className="inline-flex items-center gap-2 bg-accent/10 text-accent rounded-full px-4 py-1.5 text-sm font-medium mb-5">
-              <TrendingUp className="w-4 h-4" />
+          <motion.div className="text-center mb-10" {...fadeUp(0)}>
+            <div className="inline-flex items-center gap-2 bg-copper/10 text-copper rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-widest mb-5">
+              <TrendingUp className="w-3.5 h-3.5" />
               Résultat de votre simulation
             </div>
             <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4">
-              {data.nom.split(' ')[0]}, voici{" "}
-              <span className="text-gradient-gold">votre bilan {data.status === "dirigeant" ? "de dirigeant" : data.status === "liberal" ? "de profession libérale" : data.status === "freelance" ? "d'indépendant" : "personnalisé"}</span>
+              {prenomCapitalized}, voici{" "}
+              <span className="text-gradient-gold">
+                votre bilan{" "}
+                {data.status === "dirigeant" ? "de dirigeant"
+                  : data.status === "liberal" ? "de profession libérale"
+                  : data.status === "freelance" ? "d'indépendant"
+                  : "personnalisé"}
+              </span>
             </h1>
-            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              D'après vos informations, vous pourriez réduire significativement
-              vos impôts chaque année tout en constituant un capital retraite
-              conséquent.
+            <p className="text-muted-foreground text-base max-w-xl mx-auto">
+              Voici ce que révèle votre situation financière — et ce que vous pourriez faire dès maintenant.
             </p>
           </motion.div>
 
-          {/* ── Score Retraite Gauge ── */}
+          {/* ── Alerte retraite + Score ── */}
           <motion.div
-            className="bg-card rounded-2xl p-8 shadow-card mb-10 flex flex-col items-center"
+            className="bg-card rounded-2xl p-7 shadow-card mb-6 border border-border"
             {...fadeUp(0.1)}
           >
-            <p className="text-sm text-muted-foreground mb-4 font-medium">Votre score de préparation retraite</p>
-            <div className="relative w-40 h-40 mb-4">
-              <svg className="w-full h-full -rotate-90" viewBox="0 0 160 160">
-                <circle cx="80" cy="80" r="70" fill="none" stroke="hsl(var(--muted))" strokeWidth="10" />
-                <motion.circle
-                  cx="80" cy="80" r="70"
-                  fill="none"
-                  stroke={results.scoreRetraite < 30 ? "hsl(var(--destructive))" : results.scoreRetraite < 60 ? "hsl(var(--copper))" : "hsl(var(--accent))"}
-                  strokeWidth="10"
-                  strokeLinecap="round"
-                  strokeDasharray={2 * Math.PI * 70}
-                  initial={{ strokeDashoffset: 2 * Math.PI * 70 }}
-                  animate={{ strokeDashoffset: 2 * Math.PI * 70 * (1 - results.scoreRetraite / 100) }}
-                  transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-                />
-              </svg>
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="font-heading text-4xl font-extrabold text-foreground">{results.scoreRetraite}</span>
-                <span className="text-xs text-muted-foreground font-medium">/100</span>
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              {/* Gauge */}
+              <div className="flex flex-col items-center flex-shrink-0">
+                <div className="relative w-32 h-32">
+                  <svg className="w-full h-full -rotate-90" viewBox="0 0 128 128">
+                    <circle cx="64" cy="64" r="54" fill="none" stroke="hsl(var(--muted))" strokeWidth="10" />
+                    <motion.circle
+                      cx="64" cy="64" r="54"
+                      fill="none"
+                      stroke={scoreColor.stroke}
+                      strokeWidth="10"
+                      strokeLinecap="round"
+                      strokeDasharray={2 * Math.PI * 54}
+                      initial={{ strokeDashoffset: 2 * Math.PI * 54 }}
+                      animate={{ strokeDashoffset: 2 * Math.PI * 54 * (1 - results.scoreRetraite / 100) }}
+                      transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+                    />
+                  </svg>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <span className={`font-heading text-3xl font-extrabold ${scoreColor.text}`}>
+                      {results.scoreRetraite}
+                    </span>
+                    <span className="text-xs text-muted-foreground">/100</span>
+                  </div>
+                </div>
+                <span className={`mt-2 text-xs font-semibold px-2.5 py-1 rounded-full ${scoreColor.bg} ${scoreColor.text}`}>
+                  {scoreLabel}
+                </span>
+              </div>
+
+              {/* Alerte retraite */}
+              <div className="flex-1">
+                <p className="text-xs text-muted-foreground uppercase tracking-widest mb-2 font-medium">
+                  Votre retraite estimée
+                </p>
+                <div className="flex items-end gap-3 mb-3">
+                  <span className="font-heading text-4xl font-extrabold text-destructive">
+                    {results.retraiteEstimee.toLocaleString("fr-FR")} €
+                  </span>
+                  <span className="text-sm text-muted-foreground mb-1">/mois</span>
+                </div>
+                <div className="flex items-center gap-2 bg-destructive/5 border border-destructive/20 rounded-lg px-3 py-2 mb-3">
+                  <AlertTriangle className="w-4 h-4 text-destructive flex-shrink-0" />
+                  <p className="text-xs text-muted-foreground">
+                    Soit{" "}
+                    <strong className="text-destructive">
+                      {Math.round((1 - results.retraiteEstimee / (data.revenu / 12)) * 100)}% de revenus en moins
+                    </strong>{" "}
+                    par rapport à votre situation actuelle
+                  </p>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  {results.scoreRetraite < 30
+                    ? "Votre préparation retraite nécessite une action rapide. Un accompagnement adapté peut faire toute la différence."
+                    : results.scoreRetraite < 60
+                    ? "Vous avez posé quelques bases, mais il reste un potentiel d'optimisation significatif."
+                    : "Vous êtes sur la bonne voie. Quelques ajustements pourraient encore améliorer votre situation."}
+                </p>
               </div>
             </div>
-            <p className="text-sm text-muted-foreground text-center max-w-sm">
-              {results.scoreRetraite < 30
-                ? "Votre préparation retraite nécessite une action rapide. Un accompagnement adapté peut faire toute la différence."
-                : results.scoreRetraite < 60
-                ? "Vous avez posé quelques bases, mais il reste un potentiel d'optimisation significatif."
-                : "Vous êtes sur la bonne voie. Quelques ajustements pourraient encore améliorer votre situation."}
-            </p>
           </motion.div>
 
           {/* ── 3 Key Metrics ── */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-            {/* Tax savings */}
-            <motion.div
-              className="bg-card rounded-2xl p-6 shadow-card text-center"
-              {...fadeUp(0.15)}
-            >
-              <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                <Wallet className="w-6 h-6 text-accent" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <motion.div className="bg-card rounded-2xl p-6 shadow-card text-center border border-border" {...fadeUp(0.15)}>
+              <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-3">
+                <Wallet className="w-5 h-5 text-green-600" />
               </div>
-              <p className="text-sm text-muted-foreground mb-1">
-                Économie d'impôts estimée
-              </p>
-              <p className="font-heading text-4xl font-extrabold text-accent">
-                {results.economiesFiscales.toLocaleString("fr-FR")}&nbsp;€
+              <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wide">Économie fiscale</p>
+              <p className="font-heading text-3xl font-extrabold text-green-600">
+                {results.economiesFiscales.toLocaleString("fr-FR")} €
               </p>
               <p className="text-xs text-muted-foreground mt-1">par an</p>
-              <p className="text-[10px] text-muted-foreground/60 mt-0.5">Estimation basée sur le barème en vigueur</p>
+              <p className="text-[10px] text-muted-foreground/50 mt-1">Basé sur le barème TMI 2024</p>
             </motion.div>
 
-            {/* Retirement capital */}
-            <motion.div
-              className="bg-card rounded-2xl p-6 shadow-card text-center"
-              {...fadeUp(0.25)}
-            >
-              <div className="w-12 h-12 rounded-full bg-copper/10 flex items-center justify-center mx-auto mb-4">
-                <PiggyBank className="w-6 h-6 text-copper" />
+            <motion.div className="bg-card rounded-2xl p-6 shadow-card text-center border border-border" {...fadeUp(0.2)}>
+              <div className="w-10 h-10 rounded-full bg-copper/10 flex items-center justify-center mx-auto mb-3">
+                <PiggyBank className="w-5 h-5 text-copper" />
               </div>
-              <p className="text-sm text-muted-foreground mb-1">
-                Capital retraite potentiel
+              <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wide">Capital retraite</p>
+              <p className="font-heading text-3xl font-extrabold text-copper">
+                {results.capitalRetraite.toLocaleString("fr-FR")} €
               </p>
-              <p className="font-heading text-4xl font-extrabold text-copper">
-                {results.capitalRetraite.toLocaleString("fr-FR")}&nbsp;€
-              </p>
-              <p className="text-xs text-muted-foreground mt-1">
-                sur {anneeAvantRetraite} ans
-              </p>
+              <p className="text-xs text-muted-foreground mt-1">dans {anneesAvantRetraite} ans</p>
             </motion.div>
 
-            {/* Monthly investment */}
-            <motion.div
-              className="bg-card rounded-2xl p-6 shadow-card text-center"
-              {...fadeUp(0.35)}
-            >
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="w-6 h-6 text-primary" />
+            <motion.div className="bg-card rounded-2xl p-6 shadow-card text-center border border-border" {...fadeUp(0.25)}>
+              <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mx-auto mb-3">
+                <Calendar className="w-5 h-5 text-blue-600" />
               </div>
-              <p className="text-sm text-muted-foreground mb-1">
-                Investissement mensuel conseillé
-              </p>
-              <p className="font-heading text-4xl font-extrabold text-foreground">
-                {investissementMensuel.toLocaleString("fr-FR")}&nbsp;€
+              <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wide">Effort mensuel</p>
+              <p className="font-heading text-3xl font-extrabold text-foreground">
+                {investissementMensuel.toLocaleString("fr-FR")} €
               </p>
               <p className="text-xs text-muted-foreground mt-1">par mois</p>
             </motion.div>
           </div>
 
-          {/* ── Interpretation ── */}
-          <motion.div
-            className="bg-card rounded-2xl p-8 shadow-card mb-10"
-            {...fadeUp(0.45)}
-          >
+          {/* ── Interprétation ── */}
+          <motion.div className="bg-card rounded-2xl p-7 shadow-card mb-6 border border-border" {...fadeUp(0.3)}>
             <h2 className="font-heading text-xl font-bold text-foreground mb-4">
               Ce que cela signifie concrètement
             </h2>
-            <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+            <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
               <p>
                 En investissant{" "}
-                <strong className="text-foreground">
-                  {investissementMensuel.toLocaleString("fr-FR")} € par mois
-                </strong>{" "}
-                dans un PER adapté à votre situation, vous pourriez récupérer{" "}
-                <strong className="text-foreground">
-                  {results.economiesFiscales.toLocaleString("fr-FR")} € d'impôts
-                  chaque année
-                </strong>{" "}
-                tout en constituant un capital de{" "}
-                <strong className="text-foreground">
-                  {results.capitalRetraite.toLocaleString("fr-FR")} €
-                </strong>{" "}
+                <strong className="text-foreground">{investissementMensuel.toLocaleString("fr-FR")} €/mois</strong>{" "}
+                dans un PER adapté à votre statut, vous récupérez{" "}
+                <strong className="text-green-600">{results.economiesFiscales.toLocaleString("fr-FR")} € d'impôts chaque année</strong>{" "}
+                tout en construisant un capital de{" "}
+                <strong className="text-copper">{results.capitalRetraite.toLocaleString("fr-FR")} €</strong>{" "}
                 pour votre retraite.
               </p>
               <p>
-                La majorité des dirigeants et indépendants ne profitent pas
-                pleinement des dispositifs existants. Il est très probable que
-                votre situation actuelle laisse une marge d'optimisation
-                significative, tant sur le plan fiscal que patrimonial.
+                La majorité des {data.status === "dirigeant" ? "dirigeants" : data.status === "liberal" ? "professions libérales" : "indépendants"} ne profitent pas pleinement
+                des dispositifs existants. Votre situation laisse très probablement une marge
+                d'optimisation significative — fiscale et patrimoniale.
               </p>
             </div>
 
-            {/* Recommendations */}
             {results.recommandations.length > 0 && (
-              <div className="mt-6 pt-5 border-t border-border">
-                <p className="text-sm font-semibold text-foreground mb-3">
-                  Solutions recommandées :
-                </p>
-                <div className="space-y-2">
+              <div className="mt-5 pt-5 border-t border-border">
+                <p className="text-sm font-semibold text-foreground mb-3">Solutions recommandées pour votre profil :</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {results.recommandations.map((r) => (
-                    <div key={r} className="flex items-center gap-2.5">
-                      <CheckCircle className="w-4 h-4 text-accent flex-shrink-0" />
+                    <div key={r} className="flex items-center gap-2.5 bg-muted/40 rounded-lg px-3 py-2">
+                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                       <span className="text-sm text-foreground">{r}</span>
                     </div>
                   ))}
@@ -215,18 +228,32 @@ const Results = () => {
             )}
           </motion.div>
 
-          {/* ── Lead Confirmation ── */}
+          {/* ── Urgence ── */}
           <motion.div
-            className="bg-hero rounded-2xl p-8 md:p-10 mb-10"
-            {...fadeUp(0.55)}
+            className="rounded-xl p-4 mb-6 flex items-start gap-3 bg-amber-50 border border-amber-200"
+            {...fadeUp(0.35)}
           >
-            <div className="text-center mb-8">
-              <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-3">
+            <AlertTriangle className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" />
+            <p className="text-sm text-amber-800">
+              <strong>Ne laissez pas ces économies vous échapper.</strong>{" "}
+              Chaque année sans action, c'est{" "}
+              <strong>{results.economiesFiscales.toLocaleString("fr-FR")} €</strong>{" "}
+              de réductions d'impôts perdues et un capital retraite qui ne travaille pas pour vous.
+            </p>
+          </motion.div>
+
+          {/* ── CTA ── */}
+          <motion.div
+            className="bg-hero rounded-2xl p-8 md:p-10 mb-8 border border-border"
+            {...fadeUp(0.4)}
+          >
+            <div className="text-center mb-6">
+              <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-2">
                 Recevez votre stratégie personnalisée
               </h2>
-              <p className="text-muted-foreground max-w-md mx-auto">
-                Un expert analysera vos résultats et vous proposera un plan
-                d'action sur-mesure, adapté à votre situation.
+              <p className="text-muted-foreground text-sm max-w-md mx-auto">
+                Un expert analysera vos résultats et vous proposera un plan d'action
+                sur-mesure, adapté à votre situation.
               </p>
             </div>
 
@@ -236,113 +263,79 @@ const Results = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
               >
-                <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-8 h-8 text-accent" />
+                <div className="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-7 h-7 text-green-500" />
                 </div>
-                <h3 className="font-heading text-xl font-bold text-foreground mb-2">
-                  Demande envoyée !
-                </h3>
+                <h3 className="font-heading text-xl font-bold text-foreground mb-2">Demande envoyée !</h3>
                 <p className="text-muted-foreground text-sm">
-                  Un conseiller vous contactera sous 24h pour échanger sur votre
-                  stratégie.
+                  Un conseiller vous contactera sous 24h pour échanger sur votre stratégie.
                 </p>
               </motion.div>
             ) : (
-              <div className="max-w-md mx-auto text-center space-y-5">
-                <div className="bg-card rounded-lg p-4 border border-border text-sm text-muted-foreground space-y-1">
-                  <p><span className="text-foreground font-medium">{data.nom}</span></p>
-                  <p>{data.email}{data.telephone ? ` · ${data.telephone}` : ''}</p>
+              <div className="max-w-md mx-auto text-center space-y-4">
+                <div className="bg-card rounded-lg p-4 border border-border text-sm text-muted-foreground">
+                  <p className="font-medium text-foreground">{data.nom}</p>
+                  <p className="mt-0.5">{data.email}{data.telephone ? ` · ${data.telephone}` : ""}</p>
                 </div>
                 <Button
                   size="lg"
                   onClick={() => {
-                    sessionStorage.setItem(
-                      "leadData",
-                      JSON.stringify({ name: data.nom, email: data.email, phone: data.telephone })
-                    );
+                    sessionStorage.setItem("leadData", JSON.stringify({ name: data.nom, email: data.email, phone: data.telephone }));
                     setFormSubmitted(true);
                   }}
-                  className="w-full bg-copper hover:bg-copper-light text-white border-0 gap-2 font-semibold shadow-lg shadow-copper/20 h-12"
+                  className="w-full bg-copper hover:bg-copper-light text-white border-0 gap-2 font-semibold shadow-lg shadow-copper/20 h-13 text-base"
                 >
+                  <Phone className="w-4 h-4" />
                   Être rappelé par un conseiller
                   <ArrowRight className="w-4 h-4" />
                 </Button>
                 <p className="text-xs text-muted-foreground">
-                  Coordonnées incorrectes ? <button onClick={() => navigate("/simulateur")} className="text-copper underline underline-offset-2 hover:text-copper-light">Modifier</button>
+                  Coordonnées incorrectes ?{" "}
+                  <button onClick={() => navigate("/simulateur")} className="text-copper underline underline-offset-2 hover:text-copper-light">
+                    Modifier
+                  </button>
                 </p>
               </div>
             )}
 
-            {/* Trust signals */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-8 pt-6 border-t border-border/50">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-7 pt-6 border-t border-border/50">
               <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                <Shield className="w-3.5 h-3.5 text-copper" />
-                Analyse 100 % gratuite
+                <Shield className="w-3.5 h-3.5 text-copper" />Analyse 100% gratuite
               </span>
               <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                <Phone className="w-3.5 h-3.5 text-copper" />
-                Sans engagement
+                <Phone className="w-3.5 h-3.5 text-copper" />Sans engagement
               </span>
               <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                <Lock className="w-3.5 h-3.5 text-copper" />
-                Données confidentielles
+                <Lock className="w-3.5 h-3.5 text-copper" />Données confidentielles
               </span>
             </div>
-          </motion.div>
-
-          {/* ── Opportunity nudge ── */}
-          <motion.div
-            className="bg-copper/5 border border-copper/20 rounded-xl p-5 mb-10 flex items-start gap-3"
-            {...fadeUp(0.65)}
-          >
-            <ChevronRight className="w-5 h-5 text-copper mt-0.5 shrink-0" />
-            <p className="text-sm text-muted-foreground">
-              <strong className="text-foreground">
-                Ne laissez pas ces économies vous échapper.
-              </strong>{" "}
-              Chaque année sans optimisation, c'est{" "}
-              <strong className="text-foreground">
-                {results.economiesFiscales.toLocaleString("fr-FR")} €
-              </strong>{" "}
-              de réductions d'impôts non utilisées et un capital retraite qui ne
-              travaille pas pour vous.
-            </p>
           </motion.div>
 
           {/* ── Trust bar ── */}
           <motion.div
             className="bg-card border border-border rounded-xl p-4 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
-            {...fadeUp(0.75)}
+            {...fadeUp(0.5)}
           >
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">
-                <strong className="text-foreground">2 400+</strong> bilans
-                réalisés
-              </span>
-            </div>
+            <span className="text-xs text-muted-foreground">
+              <strong className="text-foreground">2 400+</strong> bilans réalisés
+            </span>
             <div className="hidden sm:block w-px h-4 bg-border" />
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">
-                <strong className="text-foreground">15 ans</strong> d'expertise
-              </span>
-            </div>
+            <span className="text-xs text-muted-foreground">
+              <strong className="text-foreground">15 ans</strong> d'expertise
+            </span>
             <div className="hidden sm:block w-px h-4 bg-border" />
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">
-                Courtier{" "}
-                <strong className="text-foreground">indépendant</strong>
-              </span>
-            </div>
+            <span className="text-xs text-muted-foreground">
+              Courtier <strong className="text-foreground">indépendant</strong>
+            </span>
             <div className="hidden sm:block w-px h-4 bg-border" />
             <div className="flex items-center gap-1">
               {[...Array(5)].map((_, i) => (
-                <span key={i} className="text-copper text-xs">
-                  ★
-                </span>
+                <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
               ))}
               <span className="text-xs text-muted-foreground ml-1">4.9/5</span>
             </div>
           </motion.div>
+
         </div>
       </div>
       <Footer />
