@@ -145,7 +145,18 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
   };
 }
 
-// ─── Capture lead vers Airtable ─── v3 ───────────────────────────────────────
+// ─── Normalisation téléphone ──────────────────────────────────────────────────
+
+function normalizePhone(phone: string): string {
+  if (!phone) return "";
+  const cleaned = phone.replace(/[\s.\-()]/g, "");
+  if (cleaned.startsWith("0") && cleaned.length === 10) {
+    return "+33 " + cleaned.slice(1).replace(/(\d{1})(\d{2})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4 $5");
+  }
+  return phone;
+}
+
+// ─── Capture lead vers Airtable ─── v4 ───────────────────────────────────────
 
 export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult): void {
   const STATUS_LABELS: Record<string, string> = {
@@ -180,7 +191,7 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
       fields: {
         "Nom": data.nom,
         "Email": data.email,
-      "Téléphone": normalizePhone(data.telephone),
+        "Téléphone": normalizePhone(data.telephone),
         "Statut professionnel": STATUS_LABELS[data.status] ?? data.status,
         "Âge": data.age,
         "Revenus annuels": data.revenu,
@@ -191,15 +202,9 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
         "Retraite estimée": results.retraiteEstimee,
         "Économie fiscale": results.economiesFiscales,
         "Score": results.leadScore,
+        "Date de soumission": new Date().toISOString().split("T")[0],
+        "Étape": "nouveau",
       },
     }),
   }).catch(() => {});
-}
-function normalizePhone(phone: string): string {
-  if (!phone) return "";
-  const cleaned = phone.replace(/[\s.\-()]/g, "");
-  if (cleaned.startsWith("0") && cleaned.length === 10) {
-    return "+33 " + cleaned.slice(1).replace(/(\d{1})(\d{2})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4 $5");
-  }
-  return phone;
 }
