@@ -1,11 +1,32 @@
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
-import { useEffect } from "react";
+import { Star, Quote, TrendingDown, Wallet, ThumbsUp, Clock } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const stats = [
-  { value: 2500, suffix: "+", label: "Dirigeants & indépendants accompagnés", prefix: "" },
-  { value: 8400, suffix: "€", label: "D'économies fiscales en moyenne par an", prefix: "" },
-  { value: 98, suffix: "%", label: "De clients satisfaits", prefix: "" },
-  { value: 15, suffix: "min", label: "Pour obtenir votre bilan complet", prefix: "" },
+  {
+    value: 2500,
+    suffix: "+",
+    label: "Dirigeants accompagnés",
+    icon: ThumbsUp,
+  },
+  {
+    value: 8400,
+    suffix: " €",
+    label: "D'économies fiscales / an",
+    icon: Wallet,
+  },
+  {
+    value: 98,
+    suffix: "%",
+    label: "De clients satisfaits",
+    icon: Star,
+  },
+  {
+    value: 15,
+    suffix: " min",
+    label: "Pour votre bilan complet",
+    icon: Clock,
+  },
 ];
 
 const testimonials = [
@@ -13,74 +34,96 @@ const testimonials = [
     name: "Sophie M.",
     role: "Freelance développeuse",
     text: "Grâce à RETIRO, j'ai réduit mes impôts de 7 200 € dès la première année tout en me constituant un capital retraite. Je regrette de ne pas avoir commencé plus tôt.",
-    saving: "−7 200 € d'impôts / an",
+    avatar: "S",
+    badge: "−7 200 € d'impôts / an",
+    badgeColor: "text-emerald-600 bg-emerald-50",
   },
   {
     name: "Thomas R.",
     role: "Dirigeant PME",
     text: "Le simulateur m'a montré que ma retraite serait 60 % inférieure à mes revenus actuels. Mon conseiller a mis en place un plan clair en 3 semaines.",
-    saving: "Plan en 3 semaines",
+    avatar: "T",
+    badge: "Plan structuré en 3 semaines",
+    badgeColor: "text-copper bg-copper/10",
   },
   {
     name: "Marie L.",
     role: "Consultante indépendante",
     text: "Enfin un accompagnement sérieux et humain. Pas de jargon, pas de pression. Mon conseiller m'a expliqué chaque option clairement. Je recommande les yeux fermés.",
-    saving: "Recommande à 100%",
+    avatar: "M",
+    badge: "Recommande à 100%",
+    badgeColor: "text-teal-600 bg-teal-50",
   },
 ];
 
-const AnimatedNumber = ({ value, suffix }: { value: number; suffix: string }) => {
+const AnimatedNumber = ({
+  value,
+  suffix,
+}: {
+  value: number;
+  suffix: string;
+}) => {
   const count = useMotionValue(0);
   const rounded = useTransform(count, (v) => {
     if (value >= 1000) return Math.round(v).toLocaleString("fr-FR");
     return Math.round(v).toString();
   });
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    const controls = animate(count, value, { duration: 2.2, ease: "easeOut" });
+    if (hasAnimated.current) return;
+    hasAnimated.current = true;
+    const controls = animate(count, value, { duration: 2, ease: "easeOut" });
     return controls.stop;
   }, [count, value]);
 
   return (
-    <motion.span>{rounded}</motion.span>
+    <span className="font-heading text-4xl md:text-5xl font-bold text-copper">
+      <motion.span>{rounded}</motion.span>
+      {suffix}
+    </span>
   );
 };
 
 const SocialProofSection = () => (
-  <section className="py-24 bg-background">
+  <section className="py-24 bg-muted/30">
     <div className="container mx-auto px-4">
-
-      {/* Stats — style cabinet conseil */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-xl overflow-hidden shadow-card mb-24">
-        {stats.map((s, i) => (
-          <motion.div
-            key={s.label}
-            className="bg-card flex flex-col items-center justify-center py-10 px-6 text-center"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1, duration: 0.5 }}
-          >
-            <div className="font-heading text-4xl md:text-5xl font-bold text-copper tracking-tight leading-none mb-1">
-              <AnimatedNumber value={s.value} suffix="" />
-              <span className="text-2xl md:text-3xl ml-0.5">{s.suffix}</span>
-            </div>
-            <div className="w-8 h-px bg-copper/40 my-3" />
-            <p className="text-xs text-muted-foreground uppercase tracking-widest leading-relaxed max-w-[140px]">{s.label}</p>
-          </motion.div>
-        ))}
+      {/* Stats */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24 max-w-5xl mx-auto">
+        {stats.map((s, i) => {
+          const Icon = s.icon;
+          return (
+            <motion.div
+              key={s.label}
+              className="relative text-center p-6 rounded-xl bg-white border border-border shadow-sm hover:shadow-md hover:border-copper/20 transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+            >
+              <div className="w-8 h-8 rounded-full bg-copper/10 flex items-center justify-center mx-auto mb-3">
+                <Icon className="w-4 h-4 text-copper" />
+              </div>
+              <AnimatedNumber value={s.value} suffix={s.suffix} />
+              <div className="text-xs text-muted-foreground mt-2 leading-snug uppercase tracking-wide">
+                {s.label}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
 
-      {/* Testimonials */}
-      <div className="text-center mb-14">
-        <motion.p
-          className="text-copper font-medium text-xs tracking-widest uppercase mb-3"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
+      {/* Séparateur */}
+      <div className="flex items-center gap-4 max-w-3xl mx-auto mb-14">
+        <div className="flex-1 h-px bg-border" />
+        <span className="text-xs text-muted-foreground uppercase tracking-widest whitespace-nowrap">
           Témoignages clients
-        </motion.p>
+        </span>
+        <div className="flex-1 h-px bg-border" />
+      </div>
+
+      {/* Titre */}
+      <div className="text-center mb-12">
         <motion.h2
           className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4"
           initial={{ opacity: 0, y: 20 }}
@@ -99,46 +142,47 @@ const SocialProofSection = () => (
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Témoignages */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {testimonials.map((t, i) => (
           <motion.div
             key={t.name}
-            className="relative bg-card rounded-xl p-8 border border-border hover:border-copper/30 transition-all duration-500 flex flex-col"
+            className="bg-white rounded-xl p-7 shadow-sm hover:shadow-md border border-border hover:border-copper/20 transition-all duration-500 flex flex-col"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.15, duration: 0.5 }}
             whileHover={{ y: -4 }}
           >
-            {/* Trait décoratif */}
-            <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-copper/40 to-transparent" />
-
             {/* Étoiles */}
-            <div className="flex gap-1 mb-5">
+            <div className="flex gap-1 mb-4">
               {[...Array(5)].map((_, j) => (
-                <svg key={j} className="w-3.5 h-3.5 fill-copper text-copper" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
+                <Star key={j} className="w-4 h-4 fill-amber-400 text-amber-400" />
               ))}
             </div>
 
-            <p className="text-sm text-foreground/75 leading-relaxed italic flex-1 mb-6">
-              « {t.text} »
+            {/* Texte */}
+            <Quote className="w-6 h-6 text-copper/20 mb-2 flex-shrink-0" />
+            <p className="text-sm text-foreground/75 leading-relaxed flex-1">
+              {t.text}
             </p>
 
-            <div className="flex items-center justify-between pt-5 border-t border-border">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-copper/10 flex items-center justify-center text-copper font-semibold text-sm">
-                  {t.name[0]}
-                </div>
-                <div>
-                  <div className="font-semibold text-foreground text-sm">{t.name}</div>
-                  <div className="text-xs text-muted-foreground">{t.role}</div>
-                </div>
+            {/* Badge résultat */}
+            <div className={`mt-4 mb-5 inline-flex self-start items-center text-xs font-semibold px-2.5 py-1 rounded-full ${t.badgeColor}`}>
+              {t.badge}
+            </div>
+
+            {/* Auteur */}
+            <div className="flex items-center gap-3 pt-4 border-t border-border">
+              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-copper/20 to-teal/20 flex items-center justify-center text-copper font-semibold text-sm flex-shrink-0">
+                {t.avatar}
               </div>
-              <span className="text-xs font-medium text-copper bg-copper/8 px-2.5 py-1 rounded-full whitespace-nowrap">
-                {t.saving}
-              </span>
+              <div>
+                <div className="font-semibold text-foreground text-sm">
+                  {t.name}
+                </div>
+                <div className="text-xs text-muted-foreground">{t.role}</div>
+              </div>
             </div>
           </motion.div>
         ))}
