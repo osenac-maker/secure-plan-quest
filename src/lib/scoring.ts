@@ -155,36 +155,39 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
     salarie: "Salarié",
   };
 
+  const SITUATION_LABELS: Record<string, string> = {
+    celibataire: "Célibataire",
+    "en-couple": "En couple",
+    marie: "Marié(e)",
+    divorce: "Divorcé(e)",
+    veuf: "Veuf(ve)",
+  };
+
+  const PRIORITE_LABELS: Record<string, string> = {
+    impots: "Optimiser fiscalité",
+    retraite: "Préparer la retraite",
+    protection: "Protection famille",
+    transmission: "Transmettre patrimoine",
+  };
+
   fetch("https://api.airtable.com/v0/applfZMfulVhjtyay/Leads", {
-    fields: {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_KEY}`,
+    },
+    body: JSON.stringify({
+      fields: {
         "Nom": data.nom,
         "Email": data.email,
         "Téléphone": data.telephone,
         "Statut professionnel": STATUS_LABELS[data.status] ?? data.status,
         "Âge": data.age,
         "Revenus annuels": data.revenu,
-        "Situation familiale": ({
-          celibataire: "Célibataire",
-          "en-couple": "En couple",
-          marie: "Marié(e)",
-          divorce: "Divorcé(e)",
-          veuf: "Veuf(ve)",
-        } as Record<string, string>)[data.situationFamiliale] ?? data.situationFamiliale,
+        "Situation familiale": SITUATION_LABELS[data.situationFamiliale] ?? data.situationFamiliale,
         "Enfants": data.enfants,
         "Capacité épargne mensuelle": data.capaciteEpargne,
-        "Objectif prioritaire": ({
-          impots: "Optimiser fiscalité",
-          retraite: "Préparer la retraite",
-          protection: "Protection famille",
-          transmission: "Transmettre patrimoine",
-        } as Record<string, string>)[data.priorite] ?? data.priorite,
-        "Retraite estimée": results.retraiteEstimee,
-        "Économie fiscale": results.economiesFiscales,
-        "Score": results.leadScore,
-      },
-        "Enfants": data.enfants,
-        "Capacité épargne mensuelle": data.capaciteEpargne,
-        "Objectif prioritaire": data.priorite,
+        "Objectif prioritaire": PRIORITE_LABELS[data.priorite] ?? data.priorite,
         "Retraite estimée": results.retraiteEstimee,
         "Économie fiscale": results.economiesFiscales,
         "Score": results.leadScore,
