@@ -14,7 +14,7 @@ const solutions = [
   {
     icon: BarChart3,
     title: "Retraite — Combler l'écart avec les salariés",
-    desc: "Les dirigeants et indépendants cotisent moins que les salariés. Résultat : une retraite souvent 2 à 3 fois inférieure. Les dispositifs Article 83, Madelin et PER Obligatoire permettent de rattraper cet écart, avec des cotisations déductibles en partie financées par votre entreprise.",
+    desc: "Les dirigeants et indépendants cotisent moins que les salariés. Résultat : une retraite souvent 2 à 3 fois inférieure. Les dispositifs PER individuel, PERO et PERECO permettent de rattraper cet écart, avec des cotisations déductibles en partie financées par votre entreprise.",
     link: "/retraite-dirigeants",
     cta: "Voir les solutions retraite",
   },
