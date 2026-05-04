@@ -74,7 +74,7 @@ const MentionsLegales = () => (
           <p>
             MOPA exerce une activité de courtage en assurance et de conseil en gestion de patrimoine.<br />
             Immatriculation ORIAS : <em>en cours d'obtention</em> — vérifiable sur{" "}
-            
+            <a
               href="https://www.orias.fr"
               target="_blank"
               rel="noopener noreferrer"
