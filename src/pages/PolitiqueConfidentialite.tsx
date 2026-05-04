@@ -35,7 +35,7 @@ const PolitiqueConfidentialite = () => (
           <ul className="list-disc pl-6 mt-2 space-y-1">
             <li>Données d'identification : nom, email, téléphone</li>
             <li>Données professionnelles : statut, revenus annuels, régime fiscal estimé</li>
-            <li>Données de simulation : âge, situation familiale, épargne, capacité d'investissement, objectif patrimonial</li>
+            <li>Données de simulation : âge, situation familiale, épargne, objectif patrimonial</li>
             <li>Données de navigation : adresse IP, pages consultées, cookies techniques</li>
           </ul>
         </section>
@@ -71,8 +71,7 @@ const PolitiqueConfidentialite = () => (
           </h2>
           <p>
             Vos données personnelles sont conservées pendant une durée maximale de <strong>3 ans</strong> à
-            compter du dernier contact actif, sauf obligation légale contraire (5 ans pour les données
-            liées à une relation commerciale).
+            compter du dernier contact actif, sauf obligation légale contraire.
           </p>
         </section>
 
@@ -83,7 +82,7 @@ const PolitiqueConfidentialite = () => (
           <p>Vos données sont traitées par MOPA et les sous-traitants suivants :</p>
           <ul className="list-disc pl-6 mt-2 space-y-1">
             <li>
-              <strong>Airtable Inc.</strong> (États-Unis) — stockage des leads et données de simulation.
+              <strong>Airtable Inc.</strong> (États-Unis) — stockage des leads.
               Couvert par les clauses contractuelles types de la Commission européenne.
             </li>
             <li>
@@ -101,9 +100,8 @@ const PolitiqueConfidentialite = () => (
             Transferts hors UE
           </h2>
           <p>
-            Airtable et Vercel sont des sociétés américaines. Les transferts de données hors de
-            l'Union européenne sont encadrés par des clauses contractuelles types approuvées par
-            la Commission européenne, garantissant un niveau de protection adéquat.
+            Airtable et Vercel sont des sociétés américaines. Les transferts sont encadrés par des
+            clauses contractuelles types approuvées par la Commission européenne.
           </p>
         </section>
 
@@ -111,22 +109,15 @@ const PolitiqueConfidentialite = () => (
           <h2 className="font-heading text-xl font-semibold text-foreground mb-3">
             Vos droits
           </h2>
-          <p>Conformément au RGPD (Règlement UE 2016/679), vous disposez des droits suivants :</p>
-          <ul className="list-disc pl-6 mt-2 space-y-1">
-            <li>Droit d'accès à vos données personnelles</li>
-            <li>Droit de rectification des données inexactes</li>
-            <li>Droit à l'effacement ("droit à l'oubli")</li>
-            <li>Droit à la portabilité de vos données</li>
-            <li>Droit d'opposition au traitement</li>
-            <li>Droit de limitation du traitement</li>
-            <li>Droit de retirer votre consentement à tout moment</li>
-          </ul>
+          <p>
+            Conformément au RGPD, vous disposez des droits d'accès, rectification, effacement,
+            portabilité, opposition, limitation et retrait du consentement.
+          </p>
           <p className="mt-3">
-            Pour exercer vos droits, contactez-nous à{" "}
+            Pour exercer vos droits :{" "}
             <a href="mailto:retiropatrimoine@gmail.com" className="text-copper hover:underline">
               retiropatrimoine@gmail.com
-            </a>. Nous nous engageons à répondre dans un délai d'<strong>un mois</strong> suivant
-            la réception de votre demande.
+            </a>. Réponse sous un mois.
           </p>
         </section>
 
@@ -136,8 +127,8 @@ const PolitiqueConfidentialite = () => (
           </h2>
           <p>
             Ce site utilise uniquement des cookies techniques strictement nécessaires au
-            fonctionnement (session, préférences). Aucun cookie publicitaire ou de tracking
-            tiers n'est déposé sans votre consentement préalable.
+            fonctionnement. Aucun cookie publicitaire ou de tracking tiers n'est déposé sans
+            votre consentement.
           </p>
         </section>
 
@@ -146,9 +137,8 @@ const PolitiqueConfidentialite = () => (
             Réclamation
           </h2>
           <p>
-            Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une
-            réclamation auprès de la CNIL :{" "}
-            
+            Vous pouvez introduire une réclamation auprès de la CNIL :{" "}
+            <a
               href="https://www.cnil.fr"
               target="_blank"
               rel="noopener noreferrer"
