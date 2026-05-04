@@ -122,7 +122,7 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
   if (["freelance", "liberal"].includes(data.status))
     recommandations.push("Contrat Madelin prévoyance");
   if (data.status === "dirigeant")
-    recommandations.push("PER d'entreprise (article 83 / PER collectif)");
+    recommandations.push("PER d'entreprise (PERO / PERECO)");
   if (data.enfants > 0 || data.priorite === "transmission")
     recommandations.push("Assurance vie pour la transmission");
   if (data.revenu > 80000 && data.status === "dirigeant")
