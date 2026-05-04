@@ -56,7 +56,7 @@ const MentionsLegales = () => (
             <strong>Vercel Inc.</strong><br />
             440 N Barranca Ave #4133, Covina, CA 91723, États-Unis<br />
             Site :{" "}
-            
+            <a
               href="https://vercel.com"
               target="_blank"
               rel="noopener noreferrer"
