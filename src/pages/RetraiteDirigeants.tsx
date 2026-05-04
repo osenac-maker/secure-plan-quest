@@ -43,10 +43,10 @@ const dispositifs = [
   },
   {
     nom: "PER d'entreprise",
-    desc: "Pour les dirigeants de société : abondement possible, déductible des charges de l'entreprise.",
+    desc: "Remplace l'Article 83 et le PERCO depuis 2020. Cotisations déductibles des charges de l'entreprise. Abondement possible.",
     avantage: "Charges déductibles à l'IS",
     icon: BarChart3,
-    tag: "Dirigeants",
+    tag: "PERO / PERECO",
     tagColor: "text-blue-600 bg-blue-50",
   },
   {
