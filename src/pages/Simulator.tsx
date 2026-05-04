@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Link } from "react-router-dom";
 import {
   Select,
   SelectContent,
@@ -114,13 +115,14 @@ const Simulator = () => {
   useSEO({
     title: "Simulateur retraite gratuit pour dirigeants et indépendants — RETIRO",
     description: "Calculez votre pension prévisionnelle, vos économies fiscales PER et votre capital retraite en 2 minutes. Gratuit, sans engagement.",
-    canonical: "https://secure-plan-quest.vercel.app/simulateur",
+    canonical: "https://retiro-patrimoine.fr/simulateur",
   });
 
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [anticipatedSaving, setAnticipatedSaving] = useState(0);
+  const [consentement, setConsentement] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [data, setData] = useState<Partial<SimulatorData>>({
     age: 42,
@@ -153,6 +155,7 @@ const Simulator = () => {
       if (!data.nom?.trim()) newErrors.nom = "Le nom est requis";
       if (!data.email || !validateEmail(data.email)) newErrors.email = "Veuillez saisir un email valide";
       if (data.telephone && !validatePhone(data.telephone)) newErrors.telephone = "Format invalide (ex: 06 12 34 56 78)";
+      if (!consentement) newErrors.consentement = "Vous devez accepter la politique de confidentialité pour continuer";
       if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
     }
     if (step < steps.length - 1) setStep(step + 1);
@@ -171,7 +174,7 @@ const Simulator = () => {
 
   const canNext = () => {
     if (step === 0) return data.status && data.age && data.revenu;
-    if (step === 3) return data.email && data.nom;
+    if (step === 3) return data.email && data.nom && consentement;
     return true;
   };
 
@@ -503,10 +506,12 @@ const Simulator = () => {
                       <p className="font-semibold text-foreground mt-0.5">{data.capaciteEpargne} €/mois</p>
                     </div>
                   </div>
+
                   <div className="bg-copper/5 border border-copper/20 rounded-lg px-4 py-3 text-center">
                     <p className="text-sm font-semibold text-foreground">Votre analyse personnalisée est prête.</p>
                     <p className="text-xs text-muted-foreground mt-0.5">Indiquez vos coordonnées pour la recevoir.</p>
                   </div>
+
                   <div>
                     <Label className="text-foreground">Nom complet</Label>
                     <Input
@@ -517,6 +522,7 @@ const Simulator = () => {
                     />
                     {errors.nom && <p className="text-xs text-destructive mt-1">{errors.nom}</p>}
                   </div>
+
                   <div>
                     <Label className="text-foreground">Email professionnel</Label>
                     <Input
@@ -528,6 +534,7 @@ const Simulator = () => {
                     />
                     {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
                   </div>
+
                   <div>
                     <Label className="text-foreground">
                       Téléphone <span className="text-muted-foreground font-normal">(optionnel)</span>
@@ -541,9 +548,54 @@ const Simulator = () => {
                     />
                     {errors.telephone && <p className="text-xs text-destructive mt-1">{errors.telephone}</p>}
                   </div>
+
+                  {/* ── Case consentement RGPD ── */}
+                  <div className={`rounded-xl border p-4 transition-colors ${
+                    errors.consentement ? "border-destructive bg-destructive/5" : "border-border bg-muted/30"
+                  }`}>
+                    <label className="flex items-start gap-3 cursor-pointer">
+                      <div className="relative flex-shrink-0 mt-0.5">
+                        <input
+                          type="checkbox"
+                          checked={consentement}
+                          onChange={(e) => {
+                            setConsentement(e.target.checked);
+                            if (e.target.checked && errors.consentement) {
+                              setErrors((prev) => { const n = { ...prev }; delete n.consentement; return n; });
+                            }
+                          }}
+                          className="sr-only"
+                        />
+                        <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${
+                          consentement ? "bg-copper border-copper" : "border-muted-foreground/40 bg-white"
+                        }`}>
+                          {consentement && <CheckCircle className="w-3.5 h-3.5 text-white" />}
+                        </div>
+                      </div>
+                      <span className="text-xs text-muted-foreground leading-relaxed">
+                        J'accepte que mes données personnelles soient traitées par MOPA dans le
+                        cadre de ma demande de bilan retraite, conformément à la{" "}
+                        <Link
+                          to="/politique-de-confidentialite"
+                          target="_blank"
+                          className="text-copper underline underline-offset-2 hover:text-copper-light"
+                        >
+                          politique de confidentialité
+                        </Link>
+                        . Je peux retirer mon consentement à tout moment en contactant{" "}
+                        <a href="mailto:retiropatrimoine@gmail.com" className="text-copper underline underline-offset-2 hover:text-copper-light">
+                          retiropatrimoine@gmail.com
+                        </a>.
+                      </span>
+                    </label>
+                    {errors.consentement && (
+                      <p className="text-xs text-destructive mt-2 ml-8">{errors.consentement}</p>
+                    )}
+                  </div>
+
                   <div className="flex items-start gap-2 text-xs text-muted-foreground pt-1">
                     <Lock className="w-3.5 h-3.5 mt-0.5 shrink-0 text-copper" />
-                    <span>Vos données sont protégées et ne seront jamais partagées. Aucun démarchage. Conforme RGPD.</span>
+                    <span>Données protégées · Aucun démarchage · Conforme RGPD</span>
                   </div>
                 </div>
               )}
