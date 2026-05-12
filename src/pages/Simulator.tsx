@@ -133,16 +133,33 @@ const Simulator = () => {
     patrimoineExistant: 0,
     epargneRetraite: 0,
     capaciteEpargne: 500,
-    priorite: undefined as any,
+    priorite: [] as SimulatorData["priorite"],
     email: "",
     nom: "",
     telephone: "",
   });
 
-  const update = (field: keyof SimulatorData, value: string | number) => {
+  const update = (field: keyof SimulatorData, value: string | number | string[]) => {
     setData((prev) => ({ ...prev, [field]: value }));
     if (errors[field])
       setErrors((prev) => { const n = { ...prev }; delete n[field]; return n; });
+  };
+
+  const togglePriorite = (value: SimulatorData["priorite"][number]) => {
+    setData((prev) => {
+      const current = (prev.priorite ?? []) as SimulatorData["priorite"];
+      const exists = current.includes(value);
+      let next: SimulatorData["priorite"];
+      if (exists) {
+        next = current.filter((v) => v !== value);
+      } else {
+        if (current.length >= 4) return prev;
+        next = [...current, value];
+      }
+      return { ...prev, priorite: next };
+    });
+    if (errors.priorite)
+      setErrors((prev) => { const n = { ...prev }; delete n.priorite; return n; });
   };
 
   const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
@@ -150,6 +167,13 @@ const Simulator = () => {
     !phone || /^(?:(?:\+33|0)\s?[1-9])(?:[\s.-]?\d{2}){4}$/.test(phone.replace(/\s/g, ""));
 
   const next = () => {
+    if (step === 2) {
+      const list = (data.priorite ?? []) as SimulatorData["priorite"];
+      if (list.length < 1) {
+        setErrors((prev) => ({ ...prev, priorite: "Sélectionnez au moins 1 objectif" }));
+        return;
+      }
+    }
     if (step === 3) {
       const newErrors: Record<string, string> = {};
       if (!data.nom?.trim()) newErrors.nom = "Le nom est requis";
@@ -174,6 +198,7 @@ const Simulator = () => {
 
   const canNext = () => {
     if (step === 0) return data.status && data.age && data.revenu;
+    if (step === 2) return ((data.priorite ?? []) as SimulatorData["priorite"]).length >= 1;
     if (step === 3) return data.email && data.nom && consentement;
     return true;
   };
@@ -460,26 +485,37 @@ const Simulator = () => {
                     onChange={(v) => update("capaciteEpargne", v)}
                   />
                   <div>
-                    <Label className="text-foreground mb-2 block">Votre objectif prioritaire</Label>
+                    <div className="flex items-center justify-between mb-2">
+                      <Label className="text-foreground">Vos objectifs prioritaires <span className="text-muted-foreground font-normal">(1 à 4 choix)</span></Label>
+                      <span className="text-xs font-semibold text-copper tabular-nums">
+                        {((data.priorite ?? []) as SimulatorData["priorite"]).length}/4
+                      </span>
+                    </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {prioriteOptions.map((opt) => {
                         const Icon = opt.icon;
+                        const list = (data.priorite ?? []) as SimulatorData["priorite"];
+                        const selected = list.includes(opt.value as SimulatorData["priorite"][number]);
+                        const disabled = !selected && list.length >= 4;
                         return (
                           <button
                             key={opt.value}
-                            onClick={() => update("priorite", opt.value)}
+                            type="button"
+                            disabled={disabled}
+                            onClick={() => togglePriorite(opt.value as SimulatorData["priorite"][number])}
                             className={`p-3.5 rounded-xl border text-sm font-medium transition-all flex items-center gap-3 ${
-                              data.priorite === opt.value
+                              selected
                                 ? "border-copper bg-copper/5 text-foreground ring-1 ring-copper/30"
                                 : "border-border text-muted-foreground hover:border-copper/40 hover:bg-muted/40"
-                            }`}
+                            } ${disabled ? "opacity-40 cursor-not-allowed" : ""}`}
                           >
-                            <Icon className={`w-4 h-4 flex-shrink-0 ${data.priorite === opt.value ? "text-copper" : "text-muted-foreground"}`} />
+                            <Icon className={`w-4 h-4 flex-shrink-0 ${selected ? "text-copper" : "text-muted-foreground"}`} />
                             {opt.label}
                           </button>
                         );
                       })}
                     </div>
+                    {errors.priorite && <p className="text-xs text-destructive mt-2">{errors.priorite}</p>}
                   </div>
                 </div>
               )}
