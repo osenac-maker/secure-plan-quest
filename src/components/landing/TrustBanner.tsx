@@ -9,7 +9,7 @@ const trustItems = [
   },
   {
     icon: Users,
-    label: "Spécialiste indépendants",
+    label: "Spécialistes du statut",
     detail: "dirigeants & indépendants",
   },
   {
