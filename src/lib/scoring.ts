@@ -218,5 +218,12 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
         "Étape": "nouveau",
       },
     }),
-  }).catch(() => {});
+  }).then(async (res) => {
+    if (!res.ok) {
+      const err = await res.text().catch(() => "");
+      console.error(`[Airtable] ${res.status}`, err);
+    }
+  }).catch((err) => {
+    console.error("[Airtable] réseau", err);
+  });
 }
