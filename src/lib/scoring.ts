@@ -9,7 +9,7 @@ export interface SimulatorData {
   patrimoineExistant: number;
   epargneRetraite: number;
   capaciteEpargne: number;
-  priorite: "impots" | "retraite" | "protection" | "transmission";
+  priorite: Array<"impots" | "retraite" | "protection" | "transmission">;
   email: string;
   nom: string;
   telephone: string;
@@ -107,10 +107,19 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
   else if (data.capaciteEpargne >= 500) points += 10;
   else points += 5;
 
-  if (data.priorite === "impots") points += 10;
-  else if (data.priorite === "retraite") points += 8;
-  else if (data.priorite === "transmission") points += 6;
-  else points += 4;
+  const PRIORITE_POINTS: Record<string, number> = {
+    impots: 10,
+    retraite: 8,
+    transmission: 6,
+    protection: 4,
+  };
+  const prioriteList = Array.isArray(data.priorite) ? data.priorite : [];
+  const prioritePoints = prioriteList.reduce(
+    (acc, p) => acc + (PRIORITE_POINTS[p] ?? 0),
+    0
+  );
+  // Cumulative with cap to keep lead score balanced
+  points += Math.min(28, prioritePoints);
 
   const leadScore: "A" | "B" | "C" =
     points >= 75 ? "A" : points >= 50 ? "B" : "C";
@@ -123,7 +132,7 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
     recommandations.push("Contrat Madelin prévoyance");
   if (data.status === "dirigeant")
     recommandations.push("PER d'entreprise (PERO / PERECO)");
-  if (data.enfants > 0 || data.priorite === "transmission")
+  if (data.enfants > 0 || prioriteList.includes("transmission"))
     recommandations.push("Assurance vie pour la transmission");
   if (data.revenu > 80000 && data.status === "dirigeant")
     recommandations.push("Optimisation de la rémunération dirigeant");
@@ -181,6 +190,10 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
     transmission: "Transmettre patrimoine",
   };
 
+  const prioriteValue = Array.isArray(data.priorite)
+    ? data.priorite.map((p) => PRIORITE_LABELS[p] ?? p).join(", ")
+    : PRIORITE_LABELS[data.priorite as unknown as string] ?? (data.priorite as unknown as string);
+
   fetch("https://api.airtable.com/v0/applfZMfulVhjtyay/Leads", {
     method: "POST",
     headers: {
@@ -198,7 +211,7 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
         "Situation familiale": SITUATION_LABELS[data.situationFamiliale] ?? data.situationFamiliale,
         "Enfants": data.enfants,
         "Capacité épargne mensuelle": data.capaciteEpargne,
-        "Objectif prioritaire": PRIORITE_LABELS[data.priorite] ?? data.priorite,
+        "Objectif prioritaire": prioriteValue,
         "Retraite estimée": results.retraiteEstimee,
         "Économie fiscale": results.economiesFiscales,
         "Score": results.leadScore,
