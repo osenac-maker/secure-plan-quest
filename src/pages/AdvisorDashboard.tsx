@@ -5,8 +5,34 @@ import { Input } from "@/components/ui/input";
 import {
   Users, Search, Phone, Mail, TrendingUp, Calendar,
   Lock, Eye, EyeOff, ChevronRight, X, RefreshCw,
-  Euro, Star,
+  Euro, Star, PhoneCall, Loader2, CheckCircle2, AlertCircle,
 } from "lucide-react";
+
+// ── Vapi ─────────────────────────────────────────────────────────────────────
+
+const VAPI_KEY = import.meta.env.VITE_VAPI_PRIVATE_KEY;
+const VAPI_ASSISTANT_ID = "6368d6dc-8708-4f68-bf7a-2ecc863a5e39";
+const VAPI_PHONE_NUMBER_ID = "631a8a5c-68ee-4438-97f5-048182dadc37";
+
+async function startVapiCall(phoneNumber: string): Promise<void> {
+  const res = await fetch("https://api.vapi.ai/call", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${VAPI_KEY}`,
+    },
+    body: JSON.stringify({
+      type: "outboundPhoneCall",
+      assistantId: VAPI_ASSISTANT_ID,
+      phoneNumberId: VAPI_PHONE_NUMBER_ID,
+      customer: { number: phoneNumber },
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.text().catch(() => "");
+    throw new Error(`Vapi ${res.status}: ${err}`);
+  }
+}
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -119,7 +145,23 @@ const LeadDrawer = ({
   lead: Lead;
   onClose: () => void;
   onEtapeChange: (id: string, etape: Lead["etape"]) => void;
-}) => (
+}) => {
+  const [callStatus, setCallStatus] = useState<"idle" | "calling" | "ok" | "error">("idle");
+
+  const handleCall = async () => {
+    if (!lead.telephone) return;
+    setCallStatus("calling");
+    try {
+      await startVapiCall(lead.telephone);
+      setCallStatus("ok");
+      onEtapeChange(lead.id, "contacte");
+    } catch (e) {
+      console.error(e);
+      setCallStatus("error");
+    }
+  };
+
+  return (
   <div className="fixed inset-0 z-50 flex">
     <div className="flex-1 bg-black/40" onClick={onClose} />
     <div className="w-full max-w-md bg-card shadow-2xl overflow-y-auto">
@@ -144,6 +186,18 @@ const LeadDrawer = ({
             <a href={`tel:${lead.telephone}`} className="flex items-center gap-2 text-sm text-foreground hover:text-copper">
               <Phone className="w-4 h-4 text-copper" />{lead.telephone}
             </a>
+          )}
+          {lead.telephone && (
+            <Button
+              onClick={handleCall}
+              disabled={callStatus === "calling" || callStatus === "ok"}
+              className="w-full mt-2 bg-copper hover:bg-copper-light text-white border-0 gap-2"
+            >
+              {callStatus === "idle" && <><PhoneCall className="w-4 h-4" />Lancer l'appel IA</>}
+              {callStatus === "calling" && <><Loader2 className="w-4 h-4 animate-spin" />Appel en cours…</>}
+              {callStatus === "ok" && <><CheckCircle2 className="w-4 h-4" />Appel lancé !</>}
+              {callStatus === "error" && <><AlertCircle className="w-4 h-4" />Erreur — réessayer</>}
+            </Button>
           )}
         </div>
 
@@ -212,7 +266,8 @@ const LeadDrawer = ({
       </div>
     </div>
   </div>
-);
+  );
+};
 
 // ── Dashboard ─────────────────────────────────────────────────────────────────
 
