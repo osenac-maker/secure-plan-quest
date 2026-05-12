@@ -283,10 +283,13 @@ const Dashboard = () => {
     setLoading(true);
     try {
       const res = await fetch(
-        `https://api.airtable.com/v0/${AIRTABLE_BASE}/${AIRTABLE_TABLE}?sort[0][field]=Date%20de%20soumission&sort[0][direction]=desc&maxRecords=100`,
+        `https://api.airtable.com/v0/${AIRTABLE_BASE}/${AIRTABLE_TABLE}?maxRecords=100`,
         { headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` } }
       );
       const json = await res.json();
+      if (!res.ok || json.error) {
+        console.error("[Dashboard] Airtable error", res.status, json);
+      }
       const mapped: Lead[] = (json.records || []).map((r: any) => ({
         id: r.id,
         nom: r.fields["Nom"] ?? "—",
