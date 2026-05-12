@@ -307,7 +307,7 @@ const Dashboard = () => {
         capaciteEpargne: r.fields["Capacité épargne mensuelle"] ?? 0,
         date: r.fields["Date de soumission"] ?? r.createdTime,
         etape: r.fields["Étape"] ?? "nouveau",
-      }));
+      })).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
       setLeads(mapped);
     } catch (e) {
       console.error(e);
