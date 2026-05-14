@@ -158,11 +158,14 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
 
 function normalizePhone(phone: string): string {
   if (!phone) return "";
+  // Supprimer espaces, points, tirets, parenthèses
   const cleaned = phone.replace(/[\s.\-()]/g, "");
+  // 0612345678 → +33612345678
   if (cleaned.startsWith("0") && cleaned.length === 10) {
-    return "+33 " + cleaned.slice(1).replace(/(\d{1})(\d{2})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4 $5");
+    return "+33" + cleaned.slice(1);
   }
-  return phone;
+  // +33... déjà présent → retourner nettoyé (sans espaces)
+  return cleaned;
 }
 
 // ─── Capture lead vers Airtable ─── v5 ───────────────────────────────────────
