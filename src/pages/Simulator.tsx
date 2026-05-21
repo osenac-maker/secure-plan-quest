@@ -135,6 +135,7 @@ const Simulator = () => {
     capaciteEpargne: 500,
     priorite: [] as SimulatorData["priorite"],
     email: "",
+    prenom: "",
     nom: "",
     telephone: "",
   });
@@ -176,6 +177,7 @@ const Simulator = () => {
     }
     if (step === 3) {
       const newErrors: Record<string, string> = {};
+      if (!data.prenom?.trim()) newErrors.prenom = "Le prénom est requis";
       if (!data.nom?.trim()) newErrors.nom = "Le nom est requis";
       if (!data.email || !validateEmail(data.email)) newErrors.email = "Veuillez saisir un email valide";
       if (data.telephone && !validatePhone(data.telephone)) newErrors.telephone = "Format invalide (ex: 06 12 34 56 78)";
@@ -199,7 +201,7 @@ const Simulator = () => {
   const canNext = () => {
     if (step === 0) return data.status && data.age && data.revenu;
     if (step === 2) return ((data.priorite ?? []) as SimulatorData["priorite"]).length >= 1;
-    if (step === 3) return data.email && data.nom && consentement;
+    if (step === 3) return data.email && data.prenom && data.nom && consentement;
     return true;
   };
 
@@ -548,15 +550,27 @@ const Simulator = () => {
                     <p className="text-xs text-muted-foreground mt-0.5">Indiquez vos coordonnées pour la recevoir.</p>
                   </div>
 
-                  <div>
-                    <Label className="text-foreground">Nom complet</Label>
-                    <Input
-                      value={data.nom}
-                      onChange={(e) => update("nom", e.target.value)}
-                      className={`mt-2 ${errors.nom ? "border-destructive" : ""}`}
-                      placeholder="Jean Dupont"
-                    />
-                    {errors.nom && <p className="text-xs text-destructive mt-1">{errors.nom}</p>}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <Label className="text-foreground">Prénom</Label>
+                      <Input
+                        value={data.prenom}
+                        onChange={(e) => update("prenom", e.target.value)}
+                        className={`mt-2 ${errors.prenom ? "border-destructive" : ""}`}
+                        placeholder="Jean"
+                      />
+                      {errors.prenom && <p className="text-xs text-destructive mt-1">{errors.prenom}</p>}
+                    </div>
+                    <div>
+                      <Label className="text-foreground">Nom</Label>
+                      <Input
+                        value={data.nom}
+                        onChange={(e) => update("nom", e.target.value)}
+                        className={`mt-2 ${errors.nom ? "border-destructive" : ""}`}
+                        placeholder="Dupont"
+                      />
+                      {errors.nom && <p className="text-xs text-destructive mt-1">{errors.nom}</p>}
+                    </div>
                   </div>
 
                   <div>
@@ -619,8 +633,8 @@ const Simulator = () => {
                           politique de confidentialité
                         </Link>
                         . Je peux retirer mon consentement à tout moment en contactant{" "}
-                        <a href="mailto:retiropatrimoine@gmail.com" className="text-copper underline underline-offset-2 hover:text-copper-light">
-                          retiropatrimoine@gmail.com
+                        <a href="mailto:contact@retiro-patrimoine.fr" className="text-copper underline underline-offset-2 hover:text-copper-light">
+                          contact@retiro-patrimoine.fr
                         </a>.
                       </span>
                     </label>

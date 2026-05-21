@@ -21,8 +21,8 @@ const PolitiqueConfidentialite = () => (
             15 rue Trèbois, 92300 Levallois-Perret<br />
             SIREN : 808 322 580<br />
             Email :{" "}
-            <a href="mailto:retiropatrimoine@gmail.com" className="text-copper hover:underline">
-              retiropatrimoine@gmail.com
+            <a href="mailto:contact@retiro-patrimoine.fr" className="text-copper hover:underline">
+              contact@retiro-patrimoine.fr
             </a>
           </p>
         </section>
@@ -115,8 +115,8 @@ const PolitiqueConfidentialite = () => (
           </p>
           <p className="mt-3">
             Pour exercer vos droits :{" "}
-            <a href="mailto:retiropatrimoine@gmail.com" className="text-copper hover:underline">
-              retiropatrimoine@gmail.com
+            <a href="mailto:contact@retiro-patrimoine.fr" className="text-copper hover:underline">
+              contact@retiro-patrimoine.fr
             </a>. Réponse sous un mois.
           </p>
         </section>

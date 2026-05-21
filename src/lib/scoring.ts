@@ -11,6 +11,7 @@ export interface SimulatorData {
   capaciteEpargne: number;
   priorite: Array<"impots" | "retraite" | "protection" | "transmission">;
   email: string;
+  prenom: string;
   nom: string;
   telephone: string;
 }
@@ -205,6 +206,7 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
     },
     body: JSON.stringify({
       fields: {
+        "Prénom": data.prenom,
         "Nom": data.nom,
         "Email": data.email,
         "Téléphone": normalizePhone(data.telephone),
