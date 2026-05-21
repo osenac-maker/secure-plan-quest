@@ -166,8 +166,7 @@ function normalizePhone(phone: string): string {
     return "+33" + cleaned.slice(1);
   }
   // +33... déjà présent → retourner nettoyé (sans espaces)
-        "Prénom": data.prenom,
-        "Nom": data.nom,
+  return cleaned;
 }
 
 // ─── Capture lead vers Airtable ─── v5 ───────────────────────────────────────
@@ -207,6 +206,7 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
     },
     body: JSON.stringify({
       fields: {
+        "Prénom": data.prenom,
         "Nom": data.nom,
         "Email": data.email,
         "Téléphone": normalizePhone(data.telephone),
