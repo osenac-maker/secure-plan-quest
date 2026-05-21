@@ -1,7 +1,6 @@
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 export interface SimulatorData {
-export interface SimulatorData {
   age: number;
   status: string;
   revenu: number;
@@ -16,6 +15,8 @@ export interface SimulatorData {
   nom: string;
   telephone: string;
 }
+
+export interface SimulatorResult {
   scoreRetraite: number;
   retraiteEstimee: number;
   manqueAGagner: number;
