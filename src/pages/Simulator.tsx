@@ -165,7 +165,7 @@ const Simulator = () => {
 
   const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
   const validatePhone = (phone: string) =>
-    !phone || /^(?:(?:\+33|0)\s?[1-9])(?:[\s.-]?\d{2}){4}$/.test(phone.replace(/\s/g, ""));
+    /^(?:(?:\+33|0)\s?[1-9])(?:[\s.-]?\d{2}){4}$/.test(phone.replace(/\s/g, ""));
 
   const next = () => {
     if (step === 2) {
@@ -180,8 +180,8 @@ const Simulator = () => {
       if (!data.prenom?.trim()) newErrors.prenom = "Le prénom est requis";
       if (!data.nom?.trim()) newErrors.nom = "Le nom est requis";
       if (!data.email || !validateEmail(data.email)) newErrors.email = "Veuillez saisir un email valide";
-      if (data.telephone && !validatePhone(data.telephone)) newErrors.telephone = "Format invalide (ex: 06 12 34 56 78)";
-      if (!consentement) newErrors.consentement = "Vous devez accepter la politique de confidentialité pour continuer";
+      if (!data.telephone) newErrors.telephone = "Le téléphone est requis";
+      else if (!validatePhone(data.telephone)) newErrors.telephone = "Format invalide (ex: 06 12 34 56 78)";
       if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
     }
     if (step < steps.length - 1) setStep(step + 1);
@@ -200,9 +200,7 @@ const Simulator = () => {
 
   const canNext = () => {
     if (step === 0) return data.status && data.age && data.revenu;
-    if (step === 2) return ((data.priorite ?? []) as SimulatorData["priorite"]).length >= 1;
-    if (step === 3) return data.email && data.prenom && data.nom && consentement;
-    return true;
+    if (step === 3) return data.email && data.prenom && data.nom && data.telephone && consentement;
   };
 
   const progressPercent = ((step + 1) / steps.length) * 100;
@@ -573,8 +571,7 @@ const Simulator = () => {
                     </div>
                   </div>
 
-                  <div>
-                    <Label className="text-foreground">Email professionnel</Label>
+                    <Label className="text-foreground">Email</Label>
                     <Input
                       type="email"
                       value={data.email}
@@ -586,9 +583,7 @@ const Simulator = () => {
                   </div>
 
                   <div>
-                    <Label className="text-foreground">
-                      Téléphone <span className="text-muted-foreground font-normal">(optionnel)</span>
-                    </Label>
+                    <Label className="text-foreground">Téléphone</Label>
                     <Input
                       type="tel"
                       value={data.telephone}
