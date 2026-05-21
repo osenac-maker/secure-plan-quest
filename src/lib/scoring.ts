@@ -1,6 +1,7 @@
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 export interface SimulatorData {
+export interface SimulatorData {
   age: number;
   status: string;
   revenu: number;
@@ -11,11 +12,10 @@ export interface SimulatorData {
   capaciteEpargne: number;
   priorite: Array<"impots" | "retraite" | "protection" | "transmission">;
   email: string;
+  prenom: string;
   nom: string;
   telephone: string;
 }
-
-export interface SimulatorResult {
   scoreRetraite: number;
   retraiteEstimee: number;
   manqueAGagner: number;
@@ -165,7 +165,8 @@ function normalizePhone(phone: string): string {
     return "+33" + cleaned.slice(1);
   }
   // +33... déjà présent → retourner nettoyé (sans espaces)
-  return cleaned;
+        "Prénom": data.prenom,
+        "Nom": data.nom,
 }
 
 // ─── Capture lead vers Airtable ─── v5 ───────────────────────────────────────

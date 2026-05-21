@@ -18,7 +18,7 @@ const MentionsLegales = () => (
         </section>
         <section>
           <h2 className="font-heading text-xl font-semibold text-foreground mb-3">Contact</h2>
-          <p>Email : <a href="mailto:retiropatrimoine@gmail.com" className="text-copper hover:underline">retiropatrimoine@gmail.com</a><br />Téléphone : 06 22 82 88 44</p>
+          <p>Email : <a href="mailto:contact@retiro-patrimoine.fr" className="text-copper hover:underline">contact@retiro-patrimoine.fr</a><br />Téléphone : 06 22 82 88 44</p>
         </section>
         <section>
           <h2 className="font-heading text-xl font-semibold text-foreground mb-3">Hébergement</h2>
