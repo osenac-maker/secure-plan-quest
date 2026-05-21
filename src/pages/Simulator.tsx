@@ -571,6 +571,7 @@ const Simulator = () => {
                     </div>
                   </div>
 
+                  <div>
                     <Label className="text-foreground">Email</Label>
                     <Input
                       type="email"
