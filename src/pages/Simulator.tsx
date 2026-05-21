@@ -201,6 +201,7 @@ const Simulator = () => {
   const canNext = () => {
     if (step === 0) return data.status && data.age && data.revenu;
     if (step === 3) return data.email && data.prenom && data.nom && data.telephone && consentement;
+    return true;
   };
 
   const progressPercent = ((step + 1) / steps.length) * 100;
