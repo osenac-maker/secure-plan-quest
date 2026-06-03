@@ -51,10 +51,14 @@ const HeroSection = () => (
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-            <a href="tel:+33600000000">
+            <a
+              href={`https://wa.me/33622828844?text=${encodeURIComponent("Bonjour, je souhaite être rappelé gratuitement pour un bilan retraite.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button size="lg" variant="outline" className="border-copper/50 !text-white hover:bg-copper/10 text-sm sm:text-base gap-2 font-medium px-4 sm:px-8 bg-white/5 backdrop-blur-sm w-full">
                 <Phone className="w-4 h-4" />
-                Être rappelé gratuitement
+                Être rappelé via WhatsApp
               </Button>
             </a>
           </motion.div>
