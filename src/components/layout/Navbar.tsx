@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoRetiro from "@/assets/logo-retiro-official.png";
+import logoRetiro from "@/assets/logo-retiro-monogram.png";
 
 const links = [
   { to: "/", label: "Accueil" },

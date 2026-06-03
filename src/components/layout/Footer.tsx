@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
-import logoRetiro from "@/assets/logo-retiro-official.png";
+import logoRetiro from "@/assets/logo-retiro-monogram.png";
 
 const Footer = () => (
   <footer className="bg-mahogany border-t border-mahogany-light py-16">
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
-          <div className="bg-background rounded-xl p-3 inline-block mb-4">
-            <img src={logoRetiro} alt="RETIRO Patrimoine" className="h-20 w-auto" />
-          </div>
+          <img src={logoRetiro} alt="RETIRO Patrimoine" className="h-24 w-auto mb-4" />
           <p className="text-sm text-white/50 leading-relaxed">
             Vous tenez le cap. Nous optimisons la trajectoire.
           </p>
