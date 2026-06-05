@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { MessageCircle, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -6,23 +6,9 @@ const WHATSAPP_NUMBER = "33622828844";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Bonjour, j'aimerais obtenir des informations sur vos services.")}`;
 
 const WhatsAppWidget = () => {
+  // Le widget reste replié au chargement : la bulle seule est visible,
+  // le panneau ne s'ouvre qu'au clic de l'utilisateur (pas d'ouverture automatique).
   const [open, setOpen] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
-  const hasAutoOpened = useRef(false);
-
-  // Auto-open popup after scrolling 40% of the page
-  useEffect(() => {
-    const handleScroll = () => {
-      if (hasAutoOpened.current || dismissed) return;
-      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-      if (scrollPercent > 0.4) {
-        setOpen(true);
-        hasAutoOpened.current = true;
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [dismissed]);
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
@@ -66,7 +52,7 @@ const WhatsAppWidget = () => {
               Discuter sur WhatsApp
             </a>
             <button
-              onClick={() => { setOpen(false); setDismissed(true); }}
+              onClick={() => setOpen(false)}
               className="block w-full text-center text-xs text-muted-foreground mt-2 hover:text-foreground transition-colors"
             >
               Non merci

@@ -86,7 +86,7 @@ const AnimatedNumber = ({
 };
 
 const SocialProofSection = () => (
-  <section className="py-24 bg-muted/30">
+  <section className="py-24 bg-navy">
     <div className="container mx-auto px-4">
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24 max-w-5xl mx-auto">
@@ -115,17 +115,17 @@ const SocialProofSection = () => (
 
       {/* Séparateur */}
       <div className="flex items-center gap-4 max-w-3xl mx-auto mb-14">
-        <div className="flex-1 h-px bg-border" />
-        <span className="text-xs text-muted-foreground uppercase tracking-widest whitespace-nowrap">
+        <div className="flex-1 h-px bg-white/15" />
+        <span className="text-xs text-white/50 uppercase tracking-widest whitespace-nowrap">
           Témoignages clients
         </span>
-        <div className="flex-1 h-px bg-border" />
+        <div className="flex-1 h-px bg-white/15" />
       </div>
 
       {/* Titre */}
       <div className="text-center mb-12">
         <motion.h2
-          className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4"
+          className="font-heading text-3xl md:text-4xl font-bold text-white mb-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

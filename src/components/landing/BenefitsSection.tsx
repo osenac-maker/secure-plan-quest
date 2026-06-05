@@ -26,7 +26,7 @@ const benefits = [
 ];
 
 const BenefitsSection = () => (
-  <section className="py-24 bg-card">
+  <section className="py-24 bg-card overflow-hidden">
     <div className="container mx-auto px-4">
       {/* Mission section with image */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">

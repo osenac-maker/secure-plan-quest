@@ -45,7 +45,7 @@ const Navbar = () => {
         </Link>
 
         {/* Nav links */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-1">
           {links.map((l) => (
             <Link
               key={l.to}
@@ -69,7 +69,7 @@ const Navbar = () => {
         </div>
 
         {/* CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           <Link to="/conseiller">
             <Button variant="ghost" size="sm" className="text-foreground/70 hover:text-foreground">
               Espace conseiller
@@ -84,7 +84,7 @@ const Navbar = () => {
 
         {/* Mobile burger */}
         <button
-          className="md:hidden text-foreground"
+          className="lg:hidden text-foreground"
           onClick={() => setOpen(!open)}
         >
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -95,7 +95,7 @@ const Navbar = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="md:hidden bg-white border-b border-border px-4 pb-4 space-y-1"
+            className="lg:hidden bg-white border-b border-border px-4 pb-4 space-y-1"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
