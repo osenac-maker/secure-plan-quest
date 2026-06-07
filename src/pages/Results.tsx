@@ -38,10 +38,12 @@ const Results = () => {
   const anneesAvantRetraite = Math.max(1, 65 - data.age);
   const investissementMensuel = Math.round(results.versementPEROptimal / 12);
 
-  // Prénom propre — prend le premier token qui n'est pas tout en majuscules
-  const tokens = data.nom.trim().split(/\s+/);
-  const prenom = tokens.find(t => t !== t.toUpperCase()) ?? tokens[0];
-  const prenomCapitalized = prenom.charAt(0).toUpperCase() + prenom.slice(1).toLowerCase();
+  // Prénom saisi par l'utilisateur, avec une majuscule initiale propre
+  // (repli sur le premier mot du nom si le prénom est absent, par sécurité)
+  const rawPrenom = ((data.prenom || data.nom || "").trim().split(/\s+/)[0]) || "";
+  const prenomCapitalized = rawPrenom
+    ? rawPrenom.charAt(0).toUpperCase() + rawPrenom.slice(1).toLowerCase()
+    : "Bonjour";
 
   const scoreColor =
     results.scoreRetraite < 30
@@ -274,13 +276,13 @@ const Results = () => {
             ) : (
               <div className="max-w-md mx-auto text-center space-y-4">
                 <div className="bg-card rounded-lg p-4 border border-border text-sm text-muted-foreground">
-                  <p className="font-medium text-foreground">{data.nom}</p>
+                  <p className="font-medium text-foreground">{`${data.prenom ?? ""} ${data.nom ?? ""}`.trim()}</p>
                   <p className="mt-0.5">{data.email}{data.telephone ? ` · ${data.telephone}` : ""}</p>
                 </div>
                 <Button
                   size="lg"
                   onClick={() => {
-                    sessionStorage.setItem("leadData", JSON.stringify({ name: data.nom, email: data.email, phone: data.telephone }));
+                    sessionStorage.setItem("leadData", JSON.stringify({ name: `${data.prenom ?? ""} ${data.nom ?? ""}`.trim(), email: data.email, phone: data.telephone }));
                     setFormSubmitted(true);
                   }}
                   className="w-full bg-copper hover:bg-copper-light text-white border-0 gap-2 font-semibold shadow-lg shadow-copper/20 h-13 text-base"
