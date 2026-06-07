@@ -203,9 +203,12 @@ export function sendLeadToMake(data: SimulatorData, results: SimulatorResult): v
     ? data.priorite.map((p) => PRIORITE_LABELS[p] ?? p).join(", ")
     : PRIORITE_LABELS[data.priorite as unknown as string] ?? (data.priorite as unknown as string);
 
-  const webhookUrl = import.meta.env.VITE_MAKE_WEBHOOK_URL;
+  // URL du webhook Make (write-only). Surchargeable via VITE_MAKE_WEBHOOK_URL au besoin.
+  const webhookUrl =
+    import.meta.env.VITE_MAKE_WEBHOOK_URL ||
+    "https://hook.eu1.make.com/0x2aju4rjum8va9vraq36bpovdvz56hn";
   if (!webhookUrl) {
-    console.warn("[Make] VITE_MAKE_WEBHOOK_URL non configuré — lead non envoyé.");
+    console.warn("[Make] URL webhook non configurée — lead non envoyé.");
     return;
   }
 
