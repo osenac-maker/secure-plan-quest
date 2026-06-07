@@ -6,7 +6,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index";
 import Simulator from "./pages/Simulator";
 import Results from "./pages/Results";
-import AdvisorDashboard from "./pages/AdvisorDashboard";
 import PERIndependants from "./pages/PERIndependants";
 import RetraiteDirigeants from "./pages/RetraiteDirigeants";
 import Prevoyance from "./pages/Prevoyance";
@@ -31,7 +30,6 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/simulateur" element={<Simulator />} />
           <Route path="/resultats" element={<Results />} />
-          <Route path="/conseiller" element={<AdvisorDashboard />} />
           <Route path="/per-independants" element={<PERIndependants />} />
           <Route path="/retraite-dirigeants" element={<RetraiteDirigeants />} />
           <Route path="/prevoyance" element={<Prevoyance />} />

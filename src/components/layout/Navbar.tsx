@@ -70,11 +70,6 @@ const Navbar = () => {
 
         {/* CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          <Link to="/conseiller">
-            <Button variant="ghost" size="sm" className="text-foreground/70 hover:text-foreground">
-              Espace conseiller
-            </Button>
-          </Link>
           <Link to="/simulateur">
             <Button size="sm" className="bg-copper hover:bg-copper-light text-white border-0 font-medium">
               Faire mon bilan retraite gratuit
@@ -113,9 +108,6 @@ const Navbar = () => {
                 {l.label}
               </Link>
             ))}
-            <Link to="/conseiller" className="block py-2 px-3 text-sm text-muted-foreground" onClick={() => setOpen(false)}>
-              Espace conseiller
-            </Link>
             <Link to="/simulateur" onClick={() => setOpen(false)}>
               <Button size="sm" className="w-full bg-copper hover:bg-copper-light text-white border-0">
                 Faire mon bilan retraite gratuit

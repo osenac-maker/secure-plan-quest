@@ -169,9 +169,14 @@ function normalizePhone(phone: string): string {
   return cleaned;
 }
 
-// ─── Capture lead vers Airtable ─── v5 ───────────────────────────────────────
+// ─── Capture lead via webhook Make ─── v6 ────────────────────────────────────
+// SÉCURITÉ : le site n'écrit plus directement dans Airtable (cela exposait la
+// clé API dans le navigateur). Il envoie le lead à un webhook Make, qui se charge
+// d'écrire dans Airtable côté serveur. L'URL du webhook est write-only : elle ne
+// permet jamais de lire/modifier les données existantes.
+// Configurer VITE_MAKE_WEBHOOK_URL dans les variables d'environnement Vercel.
 
-export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult): void {
+export function sendLeadToMake(data: SimulatorData, results: SimulatorResult): void {
   const STATUS_LABELS: Record<string, string> = {
     freelance: "Freelance",
     dirigeant: "Dirigeant",
@@ -198,37 +203,38 @@ export function sendLeadToAirtable(data: SimulatorData, results: SimulatorResult
     ? data.priorite.map((p) => PRIORITE_LABELS[p] ?? p).join(", ")
     : PRIORITE_LABELS[data.priorite as unknown as string] ?? (data.priorite as unknown as string);
 
-  fetch("https://api.airtable.com/v0/applfZMfulVhjtyay/Leads", {
+  const webhookUrl = import.meta.env.VITE_MAKE_WEBHOOK_URL;
+  if (!webhookUrl) {
+    console.warn("[Make] VITE_MAKE_WEBHOOK_URL non configuré — lead non envoyé.");
+    return;
+  }
+
+  fetch(webhookUrl, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_KEY}`,
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      fields: {
-        "Prénom": data.prenom,
-        "Nom": data.nom,
-        "Email": data.email,
-        "Téléphone": normalizePhone(data.telephone),
-        "Statut professionnel": STATUS_LABELS[data.status] ?? data.status,
-        "Âge": data.age,
-        "Revenus annuels": data.revenu,
-        "Situation familiale": SITUATION_LABELS[data.situationFamiliale] ?? data.situationFamiliale,
-        "Enfants": data.enfants,
-        "Capacité épargne mensuelle": data.capaciteEpargne,
-        "Objectif prioritaire": prioriteValue,
-        "Retraite estimée": results.retraiteEstimee,
-        "Économie fiscale": results.economiesFiscales,
-        "Score": results.leadScore,
-        "Étape": "nouveau",
-      },
+      prenom: data.prenom,
+      nom: data.nom,
+      email: data.email,
+      telephone: normalizePhone(data.telephone),
+      statutProfessionnel: STATUS_LABELS[data.status] ?? data.status,
+      age: data.age,
+      revenusAnnuels: data.revenu,
+      situationFamiliale: SITUATION_LABELS[data.situationFamiliale] ?? data.situationFamiliale,
+      enfants: data.enfants,
+      capaciteEpargneMensuelle: data.capaciteEpargne,
+      objectifPrioritaire: prioriteValue,
+      retraiteEstimee: results.retraiteEstimee,
+      economieFiscale: results.economiesFiscales,
+      score: results.leadScore,
+      etape: "nouveau",
     }),
   }).then(async (res) => {
     if (!res.ok) {
       const err = await res.text().catch(() => "");
-      console.error(`[Airtable] ${res.status}`, err);
+      console.error(`[Make] ${res.status}`, err);
     }
   }).catch((err) => {
-    console.error("[Airtable] réseau", err);
+    console.error("[Make] réseau", err);
   });
 }

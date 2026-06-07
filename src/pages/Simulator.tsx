@@ -37,7 +37,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   SimulatorData,
   calculateResults,
-  sendLeadToAirtable,
+  sendLeadToMake,
 } from "@/lib/scoring";
 import { useSEO } from "@/hooks/useSEO";
 
@@ -192,7 +192,7 @@ const Simulator = () => {
     setIsSubmitting(true);
     const results = calculateResults(data as SimulatorData);
     setAnticipatedSaving(results.economiesFiscales);
-    sendLeadToAirtable(data as SimulatorData, results);
+    sendLeadToMake(data as SimulatorData, results);
     sessionStorage.setItem("simulatorData", JSON.stringify(data));
     sessionStorage.setItem("simulatorResults", JSON.stringify(results));
     setTimeout(() => { navigate("/resultats"); }, 2800);
