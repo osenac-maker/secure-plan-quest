@@ -10,15 +10,15 @@ const HeroSection = () => (
     <div className="absolute inset-0">
       <img src={heroBg} alt="Dirigeant indépendant préparant sa retraite" className="w-full h-full object-cover" />
       {/* Voile horizontal : très sombre à gauche (zone de texte), s'éclaircit vers la droite */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(10,40%,8%)]/92 via-[hsl(15,30%,12%)]/75 to-[hsl(15,30%,12%)]/35" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(10,45%,6%)]/97 via-[hsl(12,35%,9%)]/90 via-50% to-[hsl(15,30%,12%)]/40" />
       {/* Voile vertical doux pour ancrer le bas de section */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(10,40%,8%)]/40 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(10,40%,6%)]/60 via-transparent to-[hsl(10,40%,6%)]/30" />
     </div>
 
     <div className="container mx-auto px-4 sm:px-6 relative z-10 py-20 md:py-32">
       <div className="flex items-center gap-12">
         {/* Left: text content */}
-        <div className="max-w-2xl flex-1 min-w-0">
+        <div className="max-w-2xl flex-1 min-w-0 lg:bg-[hsl(10,40%,6%)]/30 lg:backdrop-blur-sm lg:rounded-2xl lg:p-8 lg:-ml-4">
           <div className="mb-8" />
 
           <motion.h1
@@ -87,7 +87,7 @@ const HeroSection = () => (
 
         {/* Right: circular gauge badge */}
         <motion.div
-          className="hidden lg:flex flex-col items-center"
+          className="hidden lg:flex flex-col items-center bg-[hsl(10,40%,6%)]/45 backdrop-blur-sm rounded-2xl px-6 py-8"
           initial={{ opacity: 0, scale: 0.6 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, type: "spring", stiffness: 120, damping: 14 }}
