@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, PiggyBank, Shield, HeartPulse, BarChart3 } from "lucide-react";
+import { ArrowRight, PiggyBank, Shield, BarChart3, Bitcoin, LineChart } from "lucide-react";
 import { motion } from "framer-motion";
 
 const solutions = [
@@ -13,10 +13,10 @@ const solutions = [
   },
   {
     icon: BarChart3,
-    title: "Retraite — Combler l'écart avec les salariés",
-    desc: "Les dirigeants et indépendants cotisent moins que les salariés. Résultat : une retraite souvent 2 à 3 fois inférieure. Les dispositifs PER individuel, PERO et PERECO permettent de rattraper cet écart, avec des cotisations déductibles en partie financées par votre entreprise.",
+    title: "Assurance Vie — Faire fructifier son capital",
+    desc: "L'enveloppe patrimoniale la plus souple : disponibilité permanente, fiscalité allégée après 8 ans, transmission optimisée jusqu'à 152 500 € par bénéficiaire. Idéale pour diversifier entre fonds euros sécurisés et unités de compte performantes.",
     link: "/retraite-dirigeants",
-    cta: "Voir les solutions retraite",
+    cta: "Découvrir l'assurance vie",
   },
   {
     icon: Shield,
@@ -26,11 +26,18 @@ const solutions = [
     cta: "Évaluer ma couverture",
   },
   {
-    icon: HeartPulse,
-    title: "Mutuelle — Se soigner sans se ruiner",
-    desc: "Les remboursements du régime obligatoire laissent des restes à charge importants en dentaire, optique et hospitalisation. La mutuelle Madelin vous offre de meilleurs remboursements avec un avantage fiscal : vos cotisations sont déductibles de votre revenu imposable.",
-    link: "/mutuelle",
-    cta: "Comparer les mutuelles",
+    icon: LineChart,
+    title: "ETF — Investir simplement sur les marchés",
+    desc: "Les trackers (ETF) répliquent les grands indices mondiaux à frais réduits (souvent <0,3 %/an). Une brique de diversification efficace, accessible via PER, assurance vie ou compte-titres, pour capter la performance long terme des marchés actions.",
+    link: "/etf",
+    cta: "Explorer les ETF",
+  },
+  {
+    icon: Bitcoin,
+    title: "Crypto — Diversifier sur les actifs numériques",
+    desc: "Une allocation maîtrisée (5 à 10 % du patrimoine financier) sur Bitcoin et Ethereum peut renforcer le couple rendement/risque global. Nous vous accompagnons sur la sélection de plateformes régulées (PSAN) et la sécurisation de vos actifs.",
+    link: "/crypto",
+    cta: "Comprendre l'exposition crypto",
   },
 ];
 

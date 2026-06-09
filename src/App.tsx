@@ -9,7 +9,8 @@ import Results from "./pages/Results";
 import PERIndependants from "./pages/PERIndependants";
 import RetraiteDirigeants from "./pages/RetraiteDirigeants";
 import Prevoyance from "./pages/Prevoyance";
-import Mutuelle from "./pages/Mutuelle";
+import Crypto from "./pages/Crypto";
+import ETF from "./pages/ETF";
 import MentionsLegales from "./pages/MentionsLegales";
 import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
 import CGU from "./pages/CGU";
@@ -33,7 +34,8 @@ const App = () => (
           <Route path="/per-independants" element={<PERIndependants />} />
           <Route path="/retraite-dirigeants" element={<RetraiteDirigeants />} />
           <Route path="/prevoyance" element={<Prevoyance />} />
-          <Route path="/mutuelle" element={<Mutuelle />} />
+          <Route path="/crypto" element={<Crypto />} />
+          <Route path="/etf" element={<ETF />} />
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
           <Route path="/cgu" element={<CGU />} />
