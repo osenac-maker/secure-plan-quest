@@ -27,17 +27,17 @@ const solutions = [
   },
   {
     icon: LineChart,
-    title: "ETF — Investir simplement sur les marchés",
-    desc: "Les trackers (ETF) répliquent les grands indices mondiaux à frais réduits (souvent <0,3 %/an). Une brique de diversification efficace, accessible via PER, assurance vie ou compte-titres, pour capter la performance long terme des marchés actions.",
+    title: "ETF — Diversifier en unités de compte",
+    desc: "Les ETF (fonds indiciels cotés) sont accessibles en unités de compte au sein de votre assurance vie ou de votre PER. Une brique de diversification long terme, présentée ici à titre pédagogique. Risque de perte en capital, performances passées non garanties.",
     link: "/etf",
-    cta: "Explorer les ETF",
+    cta: "Comprendre les ETF",
   },
   {
     icon: Bitcoin,
-    title: "Crypto — Diversifier sur les actifs numériques",
-    desc: "Une allocation maîtrisée (5 à 10 % du patrimoine financier) sur Bitcoin et Ethereum peut renforcer le couple rendement/risque global. Nous vous accompagnons sur la sélection de plateformes régulées (PSAN) et la sécurisation de vos actifs.",
+    title: "Crypto — Comprendre les cryptoactifs",
+    desc: "Cadre réglementaire (PSAN, MiCA), fiscalité française, principes d'allocation : une page pédagogique pour mieux appréhender la classe d'actifs. Aucune recommandation d'investissement — la mise en œuvre se fait via des partenaires PSAN agréés AMF.",
     link: "/crypto",
-    cta: "Comprendre l'exposition crypto",
+    cta: "Comprendre les cryptoactifs",
   },
 ];
 

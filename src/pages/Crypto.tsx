@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Bitcoin, ShieldCheck, AlertTriangle, TrendingUp, Lock, Scale } from "lucide-react";
+import { ArrowRight, Bitcoin, ShieldCheck, AlertTriangle, TrendingUp, Lock, Scale, Info } from "lucide-react";
 import { motion } from "framer-motion";
 import { useSEO } from "@/hooks/useSEO";
 
@@ -16,30 +16,30 @@ const fadeUp = (delay = 0) => ({
 const piliers = [
   {
     icon: Scale,
-    titre: "Une allocation maîtrisée",
-    desc: "5 à 10 % du patrimoine financier maximum, sur des actifs majeurs (Bitcoin, Ethereum). Objectif : améliorer le couple rendement/risque global, pas spéculer.",
+    titre: "Une allocation raisonnée",
+    desc: "Dans la littérature patrimoniale, une exposition aux crypto-actifs est généralement envisagée à hauteur de quelques pourcents du patrimoine financier, sur des actifs majeurs (Bitcoin, Ethereum). L'objectif évoqué est d'améliorer le couple rendement/risque global — en aucun cas de spéculer.",
   },
   {
     icon: Lock,
     titre: "Plateformes régulées (PSAN)",
-    desc: "Nous travaillons exclusivement avec des prestataires enregistrés PSAN auprès de l'AMF, gages de conformité, de sécurité des fonds et de traçabilité fiscale.",
+    desc: "Seuls les Prestataires de Services sur Actifs Numériques (PSAN) enregistrés auprès de l'AMF offrent un cadre conforme : sécurité des fonds, lutte anti-blanchiment, traçabilité fiscale. La liste officielle est publiée sur le site de l'AMF.",
   },
   {
     icon: ShieldCheck,
     titre: "Sécurisation des actifs",
-    desc: "Conservation hybride (custodial / self-custody), wallets matériels, plans de succession numérique : nous structurons la détention et la transmission de vos cryptos.",
+    desc: "Modes de conservation (custodial / self-custody), wallets matériels, transmission successorale des actifs numériques : autant de sujets techniques à anticiper avant toute détention significative.",
   },
   {
     icon: TrendingUp,
-    titre: "Fiscalité optimisée",
-    desc: "Flat tax 30 %, suivi des plus-values, déclaration des comptes étrangers : nous orchestrons la stratégie de cession pour minimiser l'imposition.",
+    titre: "Cadre fiscal français",
+    desc: "Plus-values des particuliers imposées au PFU (30 %) lors des cessions contre monnaie fiat, déclaration obligatoire des comptes détenus à l'étranger (formulaire 3916-bis). Le cadre évolue régulièrement.",
   },
 ];
 
 const Crypto = () => {
   useSEO({
-    title: "Investir en crypto — Allocation patrimoniale | RETIRO Patrimoine",
-    description: "Intégrez Bitcoin et Ethereum à votre stratégie patrimoniale globale. Allocation maîtrisée, plateformes régulées PSAN, fiscalité optimisée — accompagnement RETIRO.",
+    title: "Comprendre les cryptoactifs | RETIRO Patrimoine",
+    description: "Page pédagogique sur les cryptoactifs : cadre réglementaire PSAN, fiscalité française, principes d'allocation. Contenu informatif, ne constitue pas un conseil en investissement.",
   });
 
   return (
@@ -49,22 +49,28 @@ const Crypto = () => {
       <section className="pt-32 pb-20 bg-gradient-to-b from-ivory to-background">
         <div className="container mx-auto px-4 max-w-5xl">
           <motion.span {...fadeUp()} className="inline-block text-xs tracking-[0.25em] uppercase text-copper font-medium mb-6">
-            Actifs numériques · Diversification
+            Cryptoactifs · Page pédagogique
           </motion.span>
           <motion.h1 {...fadeUp(0.1)} className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-            Crypto-actifs :{" "}
-            <span className="text-gradient-gold">diversifier sans s'exposer aveuglément</span>
+            Cryptoactifs :{" "}
+            <span className="text-gradient-gold">comprendre avant d'envisager</span>
           </motion.h1>
           <motion.p {...fadeUp(0.2)} className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
-            Le Bitcoin et l'Ethereum sont devenus des classes d'actifs à part entière. Bien dosés dans une allocation globale (5 à 10 % maximum), ils peuvent renforcer la performance long terme d'un patrimoine — à condition d'être sélectionnés, sécurisés et déclarés correctement.
+            Bitcoin, Ethereum et autres cryptoactifs sont désormais encadrés en France (loi PACTE, règlement européen MiCA). Cette page propose un éclairage pédagogique sur le cadre réglementaire, les risques et les principes d'allocation — elle ne constitue ni une recommandation d'investissement, ni une sollicitation à acheter ou vendre des cryptoactifs.
           </motion.p>
           <motion.div {...fadeUp(0.3)} className="mt-8 flex flex-wrap gap-3">
             <Link to="/simulateur">
               <Button size="lg" className="bg-copper hover:bg-copper-light text-white">
-                Simuler mon allocation
+                Faire mon bilan patrimonial
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
+          </motion.div>
+          <motion.div {...fadeUp(0.4)} className="mt-6 flex gap-3 p-4 rounded-lg bg-copper/5 border border-copper/20 max-w-3xl">
+            <Info className="w-5 h-5 text-copper flex-shrink-0 mt-0.5" />
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              RETIRO Patrimoine est immatriculée à l'ORIAS en qualité de courtier en assurance (IAS). Le conseil en investissement financier (statut CIF) est en cours d'agrément. Pour toute opération sur cryptoactifs, nous orientons vers des partenaires PSAN enregistrés auprès de l'AMF.
+            </p>
           </motion.div>
         </div>
       </section>
@@ -94,9 +100,9 @@ const Crypto = () => {
           <div className="flex gap-4 p-6 rounded-2xl bg-card border border-copper/20">
             <AlertTriangle className="w-6 h-6 text-copper flex-shrink-0 mt-1" />
             <div>
-              <h3 className="font-heading text-lg font-semibold mb-2">Avertissement risques</h3>
+              <h3 className="font-heading text-lg font-semibold mb-2">Avertissement sur les risques</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Les crypto-actifs sont des placements volatils et risqués, susceptibles d'entraîner une perte partielle ou totale du capital investi. RETIRO Patrimoine ne conseille la crypto qu'en complément d'un patrimoine déjà structuré (épargne de précaution, immobilier, retraite) et limite systématiquement l'exposition recommandée.
+                Les cryptoactifs sont des instruments hautement volatils, non garantis, susceptibles d'entraîner une perte partielle ou totale du capital investi. Les performances passées ne préjugent pas des performances futures. Avant toute décision, il est indispensable de disposer d'une épargne de précaution, d'un patrimoine structuré, et de ne mobiliser qu'une somme dont la perte serait supportable. Les informations présentées sur cette page sont purement pédagogiques et ne constituent pas un conseil en investissement au sens de l'article L.321-1 du Code monétaire et financier.
               </p>
             </div>
           </div>
@@ -107,10 +113,10 @@ const Crypto = () => {
         <div className="container mx-auto px-4 max-w-3xl text-center">
           <Bitcoin className="w-10 h-10 text-copper mx-auto mb-6" />
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-            Définissons ensemble votre exposition cible
+            Structurer d'abord votre patrimoine
           </h2>
           <p className="text-white/70 mb-8 leading-relaxed">
-            Un bilan patrimonial offert pour positionner — ou non — une poche crypto adaptée à votre profil de risque et à votre horizon.
+            Avant d'envisager toute exposition aux cryptoactifs, un bilan patrimonial permet de vérifier les fondations : épargne de précaution, protection famille, retraite, fiscalité. RETIRO vous accompagne sur ces leviers cœur de métier (assurance vie, PER, prévoyance). Pour la mise en œuvre crypto, nous vous orientons vers des partenaires PSAN agréés AMF.
           </p>
           <Link to="/simulateur">
             <Button size="lg" className="bg-copper hover:bg-copper-light text-white">
