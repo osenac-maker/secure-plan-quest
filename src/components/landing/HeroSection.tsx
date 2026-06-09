@@ -85,7 +85,7 @@ const HeroSection = () => (
           </motion.ul>
         </div>
 
-        {/* Right: circular gauge badge */}
+        {/* Right: gauge counter */}
         <motion.div
           className="hidden lg:flex flex-col items-center bg-[hsl(10,40%,6%)]/45 backdrop-blur-sm rounded-2xl px-6 py-8"
           initial={{ opacity: 0, scale: 0.6 }}
@@ -93,21 +93,72 @@ const HeroSection = () => (
           transition={{ delay: 0.5, type: "spring", stiffness: 120, damping: 14 }}
         >
           <div className="relative w-52 h-52 flex items-center justify-center">
-            {/* Outer ring */}
-            <div className="absolute inset-0 rounded-full border-2 border-copper/20" />
-            <motion.div
-              className="absolute inset-0 rounded-full border-2 border-copper/60"
-              initial={{ clipPath: "inset(0 100% 0 0)" }}
-              animate={{ clipPath: "inset(0 0% 0 0)" }}
-              transition={{ duration: 1.2, delay: 0.7, ease: "easeOut" }}
-            />
+            {/* Background ring */}
+            <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 200 200">
+              <defs>
+                <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="hsl(25, 65%, 45%)" />
+                  <stop offset="100%" stopColor="hsl(40, 80%, 55%)" />
+                </linearGradient>
+              </defs>
+              <circle
+                cx="100"
+                cy="100"
+                r="88"
+                fill="none"
+                stroke="hsl(25, 65%, 45%)"
+                strokeWidth="6"
+                opacity="0.15"
+              />
+              <motion.circle
+                cx="100"
+                cy="100"
+                r="88"
+                fill="none"
+                stroke="url(#gaugeGradient)"
+                strokeWidth="6"
+                strokeLinecap="round"
+                strokeDasharray={2 * Math.PI * 88}
+                initial={{ strokeDashoffset: 2 * Math.PI * 88 }}
+                animate={{ strokeDashoffset: 2 * Math.PI * 88 * 0.25 }}
+                transition={{ duration: 1.8, delay: 0.7, ease: "easeOut" }}
+              />
+            </svg>
+
+            {/* Ticks */}
+            <div className="absolute inset-0">
+              {Array.from({ length: 12 }).map((_, i) => {
+                const angle = (i / 12) * 360;
+                return (
+                  <div
+                    key={i}
+                    className="absolute top-1/2 left-1/2 w-0.5 h-2 bg-copper/30 origin-bottom"
+                    style={{
+                      transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(-76px)`,
+                    }}
+                  />
+                );
+              })}
+            </div>
 
             {/* Inner content */}
-            <div className="flex flex-col items-center justify-center text-center gap-2">
-              <div className="w-14 h-14 rounded-full bg-copper/15 flex items-center justify-center">
-                <Shield className="w-7 h-7 text-copper" />
-              </div>
-              <span className="text-xl font-bold text-white font-heading">Bilan offert</span>
+            <div className="flex flex-col items-center justify-center text-center gap-1 z-10">
+              <motion.span
+                className="text-4xl font-bold text-white font-heading"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2 }}
+              >
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.5 }}
+                >
+                  100
+                </motion.span>
+                <span className="text-copper">%</span>
+              </motion.span>
+              <span className="text-sm font-medium text-white/80 font-heading">Bilan offert</span>
             </div>
           </div>
 
