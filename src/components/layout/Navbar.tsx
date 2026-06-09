@@ -9,9 +9,10 @@ const links = [
   { to: "/", label: "Accueil" },
   { to: "/simulateur", label: "Simulateur" },
   { to: "/per-independants", label: "PER" },
-  { to: "/retraite-dirigeants", label: "Retraite" },
+  { to: "/retraite-dirigeants", label: "Assurance Vie" },
   { to: "/prevoyance", label: "Prévoyance" },
-  { to: "/mutuelle", label: "Mutuelle" },
+  { to: "/crypto", label: "Crypto" },
+  { to: "/etf", label: "ETF" },
 ];
 
 const Navbar = () => {
