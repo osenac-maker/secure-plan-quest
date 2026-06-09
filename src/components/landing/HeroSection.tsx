@@ -87,7 +87,7 @@ const HeroSection = () => (
 
         {/* Right: circular gauge badge */}
         <motion.div
-          className="hidden lg:flex flex-col items-center"
+          className="hidden lg:flex flex-col items-center bg-[hsl(10,40%,6%)]/45 backdrop-blur-sm rounded-2xl px-6 py-8"
           initial={{ opacity: 0, scale: 0.6 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, type: "spring", stiffness: 120, damping: 14 }}
