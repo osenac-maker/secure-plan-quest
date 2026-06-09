@@ -61,7 +61,7 @@ const Crypto = () => {
           <motion.div {...fadeUp(0.3)} className="mt-8 flex flex-wrap gap-3">
             <Link to="/simulateur">
               <Button size="lg" className="bg-copper hover:bg-copper-light text-white">
-                Faire mon bilan patrimonial
+                Mon bilan patrimonial offert
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
@@ -116,11 +116,11 @@ const Crypto = () => {
             Structurer d'abord votre patrimoine
           </h2>
           <p className="text-white/70 mb-8 leading-relaxed">
-            Avant d'envisager toute exposition aux cryptoactifs, un bilan patrimonial permet de vérifier les fondations : épargne de précaution, protection famille, retraite, fiscalité. RETIRO vous accompagne sur ces leviers cœur de métier (assurance vie, PER, prévoyance). Pour la mise en œuvre crypto, nous vous orientons vers des partenaires PSAN agréés AMF.
+            Avant d'envisager toute exposition aux cryptoactifs, un bilan patrimonial permet de vérifier les fondations : épargne de précaution, protection famille, retraite, fiscalité. RETIRO vous accompagne sur ces leviers cœur de métier (assurance vie, PER, prévoyance). Pour la mise en œuvre crypto, nous vous orientons vers des partenaires PSAN enregistrés auprès de l'AMF.
           </p>
           <Link to="/simulateur">
             <Button size="lg" className="bg-copper hover:bg-copper-light text-white">
-              Demander mon bilan offert
+              Mon bilan patrimonial offert
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>

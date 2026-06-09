@@ -68,7 +68,7 @@ const ETF = () => {
           <motion.div {...fadeUp(0.3)} className="mt-8 flex flex-wrap gap-3">
             <Link to="/simulateur">
               <Button size="lg" className="bg-copper hover:bg-copper-light text-white">
-                Faire mon bilan patrimonial
+                Mon bilan patrimonial offert
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
@@ -144,7 +144,7 @@ const ETF = () => {
           </p>
           <Link to="/simulateur">
             <Button size="lg" className="bg-copper hover:bg-copper-light text-white">
-              Demander mon bilan offert
+              Mon bilan patrimonial offert
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
