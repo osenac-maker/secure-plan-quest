@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, LineChart, Globe, Percent, Layers, TrendingUp } from "lucide-react";
+import { ArrowRight, LineChart, Globe, Percent, Layers, TrendingUp, Info } from "lucide-react";
 import { motion } from "framer-motion";
 import { useSEO } from "@/hooks/useSEO";
 
@@ -16,37 +16,37 @@ const fadeUp = (delay = 0) => ({
 const avantages = [
   {
     icon: Percent,
-    titre: "Frais ultra-réduits",
-    desc: "Frais de gestion généralement inférieurs à 0,3 % par an, contre 1,5 à 2,5 % pour un fonds actif. Sur 20 ans, l'écart de performance composée est considérable.",
+    titre: "Frais réduits",
+    desc: "Les ETF affichent généralement des frais courants inférieurs à 0,3 % par an, contre 1,5 à 2,5 % pour de nombreux fonds actifs. Sur un horizon long, cet écart pèse mécaniquement sur la performance nette.",
   },
   {
     icon: Globe,
-    titre: "Diversification mondiale",
-    desc: "Un seul ETF World expose votre épargne à plus de 1 500 entreprises réparties sur 23 pays développés. Diversification instantanée, sans stock-picking hasardeux.",
+    titre: "Diversification large",
+    desc: "Un ETF répliquant un indice mondial expose à plusieurs centaines voire milliers de sociétés sur de nombreux pays. La diversification est l'un des piliers reconnus de la gestion de portefeuille.",
   },
   {
     icon: Layers,
-    titre: "Multi-enveloppes",
-    desc: "Accessibles via PER, assurance vie, PEA ou compte-titres — chaque enveloppe ayant sa propre fiscalité. Nous choisissons la bonne combinaison selon vos objectifs.",
+    titre: "Accessibles via assurance vie et PER",
+    desc: "De nombreux contrats d'assurance vie et de PER proposent des unités de compte de type ETF. C'est le canal sur lequel RETIRO, en qualité de courtier IAS, peut vous accompagner.",
   },
   {
     icon: TrendingUp,
-    titre: "Performance long terme",
-    desc: "Sur 20 ans, un ETF MSCI World a délivré ~8 % par an en moyenne. La régularité (DCA) et la durée sont les deux clés d'une allocation ETF performante.",
+    titre: "Approche long terme",
+    desc: "Les ETF actions s'inscrivent dans une logique de placement long terme. Les performances passées ne préjugent pas des performances futures et le capital investi est soumis aux fluctuations des marchés (risque de perte en capital).",
   },
 ];
 
 const enveloppes = [
-  { nom: "Assurance Vie", avantage: "Fiscalité allégée après 8 ans, transmission optimisée", ideal: "Horizon 8 ans+" },
-  { nom: "PER", avantage: "Versements déductibles du revenu imposable", ideal: "Préparation retraite" },
-  { nom: "PEA", avantage: "Exonération d'impôt sur les plus-values après 5 ans", ideal: "Actions européennes" },
-  { nom: "Compte-titres", avantage: "Liberté totale d'arbitrage et de retrait", ideal: "Court terme, ETF non éligibles ailleurs" },
+  { nom: "Assurance Vie (UC ETF)", avantage: "Fiscalité allégée après 8 ans, transmission optimisée", ideal: "Horizon 8 ans et plus — distribué par RETIRO" },
+  { nom: "PER (UC ETF)", avantage: "Versements déductibles du revenu imposable (dans les plafonds en vigueur)", ideal: "Préparation retraite — distribué par RETIRO" },
+  { nom: "PEA", avantage: "Exonération d'impôt sur les plus-values après 5 ans (hors prélèvements sociaux)", ideal: "Compte-titres bancaire — hors périmètre RETIRO" },
+  { nom: "Compte-titres", avantage: "Liberté d'arbitrage, pas d'avantage fiscal spécifique", ideal: "Compte-titres bancaire — hors périmètre RETIRO" },
 ];
 
 const ETF = () => {
   useSEO({
-    title: "Investir en ETF — Trackers indiciels | RETIRO Patrimoine",
-    description: "Les ETF (trackers) répliquent les grands indices mondiaux à frais réduits. Stratégie d'investissement long terme via PER, assurance vie ou PEA — RETIRO vous accompagne.",
+    title: "Comprendre les ETF en assurance vie et PER | RETIRO Patrimoine",
+    description: "Page pédagogique sur les ETF accessibles en unités de compte au sein de votre assurance vie ou PER. Contenu informatif, ne constitue pas un conseil en investissement.",
   });
 
   return (
@@ -56,22 +56,28 @@ const ETF = () => {
       <section className="pt-32 pb-20 bg-gradient-to-b from-ivory to-background">
         <div className="container mx-auto px-4 max-w-5xl">
           <motion.span {...fadeUp()} className="inline-block text-xs tracking-[0.25em] uppercase text-copper font-medium mb-6">
-            Trackers indiciels · Long terme
+            ETF en unités de compte · Page pédagogique
           </motion.span>
           <motion.h1 {...fadeUp(0.1)} className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
             ETF :{" "}
-            <span className="text-gradient-gold">la performance des marchés, sans les frais</span>
+            <span className="text-gradient-gold">une brique de diversification long terme</span>
           </motion.h1>
           <motion.p {...fadeUp(0.2)} className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
-            Un ETF (Exchange Traded Fund) réplique un indice boursier — MSCI World, S&P 500, CAC 40 — pour quelques dixièmes de pourcent de frais par an. C'est la brique de diversification la plus efficace pour construire un capital sur 10, 20 ou 30 ans.
+            Un ETF (Exchange Traded Fund) est un fonds indiciel coté qui réplique un indice boursier. En tant que courtier en assurance, RETIRO peut vous accompagner sur l'intégration d'ETF en unités de compte au sein de votre assurance vie ou de votre PER. Cette page est purement informative et ne constitue pas un conseil en investissement.
           </motion.p>
           <motion.div {...fadeUp(0.3)} className="mt-8 flex flex-wrap gap-3">
             <Link to="/simulateur">
               <Button size="lg" className="bg-copper hover:bg-copper-light text-white">
-                Construire mon allocation ETF
+                Faire mon bilan patrimonial
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
+          </motion.div>
+          <motion.div {...fadeUp(0.4)} className="mt-6 flex gap-3 p-4 rounded-lg bg-copper/5 border border-copper/20 max-w-3xl">
+            <Info className="w-5 h-5 text-copper flex-shrink-0 mt-0.5" />
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              RETIRO Patrimoine est immatriculée à l'ORIAS en qualité de courtier en assurance (IAS). Le statut de Conseiller en Investissements Financiers (CIF) est en cours d'agrément. À ce titre, nous intervenons sur les ETF accessibles en unités de compte dans le cadre de l'assurance vie ou du PER. Les ETF sont des supports en unités de compte non garantis en capital : risque de perte, performances passées non garanties.
+            </p>
           </motion.div>
         </div>
       </section>
@@ -99,10 +105,10 @@ const ETF = () => {
       <section className="py-20 bg-ivory">
         <div className="container mx-auto px-4 max-w-5xl">
           <motion.h2 {...fadeUp()} className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4 text-center">
-            Quelle enveloppe pour vos ETF ?
+            Dans quelle enveloppe loger des ETF ?
           </motion.h2>
           <motion.p {...fadeUp(0.1)} className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-            Chaque enveloppe a sa propre fiscalité. Le bon mix dépend de votre horizon, de votre tranche marginale d'imposition et de vos objectifs de transmission.
+            Chaque enveloppe a sa propre fiscalité. RETIRO intervient sur les unités de compte ETF en assurance vie et PER. Le PEA et le compte-titres relèvent d'établissements bancaires et ne font pas partie de notre périmètre actuel.
           </motion.p>
           <div className="overflow-hidden rounded-2xl border border-border bg-card">
             <table className="w-full text-left">
@@ -131,10 +137,10 @@ const ETF = () => {
         <div className="container mx-auto px-4 max-w-3xl text-center">
           <LineChart className="w-10 h-10 text-copper mx-auto mb-6" />
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-            Construisons votre portefeuille ETF
+            Structurer votre épargne long terme
           </h2>
           <p className="text-white/70 mb-8 leading-relaxed">
-            Bilan offert pour définir l'allocation, les enveloppes et la stratégie de versement adaptés à votre situation.
+            Un bilan patrimonial offert pour évaluer la place que peuvent occuper des unités de compte ETF au sein de votre assurance vie ou de votre PER, dans le cadre d'une stratégie globale adaptée à votre situation et à votre horizon.
           </p>
           <Link to="/simulateur">
             <Button size="lg" className="bg-copper hover:bg-copper-light text-white">
