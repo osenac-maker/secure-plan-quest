@@ -9,6 +9,7 @@ import SolutionsSection from "@/components/landing/SolutionsSection";
 import BenefitsSection from "@/components/landing/BenefitsSection";
 import PartnersSection from "@/components/landing/PartnersSection";
 import SocialProofSection from "@/components/landing/SocialProofSection";
+import FAQSection from "@/components/landing/FAQSection";
 import CTASection from "@/components/landing/CTASection";
 import Footer from "@/components/layout/Footer";
 
@@ -25,6 +26,7 @@ const Index = () => (
     <BenefitsSection />
     <PartnersSection />
     <SocialProofSection />
+    <FAQSection />
     <CTASection />
     <Footer />
   </div>
