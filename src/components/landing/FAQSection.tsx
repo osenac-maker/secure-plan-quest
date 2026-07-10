@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: "Puis-je récupérer mon argent en cas de coup dur ?",
-    a: "L'assurance vie reste disponible à tout moment via des rachats partiels ou totaux, sans pénalité. Le PER est bloqué jusqu'à la retraite mais prévoit des cas de déblocage anticipé : achat de la résidence principale, invalidité, décès du conjoint, fin de droits chômage, surendettement, liquidation judiciaire. La prévoyance, elle, verse des indemnités en cas d'arrêt de travail, d'invalidité ou de décès.",
+    a: "L'assurance vie est disponible à tout moment via des rachats partiels ou totaux, sans pénalité sur la grande majorité des contrats. Certains supports spécifiques (immobilier, private equity) peuvent toutefois prévoir des conditions de sortie particulières — nous vous les précisons systématiquement avant souscription. Le PER est bloqué jusqu'à la retraite mais prévoit des cas de déblocage anticipé : achat de la résidence principale, invalidité, décès du conjoint, fin de droits chômage, surendettement, liquidation judiciaire. La prévoyance, elle, verse des indemnités en cas d'arrêt de travail, d'invalidité ou de décès.",
   },
   {
     q: "Combien ça coûte, et comment RETIRO est-il rémunéré ?",
@@ -93,6 +93,10 @@ const FAQSection = () => (
           <FaqItem key={f.q} q={f.q} a={f.a} index={i} />
         ))}
       </div>
+
+      <p className="mt-8 text-xs text-muted-foreground/80 italic text-center font-heading leading-relaxed max-w-2xl mx-auto">
+        Ces informations sont données à titre général et pédagogique ; elles ne constituent pas un conseil personnalisé, lequel nécessite une analyse individuelle de votre situation.
+      </p>
     </div>
   </section>
 );
