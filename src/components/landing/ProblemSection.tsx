@@ -8,7 +8,7 @@ const problems = [
 ];
 
 const ProblemSection = () => (
-  <section aria-labelledby="problem-title" className="py-8 md:py-14 bg-background">
+  <section aria-labelledby="problem-title" className="py-6 md:py-14 bg-background">
     <div className="container mx-auto px-4 max-w-5xl">
       <h2 id="problem-title" className="font-heading text-2xl md:text-4xl font-bold text-foreground text-center mb-6">Vous avez tout construit. <span className="text-gradient-gold">Et pour après ?</span></h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
