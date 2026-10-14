@@ -9,7 +9,7 @@ const HeroSection = () => (
     <div className="absolute inset-0">
       <img src={heroBg} alt="Dirigeant indépendant préparant sa retraite" className="w-full h-full object-cover" />
       {/* Voile horizontal : très sombre à gauche (zone de texte), s'éclaircit vers la droite */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(10,45%,6%)]/97 via-[hsl(12,35%,9%)]/90 via-50% to-[hsl(15,30%,12%)]/40" />
+      <div className="absolute inset-0 hero-overlay" />
       {/* Voile vertical doux pour ancrer le bas de section */}
       <div className="absolute inset-0 bg-gradient-to-t from-[hsl(10,40%,6%)]/60 via-transparent to-[hsl(10,40%,6%)]/30" />
     </div>

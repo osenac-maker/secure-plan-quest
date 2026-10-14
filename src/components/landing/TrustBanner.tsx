@@ -1,9 +1,9 @@
 import BilanButton from "@/components/BilanButton";
 
 const figures = [
-  { value: "8 ans", label: "Assurance vie : abattement annuel sur les gains retirés après cette durée", source: "Impôts — assurance vie", href: "https://www.impots.gouv.fr/particulier/lassurance-vie-et-le-pea-0" },
-  { value: "4 600 €", label: "Abattement annuel pour une personne seule, après huit ans, hors prélèvements sociaux", source: "Impôts — assurance vie", href: "https://www.impots.gouv.fr/particulier/lassurance-vie-et-le-pea-0" },
-  { value: "152 500 €", label: "Abattement par bénéficiaire pour les capitaux décès éligibles, versements avant soixante-dix ans", source: "Impôts — succession et assurance vie", href: "https://www.impots.gouv.fr/particulier/questions/dois-je-declarer-les-sommes-que-je-recois-au-titre-dun-contrat-dassurance-vie" },
+  { value: "8 ans", label: "Assurance vie : abattement annuel sur les gains retirés après cette durée", source: "Service Public — fiscalité", href: "https://www.service-public.gouv.fr/particuliers/vosdroits/F35006/0_4" },
+  { value: "4 600 €", label: "Abattement annuel pour une personne seule, après huit ans, hors prélèvements sociaux", source: "Service Public — fiscalité", href: "https://www.service-public.gouv.fr/particuliers/vosdroits/F35006/0_4" },
+  { value: "152 500 €", label: "Abattement par bénéficiaire pour les capitaux décès éligibles, versements avant soixante-dix ans", source: "Service Public — transmission", href: "https://www.service-public.gouv.fr/particuliers/vosdroits/F22414" },
 ];
 
 const TrustBanner = () => (

@@ -1,8 +1,8 @@
 # Recentrage sur le bilan gratuit
-- [ ] Réduire l'accueil aux sept blocs demandés et unifier les appels au bilan.
-- [ ] Raccourcir les trois pages produits existantes et la mention réglementaire du footer.
-- [ ] Ne montrer que la pension avant les coordonnées, sans précocher le rappel.
-- [ ] Vérifier le parcours et les tailles des blocs sur portable.
+- [x] Réduire l'accueil aux sept blocs demandés et unifier les appels au bilan.
+- [x] Raccourcir les trois pages produits existantes et la mention réglementaire du footer ; ne pas recréer la mutuelle supprimée.
+- [x] Ne montrer que la pension avant les coordonnées, sans précocher le rappel.
+- [x] Vérifier le parcours et les tailles des blocs sur portable (375 × 667 et 390 × 844) ; envoi externe intercepté, aucun prospect créé.
 
 ## Travaux antérieurs
 - [x] Ajouter quatre exemples pédagogiques à chacune des deux pages produit.
