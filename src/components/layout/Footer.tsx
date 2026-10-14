@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import RegulatoryDetails from "@/components/RegulatoryDetails";
 import logoRetiro from "@/assets/logo-retiro-monogram.png";
 
 const Footer = () => (
@@ -40,7 +39,7 @@ const Footer = () => (
           </div>
         </div>
       </div>
-      <div className="mt-10 text-primary-foreground/70"><RegulatoryDetails compact /></div>
+      <p className="mt-10 text-xs text-primary-foreground/70">Courtier en assurance (MOPA — RETIRO Patrimoine) · N° ORIAS : [À COMPLÉTER].</p>
       <div className="mt-12 pt-8 border-t border-white/10 text-center text-sm text-white/40">
         © {new Date().getFullYear()} RETIRO Patrimoine. Tous droits réservés.
       </div>

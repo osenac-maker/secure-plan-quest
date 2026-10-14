@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import BilanButton from "@/components/BilanButton";
 import { Button } from "@/components/ui/button";
 
 const comparison = [
@@ -10,28 +11,28 @@ const comparison = [
 ];
 
 export const AdviceComparisonSection = () => (
-  <section className="py-20 bg-background" aria-labelledby="comparison-title">
+  <section className="py-8 md:py-14 bg-background" aria-labelledby="comparison-title">
     <div className="container mx-auto px-4 max-w-5xl">
-      <h2 id="comparison-title" className="font-heading text-3xl md:text-4xl font-bold text-foreground text-center mb-4">
+      <h2 id="comparison-title" className="font-heading text-2xl md:text-4xl font-bold text-foreground text-center mb-4">
         Le conseil, en toute <span className="text-gradient-gold">transparence</span>
       </h2>
-      <div className="divider-gold mx-auto mb-10" />
+      <div className="divider-gold mx-auto mb-5" />
       <table className="w-full table-fixed text-sm border-collapse">
         <caption className="sr-only">Comparaison du conseil classique et de l'approche RETIRO</caption>
         <thead>
           <tr className="border-b border-border">
-            <th scope="col" className="w-1/2 text-left font-heading text-lg text-foreground px-3 sm:px-6 py-4">Conseil classique</th>
-            <th scope="col" className="w-1/2 text-left font-heading text-lg text-copper bg-copper/5 px-3 sm:px-6 py-4">RETIRO</th>
+            <th scope="col" className="w-1/2 text-left font-heading text-lg text-foreground px-3 sm:px-6 py-3">Conseil classique</th>
+            <th scope="col" className="w-1/2 text-left font-heading text-lg text-copper bg-copper/5 px-3 sm:px-6 py-3">RETIRO</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-border">
           {comparison.map((row) => (
             <tr key={row.label}>
-              <td className="px-3 sm:px-6 py-5 align-top break-words">
+              <td className="px-3 sm:px-6 py-3 align-top break-words">
                 <span className="block font-medium text-foreground mb-1">{row.label}</span>
                 <span className="text-muted-foreground">{row.classique}</span>
               </td>
-              <td className="px-3 sm:px-6 py-5 align-top bg-copper/5 break-words">
+              <td className="px-3 sm:px-6 py-3 align-top bg-copper/5 break-words">
                 <span className="block font-medium text-copper mb-1">{row.label}</span>
                 <span className="text-foreground">{row.retiro}</span>
               </td>
@@ -40,6 +41,7 @@ export const AdviceComparisonSection = () => (
         </tbody>
       </table>
       <p className="text-xs text-muted-foreground mt-4 italic">Les pratiques du conseil classique peuvent varier selon les professionnels.</p>
+      <div className="text-center mt-5"><BilanButton /></div>
     </div>
   </section>
 );
@@ -47,7 +49,7 @@ export const AdviceComparisonSection = () => (
 export const PersonalProtectionSection = () => (
   <section className="py-20 bg-card" aria-labelledby="protection-title">
     <div className="container mx-auto px-4 max-w-3xl">
-      <h2 id="protection-title" className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">
+      <h2 id="protection-title" className="font-heading text-2xl md:text-4xl font-bold text-foreground mb-6">
         Votre entreprise est assurée. <span className="text-gradient-gold">Et vous ?</span>
       </h2>
       <div className="divider-gold mb-6" />
@@ -70,14 +72,15 @@ export const PersonalProtectionSection = () => (
 );
 
 export const AboutSection = () => (
-  <section className="py-20 bg-background" aria-labelledby="about-title">
+  <section className="py-8 md:py-14 bg-background" aria-labelledby="about-title">
     <div className="container mx-auto px-4 max-w-3xl">
-      <h2 id="about-title" className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">Qui sommes-nous</h2>
+      <h2 id="about-title" className="font-heading text-2xl md:text-4xl font-bold text-foreground mb-6">Qui sommes-nous</h2>
       <div className="divider-gold mb-6" />
       <p className="text-muted-foreground text-lg leading-relaxed">
-        RETIRO a été fondé par un dirigeant de PME depuis près de vingt ans. La retraite d'un TNS et la prévoyance d'un gérant, nous les avons d'abord vécues.
+        RETIRO a été fondé par un dirigeant de PME depuis près de vingt ans. La retraite d'un indépendant et la prévoyance d'un gérant, nous les avons d'abord vécues.
       </p>
-      <p className="text-sm text-muted-foreground mt-6">[PHOTO ET BIO À COMPLÉTER]</p>
+      <p className="text-sm text-muted-foreground mt-5">[PHOTO À COMPLÉTER]</p>
+      <div className="mt-6"><BilanButton /></div>
     </div>
   </section>
 );
