@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight, CheckCircle, Award, ShieldCheck, Info,
-  Users, PiggyBank, Wallet, ChevronDown, Star, Clock, Layers,
+  Users, PiggyBank, Wallet, ChevronDown, Clock, Layers,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";

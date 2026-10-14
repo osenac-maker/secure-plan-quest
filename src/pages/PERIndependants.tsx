@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight, CheckCircle, Award, ShieldCheck, TrendingDown,
-  Wallet, PiggyBank, AlertTriangle, ChevronDown, Star,
+  Wallet, PiggyBank, AlertTriangle, ChevronDown,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";

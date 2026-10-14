@@ -14,7 +14,7 @@ const steps = [
     icon: UserCheck,
     step: "02",
     title: "Recevez votre stratégie personnalisée",
-    desc: "Un conseiller dédié vous rappelle sous 24h, analyse vos résultats et vous présente un plan d'action concret, sans jargon et sans engagement.",
+    desc: "Si vous demandez un rappel, un conseiller examine vos résultats avec vous et vérifie vos besoins avant de présenter une solution, sans engagement.",
   },
   {
     icon: Rocket,

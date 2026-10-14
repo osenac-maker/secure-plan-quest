@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight, Shield, Award, ShieldCheck, AlertTriangle,
-  HeartHandshake, Stethoscope, Users, ChevronDown, Star, CheckCircle,
+  HeartHandshake, Stethoscope, Users, ChevronDown, CheckCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";

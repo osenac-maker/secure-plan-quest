@@ -28,7 +28,6 @@ import {
   Building2,
   Stethoscope,
   UserCheck,
-  Star,
   BadgeEuro,
   HeartHandshake,
   Landmark,
