@@ -69,7 +69,7 @@ const Crypto = () => {
           <motion.div {...fadeUp(0.4)} className="mt-6 flex gap-3 p-4 rounded-lg bg-copper/5 border border-copper/20 max-w-3xl">
             <Info className="w-5 h-5 text-copper flex-shrink-0 mt-0.5" />
             <p className="text-xs text-muted-foreground leading-relaxed">
-              RETIRO Patrimoine est immatriculée à l'ORIAS en qualité de courtier en assurance (IAS). Le conseil en investissement financier (statut CIF) est en cours d'agrément. Partenaires éventuels : [À COMPLÉTER]. Avant toute opération, vérifiez l'autorisation du prestataire sur les listes officielles de l'AMF.
+              RETIRO Patrimoine est immatriculée à l'ORIAS en qualité de courtier en assurance (IAS). Le conseil en investissement financier (statut CIF) est en cours d'agrément. Pour toute opération sur cryptoactifs, nous orientons vers des partenaires PSAN enregistrés auprès de l'AMF.
             </p>
           </motion.div>
         </div>
@@ -116,7 +116,7 @@ const Crypto = () => {
             Structurer d'abord votre patrimoine
           </h2>
           <p className="text-white/70 mb-8 leading-relaxed">
-            Avant d'envisager toute exposition aux cryptoactifs, un bilan patrimonial permet de vérifier les fondations : épargne de précaution, protection famille, retraite, fiscalité. RETIRO vous accompagne sur ces leviers cœur de métier (assurance vie, PER, prévoyance). Aucun partenariat crypto n'est confirmé ici : partenaires éventuels [À COMPLÉTER].
+            Avant d'envisager toute exposition aux cryptoactifs, un bilan patrimonial permet de vérifier les fondations : épargne de précaution, protection famille, retraite, fiscalité. RETIRO vous accompagne sur ces leviers cœur de métier (assurance vie, PER, prévoyance). Pour la mise en œuvre crypto, nous vous orientons vers des partenaires PSAN enregistrés auprès de l'AMF.
           </p>
           <Link to="/simulateur">
             <Button size="lg" className="bg-copper hover:bg-copper-light text-white">

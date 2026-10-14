@@ -33,13 +33,10 @@ const Footer = () => (
           <div className="space-y-3">
             <Link to="/mentions-legales" className="block text-sm text-white/50 hover:text-copper transition-colors">Mentions légales</Link>
             <Link to="/politique-de-confidentialite" className="block text-sm text-white/50 hover:text-copper transition-colors">Politique de confidentialité</Link>
-            <Link to="/remuneration" className="block text-sm text-primary-foreground/70 hover:text-copper transition-colors">Rémunération</Link>
-            <Link to="/informations-reglementaires" className="block text-sm text-primary-foreground/70 hover:text-copper transition-colors">Informations réglementaires</Link>
             <Link to="/cgu" className="block text-sm text-white/50 hover:text-copper transition-colors">CGU</Link>
           </div>
         </div>
       </div>
-      <p className="mt-10 text-xs text-primary-foreground/70">Courtier en assurance (MOPA — RETIRO Patrimoine) · N° ORIAS : [À COMPLÉTER].</p>
       <div className="mt-12 pt-8 border-t border-white/10 text-center text-sm text-white/40">
         © {new Date().getFullYear()} RETIRO Patrimoine. Tous droits réservés.
       </div>

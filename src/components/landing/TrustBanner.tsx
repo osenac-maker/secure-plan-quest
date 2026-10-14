@@ -1,24 +1,52 @@
-import BilanButton from "@/components/BilanButton";
+import { Award, Users, Handshake, UserCheck } from "lucide-react";
+import { motion } from "framer-motion";
 
-const figures = [
-  { value: "8 ans", label: "Assurance vie : abattement annuel sur les gains retirés après cette durée", source: "Service Public — fiscalité", href: "https://www.service-public.gouv.fr/particuliers/vosdroits/F35006/0_4" },
-  { value: "4 600 €", label: "Abattement annuel pour une personne seule, après huit ans, hors prélèvements sociaux", source: "Service Public — fiscalité", href: "https://www.service-public.gouv.fr/particuliers/vosdroits/F35006/0_4" },
-  { value: "152 500 €", label: "Abattement par bénéficiaire pour les capitaux décès éligibles, versements avant soixante-dix ans", source: "Service Public — transmission", href: "https://www.service-public.gouv.fr/particuliers/vosdroits/F22414" },
+const trustItems = [
+  {
+    icon: Award,
+    label: "15 ans d'expertise",
+    detail: "en gestion de patrimoine",
+  },
+  {
+    icon: Users,
+    label: "Spécialistes du statut",
+    detail: "dirigeants & indépendants",
+  },
+  {
+    icon: Handshake,
+    label: "Partenaires de confiance",
+    detail: "assureurs de premier plan",
+  },
+  {
+    icon: UserCheck,
+    label: "Conseil personnalisé",
+    detail: "un interlocuteur unique",
+  },
 ];
 
 const TrustBanner = () => (
-  <section aria-label="Trois repères chiffrés" className="py-8 md:py-12 bg-card border-y border-border">
-    <div className="container mx-auto px-4 max-w-5xl">
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-8">
-        {figures.map((figure) => (
-          <div key={figure.value} className="text-center">
-            <p className="font-heading text-3xl font-bold text-copper">{figure.value}</p>
-            <a href={figure.href} target="_blank" rel="noopener noreferrer" className="block mt-1 text-xs text-muted-foreground underline underline-offset-2">Source : {figure.source}</a>
-            <p className="mt-2 text-sm text-foreground leading-snug">{figure.label}</p>
-          </div>
+  <section className="py-12 bg-card border-y border-border">
+    <div className="container mx-auto px-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {trustItems.map((item, i) => (
+          <motion.div
+            key={item.label}
+            className="flex items-center gap-3"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1, duration: 0.4 }}
+          >
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-copper/15 to-mahogany/10 flex items-center justify-center shrink-0">
+              <item.icon className="w-5 h-5 text-copper" />
+            </div>
+            <div>
+              <div className="text-sm font-semibold text-foreground">{item.label}</div>
+              <div className="text-xs text-muted-foreground">{item.detail}</div>
+            </div>
+          </motion.div>
         ))}
       </div>
-      <div className="mt-6 text-center"><BilanButton /></div>
     </div>
   </section>
 );

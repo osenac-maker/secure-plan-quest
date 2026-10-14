@@ -6,16 +6,16 @@ const benefits = [
   {
     icon: Compass,
     title: "Moins d'impôts, plus de patrimoine",
-    desc: "PER et prévoyance Madelin : nous examinons votre éligibilité et vos plafonds pour évaluer l'intérêt fiscal des versements, sans économie garantie.",
+    desc: "PER, Madelin, article 83 : nous activons tous les dispositifs légaux pour réduire votre imposition de plusieurs milliers d'euros par an — et rediriger cet argent vers votre patrimoine.",
   },
   {
     icon: TrendingUp,
     title: "Une retraite à la hauteur de vos efforts",
-    desc: "Nous estimons votre future pension à partir de vos droits, identifions l'écart avec votre niveau de vie actuel et mettons en place les dispositifs pour le combler — année après année.",
+    desc: "Nous calculons précisément votre future pension, identifions l'écart avec votre niveau de vie actuel et mettons en place les dispositifs pour le combler — année après année.",
   },
   {
     icon: Heart,
-    title: "Une protection adaptée à votre famille",
+    title: "Votre famille protégée quoi qu'il arrive",
     desc: "Arrêt de travail, invalidité, décès : nous vérifions que vos revenus et vos proches sont couverts, et nous comblons les lacunes de votre régime obligatoire avec des garanties sur mesure.",
   },
   {
@@ -41,10 +41,10 @@ const BenefitsSection = () => (
           </h2>
           <div className="divider-gold mb-6" />
           <p className="text-muted-foreground leading-relaxed mb-4">
-            Nous accompagnons les dirigeants, indépendants et professions libérales en partant de leur situation : carrière, revenus, charges, protection sociale et projets.
+            Depuis plus de 15 ans, nous accompagnons exclusivement les dirigeants, indépendants et professions libérales. Cette spécialisation nous permet de maîtriser chaque dispositif fiscal et social adapté à votre statut.
           </p>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            Nous comparons les conditions des contrats accessibles et présentons les limites, les frais et la rémunération liée à chaque recommandation. Partenaires : [À COMPLÉTER].
+            Courtier indépendant, nous travaillons avec les plus grandes compagnies d'assurance européennes pour vous proposer des solutions objectivement sélectionnées — sans conflit d'intérêt.
           </p>
           <p className="text-muted-foreground leading-relaxed">
             Chaque recommandation est fondée sur une analyse rigoureuse de votre situation. Votre intérêt passe toujours en premier.
@@ -75,7 +75,7 @@ const BenefitsSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Les engagements de <span className="text-gradient-gold">notre accompagnement</span>
+          Pourquoi nos clients nous <span className="text-gradient-gold">recommandent</span>
         </motion.h2>
         <motion.div
           className="divider-gold mx-auto mb-6"

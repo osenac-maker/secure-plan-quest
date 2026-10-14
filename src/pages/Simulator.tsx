@@ -28,11 +28,11 @@ import {
   Building2,
   Stethoscope,
   UserCheck,
+  Star,
   BadgeEuro,
   HeartHandshake,
   Landmark,
 } from "lucide-react";
-import { Checkbox } from "@/components/ui/checkbox";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   SimulatorData,
@@ -121,7 +121,6 @@ const Simulator = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState("");
   const [anticipatedSaving, setAnticipatedSaving] = useState(0);
   const [consentement, setConsentement] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -139,7 +138,6 @@ const Simulator = () => {
     prenom: "",
     nom: "",
     telephone: "",
-    souhaiteRappel: false,
   });
 
   const update = (field: keyof SimulatorData, value: string | number | string[]) => {
@@ -182,41 +180,31 @@ const Simulator = () => {
       if (!data.prenom?.trim()) newErrors.prenom = "Le prénom est requis";
       if (!data.nom?.trim()) newErrors.nom = "Le nom est requis";
       if (!data.email || !validateEmail(data.email)) newErrors.email = "Veuillez saisir un email valide";
-      if (data.souhaiteRappel && !data.telephone) newErrors.telephone = "Le téléphone est requis pour le rappel";
-      else if (data.telephone && !validatePhone(data.telephone)) newErrors.telephone = "Format invalide (ex: 06 12 34 56 78)";
-      if (!consentement) newErrors.consentement = "Votre accord est nécessaire pour traiter cette demande";
+      if (!data.telephone) newErrors.telephone = "Le téléphone est requis";
+      else if (!validatePhone(data.telephone)) newErrors.telephone = "Format invalide (ex: 06 12 34 56 78)";
       if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
     }
     if (step < steps.length - 1) setStep(step + 1);
     else submit();
   };
 
-  const submit = async () => {
-    if (isSubmitting || !consentement) return;
+  const submit = () => {
     setIsSubmitting(true);
-    setSubmitError("");
     const results = calculateResults(data as SimulatorData);
     setAnticipatedSaving(results.economiesFiscales);
-    const submittedData = { ...data, consentement: true, consentementDate: new Date().toISOString() } as SimulatorData;
-    try {
-      await sendLeadToMake(submittedData, results);
-      sessionStorage.setItem("simulatorData", JSON.stringify(submittedData));
-      sessionStorage.setItem("simulatorResults", JSON.stringify(results));
-      navigate("/resultats");
-    } catch {
-      setSubmitError("Votre demande n'a pas pu être transmise. Vos estimations restent affichées ; veuillez réessayer.");
-      setIsSubmitting(false);
-    }
+    sendLeadToMake(data as SimulatorData, results);
+    sessionStorage.setItem("simulatorData", JSON.stringify(data));
+    sessionStorage.setItem("simulatorResults", JSON.stringify(results));
+    setTimeout(() => { navigate("/resultats"); }, 2800);
   };
 
   const canNext = () => {
     if (step === 0) return data.status && data.age && data.revenu;
-    if (step === 3) return data.email && data.prenom?.trim() && data.nom?.trim() && (!data.souhaiteRappel || data.telephone) && consentement;
+    if (step === 3) return data.email && data.prenom && data.nom && data.telephone && consentement;
     return true;
   };
 
   const progressPercent = ((step + 1) / steps.length) * 100;
-  const preview = step === 3 ? calculateResults(data as SimulatorData) : null;
 
   if (isSubmitting) {
     return (
@@ -301,9 +289,9 @@ const Simulator = () => {
                 transition={{ duration: 0.4 }}
               >
                 <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-3">
-                  Préparez votre retraite{" "}
+                  Découvrez combien vous perdez{" "}
                   <br className="hidden md:block" />
-                  <span className="text-gradient-gold">avec une première estimation</span>
+                  <span className="text-gradient-gold">chaque année en impôts</span>
                 </h1>
                 <p className="text-muted-foreground text-base max-w-xl mx-auto mb-5">
                   En 2 minutes, obtenez votre projection retraite personnalisée, vos économies
@@ -535,17 +523,30 @@ const Simulator = () => {
 
               {step === 3 && (
                 <div className="space-y-5">
-                  {preview && <section aria-label="Premiers résultats sans email" className="border-b border-border pb-5">
-                    <h3 className="font-heading text-xl font-semibold text-foreground mb-4">Votre pension estimée</h3>
-                    <dl>
-                      <div><dt className="text-sm text-muted-foreground">Pension estimée</dt><dd className="text-xl font-semibold text-copper">{formatEurFull(preview.retraiteEstimee)} / mois</dd></div>
-                    </dl>
-                    <p className="text-xs text-muted-foreground leading-relaxed mt-3">Estimation indicative fondée sur vos revenus et votre statut, sans relevé de carrière. À confirmer selon vos droits acquis et votre âge de départ.</p>
-                  </section>}
+                  <div className="bg-muted/50 rounded-xl p-4 grid grid-cols-2 gap-3 text-xs mb-2">
+                    <div>
+                      <span className="text-muted-foreground">Statut</span>
+                      <p className="font-semibold text-foreground capitalize mt-0.5">
+                        {statusOptions.find((s) => s.value === data.status)?.label}
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Âge</span>
+                      <p className="font-semibold text-foreground mt-0.5">{data.age} ans</p>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Revenus annuels</span>
+                      <p className="font-semibold text-foreground mt-0.5">{formatEurFull(data.revenu ?? 0)}</p>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Épargne mensuelle</span>
+                      <p className="font-semibold text-foreground mt-0.5">{data.capaciteEpargne} €/mois</p>
+                    </div>
+                  </div>
 
                   <div className="bg-copper/5 border border-copper/20 rounded-lg px-4 py-3 text-center">
-                    <p className="text-sm font-semibold text-foreground">Recevoir mon bilan complet par email</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">Indiquez votre email pour demander le bilan complet. Le rappel reste facultatif.</p>
+                    <p className="text-sm font-semibold text-foreground">Votre analyse personnalisée est prête.</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">Indiquez vos coordonnées pour la recevoir.</p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -584,7 +585,7 @@ const Simulator = () => {
                   </div>
 
                   <div>
-                    <Label className="text-foreground">Téléphone {data.souhaiteRappel ? "(requis pour le rappel)" : "(facultatif sans rappel)"}</Label>
+                    <Label className="text-foreground">Téléphone</Label>
                     <Input
                       type="tel"
                       value={data.telephone}
@@ -594,12 +595,6 @@ const Simulator = () => {
                     />
                     {errors.telephone && <p className="text-xs text-destructive mt-1">{errors.telephone}</p>}
                   </div>
-
-                  <label className="flex items-start gap-3 cursor-pointer text-sm text-foreground">
-                    <Checkbox checked={data.souhaiteRappel === true} onCheckedChange={(checked) => setData((previous) => ({ ...previous, souhaiteRappel: checked === true }))} className="mt-0.5" />
-                    <span>Je souhaite être rappelé par un conseiller</span>
-                  </label>
-                  <p className="text-xs text-muted-foreground">Sans cette case cochée, aucun rappel n'est demandé et votre numéro n'est pas transmis.</p>
 
                   {/* ── Case consentement RGPD ── */}
                   <div className={`rounded-xl border p-4 transition-colors ${
@@ -647,13 +642,12 @@ const Simulator = () => {
 
                   <div className="flex items-start gap-2 text-xs text-muted-foreground pt-1">
                     <Lock className="w-3.5 h-3.5 mt-0.5 shrink-0 text-copper" />
-                    <span>Données traitées pour votre demande · Rappel uniquement sur votre accord</span>
+                    <span>Données protégées · Aucun démarchage · Conforme RGPD</span>
                   </div>
                 </div>
               )}
 
-              {submitError && <p role="alert" className="text-sm text-destructive mt-5">{submitError}</p>}
-              <div className="flex flex-wrap gap-3 justify-between items-center mt-8 pt-6 border-t border-border">
+              <div className="flex justify-between items-center mt-8 pt-6 border-t border-border">
                 {step > 0 ? (
                   <Button variant="ghost" onClick={() => setStep(step - 1)} className="gap-2 text-muted-foreground hover:text-foreground">
                     <ArrowLeft className="w-4 h-4" />Retour
@@ -665,7 +659,7 @@ const Simulator = () => {
                   className="gap-2 bg-copper hover:bg-copper-light text-white border-0 font-medium px-8 shadow-md shadow-copper/20 disabled:opacity-40"
                 >
                   {step === steps.length - 1 ? (
-                    <><Sparkles className="w-4 h-4" />Demander mon rapport</>
+                    <><Sparkles className="w-4 h-4" />Découvrir mes résultats</>
                   ) : (
                     <>Continuer<ArrowRight className="w-4 h-4" /></>
                   )}
@@ -683,6 +677,27 @@ const Simulator = () => {
             <span>✓ Sans engagement</span>
           </motion.div>
 
+          <motion.div
+            className="mt-6 bg-card border border-border rounded-xl p-4 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
+            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}
+          >
+            <div className="flex items-center gap-2">
+              <Users className="w-4 h-4 text-copper" />
+              <span className="text-xs text-muted-foreground"><strong className="text-foreground">2 400+</strong> bilans réalisés</span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-border" />
+            <div className="flex items-center gap-2">
+              <Award className="w-4 h-4 text-copper" />
+              <span className="text-xs text-muted-foreground"><strong className="text-foreground">15 ans</strong> d'expertise retraite</span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-border" />
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+              ))}
+              <span className="text-xs text-muted-foreground ml-1">4.9/5</span>
+            </div>
+          </motion.div>
         </div>
       </div>
       <Footer />

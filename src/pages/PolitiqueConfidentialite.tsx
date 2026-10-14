@@ -33,7 +33,7 @@ const PolitiqueConfidentialite = () => (
           </h2>
           <p>Dans le cadre de l'utilisation du site et du simulateur, nous collectons :</p>
           <ul className="list-disc pl-6 mt-2 space-y-1">
-            <li>Données d'identification : prénom, nom, email, téléphone, consentement au traitement et choix de rappel</li>
+            <li>Données d'identification : nom, email, téléphone</li>
             <li>Données professionnelles : statut, revenus annuels, régime fiscal estimé</li>
             <li>Données de simulation : âge, situation familiale, épargne, objectif patrimonial</li>
             <li>Données de navigation : adresse IP, pages consultées, cookies techniques</li>
@@ -46,7 +46,7 @@ const PolitiqueConfidentialite = () => (
           </h2>
           <ul className="list-disc pl-6 mt-2 space-y-1">
             <li>Réaliser des simulations de retraite personnalisées</li>
-            <li>Vous transmettre le bilan demandé ; vous rappeler uniquement si vous avez coché « Je souhaite être rappelé par un conseiller »</li>
+            <li>Vous recontacter suite à une demande de bilan gratuit</li>
             <li>Qualifier votre profil pour vous proposer des solutions adaptées</li>
             <li>Améliorer nos services et l'expérience utilisateur</li>
             <li>Respecter nos obligations légales et réglementaires (DDA, RGPD)</li>
