@@ -10,7 +10,7 @@
 - [x] Retirer les preuves inventées et ajouter les sources, la formulation du plafond PER et les mentions réglementaires.
 - [x] Ajouter les sections IA explicable, rémunération et cas types, ainsi que les pages rémunération et informations réglementaires.
 - [x] Afficher un aperçu des résultats avant l'email et recueillir séparément la demande de rappel.
-- [ ] Fournir la liste finale des informations à compléter avec leur emplacement.
+- [x] Fournir la liste finale des informations à compléter avec leur emplacement.
 - [ ] Vérifier les commissions, ORIAS, RC Pro et médiateur — informations et justificatifs attendus de RETIRO.
 - [ ] Vérifier le rapport par email et le filtrage des rappels dans Make/Airtable — accès à l'automatisation externe nécessaire.
 - [ ] Actualiser et valider les calculs fiscaux — régime fiscal précis et validation métier nécessaires ; modèle historique signalé comme indicatif dans l'aperçu et les résultats.
