@@ -2,26 +2,10 @@ import { Award, Users, Handshake, UserCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
 const trustItems = [
-  {
-    icon: Award,
-    label: "15 ans d'expertise",
-    detail: "en gestion de patrimoine",
-  },
-  {
-    icon: Users,
-    label: "Spécialistes du statut",
-    detail: "dirigeants & indépendants",
-  },
-  {
-    icon: Handshake,
-    label: "Partenaires de confiance",
-    detail: "assureurs de premier plan",
-  },
-  {
-    icon: UserCheck,
-    label: "Conseil personnalisé",
-    detail: "un interlocuteur unique",
-  },
+  { icon: Award, label: "Courtier immatriculé ORIAS", detail: "n° [À COMPLÉTER]" },
+  { icon: Users, label: "Partenaires", detail: "[À COMPLÉTER]" },
+  { icon: Handshake, label: "Rémunération publiée", detail: "pour chaque recommandation" },
+  { icon: UserCheck, label: "Conseil validé", detail: "par un conseiller humain" },
 ];
 
 const TrustBanner = () => (

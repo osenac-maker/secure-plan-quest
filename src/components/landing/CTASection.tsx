@@ -19,7 +19,7 @@ const CTASection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        Passez à l'action avant le 31 décembre
+        Préparez votre retraite avec une vision claire
       </motion.h2>
       <motion.div
         className="divider-gold mx-auto mb-6"
@@ -35,7 +35,7 @@ const CTASection = () => (
         viewport={{ once: true }}
         transition={{ delay: 0.15 }}
       >
-        En 2 minutes, découvrez combien vous pouvez économiser, ce que sera vraiment votre retraite et si votre famille est bien protégée. C'est gratuit, confidentiel et sans engagement.
+        En 2 minutes, découvrez combien vous pouvez économiser, une estimation indicative de votre retraite et si votre famille est bien protégée. C'est gratuit, confidentiel et sans engagement.
       </motion.p>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -49,7 +49,7 @@ const CTASection = () => (
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Button>
         </Link>
-        <a href="tel:+33600000000" className="block mt-3 text-sm text-white/50 hover:text-copper transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-copper">
+        <a href="/simulateur" className="block mt-3 text-sm text-white/50 hover:text-copper transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-copper">
           Préférez-vous être rappelé ?
         </a>
         <motion.p
@@ -60,7 +60,7 @@ const CTASection = () => (
           transition={{ delay: 0.5 }}
         >
           <Clock className="w-4 h-4" />
-          Vos versements PER sont déductibles jusqu'au 31 décembre — chaque mois compte.
+          Les versements PER sont déductibles des revenus de l'année où ils sont effectués.
         </motion.p>
       </motion.div>
     </div>

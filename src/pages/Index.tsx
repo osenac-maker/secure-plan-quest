@@ -8,8 +8,7 @@ import HowItWorksSection from "@/components/landing/HowItWorksSection";
 import { AdviceComparisonSection, PersonalProtectionSection, AboutSection } from "@/components/landing/EditorialSections";
 import SolutionsSection from "@/components/landing/SolutionsSection";
 import BenefitsSection from "@/components/landing/BenefitsSection";
-import PartnersSection from "@/components/landing/PartnersSection";
-import SocialProofSection from "@/components/landing/SocialProofSection";
+import { ExplainableAnalysisSection, IllustrativeProfilesSection, RemunerationSection } from "@/components/landing/TransparencySections";
 import FAQSection from "@/components/landing/FAQSection";
 import CTASection from "@/components/landing/CTASection";
 import Footer from "@/components/layout/Footer";
@@ -23,14 +22,15 @@ const Index = () => (
     <ProblemSection />
     <MidCTASection />
     <HowItWorksSection />
+    <ExplainableAnalysisSection />
     <AdviceComparisonSection />
     <PersonalProtectionSection />
     <SolutionsSection />
     <BenefitsSection />
-    <PartnersSection />
-    <SocialProofSection />
+    <IllustrativeProfilesSection />
     <AboutSection />
     <FAQSection />
+    <RemunerationSection />
     <CTASection />
     <Footer />
   </div>
