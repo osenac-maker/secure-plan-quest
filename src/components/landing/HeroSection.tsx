@@ -38,7 +38,7 @@ const HeroSection = () => (
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <p className="text-base md:text-xl text-white/90 font-heading">
-              Chaque année, des milliers de dirigeants et indépendants paient trop d'impôts, sous-estiment leur baisse de revenus à la retraite et laissent leur famille sans protection. Nous vous aidons à inverser la tendance.
+              Votre retraite, votre fiscalité et la protection de vos proches méritent une analyse d'ensemble. Nous vous aidons à évaluer vos droits et à comparer les solutions adaptées à votre situation.
             </p>
           </motion.div>
 

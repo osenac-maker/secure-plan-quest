@@ -25,11 +25,11 @@ const faqs = [
   },
   {
     q: "Combien ça coûte, et comment RETIRO est-il rémunéré ?",
-    a: "Le bilan patrimonial initial est offert. RETIRO est rémunéré par les compagnies d'assurance partenaires sous forme de commissions sur les contrats souscrits — le coût est intégré aux frais de gestion des contrats, sans surcoût pour vous. Nous vous présentons systématiquement les frais (entrée, gestion, arbitrage) avant toute décision.",
+    a: "Le bilan initial est offert. Modes de rémunération (commissions assureurs et/ou honoraires), montants et modalités : [À COMPLÉTER]. Nous nous engageons à afficher la rémunération perçue et les frais pour chaque produit recommandé ; le détail figure sur la page Rémunération.",
   },
   {
     q: "Comment se déroule un bilan patrimonial, et à quoi je m'engage ?",
-    a: "Un premier questionnaire en ligne (2 minutes) permet d'estimer votre potentiel d'optimisation. Un conseiller vous rappelle ensuite pour un échange de 30 minutes : diagnostic complet, projections chiffrées, recommandations. Aucun engagement à ce stade — vous repartez avec une stratégie claire, libre de la mettre en œuvre avec nous ou non.",
+    a: "Le questionnaire fournit une première estimation avant de demander votre email. Vous pouvez ensuite demander un rapport complet et, séparément, cocher la demande de rappel. Sans cette case cochée, aucun rappel n'est demandé. Une analyse individuelle avec un conseiller est nécessaire avant toute recommandation, sans engagement de souscription.",
   },
   {
     q: "En quoi RETIRO est-il différent de ma banque ou de mon expert-comptable ?",

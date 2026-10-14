@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight, CheckCircle, Award, ShieldCheck, TrendingDown,
-  Wallet, PiggyBank, AlertTriangle, ChevronDown, Star,
+  Wallet, PiggyBank, AlertTriangle, ChevronDown,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "Quel est le meilleur PER pour un indépendant ?",
-    a: "Cela dépend de votre profil : horizon de placement, appétit au risque, besoin de flexibilité. En tant que courtier indépendant, nous comparons les PER de Swiss Life, Generali, Spirica, Apicil et Cardif pour vous proposer le contrat le plus adapté.",
+    a: "Cela dépend de votre horizon, de votre tolérance au risque, de votre besoin de liquidité et des frais. Nous comparons les conditions des contrats accessibles. Partenaires : [À COMPLÉTER].",
   },
   {
     q: "Peut-on dépasser le plafond de déduction ?",
@@ -48,7 +48,7 @@ const avantages = [
   },
   {
     titre: "Plafond généreux",
-    detail: "Jusqu'à 10 % de vos revenus professionnels nets, dans la limite de 35 194 € en 2024 (ou 8 × PASS pour les indépendants).",
+    detail: "Pour les indépendants éligibles : jusqu'à 10 % du bénéfice, plus 15 % de la part comprise entre 1 et 8 PASS (plafond des indépendants). La première part est limitée à 8 PASS, sous réserve du régime fiscal et des autres cotisations déduites.",
     icon: TrendingDown,
   },
   {
@@ -93,7 +93,7 @@ const fadeUp = (delay = 0) => ({
 const PERIndependants = () => {
   useSEO({
     title: "PER Indépendants : réduisez vos impôts en préparant votre retraite — RETIRO",
-    description: "Le Plan d'Épargne Retraite pour TNS et dirigeants. Déduisez jusqu'à 35 194 € de votre revenu imposable. Simulation gratuite en 2 minutes.",
+    description: "Comprendre le PER pour les indépendants et dirigeants : plafond fiscal, disponibilité, risques, frais et préparation de la retraite.",
     canonical: "https://secure-plan-quest.vercel.app/per-independants",
   });
 
@@ -108,7 +108,7 @@ const PERIndependants = () => {
             className="text-copper font-semibold text-xs tracking-widest uppercase mb-3"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           >
-            Plan d'Épargne Retraite · TNS &amp; Indépendants
+            Plan d'Épargne Retraite · Dirigeants &amp; Indépendants
           </motion.p>
           <motion.h1
             className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 leading-tight"
@@ -128,9 +128,7 @@ const PERIndependants = () => {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Le PER individuel est le dispositif fiscal le plus puissant pour les freelances,
-            dirigeants et professions libérales. Chaque euro versé réduit immédiatement votre
-            impôt tout en constituant un capital retraite.
+            Le PER individuel permet de préparer un complément de retraite. Les versements peuvent être déduits dans les plafonds applicables, mais l'épargne est normalement bloquée jusqu'à la retraite et la sortie peut être imposée.
           </motion.p>
           <motion.div
             className="flex flex-col sm:flex-row gap-3"
@@ -151,7 +149,7 @@ const PERIndependants = () => {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            {["Déduction fiscale immédiate", "Sortie en capital possible", "Plafond jusqu'à 35 194 €"].map((b) => (
+            {["Déduction fiscale immédiate", "Sortie en capital possible", "Plafond selon votre régime fiscal"].map((b) => (
               <span key={b} className="flex items-center gap-1.5 text-xs text-muted-foreground">
                 <CheckCircle className="w-3.5 h-3.5 text-copper" />
                 {b}
@@ -171,13 +169,42 @@ const PERIndependants = () => {
           >
             <AlertTriangle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
             <p className="text-sm text-amber-800">
-              <strong>75 % des indépendants n'utilisent pas leur plafond PER.</strong>{" "}
-              Résultat : des milliers d'euros d'impôts payés inutilement chaque année, et une retraite
-              sous-capitalisée. Le plafond non utilisé des 3 dernières années est encore récupérable.
+              <strong>Vérifiez votre plafond avant de verser.</strong>{" "}
+              Le montant déductible dépend de votre régime fiscal et des sommes déjà déduites.
+              Les versements PER sont déductibles des revenus de l'année où ils sont effectués, dans les limites applicables.
             </p>
           </motion.div>
 
           {/* ── 4 avantages ── */}
+          <motion.section aria-labelledby="per-figures-title" {...fadeUp(0.05)}>
+            <h2 id="per-figures-title" className="font-heading text-2xl font-bold text-foreground mb-6">Quatre chiffres pour décider</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { titre: "Retraite obligatoire estimée", precision: "Par mois, à partir de votre relevé de carrière et de l'âge de départ envisagé." },
+                { titre: "Rente ajoutée", precision: "Par mois, si vous choisissez une sortie en rente ; elle dépend du capital, de l'âge de conversion et des options retenues." },
+                { titre: "Impôt économisé par an", precision: "Selon vos versements déductibles, votre plafond disponible et votre situation fiscale ; la sortie peut être imposée." },
+                { titre: "Capital au départ", precision: "Projection selon votre épargne, vos versements, les frais et les hypothèses de rendement ; ce capital n'est pas garanti sur les unités de compte." },
+              ].map((indicateur) => (
+                <div key={indicateur.titre} className="bg-card rounded-xl p-5 border border-border shadow-sm">
+                  <h3 className="font-heading text-base font-semibold text-foreground mb-3">{indicateur.titre}</h3>
+                  <p className="text-lg font-semibold text-copper mb-2">[À COMPLÉTER]</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{indicateur.precision}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground mt-4 italic">Ces montants nécessitent une analyse individuelle : aucune estimation personnelle n'est affichée sans vos données.</p>
+          </motion.section>
+
+          <motion.aside className="border border-copper/20 border-l-2 border-l-copper p-5" {...fadeUp(0.05)}>
+            <h2 className="font-heading text-xl font-bold text-foreground mb-4">Et si les marchés chutent juste avant votre départ ?</h2>
+            <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+              <p>La gestion pilotée à horizon réduit progressivement l'exposition aux actifs risqués à l'approche de la retraite, mais elle ne garantit pas le capital et n'empêche pas toute perte.</p>
+              <p>Selon le PER, un fonds en euros peut proposer une garantie contractuelle du capital, dont le niveau et le traitement des frais doivent être vérifiés. Certains contrats prévoient aussi une garantie à une échéance précise : elle ne s'applique pas nécessairement en cas de sortie avant cette date.</p>
+              <p>Ces protections peuvent entraîner des frais spécifiques, des contraintes d'allocation et un potentiel de rendement plus limité. Nous vérifions ce qui est garanti, par qui, à quelle date et net de quels frais, ainsi que le coût de l'option : [À COMPLÉTER].</p>
+              <p>Une répartition plus prudente ou une sortie fractionnée peut limiter l'exposition au moment du départ, sans constituer à elle seule une garantie. Les unités de compte restent exposées à un risque de perte en capital.</p>
+            </div>
+          </motion.aside>
+
           <motion.div {...fadeUp(0.05)}>
             <h2 className="font-heading text-2xl font-bold text-foreground mb-6">
               Pourquoi le PER est indispensable pour votre statut
@@ -199,6 +226,8 @@ const PERIndependants = () => {
               })}
             </div>
           </motion.div>
+
+          <p className="text-xs text-muted-foreground">Sources : <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047288764" target="_blank" rel="noopener noreferrer" className="text-copper underline">CGI, article 154 bis</a> et <a href="https://www.impots.gouv.fr/particulier/epargne-retraite" target="_blank" rel="noopener noreferrer" className="text-copper underline">impots.gouv.fr — épargne retraite</a>. Le PASS et le plafond disponibles sont à vérifier pour l’année du versement.</p>
 
           {/* ── Tableau exemples ── */}
           <motion.div className="bg-card rounded-2xl p-7 shadow-card border border-border" {...fadeUp(0.1)}>
@@ -290,29 +319,6 @@ const PERIndependants = () => {
             </div>
           </motion.div>
 
-          {/* ── Trust ── */}
-          <motion.div
-            className="bg-card rounded-xl p-5 border border-border flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8"
-            {...fadeUp(0.25)}
-          >
-            <div className="flex items-center gap-2.5">
-              <Award className="w-5 h-5 text-copper flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">15 ans d'expertise en gestion de patrimoine</span>
-            </div>
-            <div className="hidden sm:block w-px h-8 bg-border" />
-            <div className="flex items-center gap-2.5">
-              <ShieldCheck className="w-5 h-5 text-copper flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">Courtier indépendant — sélection parmi AXA, Swiss Life, Generali, Spirica</span>
-            </div>
-            <div className="hidden sm:block w-px h-8 bg-border" />
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              ))}
-              <span className="text-xs text-muted-foreground ml-1.5">4.9/5</span>
-            </div>
-          </motion.div>
-
           {/* ── CTA final ── */}
           <motion.div
             className="bg-hero rounded-2xl p-10 text-center border border-border"
@@ -322,7 +328,7 @@ const PERIndependants = () => {
               Combien pouvez-vous économiser avec un PER ?
             </h3>
             <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">
-              Notre simulateur calcule votre économie fiscale exacte en fonction de vos revenus
+              Notre simulateur fournit une estimation fiscale indicative selon vos revenus
               et votre tranche d'imposition. Résultats immédiats, sans engagement.
             </p>
             <Link to="/simulateur">

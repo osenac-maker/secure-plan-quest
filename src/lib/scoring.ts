@@ -14,6 +14,9 @@ export interface SimulatorData {
   prenom: string;
   nom: string;
   telephone: string;
+  souhaiteRappel?: boolean;
+  consentement?: boolean;
+  consentementDate?: string;
 }
 
 export interface SimulatorResult {
@@ -176,7 +179,7 @@ function normalizePhone(phone: string): string {
 // permet jamais de lire/modifier les données existantes.
 // Configurer VITE_MAKE_WEBHOOK_URL dans les variables d'environnement Vercel.
 
-export function sendLeadToMake(data: SimulatorData, results: SimulatorResult): void {
+export async function sendLeadToMake(data: SimulatorData, results: SimulatorResult): Promise<void> {
   const STATUS_LABELS: Record<string, string> = {
     freelance: "Freelance",
     dirigeant: "Dirigeant",
@@ -212,14 +215,14 @@ export function sendLeadToMake(data: SimulatorData, results: SimulatorResult): v
     return;
   }
 
-  fetch(webhookUrl, {
+  const res = await fetch(webhookUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       prenom: data.prenom,
       nom: data.nom,
       email: data.email,
-      telephone: normalizePhone(data.telephone),
+      ...buildContactPreferences(data),
       statutProfessionnel: STATUS_LABELS[data.status] ?? data.status,
       age: data.age,
       revenusAnnuels: data.revenu,
@@ -230,14 +233,18 @@ export function sendLeadToMake(data: SimulatorData, results: SimulatorResult): v
       retraiteEstimee: results.retraiteEstimee,
       economieFiscale: results.economiesFiscales,
       score: results.leadScore,
-      etape: "nouveau",
+      etape: data.souhaiteRappel === true ? "rappel_demande" : "rapport_uniquement",
     }),
-  }).then(async (res) => {
-    if (!res.ok) {
-      const err = await res.text().catch(() => "");
-      console.error(`[Make] ${res.status}`, err);
-    }
-  }).catch((err) => {
-    console.error("[Make] réseau", err);
   });
+  if (!res.ok) throw new Error("La demande n'a pas pu être transmise.");
+}
+
+export function buildContactPreferences(data: SimulatorData) {
+  return {
+    demandeRappel: data.souhaiteRappel === true,
+    telephone: data.souhaiteRappel === true ? normalizePhone(data.telephone) : "",
+    consentement: data.consentement === true,
+    consentementDate: data.consentementDate ?? null,
+    finalite: data.souhaiteRappel === true ? "rapport_et_rappel" : "rapport_uniquement",
+  };
 }

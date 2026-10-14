@@ -14,6 +14,8 @@ import ETF from "./pages/ETF";
 import MentionsLegales from "./pages/MentionsLegales";
 import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
 import CGU from "./pages/CGU";
+import Remuneration from "./pages/Remuneration";
+import InformationsReglementaires from "./pages/InformationsReglementaires";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import WhatsAppWidget from "./components/WhatsAppWidget";
@@ -38,6 +40,8 @@ const App = () => (
           <Route path="/etf" element={<ETF />} />
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
+          <Route path="/remuneration" element={<Remuneration />} />
+          <Route path="/informations-reglementaires" element={<InformationsReglementaires />} />
           <Route path="/cgu" element={<CGU />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

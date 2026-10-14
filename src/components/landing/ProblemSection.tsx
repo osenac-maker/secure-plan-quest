@@ -1,27 +1,12 @@
 import { AlertTriangle, TrendingDown, Clock, HelpCircle, Sparkles } from "lucide-react";
+import SourceNote from "@/components/SourceNote";
 import { motion } from "framer-motion";
 
 const problems = [
-  {
-    icon: TrendingDown,
-    title: "Votre retraite sera 2 à 3 fois plus faible que prévu",
-    desc: "En tant que dirigeant ou indépendant, vos cotisations obligatoires ne financent qu'une fraction de votre retraite. Concrètement, si vous gagnez 80 000 € aujourd'hui, vous pourriez toucher moins de 30 000 € par an à la retraite — soit une baisse de 60 % de votre niveau de vie.",
-  },
-  {
-    icon: AlertTriangle,
-    title: "Vous laissez des milliers d'euros au fisc chaque année",
-    desc: "Le PER permet de déduire jusqu'à 10 % de vos revenus de votre revenu imposable. Sur 80 000 € de revenus, cela représente jusqu'à 8 000 € de déduction, soit jusqu'à 3 200 € d'impôts en moins selon votre tranche — tout en constituant votre capital retraite.",
-  },
-  {
-    icon: Clock,
-    title: "Plus vous attendez, plus ça vous coûte cher",
-    desc: "Un versement de 500 €/mois démarré à 40 ans génère en moyenne 2 fois plus de capital qu'un versement identique démarré à 50 ans. Chaque année sans stratégie, ce sont des milliers d'euros de capital retraite en moins.",
-  },
-  {
-    icon: HelpCircle,
-    title: "Votre famille n'est pas protégée en cas d'accident de vie",
-    desc: "Arrêt de travail, invalidité, décès : les indemnités du régime obligatoire couvrent rarement plus de 50 % de vos revenus. Sans prévoyance complémentaire, vos charges continuent alors que vos revenus s'arrêtent.",
-  },
+  { icon: TrendingDown, title: "Quel revenu à la retraite ?", desc: "Vos droits dépendent de votre carrière, de votre régime et de l'âge de départ. Un relevé de carrière est nécessaire pour estimer l'écart avec le revenu souhaité.", source: "https://www.info-retraite.fr", hypotheses: "carrière individuelle, revenus cotisés et âge de départ à examiner ; aucun taux de remplacement universel." },
+  { icon: AlertTriangle, title: "Quel plafond de déduction pour votre PER ?", desc: "Pour les indépendants éligibles : jusqu'à 10 % du bénéfice, plus 15 % de la part comprise entre 1 et 8 PASS (plafond des indépendants). La première part est plafonnée à 8 PASS ; le régime fiscal et les autres cotisations déductibles doivent être vérifiés.", source: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047288764", hypotheses: "bénéfice imposable au réel, PASS de l'année et cotisations déjà déduites ; la micro-entreprise relève de règles différentes." },
+  { icon: Clock, title: "Quel horizon pour votre épargne ?", desc: "Commencer plus tôt allonge la durée des versements et de leur éventuelle capitalisation. Le capital final dépend des sommes versées, des frais, du rendement et des risques pris.", source: "https://www.service-public.fr/particuliers/vosdroits/F34982", hypotheses: "versements, durée et supports à définir ; aucun rendement garanti sur les unités de compte." },
+  { icon: HelpCircle, title: "Quelle protection pour vos revenus et votre famille ?", desc: "Arrêt de travail, invalidité, décès : comparez vos droits obligatoires à vos charges personnelles et familiales avant d'étudier une couverture complémentaire.", source: "https://entreprendre.service-public.gouv.fr/vosdroits/F36238", hypotheses: "profession, régime obligatoire et garanties contractuelles propres à chaque situation." },
 ];
 
 const ProblemSection = () => (
@@ -34,7 +19,7 @@ const ProblemSection = () => (
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Ce que personne ne vous dit
+          Les points à examiner
         </motion.p>
         <motion.h2
           className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4"
@@ -79,6 +64,7 @@ const ProblemSection = () => (
             <div>
               <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{p.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+              <SourceNote href={p.source} hypotheses={p.hypotheses} />
             </div>
           </motion.div>
         ))}
@@ -93,7 +79,7 @@ const ProblemSection = () => (
       >
         <Sparkles className="w-5 h-5 text-copper shrink-0" />
         <p className="text-lg font-heading font-semibold text-foreground">
-          La bonne nouvelle : <span className="text-gradient-gold">tout cela est évitable avec la bonne stratégie.</span>
+          Une démarche structurée : <span className="text-gradient-gold">évaluer, comparer et décider selon vos besoins.</span>
         </p>
       </motion.div>
     </div>
