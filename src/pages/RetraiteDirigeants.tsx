@@ -21,17 +21,17 @@ const fadeUp = (delay = 0) => ({
 const atouts = [
   {
     nom: "Disponibilité permanente",
-    exemple: "Julie, consultante indépendante de 41 ans, détient une assurance vie. Une réparation urgente dans son logement nécessite un rachat partiel. Elle peut mobiliser [À VÉRIFIER], selon les délais et conditions de ses supports, avec une fiscalité éventuelle sur les gains retirés.",
-    desc: "Contrairement au PER, votre capital reste accessible à tout moment via des rachats partiels ou totaux. Aucun blocage jusqu'à la retraite.",
-    avantage: "Épargne 100 % liquide",
+    exemple: "Julie, consultante indépendante de 41 ans, détient une assurance vie. Une réparation urgente dans son logement nécessite un rachat partiel. Elle peut mobiliser [À COMPLÉTER], selon les délais et conditions de ses supports, avec une fiscalité éventuelle sur les gains retirés.",
+    desc: "Contrairement au PER, votre capital reste accessible à tout moment via des rachats partiels ou totaux. Les délais et conditions de sortie dépendent des supports.",
+    avantage: "Rachats selon les supports et le contrat",
     icon: Wallet,
     tag: "Liberté",
     tagColor: "text-green-600 bg-green-50",
   },
   {
     nom: "Fiscalité allégée après 8 ans",
-    exemple: "Thomas, dirigeant d'une agence de 52 ans, détient son contrat depuis plus de huit ans. Il effectue un rachat partiel pour financer un projet personnel. Selon sa situation fiscale et les gains retirés, l'abattement applicable peut réduire son impôt d'un montant de [À VÉRIFIER], sans supprimer les prélèvements sociaux.",
-    desc: "Au-delà de 8 ans, abattement annuel de 4 600 € (9 200 € pour un couple) sur les gains rachetés, puis prélèvement forfaitaire réduit à 7,5 %.",
+    exemple: "Thomas, dirigeant d'une agence de 52 ans, détient son contrat depuis plus de huit ans. Il effectue un rachat partiel pour financer un projet personnel. Selon sa situation fiscale et les gains retirés, l'abattement applicable peut réduire son impôt d'un montant de [À COMPLÉTER], sans supprimer les prélèvements sociaux.",
+    desc: "Au-delà de 8 ans, abattement annuel de 4 600 € (9 200 € pour un couple) sur les gains rachetés, puis imposition selon les versements et les règles applicables, hors prélèvements sociaux.",
     avantage: "Abattement 4 600 € / 9 200 € par an",
     icon: Clock,
     tag: "Fiscalité",
@@ -39,7 +39,7 @@ const atouts = [
   },
   {
     nom: "Transmission optimisée",
-    exemple: "Nadia, gérante d'une entreprise de 57 ans, a désigné ses enfants bénéficiaires de son assurance vie. À son décès, l'assureur examine la clause bénéficiaire et les conditions fiscales des versements. Ses enfants peuvent recevoir un capital de [À VÉRIFIER], avec une fiscalité dépendant notamment de son âge lors des versements.",
+    exemple: "Nadia, gérante d'une entreprise de 57 ans, a désigné ses enfants bénéficiaires de son assurance vie. À son décès, l'assureur examine la clause bénéficiaire et les conditions fiscales des versements. Ses enfants peuvent recevoir un capital de [À COMPLÉTER], avec une fiscalité dépendant notamment de son âge lors des versements.",
     desc: "Jusqu'à 152 500 € transmis hors succession par bénéficiaire désigné (versements avant 70 ans). Un outil patrimonial puissant pour protéger ses proches.",
     avantage: "152 500 € exonérés par bénéficiaire",
     icon: Users,
@@ -48,7 +48,7 @@ const atouts = [
   },
   {
     nom: "Diversification multi-supports",
-    exemple: "Antoine, restaurateur de 46 ans, répartit son épargne entre fonds euros et unités de compte. Une baisse des marchés fait reculer la valeur des unités de compte de son contrat. La variation de son capital est de [À VÉRIFIER], les unités de compte comportant un risque de perte en capital.",
+    exemple: "Antoine, restaurateur de 46 ans, répartit son épargne entre fonds euros et unités de compte. Une baisse des marchés fait reculer la valeur des unités de compte de son contrat. La variation de son capital est de [À COMPLÉTER], les unités de compte comportant un risque de perte en capital.",
     desc: "Fonds euros sécurisés, unités de compte (ETF, SCPI, actions, obligations) : une seule enveloppe pour piloter une allocation patrimoniale complète.",
     avantage: "Fonds euros + UC dans un même contrat",
     icon: Layers,
@@ -71,7 +71,7 @@ const faqs = [
   },
   {
     q: "Peut-on retirer son argent à tout moment ?",
-    a: "Oui. L'assurance vie permet des rachats partiels ou totaux à tout moment, sans pénalité contractuelle. Seule la fiscalité sur les gains évolue : optimale après 8 ans de détention du contrat.",
+    a: "Oui. L'assurance vie permet des rachats partiels ou totaux à tout moment, sous réserve des conditions des supports et du contrat. La fiscalité sur les gains évolue : optimale après 8 ans de détention du contrat.",
   },
   {
     q: "Quelle fiscalité s'applique sur les gains ?",
@@ -200,8 +200,8 @@ const RetraiteDirigeants = () => {
                 const Icon = d.icon;
                 return (
                   <div key={d.nom} className="bg-card rounded-xl p-5 border border-border shadow-sm">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-2.5">
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                      <div className="flex items-center gap-2.5 min-w-0">
                         <div className="w-8 h-8 rounded-full bg-copper/10 flex items-center justify-center flex-shrink-0">
                           <Icon className="w-4 h-4 text-copper" />
                         </div>
@@ -239,7 +239,7 @@ const RetraiteDirigeants = () => {
                 { duree: "Transmission (versements < 70 ans)", regime: "152 500 € exonérés par bénéficiaire désigné", color: "text-copper" },
               ].map((r) => (
                 <div key={r.duree} className="flex items-start justify-between gap-4 bg-muted/40 rounded-lg px-3 py-2.5">
-                  <span className="text-sm text-foreground font-medium flex-shrink-0">{r.duree}</span>
+                  <span className="text-sm text-foreground font-medium min-w-0">{r.duree}</span>
                   <span className={`text-sm text-right ${r.color}`}>{r.regime}</span>
                 </div>
               ))}
@@ -336,29 +336,6 @@ const RetraiteDirigeants = () => {
             <p className="text-sm text-muted-foreground mb-5">Tout ce que vous devez savoir sur l'assurance vie.</p>
             <div>
               {faqs.map((f) => <FaqItem key={f.q} q={f.q} a={f.a} />)}
-            </div>
-          </motion.div>
-
-          {/* ── Trust ── */}
-          <motion.div
-            className="bg-card rounded-xl p-5 border border-border flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8"
-            {...fadeUp(0.35)}
-          >
-            <div className="flex items-center gap-2.5">
-              <Award className="w-5 h-5 text-copper flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">2 500+ clients accompagnés sur leur stratégie patrimoniale</span>
-            </div>
-            <div className="hidden sm:block w-px h-8 bg-border" />
-            <div className="flex items-center gap-2.5">
-              <ShieldCheck className="w-5 h-5 text-copper flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">Cabinet enregistré ORIAS — un interlocuteur dédié</span>
-            </div>
-            <div className="hidden sm:block w-px h-8 bg-border" />
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              ))}
-              <span className="text-xs text-muted-foreground ml-1.5">4.9/5</span>
             </div>
           </motion.div>
 

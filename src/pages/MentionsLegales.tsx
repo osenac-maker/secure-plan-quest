@@ -1,4 +1,5 @@
 import Navbar from "@/components/layout/Navbar";
+import RegulatoryDetails from "@/components/RegulatoryDetails";
 import Footer from "@/components/layout/Footer";
 
 const MentionsLegales = () => (
@@ -26,8 +27,8 @@ const MentionsLegales = () => (
         </section>
         <section>
           <h2 className="font-heading text-xl font-semibold text-foreground mb-3">Activité réglementée</h2>
-          <p>MOPA exerce une activité de courtage en assurance et de conseil en gestion de patrimoine.<br />Immatriculation ORIAS : <em>en cours d'obtention</em> — vérifiable sur <a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" className="text-copper hover:underline">www.orias.fr</a><br />Autorité de contrôle : ACPR, 4 place de Budapest, CS 92459, 75436 Paris Cedex 09<br />Assurance RCP : <em>en cours de souscription</em></p>
-          <p className="mt-3 text-sm bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-amber-800"><strong>Note :</strong> Ce site est en phase MVP. MOPA est en cours d'immatriculation ORIAS. Aucun contrat ne sera souscrit avant l'obtention de cette immatriculation.</p>
+          <RegulatoryDetails />
+          <p className="mt-3 text-sm text-muted-foreground">Immatriculation vérifiable sur <a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" className="text-copper underline">www.orias.fr</a>. Autorité de contrôle : ACPR, 4 place de Budapest, CS 92459, 75436 Paris Cedex 09.</p>
         </section>
         <section>
           <h2 className="font-heading text-xl font-semibold text-foreground mb-3">Propriété intellectuelle</h2>
@@ -39,7 +40,7 @@ const MentionsLegales = () => (
         </section>
         <section>
           <h2 className="font-heading text-xl font-semibold text-foreground mb-3">Médiation</h2>
-          <p>Conformément aux articles L.616-1 et R.616-1 du Code de la consommation, MOPA proposera un dispositif de médiation dès l'obtention de son immatriculation ORIAS.</p>
+          <p>Médiateur : [À COMPLÉTER]. Coordonnées et modalités de saisine : [À COMPLÉTER]. Une réclamation préalable doit être adressée à MOPA.</p>
         </section>
       </div>
     </main>

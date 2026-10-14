@@ -22,46 +22,46 @@ const garanties = [
   {
     icon: Stethoscope,
     titre: "Comment maintenir vos revenus pendant un arrêt de travail temporaire ?",
-    desc: "Maintien de vos revenus dès le 1er jour d'arrêt (ou après une franchise courte). Couvre maladie, accident, hospitalisation.",
-    detail: "Jusqu'à 100 % du revenu net",
+    desc: "Des indemnités peuvent compenser une perte de revenus après la franchise prévue, en cas de maladie, d'accident ou d'hospitalisation couverts.",
+    detail: "Montant et durée selon le contrat",
     points: [
       "Le jour de départ de l'indemnité (16e, 31e, 91e…) et son effet sur la cotisation : une franchise plus courte peut augmenter son montant.",
       "La prise en charge du burn-out et des pathologies psychiques, avec leurs éventuelles exclusions et conditions spécifiques.",
       "L'exonération de cotisation pendant un arrêt long, selon les conditions et la durée prévues au contrat.",
     ],
-    exemple: "Sophie, architecte indépendante de 42 ans, exerce à son compte. Une fracture l'oblige à interrompre son activité pendant deux mois. Selon son contrat et après la franchise applicable, des indemnités de [À VÉRIFIER] par jour peuvent compenser une partie de sa perte de revenus.",
+    exemple: "Sophie, architecte indépendante de 42 ans, exerce à son compte. Une fracture l'oblige à interrompre son activité pendant deux mois. Selon son contrat et après la franchise applicable, des indemnités de [À COMPLÉTER] par jour peuvent compenser une partie de sa perte de revenus.",
   },
   {
     icon: Shield,
     titre: "Quelles ressources en cas d'invalidité ?",
     desc: "Rente mensuelle garantie si vous ne pouvez plus exercer votre activité — partiellement ou totalement.",
-    detail: "Invalidité partielle incluse",
+    detail: "Invalidité partielle à vérifier au contrat",
     points: [
       "Le taux minimal d'invalidité ouvrant droit à une indemnisation et le barème utilisé pour le déterminer.",
       "La rente proportionnelle au taux réel d'invalidité : nous vérifions son mode de calcul et les éventuels seuils contractuels.",
     ],
-    exemple: "Marc, artisan électricien de 48 ans, dirige sa petite entreprise. Un accident entraîne une invalidité reconnue qui réduit durablement sa capacité à travailler. Sous réserve des critères du contrat, une rente de [À VÉRIFIER] par mois peut compléter ses ressources.",
+    exemple: "Marc, artisan électricien de 48 ans, dirige sa petite entreprise. Un accident entraîne une invalidité reconnue qui réduit durablement sa capacité à travailler. Sous réserve des critères du contrat, une rente de [À COMPLÉTER] par mois peut compléter ses ressources.",
   },
   {
     icon: HeartHandshake,
     titre: "Comment protéger vos proches en cas de décès ?",
     desc: "Somme versée à votre conjoint et vos enfants pour assurer leur sécurité financière immédiate.",
-    detail: "De 100 k€ à 1 M€ selon contrat",
+    detail: "Capital choisi selon les besoins des proches",
     points: [
       "Le capital prévu pour les proches et les bénéficiaires désignés.",
       "La rente éducation par enfant, son montant, son âge limite et les conditions de prolongation en cas d'études.",
     ],
-    exemple: "Karim, gérant d'une PME de 45 ans, vit en couple avec deux enfants. Son décès laisse sa famille sans ses revenus professionnels. Si le décès est couvert, les bénéficiaires désignés reçoivent un capital de [À VÉRIFIER] pour faire face aux dépenses immédiates.",
-    exempleEducation: "Claire, consultante indépendante de 39 ans, élève un enfant scolarisé. Son décès met en difficulté le financement des études de son enfant. Selon les conditions du contrat, une rente éducation de [À VÉRIFIER] par mois peut être versée pendant la durée prévue.",
+    exemple: "Karim, gérant d'une PME de 45 ans, vit en couple avec deux enfants. Son décès laisse sa famille sans ses revenus professionnels. Si le décès est couvert, les bénéficiaires désignés reçoivent un capital de [À COMPLÉTER] pour faire face aux dépenses immédiates.",
+    exempleEducation: "Claire, consultante indépendante de 39 ans, élève un enfant scolarisé. Son décès met en difficulté le financement des études de son enfant. Selon les conditions du contrat, une rente éducation de [À COMPLÉTER] par mois peut être versée pendant la durée prévue.",
   },
 ];
 
 const comparatif = [
-  { garantie: "Indemnités journalières", obligatoire: "~22 €/jour (SSI)", complementaire: "Jusqu'à 300 €/jour" },
-  { garantie: "Franchise", obligatoire: "3 à 90 jours", complementaire: "Dès le 1er jour possible" },
-  { garantie: "Invalidité partielle", obligatoire: "Non couverte", complementaire: "✓ Couverte" },
-  { garantie: "Capital décès", obligatoire: "Forfait ~8 500 €", complementaire: "100 000 € à 1 M€" },
-  { garantie: "Déductibilité fiscale", obligatoire: "—", complementaire: "✓ 100 % déductible (Madelin)" },
+  { garantie: "Indemnités journalières", obligatoire: "Selon le régime et les revenus cotisés", complementaire: "Montant contractuel à déterminer" },
+  { garantie: "Franchise", obligatoire: "Selon le régime obligatoire", complementaire: "Délai choisi au contrat" },
+  { garantie: "Invalidité", obligatoire: "Selon le barème du régime", complementaire: "Seuil et barème à comparer" },
+  { garantie: "Décès", obligatoire: "Prestations selon le régime", complementaire: "Capital et rente éducation en option" },
+  { garantie: "Déductibilité fiscale", obligatoire: "Selon la nature des cotisations", complementaire: "Madelin : éligibilité et plafond à vérifier" },
 ];
 
 const faqs = [
@@ -75,7 +75,7 @@ const faqs = [
   },
   {
     q: "Peut-on souscrire une prévoyance en cas de problème de santé ?",
-    a: "Oui, dans la plupart des cas — avec d'éventuelles exclusions ou surprimes sur les pathologies existantes. Un questionnaire médical est obligatoire. Certains contrats appliquent des exclusions temporaires plutôt que des refus définitifs. Nous accompagnons les profils à risque.",
+    a: "Oui, dans la plupart des cas — avec d'éventuelles exclusions ou surprimes sur les pathologies existantes. Des formalités médicales peuvent être demandées selon le contrat. Certains contrats appliquent des exclusions temporaires plutôt que des refus définitifs. Nous accompagnons les profils à risque.",
   },
   {
     q: "Quelle est la différence entre prévoyance et assurance vie ?",
@@ -83,7 +83,7 @@ const faqs = [
   },
   {
     q: "Mon contrat collectif d'entreprise suffit-il ?",
-    a: "Si vous êtes dirigeant assimilé salarié (SAS/SASU), vous pouvez avoir un contrat collectif — mais ses garanties sont souvent insuffisantes pour des revenus élevés. Pour les TNS (gérant SARL, EI, libéral), il n'y a pas de contrat collectif obligatoire. Dans les deux cas, un complément individuel est généralement recommandé.",
+    a: "Si vous êtes dirigeant assimilé salarié (SAS/SASU), vous pouvez avoir un contrat collectif — mais ses garanties sont souvent insuffisantes pour des revenus élevés. Pour les indépendants (gérant majoritaire de SARL, EI, libéral), il n'y a pas de contrat collectif obligatoire. Dans les deux cas, un complément individuel est généralement recommandé.",
   },
 ];
 
@@ -106,7 +106,7 @@ const FaqItem = ({ q, a }: { q: string; a: string }) => {
 const Prevoyance = () => {
   useSEO({
     title: "Prévoyance indépendants : protégez vos revenus et votre famille — RETIRO",
-    description: "Le régime SSI verse 22 €/jour en cas d'arrêt. La prévoyance complémentaire Madelin protège vos revenus avec des cotisations 100 % déductibles.",
+    description: "Arrêt de travail, invalidité, décès : comprendre les garanties, franchises et limites de la prévoyance des indépendants.",
     canonical: "https://secure-plan-quest.vercel.app/prevoyance",
   });
 
@@ -121,7 +121,7 @@ const Prevoyance = () => {
             className="text-copper font-semibold text-xs tracking-widest uppercase mb-3"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           >
-            Prévoyance · TNS &amp; Indépendants
+            Prévoyance · Dirigeants &amp; Indépendants
           </motion.p>
           <motion.h1
             className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 leading-tight"
@@ -140,9 +140,7 @@ const Prevoyance = () => {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            En cas d'arrêt de travail, d'invalidité ou de décès, le régime obligatoire
-            couvre rarement plus de 50 % de vos revenus. La prévoyance complémentaire
-            comble cette lacune — avec des cotisations 100 % déductibles.
+            En cas d'arrêt de travail, d'invalidité ou de décès, comparez vos droits obligatoires à vos besoins. Une prévoyance complémentaire peut réduire l'écart, selon les garanties souscrites et leurs conditions.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
@@ -160,7 +158,7 @@ const Prevoyance = () => {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            {["22 €/jour seulement avec le SSI", "Franchise jusqu'à 90 jours sans revenus", "Cotisations 100 % déductibles (Madelin)"].map((b) => (
+            {["Franchise à comparer", "Exclusions à examiner", "Déduction Madelin selon plafond"].map((b) => (
               <span key={b} className="flex items-center gap-1.5 text-xs text-muted-foreground">
                 <AlertTriangle className="w-3.5 h-3.5 text-amber-500" />
                 {b}
@@ -180,10 +178,9 @@ const Prevoyance = () => {
           >
             <AlertTriangle className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
             <p className="text-sm text-red-800">
-              <strong>Un indépendant qui s'arrête 3 mois peut perdre 100 % de ses revenus.</strong>{" "}
-              Le SSI verse environ 22 €/jour — soit 660 €/mois — après une franchise de 3 jours.
-              Pour un revenu habituel de 6 000 €/mois, c'est une perte de{" "}
-              <strong>5 340 € par mois</strong>. Sans prévoyance complémentaire, cela peut être dévastateur.
+              <strong>Un arrêt de travail peut déséquilibrer vos finances personnelles.</strong>{" "}
+              Les prestations obligatoires varient selon votre régime, vos revenus cotisés et votre situation.
+              Nous les comparons à vos charges et à votre couverture complémentaire avant toute recommandation.
             </p>
           </motion.div>
 
@@ -231,7 +228,7 @@ const Prevoyance = () => {
               Régime obligatoire vs prévoyance complémentaire
             </h2>
             <p className="text-sm text-muted-foreground mb-5">
-              L'écart est considérable. Voici ce que couvre réellement le SSI — et ce qu'un bon contrat ajoute.
+              Les droits dépendent de votre régime obligatoire. Le contrat complémentaire doit être comparé à vos besoins et aux prestations déjà acquises.
             </p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
@@ -262,9 +259,9 @@ const Prevoyance = () => {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
               {[
-                { label: "Cotisations déductibles", value: "100 %", sub: "Du revenu imposable (Madelin)", color: "text-green-600" },
-                { label: "Économie fiscale estimée", value: "30–45 %", sub: "Selon votre TMI", color: "text-copper" },
-                { label: "Plafond de déduction", value: "~7 000 €", sub: "Pour un BNC de 60 000 €", color: "text-blue-600" },
+                { label: "Cotisations éligibles", value: "Selon contrat", sub: "Dispositif Madelin", color: "text-copper" },
+                { label: "Coût après impôt", value: "[À COMPLÉTER]", sub: "Selon votre situation fiscale", color: "text-copper" },
+                { label: "Plafond disponible", value: "[À COMPLÉTER]", sub: "Selon votre bénéfice et les autres cotisations", color: "text-copper" },
               ].map((item) => (
                 <div key={item.label} className="bg-muted/40 rounded-xl p-4 text-center">
                   <p className="text-xs text-muted-foreground mb-1">{item.label}</p>
@@ -279,35 +276,14 @@ const Prevoyance = () => {
             </p>
           </motion.div>
 
+          <p className="text-xs text-muted-foreground">Sources : <a href="https://entreprendre.service-public.gouv.fr/vosdroits/F36238" target="_blank" rel="noopener noreferrer" className="text-copper underline">protection sociale des indépendants</a> et <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047288764" target="_blank" rel="noopener noreferrer" className="text-copper underline">CGI, article 154 bis</a>. Les garanties exactes figurent dans les conditions du contrat.</p>
+
           {/* ── FAQ ── */}
           <motion.div className="bg-card rounded-2xl p-7 shadow-card border border-border" {...fadeUp(0.2)}>
             <h2 className="font-heading text-xl font-bold text-foreground mb-1">Questions fréquentes</h2>
             <p className="text-sm text-muted-foreground mb-5">Tout ce que vous devez savoir avant de souscrire.</p>
             <div>
               {faqs.map((f) => <FaqItem key={f.q} q={f.q} a={f.a} />)}
-            </div>
-          </motion.div>
-
-          {/* ── Trust ── */}
-          <motion.div
-            className="bg-card rounded-xl p-5 border border-border flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8"
-            {...fadeUp(0.25)}
-          >
-            <div className="flex items-center gap-2.5">
-              <Award className="w-5 h-5 text-copper flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">Spécialiste prévoyance TNS depuis 15 ans</span>
-            </div>
-            <div className="hidden sm:block w-px h-8 bg-border" />
-            <div className="flex items-center gap-2.5">
-              <ShieldCheck className="w-5 h-5 text-copper flex-shrink-0" />
-              <span className="text-sm text-foreground font-medium">Partenaires : AXA, Generali, Swiss Life, Apicil</span>
-            </div>
-            <div className="hidden sm:block w-px h-8 bg-border" />
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              ))}
-              <span className="text-xs text-muted-foreground ml-1.5">4.9/5</span>
             </div>
           </motion.div>
 
