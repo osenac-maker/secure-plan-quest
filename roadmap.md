@@ -6,3 +6,4 @@
 - [ ] Structurer la prévoyance en trois questions et préciser les points vérifiés et la déduction Madelin.
 - [ ] Ajouter les quatre indicateurs PER et l'explication des garanties en cas de baisse des marchés.
 - [ ] Ajouter les engagements demandés à « Comment ça marche », sans nouveaux avis ni témoignages.
+- [ ] Lire le document « Objectif retravailler le FOND du site RETIRO » et intégrer ses consignes.
