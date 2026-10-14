@@ -21,31 +21,38 @@ const fadeUp = (delay = 0) => ({
 const garanties = [
   {
     icon: Stethoscope,
-    titre: "Indemnités journalières",
+    titre: "Comment maintenir vos revenus pendant un arrêt de travail temporaire ?",
     desc: "Maintien de vos revenus dès le 1er jour d'arrêt (ou après une franchise courte). Couvre maladie, accident, hospitalisation.",
     detail: "Jusqu'à 100 % du revenu net",
+    points: [
+      "Le jour de départ de l'indemnité (16e, 31e, 91e…) et son effet sur la cotisation : une franchise plus courte peut augmenter son montant.",
+      "La prise en charge du burn-out et des pathologies psychiques, avec leurs éventuelles exclusions et conditions spécifiques.",
+      "L'exonération de cotisation pendant un arrêt long, selon les conditions et la durée prévues au contrat.",
+    ],
     exemple: "Sophie, architecte indépendante de 42 ans, exerce à son compte. Une fracture l'oblige à interrompre son activité pendant deux mois. Selon son contrat et après la franchise applicable, des indemnités de [À VÉRIFIER] par jour peuvent compenser une partie de sa perte de revenus.",
   },
   {
     icon: Shield,
-    titre: "Invalidité",
+    titre: "Quelles ressources en cas d'invalidité ?",
     desc: "Rente mensuelle garantie si vous ne pouvez plus exercer votre activité — partiellement ou totalement.",
     detail: "Invalidité partielle incluse",
+    points: [
+      "Le taux minimal d'invalidité ouvrant droit à une indemnisation et le barème utilisé pour le déterminer.",
+      "La rente proportionnelle au taux réel d'invalidité : nous vérifions son mode de calcul et les éventuels seuils contractuels.",
+    ],
     exemple: "Marc, artisan électricien de 48 ans, dirige sa petite entreprise. Un accident entraîne une invalidité reconnue qui réduit durablement sa capacité à travailler. Sous réserve des critères du contrat, une rente de [À VÉRIFIER] par mois peut compléter ses ressources.",
   },
   {
     icon: HeartHandshake,
-    titre: "Capital décès",
+    titre: "Comment protéger vos proches en cas de décès ?",
     desc: "Somme versée à votre conjoint et vos enfants pour assurer leur sécurité financière immédiate.",
     detail: "De 100 k€ à 1 M€ selon contrat",
+    points: [
+      "Le capital prévu pour les proches et les bénéficiaires désignés.",
+      "La rente éducation par enfant, son montant, son âge limite et les conditions de prolongation en cas d'études.",
+    ],
     exemple: "Karim, gérant d'une PME de 45 ans, vit en couple avec deux enfants. Son décès laisse sa famille sans ses revenus professionnels. Si le décès est couvert, les bénéficiaires désignés reçoivent un capital de [À VÉRIFIER] pour faire face aux dépenses immédiates.",
-  },
-  {
-    icon: Users,
-    titre: "Rente éducation",
-    desc: "Rente versée à vos enfants jusqu'à leur majorité (ou fin d'études) en cas de décès ou d'invalidité totale.",
-    detail: "Protection de toute la famille",
-    exemple: "Claire, consultante indépendante de 39 ans, élève un enfant scolarisé. Son décès met en difficulté le financement des études de son enfant. Selon les conditions du contrat, une rente éducation de [À VÉRIFIER] par mois peut être versée pendant la durée prévue.",
+    exempleEducation: "Claire, consultante indépendante de 39 ans, élève un enfant scolarisé. Son décès met en difficulté le financement des études de son enfant. Selon les conditions du contrat, une rente éducation de [À VÉRIFIER] par mois peut être versée pendant la durée prévue.",
   },
 ];
 
@@ -183,12 +190,12 @@ const Prevoyance = () => {
           {/* ── 4 garanties ── */}
           <motion.div {...fadeUp(0.05)}>
             <h2 className="font-heading text-xl font-bold text-foreground mb-2">
-              Ce que la prévoyance complémentaire vous garantit
+              Trois questions pour protéger vos revenus et vos proches
             </h2>
             <p className="text-sm text-muted-foreground mb-5">
-              Un contrat bien calibré couvre l'ensemble des risques liés à votre activité et à votre vie personnelle.
+              Arrêt de travail temporaire, invalidité, décès : nous examinons les garanties et leurs conditions pour chaque situation.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               {garanties.map((g) => {
                 const Icon = g.icon;
                 return (
@@ -204,7 +211,14 @@ const Prevoyance = () => {
                       <CheckCircle className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />
                       <span className="text-xs font-medium text-green-600">{g.detail}</span>
                     </div>
+                    <aside className="mt-4 border border-copper/20 border-l-2 border-l-copper px-3 py-3" aria-label="Les points que nous vérifions pour vous">
+                      <h4 className="font-heading text-sm font-semibold text-copper mb-2">Les points que nous vérifions pour vous</h4>
+                      <ul className="list-disc pl-4 space-y-2 text-xs text-muted-foreground leading-relaxed">
+                        {g.points.map((point) => <li key={point}>{point}</li>)}
+                      </ul>
+                    </aside>
                     <ProductExample>{g.exemple}</ProductExample>
+                    {g.exempleEducation && <ProductExample>{g.exempleEducation}</ProductExample>}
                   </div>
                 );
               })}
@@ -260,10 +274,8 @@ const Prevoyance = () => {
               ))}
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Dans le cadre d'un contrat loi Madelin, vos cotisations de prévoyance sont
-              intégralement déductibles de votre revenu imposable. Concrètement, pour
-              1 000 € de cotisation annuelle et une TMI à 30 %, votre coût réel n'est que
-              de <strong className="text-foreground">700 €</strong> — l'État finance le reste.
+              La déduction dépend de votre éligibilité au dispositif Madelin et de votre plafond disponible.
+              Le coût après impôt doit être évalué à partir de votre situation fiscale personnelle, sans économie garantie.
             </p>
           </motion.div>
 
@@ -320,6 +332,9 @@ const Prevoyance = () => {
             <p className="text-xs text-muted-foreground mt-4">Gratuit · Sans engagement · Résultat en 2 minutes</p>
           </motion.div>
 
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Vos cotisations Madelin sont déductibles de votre bénéfice, dans la limite de votre plafond. Nous affichons leur coût réel, après impôt.
+          </p>
         </div>
       </div>
       <Footer />

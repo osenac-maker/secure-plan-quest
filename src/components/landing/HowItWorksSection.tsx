@@ -88,6 +88,10 @@ const HowItWorksSection = () => (
         viewport={{ once: true }}
         transition={{ delay: 0.4 }}
       >
+        <div className="max-w-3xl mx-auto mb-8 space-y-3 text-sm text-muted-foreground leading-relaxed">
+          <p>Aucun produit ne vous sera présenté avant que nous ayons confirmé ensemble que vous en avez besoin.</p>
+          <p>L'IA prépare l'analyse. Un conseiller la vérifie, la signe et en répond.</p>
+        </div>
         <Link to="/simulateur">
           <Button size="lg" className="bg-copper hover:bg-copper-light text-white text-base gap-2 font-medium px-10 border-0 group shadow-lg shadow-copper/30">
             Découvrir ma stratégie retraite →

@@ -178,6 +178,35 @@ const PERIndependants = () => {
           </motion.div>
 
           {/* ── 4 avantages ── */}
+          <motion.section aria-labelledby="per-figures-title" {...fadeUp(0.05)}>
+            <h2 id="per-figures-title" className="font-heading text-2xl font-bold text-foreground mb-6">Quatre chiffres pour décider</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { titre: "Retraite obligatoire estimée", precision: "Par mois, à partir de votre relevé de carrière et de l'âge de départ envisagé." },
+                { titre: "Rente ajoutée", precision: "Par mois, si vous choisissez une sortie en rente ; elle dépend du capital, de l'âge de conversion et des options retenues." },
+                { titre: "Impôt économisé par an", precision: "Selon vos versements déductibles, votre plafond disponible et votre situation fiscale ; la sortie peut être imposée." },
+                { titre: "Capital au départ", precision: "Projection selon votre épargne, vos versements, les frais et les hypothèses de rendement ; ce capital n'est pas garanti sur les unités de compte." },
+              ].map((indicateur) => (
+                <div key={indicateur.titre} className="bg-card rounded-xl p-5 border border-border shadow-sm">
+                  <h3 className="font-heading text-base font-semibold text-foreground mb-3">{indicateur.titre}</h3>
+                  <p className="text-lg font-semibold text-copper mb-2">[À VÉRIFIER]</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{indicateur.precision}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground mt-4 italic">Ces montants nécessitent une analyse individuelle : aucune estimation personnelle n'est affichée sans vos données.</p>
+          </motion.section>
+
+          <motion.aside className="border border-copper/20 border-l-2 border-l-copper p-5" {...fadeUp(0.05)}>
+            <h2 className="font-heading text-xl font-bold text-foreground mb-4">Et si les marchés chutent juste avant votre départ ?</h2>
+            <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+              <p>La gestion pilotée à horizon réduit progressivement l'exposition aux actifs risqués à l'approche de la retraite, mais elle ne garantit pas le capital et n'empêche pas toute perte.</p>
+              <p>Selon le PER, un fonds en euros peut proposer une garantie contractuelle du capital, dont le niveau et le traitement des frais doivent être vérifiés. Certains contrats prévoient aussi une garantie à une échéance précise : elle ne s'applique pas nécessairement en cas de sortie avant cette date.</p>
+              <p>Ces protections peuvent entraîner des frais spécifiques, des contraintes d'allocation et un potentiel de rendement plus limité. Nous vérifions ce qui est garanti, par qui, à quelle date et net de quels frais, ainsi que le coût de l'option : [À VÉRIFIER].</p>
+              <p>Une répartition plus prudente ou une sortie fractionnée peut limiter l'exposition au moment du départ, sans constituer à elle seule une garantie. Les unités de compte restent exposées à un risque de perte en capital.</p>
+            </div>
+          </motion.aside>
+
           <motion.div {...fadeUp(0.05)}>
             <h2 className="font-heading text-2xl font-bold text-foreground mb-6">
               Pourquoi le PER est indispensable pour votre statut
