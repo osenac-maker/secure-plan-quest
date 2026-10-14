@@ -1,3 +1,6 @@
 # Project rules
 - Keep product illustrations in the shared `ProductExample` presentation component and supply their scenario text from each product page, so both pages retain consistent styling without coupling their content.
 - Keep the homepage comparison, personal protection and founder presentation in `EditorialSections`, composed by the homepage, so editorial additions do not alter existing landing sections or application logic.
+- Share regulatory disclosures through `RegulatoryDetails` and transparency content through `TransparencySections`, so the footer, dedicated pages and homepage do not drift apart.
+- Capture report requests separately from callback opt-in; `buildContactPreferences` is the single outbound mapping and omits the phone unless callback consent is explicitly true, so a report alone cannot trigger phone outreach from its payload.
+- Keep Make as the existing external lead delivery endpoint and await its response before confirming submission; external email automation, CRM mapping and advisor signatures are not implemented by the client and must be verified separately.

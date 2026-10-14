@@ -1,13 +1,16 @@
 # Ajouts éditoriaux
-- [ ] Ajouter quatre exemples pédagogiques à chacune des deux pages produit.
-- [ ] Ajouter le comparatif après « Comment ça marche ».
-- [ ] Ajouter les sections protection du dirigeant et présentation de RETIRO.
-- [ ] Vérifier les trois pages et le lien vers la prévoyance.
-- [ ] Structurer la prévoyance en trois questions et préciser les points vérifiés et la déduction Madelin.
-- [ ] Ajouter les quatre indicateurs PER et l'explication des garanties en cas de baisse des marchés.
-- [ ] Ajouter les engagements demandés à « Comment ça marche », sans nouveaux avis ni témoignages.
-- [ ] Lire le document « Objectif retravailler le FOND du site RETIRO » et intégrer ses consignes.
-- [ ] Retirer les preuves inventées et compléter les sources, le plafond PER et les mentions réglementaires.
-- [ ] Ajouter les sections IA explicable, rémunération et cas types, ainsi que les pages rémunération et informations réglementaires.
-- [ ] Afficher un aperçu des résultats avant l'email et recueillir séparément la demande de rappel.
+- [x] Ajouter quatre exemples pédagogiques à chacune des deux pages produit.
+- [x] Ajouter le comparatif après « Comment ça marche ».
+- [x] Ajouter les sections protection du dirigeant et présentation de RETIRO.
+- [x] Vérifier les pages et le lien vers la prévoyance.
+- [x] Structurer la prévoyance en trois questions et préciser les points vérifiés et la déduction Madelin.
+- [x] Ajouter les quatre indicateurs PER et l'explication des garanties en cas de baisse des marchés.
+- [x] Ajouter les engagements demandés à « Comment ça marche », sans nouveaux avis ni témoignages.
+- [x] Lire le document « Objectif retravailler le FOND du site RETIRO » et intégrer ses consignes.
+- [x] Retirer les preuves inventées et ajouter les sources, la formulation du plafond PER et les mentions réglementaires.
+- [x] Ajouter les sections IA explicable, rémunération et cas types, ainsi que les pages rémunération et informations réglementaires.
+- [x] Afficher un aperçu des résultats avant l'email et recueillir séparément la demande de rappel.
 - [ ] Fournir la liste finale des informations à compléter avec leur emplacement.
+- [ ] Vérifier les commissions, ORIAS, RC Pro et médiateur — informations et justificatifs attendus de RETIRO.
+- [ ] Vérifier le rapport par email et le filtrage des rappels dans Make/Airtable — accès à l'automatisation externe nécessaire.
+- [ ] Actualiser et valider les calculs fiscaux — régime fiscal précis et validation métier nécessaires ; modèle historique signalé comme indicatif dans l'aperçu et les résultats.
