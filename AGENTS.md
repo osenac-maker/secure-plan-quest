@@ -1,0 +1,3 @@
+# Project rules
+- Keep product illustrations in the shared `ProductExample` presentation component and supply their scenario text from each product page, so both pages retain consistent styling without coupling their content.
+- Keep the homepage comparison, personal protection and founder presentation in `EditorialSections`, composed by the homepage, so editorial additions do not alter existing landing sections or application logic.

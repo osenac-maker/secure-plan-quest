@@ -9,6 +9,7 @@ import {
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useSEO } from "@/hooks/useSEO";
+import ProductExample from "@/components/ProductExample";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -23,24 +24,28 @@ const garanties = [
     titre: "Indemnités journalières",
     desc: "Maintien de vos revenus dès le 1er jour d'arrêt (ou après une franchise courte). Couvre maladie, accident, hospitalisation.",
     detail: "Jusqu'à 100 % du revenu net",
+    exemple: "Sophie, architecte indépendante de 42 ans, exerce à son compte. Une fracture l'oblige à interrompre son activité pendant deux mois. Selon son contrat et après la franchise applicable, des indemnités de [À VÉRIFIER] par jour peuvent compenser une partie de sa perte de revenus.",
   },
   {
     icon: Shield,
     titre: "Invalidité",
     desc: "Rente mensuelle garantie si vous ne pouvez plus exercer votre activité — partiellement ou totalement.",
     detail: "Invalidité partielle incluse",
+    exemple: "Marc, artisan électricien de 48 ans, dirige sa petite entreprise. Un accident entraîne une invalidité reconnue qui réduit durablement sa capacité à travailler. Sous réserve des critères du contrat, une rente de [À VÉRIFIER] par mois peut compléter ses ressources.",
   },
   {
     icon: HeartHandshake,
     titre: "Capital décès",
     desc: "Somme versée à votre conjoint et vos enfants pour assurer leur sécurité financière immédiate.",
     detail: "De 100 k€ à 1 M€ selon contrat",
+    exemple: "Karim, gérant d'une PME de 45 ans, vit en couple avec deux enfants. Son décès laisse sa famille sans ses revenus professionnels. Si le décès est couvert, les bénéficiaires désignés reçoivent un capital de [À VÉRIFIER] pour faire face aux dépenses immédiates.",
   },
   {
     icon: Users,
     titre: "Rente éducation",
     desc: "Rente versée à vos enfants jusqu'à leur majorité (ou fin d'études) en cas de décès ou d'invalidité totale.",
     detail: "Protection de toute la famille",
+    exemple: "Claire, consultante indépendante de 39 ans, élève un enfant scolarisé. Son décès met en difficulté le financement des études de son enfant. Selon les conditions du contrat, une rente éducation de [À VÉRIFIER] par mois peut être versée pendant la durée prévue.",
   },
 ];
 
@@ -199,6 +204,7 @@ const Prevoyance = () => {
                       <CheckCircle className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />
                       <span className="text-xs font-medium text-green-600">{g.detail}</span>
                     </div>
+                    <ProductExample>{g.exemple}</ProductExample>
                   </div>
                 );
               })}

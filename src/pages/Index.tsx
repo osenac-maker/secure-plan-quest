@@ -5,6 +5,7 @@ import TransitionSection from "@/components/landing/TransitionSection";
 import ProblemSection from "@/components/landing/ProblemSection";
 import MidCTASection from "@/components/landing/MidCTASection";
 import HowItWorksSection from "@/components/landing/HowItWorksSection";
+import { AdviceComparisonSection, PersonalProtectionSection, AboutSection } from "@/components/landing/EditorialSections";
 import SolutionsSection from "@/components/landing/SolutionsSection";
 import BenefitsSection from "@/components/landing/BenefitsSection";
 import PartnersSection from "@/components/landing/PartnersSection";
@@ -22,10 +23,13 @@ const Index = () => (
     <ProblemSection />
     <MidCTASection />
     <HowItWorksSection />
+    <AdviceComparisonSection />
+    <PersonalProtectionSection />
     <SolutionsSection />
     <BenefitsSection />
     <PartnersSection />
     <SocialProofSection />
+    <AboutSection />
     <FAQSection />
     <CTASection />
     <Footer />
