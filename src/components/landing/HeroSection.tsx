@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, Phone, Shield } from "lucide-react";
+import BilanButton from "@/components/BilanButton";
+import { Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg-with-logo.jpg";
 
 const HeroSection = () => (
-  <section className="relative min-h-[92vh] flex items-center overflow-hidden overflow-x-hidden">
+  <section className="relative min-h-[85svh] flex items-center overflow-hidden overflow-x-hidden">
     {/* Background image */}
     <div className="absolute inset-0">
       <img src={heroBg} alt="Dirigeant indépendant préparant sa retraite" className="w-full h-full object-cover" />
@@ -15,14 +14,14 @@ const HeroSection = () => (
       <div className="absolute inset-0 bg-gradient-to-t from-[hsl(10,40%,6%)]/60 via-transparent to-[hsl(10,40%,6%)]/30" />
     </div>
 
-    <div className="container mx-auto px-4 sm:px-6 relative z-10 py-20 md:py-32">
+    <div className="container mx-auto px-4 sm:px-6 relative z-10 pt-32 pb-10 md:pt-36 md:pb-16">
       <div className="flex items-center gap-12">
         {/* Left: text content */}
         <div className="max-w-2xl flex-1 min-w-0 lg:bg-[hsl(10,40%,6%)]/30 lg:backdrop-blur-sm lg:rounded-2xl lg:p-8 lg:-ml-4">
-          <div className="mb-8" />
+          
 
           <motion.h1
-            className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
+            className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
@@ -37,52 +36,17 @@ const HeroSection = () => (
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <p className="text-base md:text-xl text-white/90 font-heading">
-              Votre retraite, votre fiscalité et la protection de vos proches méritent une analyse d'ensemble. Nous vous aidons à évaluer vos droits et à comparer les solutions adaptées à votre situation.
+            <p className="text-base md:text-xl text-primary-foreground/90 font-heading">
+              Votre entreprise est assurée. Et vous ? En 2 minutes, découvrez votre retraite estimée et l'impôt que vous pouvez économiser.
             </p>
           </motion.div>
 
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-          >
-            <Link to="/simulateur">
-              <Button size="lg" className="bg-copper hover:bg-copper-light text-white text-sm sm:text-base gap-2 font-medium px-4 sm:px-8 border-0 group shadow-lg shadow-copper/30 whitespace-normal h-auto py-3 text-left w-full">
-                Découvrir ce que je toucherai vraiment à la retraite
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </Link>
-            <a
-              href={`https://wa.me/33622828844?text=${encodeURIComponent("Bonjour, je souhaite être rappelé gratuitement pour un bilan retraite.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button size="lg" variant="outline" className="border-copper/50 !text-white hover:bg-copper/10 text-sm sm:text-base gap-2 font-medium px-4 sm:px-8 bg-white/5 backdrop-blur-sm w-full">
-                <Phone className="w-4 h-4" />
-                Être rappelé via WhatsApp
-              </Button>
+          <motion.div className="flex flex-col items-start gap-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45 }}>
+            <BilanButton />
+            <a href={`https://wa.me/33622828844?text=${encodeURIComponent("Bonjour, je souhaite être rappelé pour un bilan retraite.")}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary-foreground/80 underline underline-offset-4 hover:text-copper">
+              <Phone className="w-3.5 h-3.5" /> Être rappelé
             </a>
           </motion.div>
-
-          <motion.ul
-            className="space-y-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-          >
-            {[
-              "Anticipez votre retraite : découvrez ce que vous toucherez vraiment",
-              "Réduisez vos impôts dès cette année grâce au PER",
-              "Protégez votre famille et vos revenus en cas d'imprévu",
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-3 text-white/80 text-sm md:text-base">
-                <CheckCircle className="w-5 h-5 text-copper shrink-0 mt-0.5" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </motion.ul>
         </div>
 
         {/* Right: gauge counter */}
@@ -144,7 +108,7 @@ const HeroSection = () => (
             {/* Inner content */}
             <div className="flex flex-col items-center justify-center text-center gap-1 z-10">
               <motion.span
-                className="text-4xl font-bold text-white font-heading"
+                className="text-4xl font-bold text-primary-foreground font-heading"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
@@ -158,14 +122,14 @@ const HeroSection = () => (
                 </motion.span>
                 <span className="text-copper">%</span>
               </motion.span>
-              <span className="text-sm font-medium text-white/80 font-heading">Bilan offert</span>
+              <span className="text-sm font-medium text-primary-foreground/80 font-heading">Bilan offert</span>
             </div>
           </div>
 
           {/* Labels below */}
           <div className="mt-4 flex flex-col items-center gap-1.5 text-center">
             {["Sans engagement", "Confidentiel", "Résultat immédiat"].map((label) => (
-              <span key={label} className="text-sm text-white/60 flex items-center gap-2">
+              <span key={label} className="text-sm text-primary-foreground/60 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-copper" />
                 {label}
               </span>

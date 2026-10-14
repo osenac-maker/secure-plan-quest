@@ -536,38 +536,16 @@ const Simulator = () => {
               {step === 3 && (
                 <div className="space-y-5">
                   {preview && <section aria-label="Premiers résultats sans email" className="border-b border-border pb-5">
-                    <h3 className="font-heading text-xl font-semibold text-foreground mb-4">Vos premiers résultats</h3>
-                    <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <h3 className="font-heading text-xl font-semibold text-foreground mb-4">Votre pension estimée</h3>
+                    <dl>
                       <div><dt className="text-sm text-muted-foreground">Pension estimée</dt><dd className="text-xl font-semibold text-copper">{formatEurFull(preview.retraiteEstimee)} / mois</dd></div>
-                      <div><dt className="text-sm text-muted-foreground">Économie d'impôt estimée</dt><dd className="text-xl font-semibold text-copper">{formatEurFull(preview.economiesFiscales)} / an</dd></div>
                     </dl>
-                    <p className="text-xs text-muted-foreground leading-relaxed mt-4">Estimation simplifiée, non contractuelle : pension calculée à partir d'une hypothèse par statut, et non de votre relevé de carrière. Le calcul fiscal existant utilise le barème 2024 et une hypothèse de versement ; le plafond réel des indépendants et votre régime fiscal nécessitent une vérification par un conseiller.</p>
-                    <p className="text-xs text-muted-foreground mt-2">Aucune coordonnée n'est nécessaire pour consulter cet aperçu.</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed mt-3">Estimation indicative fondée sur vos revenus et votre statut, sans relevé de carrière. À confirmer selon vos droits acquis et votre âge de départ.</p>
                   </section>}
-                  <div className="bg-muted/50 rounded-xl p-4 grid grid-cols-2 gap-3 text-xs mb-2">
-                    <div>
-                      <span className="text-muted-foreground">Statut</span>
-                      <p className="font-semibold text-foreground capitalize mt-0.5">
-                        {statusOptions.find((s) => s.value === data.status)?.label}
-                      </p>
-                    </div>
-                    <div>
-                      <span className="text-muted-foreground">Âge</span>
-                      <p className="font-semibold text-foreground mt-0.5">{data.age} ans</p>
-                    </div>
-                    <div>
-                      <span className="text-muted-foreground">Revenus annuels</span>
-                      <p className="font-semibold text-foreground mt-0.5">{formatEurFull(data.revenu ?? 0)}</p>
-                    </div>
-                    <div>
-                      <span className="text-muted-foreground">Épargne mensuelle</span>
-                      <p className="font-semibold text-foreground mt-0.5">{data.capaciteEpargne} €/mois</p>
-                    </div>
-                  </div>
 
                   <div className="bg-copper/5 border border-copper/20 rounded-lg px-4 py-3 text-center">
-                    <p className="text-sm font-semibold text-foreground">Recevoir le rapport complet</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">Votre email sert à demander le rapport complet. Le rappel est facultatif et nécessite votre accord séparé.</p>
+                    <p className="text-sm font-semibold text-foreground">Recevoir mon bilan complet par email</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">Indiquez votre email pour demander le bilan complet. Le rappel reste facultatif.</p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
