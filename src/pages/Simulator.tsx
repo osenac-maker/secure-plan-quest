@@ -123,6 +123,7 @@ const Simulator = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [anticipatedSaving, setAnticipatedSaving] = useState(0);
   const [consentement, setConsentement] = useState(false);
+  const [website, setWebsite] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [data, setData] = useState<Partial<SimulatorData>>({
     age: 42,
@@ -192,7 +193,7 @@ const Simulator = () => {
     setIsSubmitting(true);
     const results = calculateResults(data as SimulatorData);
     setAnticipatedSaving(results.economiesFiscales);
-    sendLeadToMake(data as SimulatorData, results);
+    sendLeadToMake(data as SimulatorData, results, website);
     sessionStorage.setItem("simulatorData", JSON.stringify(data));
     sessionStorage.setItem("simulatorResults", JSON.stringify(results));
     setTimeout(() => { navigate("/resultats"); }, 2800);
@@ -594,6 +595,20 @@ const Simulator = () => {
                       placeholder="06 12 34 56 78"
                     />
                     {errors.telephone && <p className="text-xs text-destructive mt-1">{errors.telephone}</p>}
+                  </div>
+
+                  {/* Honeypot anti-spam : invisible pour l'humain */}
+                  <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", top: "auto", width: 1, height: 1, overflow: "hidden" }}>
+                    <label htmlFor="website">Website</label>
+                    <input
+                      id="website"
+                      name="website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                    />
                   </div>
 
                   {/* ── Case consentement RGPD ── */}

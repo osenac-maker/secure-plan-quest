@@ -167,7 +167,7 @@ const Results = () => {
                 {results.economiesFiscales.toLocaleString("fr-FR")} €
               </p>
               <p className="text-xs text-muted-foreground mt-1">par an</p>
-              <p className="text-[10px] text-muted-foreground/50 mt-1">Basé sur le barème TMI 2024</p>
+              <p className="text-[10px] text-muted-foreground/50 mt-1">Estimation basée sur le barème 2026</p>
             </motion.div>
 
             <motion.div className="bg-card rounded-2xl p-6 shadow-card text-center border border-border" {...fadeUp(0.2)}>
