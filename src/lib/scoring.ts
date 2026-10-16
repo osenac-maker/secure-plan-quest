@@ -28,14 +28,52 @@ export interface SimulatorResult {
   recommandations: string[];
 }
 
-// ─── Barème TMI 2024 ─────────────────────────────────────────────────────────
+// ─── Paramètres fiscaux 2026 – à vérifier chaque année ──────────────────────
 
-function getTMI(revenu: number): number {
-  if (revenu > 177106) return 0.45;
-  if (revenu > 82341) return 0.41;
-  if (revenu > 28797) return 0.30;
-  if (revenu > 11294) return 0.11;
-  return 0;
+export const PARAMS_FISCAUX = {
+  PASS: 48060,
+  // Barème IR par part : plafond haut de chaque tranche et taux associé
+  BAREME_IR: [
+    { jusqua: 11600, taux: 0 },
+    { jusqua: 29579, taux: 0.11 },
+    { jusqua: 84577, taux: 0.3 },
+    { jusqua: 181917, taux: 0.41 },
+    { jusqua: Infinity, taux: 0.45 },
+  ],
+} as const;
+
+// ─── Nombre de parts fiscales ────────────────────────────────────────────────
+
+export function nombreDeParts(situationFamiliale: string, enfants: number): number {
+  let parts = ["marie", "en-couple"].includes(situationFamiliale) ? 2 : 1;
+  const n = Math.max(0, Math.floor(enfants || 0));
+  parts += Math.min(n, 2) * 0.5 + Math.max(0, n - 2) * 1;
+  return parts;
+}
+
+// ─── TMI selon quotient familial ─────────────────────────────────────────────
+// Simplification assumée : pas de plafonnement des effets du quotient familial.
+
+export function getTMI(revenu: number, parts = 1): number {
+  const revenuParPart = revenu / Math.max(1, parts);
+  for (const t of PARAMS_FISCAUX.BAREME_IR) {
+    if (revenuParPart <= t.jusqua) return t.taux;
+  }
+  return 0.45;
+}
+
+// ─── Plafond de déduction PER ────────────────────────────────────────────────
+
+export function getPlafondPER(revenu: number, status: string): number {
+  const { PASS } = PARAMS_FISCAUX;
+  const plancher = 0.1 * PASS;
+  if (status === "salarie") {
+    return Math.min(Math.max(0.1 * revenu, plancher), 0.1 * 8 * PASS);
+  }
+  // Régime indépendants (freelance, libéral, dirigeant)
+  const base = 0.1 * Math.min(revenu, 8 * PASS);
+  const supplement = 0.15 * Math.max(0, Math.min(revenu, 8 * PASS) - PASS);
+  return Math.max(base + supplement, plancher);
 }
 
 // ─── Capitalisation mensuelle à taux fixe ────────────────────────────────────
@@ -77,9 +115,9 @@ export function calculateResults(data: SimulatorData): SimulatorResult {
     Math.max(5, Math.round((capitalProjecte / ciblePatrimoine) * 100))
   );
 
-  // 3. Optimisation PER (plafond 2024)
-  const plafondPER = Math.min(data.revenu * 0.1, 35194);
-  const tmi = getTMI(data.revenu);
+  // 3. Optimisation PER (paramètres fiscaux 2026)
+  const plafondPER = getPlafondPER(data.revenu, data.status);
+  const tmi = getTMI(data.revenu, nombreDeParts(data.situationFamiliale, data.enfants));
   const versementPEROptimal = Math.round(plafondPER);
   const economiesFiscales = Math.round(versementPEROptimal * tmi);
 
@@ -176,7 +214,7 @@ function normalizePhone(phone: string): string {
 // permet jamais de lire/modifier les données existantes.
 // Configurer VITE_MAKE_WEBHOOK_URL dans les variables d'environnement Vercel.
 
-export function sendLeadToMake(data: SimulatorData, results: SimulatorResult): void {
+export function sendLeadToMake(data: SimulatorData, results: SimulatorResult, website = ""): void {
   const STATUS_LABELS: Record<string, string> = {
     freelance: "Freelance",
     dirigeant: "Dirigeant",
@@ -203,16 +241,8 @@ export function sendLeadToMake(data: SimulatorData, results: SimulatorResult): v
     ? data.priorite.map((p) => PRIORITE_LABELS[p] ?? p).join(", ")
     : PRIORITE_LABELS[data.priorite as unknown as string] ?? (data.priorite as unknown as string);
 
-  // URL du webhook Make (write-only). Surchargeable via VITE_MAKE_WEBHOOK_URL au besoin.
-  const webhookUrl =
-    import.meta.env.VITE_MAKE_WEBHOOK_URL ||
-    "https://hook.eu1.make.com/0x2aju4rjum8va9vraq36bpovdvz56hn";
-  if (!webhookUrl) {
-    console.warn("[Make] URL webhook non configurée — lead non envoyé.");
-    return;
-  }
-
-  fetch(webhookUrl, {
+  // Envoi via la fonction serveur /api/lead (l'URL et la clé Make restent côté serveur).
+  fetch("/api/lead", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -231,6 +261,7 @@ export function sendLeadToMake(data: SimulatorData, results: SimulatorResult): v
       economieFiscale: results.economiesFiscales,
       score: results.leadScore,
       etape: "nouveau",
+      website,
     }),
   }).then(async (res) => {
     if (!res.ok) {
