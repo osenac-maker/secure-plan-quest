@@ -209,10 +209,6 @@ function normalizePhone(phone: string): string {
 
 // ─── Capture lead via webhook Make ─── v6 ────────────────────────────────────
 // SÉCURITÉ : le site n'écrit plus directement dans Airtable (cela exposait la
-// clé API dans le navigateur). Il envoie le lead à un webhook Make, qui se charge
-// d'écrire dans Airtable côté serveur. L'URL du webhook est write-only : elle ne
-// permet jamais de lire/modifier les données existantes.
-// Configurer VITE_MAKE_WEBHOOK_URL dans les variables d'environnement Vercel.
 
 export function sendLeadToMake(data: SimulatorData, results: SimulatorResult, website = ""): void {
   const STATUS_LABELS: Record<string, string> = {
