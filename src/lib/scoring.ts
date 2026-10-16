@@ -208,7 +208,7 @@ function normalizePhone(phone: string): string {
 }
 
 // ─── Capture lead via webhook Make ─── v6 ────────────────────────────────────
-// SÉCURITÉ : le site n'écrit plus directement dans Airtable (cela exposait la
+// SÉCURITÉ : le lead passe par la fonction serveur /api/lead, qui détient l URL et la clé Make.
 
 export function sendLeadToMake(data: SimulatorData, results: SimulatorResult, website = ""): void {
   const STATUS_LABELS: Record<string, string> = {
